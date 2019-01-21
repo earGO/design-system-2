@@ -52,5 +52,8 @@
     "rollup-plugin-url": "^2.1.0",
     "styled-components": "^4.1.3",
     "webpack": "^4.29.0"
+  },
+  "publishConfig": {
+    "registry": "https://gitlab.ursip.ru/nexus/repository/npm"
   }
 }
