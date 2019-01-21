@@ -1,5 +1,4 @@
 import colors from './colors'
-import icons from './icons'
 
 import { addAliases } from './utils'
 
@@ -12,7 +11,6 @@ addAliases(mediaQueries, aliases)
 
 export default {
   colors,
-  icons,
   breakpoints,
   mediaQueries,
   font: {

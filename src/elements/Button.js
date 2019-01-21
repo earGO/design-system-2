@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import { space } from 'styled-system';
-import theme from '../theme';
+import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import { space } from 'styled-system'
+import theme from '../theme'
 
 const sizes = {
   small: {
@@ -22,32 +22,32 @@ const sizes = {
     px: 20,
     py: 10,
   },
-};
+}
 
-const getSizeParams = size => sizes[size] || sizes.medium;
+const getSizeParams = size => sizes[size] || sizes.medium
 
 const size = props => {
-  const { px, py, fontSize } = getSizeParams(props.size);
+  const { px, py, fontSize } = getSizeParams(props.size)
 
   return {
     fontSize: `${props.theme.fontSizes[fontSize]}px`,
     padding: `${py}px ${px}px`,
-  };
-};
+  }
+}
 
-const block = props => Boolean(props.block) && { width: '100%' };
+const block = props => Boolean(props.block) && { width: '100%' }
 
 const shapeCircle = props => {
   if (props.circle) {
-    const { diameter } = sizes[props.size] || sizes.medium;
-    return { borderRadius: '50%', padding: 0, width: `${diameter}px`, height: `${diameter}px` };
+    const { diameter } = sizes[props.size] || sizes.medium
+    return { borderRadius: '50%', padding: 0, width: `${diameter}px`, height: `${diameter}px` }
   }
-};
+}
 
 const type = props => {
-  const { theme, disabled, size } = props;
-  const { colors } = theme;
-  const { px, py } = getSizeParams(size);
+  const { theme, disabled, size } = props
+  const { colors } = theme
+  const { px, py } = getSizeParams(size)
 
   switch (props.type) {
     case 'bordered':
@@ -63,7 +63,7 @@ const type = props => {
           color: colors.darkBlue,
           borderColor: colors.darkBlue,
         },
-      };
+      }
     case 'dashed':
       return {
         color: disabled ? colors.lightGrey : colors.grey,
@@ -80,7 +80,7 @@ const type = props => {
           color: colors.darkBlue,
           borderColor: colors.darkBlue,
         },
-      };
+      }
     case 'outline':
       return {
         backgroundColor: 'transparent',
@@ -93,7 +93,7 @@ const type = props => {
           color: colors.darkBlue,
           borderColor: 'transparent',
         },
-      };
+      }
     case 'flat':
       return {
         backgroundColor: 'transparent',
@@ -104,7 +104,7 @@ const type = props => {
         '&:active': !disabled && {
           color: colors.darkBlue,
         },
-      };
+      }
     case 'primary':
     default:
       return {
@@ -119,12 +119,12 @@ const type = props => {
           backgroundColor: colors.darkBlue,
           borderColor: colors.darkBlue,
         },
-      };
+      }
   }
-};
+}
 
 /**
- * Кнопка. Используется для инициации каких-либо действий или процессов.
+ * Используется для инициации каких-либо действий или процессов.
  */
 const Button = styled.button`
   -webkit-font-smoothing: antialiased;
@@ -145,17 +145,12 @@ const Button = styled.button`
   transition: all ${props => props.theme.duration.normal};
   position: relative;
 
-  & > svg {
-    position: relative;
-    top: 0.16em;
-  }
-
   ${block}
   ${space}
   ${size}
   ${type}
   ${shapeCircle};
-`;
+`
 
 Button.propTypes = {
   /** Вид кнопки */
@@ -198,7 +193,7 @@ Button.propTypes = {
   py: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
   /** @ignore */
   theme: PropTypes.any,
-};
+}
 
 Button.defaultProps = {
   type: 'primary',
@@ -207,9 +202,9 @@ Button.defaultProps = {
   block: false,
   /** @ignore */
   theme: theme,
-};
+}
 
-Button.displayName = 'Button';
+Button.displayName = 'Button'
 
 /** @component */
-export default Button;
+export default Button

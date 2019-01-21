@@ -44,9 +44,7 @@ export default {
         ],
       ],
     }),
-    resolve({
-      module: true,
-    }),
+    resolve(),
     commonjs({
       include: ['node_modules/**'],
       exclude: ['node_modules/process-es6/**'],
