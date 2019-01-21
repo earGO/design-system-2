@@ -17,7 +17,7 @@ const Box = styled.div`
 export default Box
 ```
 
-Теперь `<Box />` имеет два параметра: **color** для задания цвета текста и **bg** для фона
+Теперь `<Box />` имеет два параметра: **color** для задания цвета текста и **bg** для фона:
 ```html static
 <Box color="#fff" bg="tomato">
   Tomato
@@ -63,7 +63,7 @@ export default {
   ]
 }
 ```
-В примере выше для парамтеров **m** и **p** мы указали значение 2. Эти цифра является индексом элемента из массива **space** темы. То есть по факту мы записывааем для компонента css:
+В примере выше для параметров **m** и **p** мы указали значение 2. Эта цифра является индексом элемента из массива **space** темы. То есть по факту мы записываем для компонента css:
 ```js static
 {
   margin: 8px;
@@ -75,12 +75,12 @@ export default {
 * Числа, превышающие длину массива отступов из темы, преобразуются в пиксели;
 * Есть возможность передавать значения строкой, например 'auto' или '2em';
 * Свойство margin может принимать отрицательные значения для задания негативного отступа;
-* Массивы используются для адаптивного дизайна
+* Массивы используются для адаптивного дизайна.
 
 Аналогичным образом работает функция **fontSize**, которая смотрит на массив fontSizes в обьекте темы. 
 
 ### Список всех доступных функций styled-system
-Функция | Параметр компонента  | CSS параметр  | Параметр в обьекте темы
+Функция | Параметр компонента  | CSS параметр  | Параметр в объекте темы
 --------------|------------|-----------------|--------------
 `space`       | `m`        | `margin`        | `space`
 `space`       | `mt`       | `margin-top`    | `space`
@@ -102,7 +102,7 @@ export default {
 `color`       | `bg`       | `background-color`| `colors`
 
 ### Типографика
-Функция | Параметр компонента  | CSS параметр  | Параметр в обьекте темы
+Функция | Параметр компонента  | CSS параметр  | Параметр в объекте темы
 --------------|------------|-----------------|--------------
 `fontFamily` | `fontFamily` | `font-family` | `fonts`
 `textAlign`   | `textAlign`    | `text-align`   | none
@@ -112,7 +112,7 @@ export default {
 `letterSpacing` | `letterSpacing` | `letter-spacing` | `letterSpacings`
 
 ### Layout
-Функция | Параметр компонента  | CSS параметр  | Параметр в обьекте темы
+Функция | Параметр компонента  | CSS параметр  | Параметр в объекте темы
 --------------|------------|-----------------|--------------
 `display` | `display` | `display` | none
 `maxWidth` | `maxWidth` | `max-width` | `maxWidths`
@@ -126,7 +126,7 @@ export default {
 
 ### Flexbox
 
-Функция | Параметр компонента  | CSS параметр  | Параметр в обьекте темы
+Функция | Параметр компонента  | CSS параметр  | Параметр в объекте темы
 --------------|------------|-----------------|--------------
 `alignItems`  | `alignItems` | `align-items` | none
 `justifyContent` | `justifyContent` | `justify-content` | none
@@ -141,7 +141,7 @@ export default {
 `flexBasis` | `flexBasis` | `flex-basis` | none
 
 ### Grid Layout
-Функция | Параметр компонента  | CSS параметр  | Параметр в обьекте темы
+Функция | Параметр компонента  | CSS параметр  | Параметр в объекте темы
 --------------|------------|-----------------|--------------
 `gridGap`  | `gridGap` | `grid-gap` | `space`
 `gridRowGap` | `gridRowGap` | `grid-row-gap` | `space`
@@ -157,7 +157,7 @@ export default {
 `gridTemplateAreas` | `gridTemplateAreas` | `grid-template-areas` | none
 
 ### Background
-Функция | Параметр компонента  | CSS параметр  | Параметр в обьекте темы
+Функция | Параметр компонента  | CSS параметр  | Параметр в объекте темы
 --------------|------------|-----------------|--------------
 `background`  | `background` | `background`  | none
 `backgroundImage` | `backgroundImage` | `background-image` | none
@@ -166,7 +166,7 @@ export default {
 `backgroundRepeat` | `backgroundRepeat` | `background-repeat` | none
 
 ### Position
-Функция | Параметр компонента  | CSS параметр  | Параметр в обьекте темы
+Функция | Параметр компонента  | CSS параметр  | Параметр в объекте темы
 --------------|------------|-----------------|--------------
 `position` | `position` | `position` | none
 `zIndex` | `zIndex` | `z-index` | none
@@ -177,7 +177,7 @@ export default {
 
 ### Misc
 
-Функция | Параметр компонента  | CSS параметр  | Параметр в обьекте темы
+Функция | Параметр компонента  | CSS параметр  | Параметр в объекте темы
 --------------|------------|-----------------|--------------
 `borderRadius` | `borderRadius` | `border-radius` | `radii`
 `borderColor` | `borderColor` | `border-color` | `colors`
@@ -190,11 +190,11 @@ export default {
 `opacity`   | `opacity` `o` | `opacity`  | `opacity`
 `overflow` | `overflow` | `overflow` | none
 
-Как работают функции из styled-system  [можно прочитать тут](https://github.com/jxnblk/styled-system/blob/master/docs/how-it-works.md) 
+Как работают функции из styled-system  [можно прочитать тут](https://github.com/jxnblk/styled-system/blob/master/docs/how-it-works.md).
 
 
 ## Адаптивная верстка
-Все функции из styled-system позволяют задать массив значений для различных размеров экранов.
+Все функции из styled-system позволяют задать массив значений для различных размеров экранов:
 
 ```js static
 <Box

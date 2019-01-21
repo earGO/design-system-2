@@ -1,8 +1,8 @@
-const pkg = require('../package.json');
-const path = require('path');
+const pkg = require('../package.json')
+const path = require('path')
 
 function makeAbsolutePath(directory, component) {
-  return path.resolve(__dirname, directory, component);
+  return path.resolve(__dirname, directory, component)
 }
 
 module.exports = {
@@ -47,10 +47,10 @@ module.exports = {
     },
   },
   getComponentPathLine(componentPath) {
-    return `import { ${path.basename(componentPath, '.js')} } from '${pkg.name}'`;
+    return `import { ${path.basename(componentPath, '.js')} } from '${pkg.name}'`
   },
   getExampleFilename(componentPath) {
-    return makeAbsolutePath('../documentation/components', path.basename(componentPath.replace(/\.jsx?$/, '.md')));
+    return makeAbsolutePath('../documentation/components', path.basename(componentPath.replace(/\.jsx?$/, '.md')))
   },
   sections: [
     {
@@ -106,4 +106,4 @@ module.exports = {
       content: 'core.md',
     },
   ],
-};
+}

@@ -50,7 +50,7 @@ function Palette() {
 ```
 
 
-Список цветтов доступен в **theme.colors** в виде плоского обьекта:
+Список цветов доступен в **theme.colors** в виде плоского объекта:
 ```js static
 {
     primary: "#1890ff",
@@ -65,7 +65,7 @@ function Palette() {
 }
 ```
 
-Свойства **bg** и **color** у компонентов имет доступ к этому обьекту, поэтому для выбора необходимого цвета можно передать его название строкой:
+Свойства **bg** и **color** у компонентов имеют доступ к этому объекту, поэтому для выбора необходимого цвета можно передать его название строкой:
 ```html static
 <Heading color="primary">Primary heading</Heading>
 <Heading color="success">Success heading</Heading>
@@ -78,7 +78,7 @@ function Palette() {
 <Heading color="orange">Orange heading</Heading>
 ```
 
-Если передаваемый цвет не найден в обьекте, то он применится, как обычная строка в css color:
+Если передаваемый цвет не найден в объекте, то он применится, как обычная строка в css color:
 ```html static
 <Heading color="#ebebeb">Ghost heading</Heading>
 <Heading color="pink">Default browser color heading</Heading>

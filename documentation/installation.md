@@ -8,7 +8,7 @@ npm config list
 npm config set registry https://gitlab.ursip.ru/nexus/repository/npm
 ```
 
-Далее для установки библиоткеи необходимо выполнить команду:
+Далее для установки библиотеки необходимо выполнить команду:
 ```js static
 npm install --save @ursip/design-system 
 ```
