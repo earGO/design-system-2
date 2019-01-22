@@ -1,7 +1,7 @@
 Блок с фоном фирменного цвета и шириной 50%
 ```js
 <Box width={1/2} bg="primary" color="white">
-  Content
+  Box
 </Box>
 ```
 

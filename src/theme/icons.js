@@ -1,8 +1,6 @@
-import { FaBeer } from 'react-icons/fa'
-import { MdClose, MdSync } from 'react-icons/md'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faBeer, faCog, faSpinner } from '@fortawesome/free-solid-svg-icons'
 
-export default {
-  beer: FaBeer,
-  close: MdClose,
-  loading: MdSync,
-}
+library.add(faBeer, faCog, faSpinner)
+
+export default library

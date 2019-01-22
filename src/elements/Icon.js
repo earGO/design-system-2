@@ -1,42 +1,24 @@
 import React from 'react'
-import styled, { keyframes, css } from 'styled-components'
-import { space, color, top, bottom, left, right } from 'styled-system'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import { space, color, fontSize, top, bottom, left, right } from 'styled-system'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import theme from '../theme'
-import icons from '../theme/icons'
 
-const Base = ({ name, ...props }) => {
-  const SvgIcon = icons[name] || icons.beer
-  return <SvgIcon {...props} />
-}
-
-const scale = props => ({ transform: `scale(${props.scale})` })
-
-const spin = scale => {
-  const rotate = keyframes`
-  from {
-    transform: scale(${scale}) rotate(360deg);
-  }
-  to {
-    transform: scale(${scale}) rotate(0deg);
-  }`
-
-  return css`
-    ${rotate} 1s linear infinite
-  `
+function Base({ name, ...props }) {
+  return <FontAwesomeIcon {...props} icon={name} />
 }
 
 /**
  * SVG иконка.
  */
 const Icon = styled(Base)`
-  animation: ${props => props.spin && spin(props.scale)};
   position: relative;
   flex: none;
 
+  ${fontSize}
   ${space}
   ${color}
-  ${scale}
   ${top}
   ${right}
   ${bottom}
@@ -46,6 +28,8 @@ const Icon = styled(Base)`
 Icon.displayName = 'Icon'
 
 Icon.propTypes = {
+  /** Размер шрифта */
+  fontSize: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
   /** margin */
   m: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
   /** margin-top*/
@@ -82,8 +66,10 @@ Icon.propTypes = {
   left: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
   /** Смещение справа */
   right: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
-  /** Анимация вращения */
+  /** Плавная анимация вращения */
   spin: PropTypes.bool,
+  /** Ступенчатая анимация вращения */
+  pulse: PropTypes.bool,
   /** Скейлинг. сss transform scale */
   scale: PropTypes.number,
   /** Цвет иконки */
@@ -95,6 +81,7 @@ Icon.propTypes = {
 Icon.defaultProps = {
   scale: 1,
   spin: false,
+  pulse: false,
   theme: theme,
 }
 

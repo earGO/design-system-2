@@ -40,6 +40,7 @@ Text.s = Text.withComponent('s')
 Text.displayName = 'Text'
 
 Text.propTypes = {
+  /** Размер шрифта */
   fontSize: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
   /** Выравнивание текста по горизонтали */
   align: PropTypes.oneOf(['left', 'center', 'right', 'justify']),
