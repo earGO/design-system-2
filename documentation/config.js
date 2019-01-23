@@ -105,6 +105,7 @@ module.exports = {
       name: 'Данные',
       description: 'Компоненты для получения данных, введенных пользователем.',
       components: () => [
+        makeAbsolutePath('../src/data', 'Input.js'),
         makeAbsolutePath('../src/data', 'Checkbox.js'),
       ]
     },
