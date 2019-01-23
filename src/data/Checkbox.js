@@ -85,6 +85,7 @@ const CheckboxContainer = styled(Flex)`
   align-content: center;
 `
 
+/** Используется для выбора одного или нескольких значений из представленных вариантов */
 class Checkbox extends Component {
   constructor(props) {
     super(props)
@@ -128,6 +129,10 @@ Checkbox.propTypes = {
   disabled: propTypes.bool,
   /** Текст чекбокса. */
   label: propTypes.string,
+  /** Размер чекбокса */
+  size: propTypes.oneOf(['small', 'medium', 'large']),
+  /** Функция - хендлер, вызывается при клике на чекбокс */
+  onChange: propTypes.func,
   /** margin */
   m: propTypes.oneOfType([propTypes.number, propTypes.string, propTypes.array]),
   /** margin-top*/
