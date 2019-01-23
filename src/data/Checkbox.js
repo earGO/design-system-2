@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { Box, Flex, Icon } from '../index'
+import Flex from '../primitives/Flex'
+import Icon from '../elements/Icon'
 import propTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import { space } from 'styled-system'
 
-const size = ({ size = 'medium', ...rest }) => {
+const size = ({ size = 'medium' }) => {
   const sizes = {
     small: {
       width: '16px',

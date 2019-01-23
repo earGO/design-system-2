@@ -42,6 +42,7 @@ export default {
             regenerator: true,
           },
         ],
+        '@babel/plugin-proposal-class-properties',
       ],
     }),
     resolve(),
