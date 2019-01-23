@@ -15,3 +15,5 @@ export { default as Heading } from './elements/Heading'
 export { default as Button } from './elements/Button'
 export { default as Icon } from './elements/Icon'
 export { default as Divider } from './elements/Divider'
+/** Data */
+export { default as Checkbox } from './data/Checkbox'

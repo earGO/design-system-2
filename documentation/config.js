@@ -102,6 +102,13 @@ module.exports = {
       ],
     },
     {
+      name: 'Данные',
+      description: 'Компоненты для получения данных, введенных пользователем.',
+      components: () => [
+        makeAbsolutePath('../src/data', 'Checkbox.js'),
+      ]
+    },
+    {
       name: 'Ядро системы',
       content: 'core.md',
     },

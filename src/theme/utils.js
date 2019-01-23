@@ -12,12 +12,18 @@ export function lighten(color, percent) {
     .hex()
 }
 
+export function mix(color1, color2, ratio) {
+  return Color(color1)
+    .mix(Color(color2), ratio)
+    .hex()
+}
+
 export function makeShades(colorName, colorValue) {
   const shades = {
     dark: color => darken(color, 0.7),
     semiDark: color => darken(color, 0.35),
-    light: color => lighten(color, 0.7),
     semiLight: color => lighten(color, 0.35),
+    light: color => lighten(color, 0.7),
   }
 
   return Object.keys(shades).reduce(
