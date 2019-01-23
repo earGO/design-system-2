@@ -9,7 +9,7 @@
 <Input prefix={<Icon name="beer" />} suffix={<Icon name="cog" />} width={300}/>
 ```
 
-Disabled
+
 ```js
 initialState = {
   disabled: true,
@@ -20,9 +20,19 @@ const toggle = () => {
     disabled: !state.disabled
   })
 }
-<Flex>
-  <Input width={200} disabled={state.disabled} placeholder="Disabled input" />
+
+<Flex width={1/4}>
+  <Input size="small" disabled={state.disabled} placeholder="Disabled input" />
   <Button onClick={toggle} ml={2} size="small" type="dashed" >Toggle</Button>
+</Flex>
+```
+
+Разные размеры:
+```js
+<Flex width={1 / 4} flexDirection="column" justifyContent="space-between" height={150}>
+  <Input size="small" placeholder="small"/>
+  <Input size="medium" placeholder="medium"/>
+  <Input size="large" placeholder="large"/>
 </Flex>
 ```
 
@@ -40,6 +50,6 @@ const handleChange = (event) => {
 
 <Box>
   <Input value={state.value} onChange={handleChange} width={250} placeholder="Hi') DROP TABLE users;--" />
-  <Text bold>Current value in state: {state.value}</Text>
+  <Text bold>Текущее значение: {state.value}</Text>
 </Box>
 ```

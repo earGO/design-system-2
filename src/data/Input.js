@@ -1,11 +1,18 @@
 import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
 import propTypes from 'prop-types'
-import { Relative, Absolute } from '../index'
+import Relative from '../primitives/Relative'
+import Absolute from '../primitives/Absolute'
 import { space, width } from 'styled-system'
 import omit from 'lodash/omit'
 
-const propsToOmit = ['suffix', 'prefix', 'width']
+
+// #TBD: Input.TextArea + allowClear prop. Как будет работать c suffix?
+
+
+
+const propsToOmit = ['suffix', 'prefix', 'width', 'value']
+
 const disabled = props =>
   props.disabled &&
   css`
@@ -14,9 +21,30 @@ const disabled = props =>
     cursor: not-allowed;
   `
 
+const size = ({ size = 'medium', theme}) => {
+  const sizes = {
+    // Same as button heights, but with height, instead of paddings.
+    small: {
+      fontSize: theme.fontSizes[0],
+      height: 30,
+    },
+    medium: {
+      fontSize: theme.fontSizes[1],
+      height: 38,
+    },
+    large: {
+      fontSize: theme.fontSizes[2],
+      height: 46,
+    },
+  }
+  return sizes[size]
+}
+
+
 const HTMLInput = styled('input')`
   ${width}
   ${space}
+  ${size}
   ${props => `background: ${props.theme.colors.lightGrey}`}
   ${disabled}
   border: 0;
@@ -31,7 +59,24 @@ const Adornment = styled(Absolute)({
   display: 'flex',
 })
 
+/** Получение данных от пользователя.*/
 class Input extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: typeof props.value !== 'undefined' ? props.defaultValue : props.value
+    }
+  }
+
+  static getDerivedStateFromProps(nextProps) {
+    if ('value' in nextProps) {
+      return {
+        value: nextProps.value,
+      }
+    }
+    return null;
+  }
+
   saveInput = (node) => {
     this.input = node;
   }
@@ -57,8 +102,8 @@ class Input extends Component {
           {...omit(this.props, propsToOmit)}
           pl={prefix ? 4 : 2}
           pr={suffix ? 4 : 2}
-          py={2}
           width="100%"
+          value={this.state.value}
           ref={this.saveRef}
         />
         {suffix && (
@@ -73,14 +118,18 @@ class Input extends Component {
 
 Input.displayName = 'Input'
 Input.propTypes = {
-  /** Ширина инпута.*/
+  /** Ширина враппера для инпута.*/
   width: propTypes.oneOfType([propTypes.number, propTypes.string, propTypes.array]),
   /** Иконка в начале инпута. */
   prefix: propTypes.element,
    /** Иконка в конце инпута. */
   suffix: propTypes.element,
-  /** Размер инпута: #TBD */
+  /** Размер инпута: */
   size: propTypes.oneOf(['small', 'medium', 'large']),
+}
+
+Input.defaultProps = {
+  size: 'medium',
 }
 
 /** @component */
