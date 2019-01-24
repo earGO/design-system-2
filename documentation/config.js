@@ -5,6 +5,13 @@ function makeAbsolutePath(directory, component) {
   return path.resolve(__dirname, directory, component)
 }
 
+/**
+ * В этом массиве перечислены компоненты, которые являются дочерними к другим.
+ * Например компонет CollapsePanel, доступен, как Collapse.Panel
+ *
+ */
+const nestedComponents = ['CollapsePanel']
+
 module.exports = {
   title: pkg.name,
   version: pkg.version,
@@ -14,7 +21,7 @@ module.exports = {
   exampleMode: 'collapse',
   usageMode: 'collapse',
   ignore: ['/index.js', '/*.test.js', '**/*.spec.js'],
-  serverPort: 3000,
+  serverPort: 6060,
   webpackConfig: {
     module: {
       rules: [
@@ -47,6 +54,10 @@ module.exports = {
     },
   },
   getComponentPathLine(componentPath) {
+    if (nestedComponents.some(component => componentPath.includes(component))) {
+      return false
+    }
+
     return `import { ${path.basename(componentPath, '.js')} } from '${pkg.name}'`
   },
   getExampleFilename(componentPath) {
@@ -92,32 +103,20 @@ module.exports = {
     },
     {
       name: 'Элементы',
-      description: 'Компоненты-элементы используются, как строительные блоки для более сложных компонентов.',
-      sections: [
-        {
-          name: 'Collapse',
-          content: 'CollapseSummary.md',
-          components: () => [
-            makeAbsolutePath('../src/elements/Collapse', 'Collapse.js'),
-            makeAbsolutePath('../src/elements/Collapse', 'Panel.js'),
-          ]
-        }
-      ],
       components: () => [
         makeAbsolutePath('../src/elements', 'Text.js'),
         makeAbsolutePath('../src/elements', 'Heading.js'),
         makeAbsolutePath('../src/elements', 'Icon.js'),
         makeAbsolutePath('../src/elements', 'Button.js'),
         makeAbsolutePath('../src/elements', 'Divider.js'),
+        makeAbsolutePath('../src/elements', 'Collapse.js'),
+        makeAbsolutePath('../src/elements', 'CollapsePanel.js'),
       ],
     },
     {
       name: 'Данные',
       description: 'Компоненты для получения данных, введенных пользователем.',
-      components: () => [
-        makeAbsolutePath('../src/data', 'Input.js'),
-        makeAbsolutePath('../src/data', 'Checkbox.js'),
-      ]
+      components: () => [makeAbsolutePath('../src/data', 'Input.js'), makeAbsolutePath('../src/data', 'Checkbox.js')],
     },
     {
       name: 'Ядро системы',
