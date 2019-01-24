@@ -7,8 +7,7 @@ function makeAbsolutePath(directory, component) {
 
 /**
  * В этом массиве перечислены компоненты, которые являются дочерними к другим.
- * Например компонет CollapsePanel, доступен, как Collapse.Panel
- *
+ * Например компонет CollapsePanel доступен как Collapse.Panel.
  */
 const nestedComponents = ['CollapsePanel']
 

@@ -6,22 +6,20 @@ import Absolute from '../primitives/Absolute'
 import { space, width } from 'styled-system'
 import omit from 'lodash/omit'
 
-
 // #TBD: Input.TextArea + allowClear prop. Как будет работать c suffix?
-
-
 
 const propsToOmit = ['suffix', 'prefix', 'width', 'value']
 
 const disabled = props =>
   props.disabled &&
   css`
-    color: ${props.theme.colors.Grey};
-    background: ${props.theme.colors.semiLightGrey};
+    opacity: 0.4;
+    /* color: ${props.theme.colors.Grey};
+    background: ${props.theme.colors.semiLightGrey}; */
     cursor: not-allowed;
   `
 
-const size = ({ size = 'medium', theme}) => {
+const size = ({ size = 'medium', theme }) => {
   const sizes = {
     // Same as button heights, but with height, instead of paddings.
     small: {
@@ -40,14 +38,15 @@ const size = ({ size = 'medium', theme}) => {
   return sizes[size]
 }
 
-
 const HTMLInput = styled('input')`
+  border: 0;
+  border-radius: ${props => props.theme.radii[1] + 'px'};
+  background: ${props => props.theme.colors.lightGrey};
+
   ${width}
   ${space}
   ${size}
-  ${props => `background: ${props.theme.colors.lightGrey}`}
-  ${disabled}
-  border: 0;
+  ${disabled};
 `
 
 const Wrapper = styled(Relative)({
@@ -62,9 +61,9 @@ const Adornment = styled(Absolute)({
 /** Получение данных от пользователя.*/
 class Input extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      value: typeof props.value !== 'undefined' ? props.defaultValue : props.value
+      value: typeof props.value !== 'undefined' ? props.defaultValue : props.value,
     }
   }
 
@@ -74,19 +73,19 @@ class Input extends Component {
         value: nextProps.value,
       }
     }
-    return null;
+    return null
   }
 
-  saveInput = (node) => {
-    this.input = node;
+  saveInput = node => {
+    this.input = node
   }
 
   focus = () => {
-    this.input.focus();
+    this.input.focus()
   }
 
   blur = () => {
-    this.input.blur();
+    this.input.blur()
   }
 
   render() {
@@ -116,13 +115,12 @@ class Input extends Component {
   }
 }
 
-Input.displayName = 'Input'
 Input.propTypes = {
   /** Ширина враппера для инпута.*/
   width: propTypes.oneOfType([propTypes.number, propTypes.string, propTypes.array]),
   /** Иконка в начале инпута. */
   prefix: propTypes.element,
-   /** Иконка в конце инпута. */
+  /** Иконка в конце инпута. */
   suffix: propTypes.element,
   /** Размер инпута: */
   size: propTypes.oneOf(['small', 'medium', 'large']),
@@ -131,6 +129,8 @@ Input.propTypes = {
 Input.defaultProps = {
   size: 'medium',
 }
+
+Input.displayName = 'Input'
 
 /** @component */
 export default Input
