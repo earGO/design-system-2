@@ -1,4 +1,4 @@
-import { darken, lighten, makeShades } from './utils'
+import { makeShades, mix } from './utils'
 
 const black = '#000'
 const white = '#FFF'
@@ -33,9 +33,17 @@ export const system = {
   // Misc
   text: palette.darkBlue,
   border: palette.lightGrey,
+
+  // Disabled
+  disabled: palette.lightGrey,
+}
+
+const mixes = {
+  disabledPrimary: mix(system.primary, system.disabled, 0.7),
 }
 
 export default {
   ...palette,
   ...system,
+  ...mixes,
 }

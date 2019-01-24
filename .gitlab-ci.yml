@@ -1,0 +1,42 @@
+variables:
+  PROJECT: "Ursip"
+  NAMESPACE: "ursip-internal"
+  APP: "design"
+
+before_script:
+  - export DATE_ENV=$(date +'%d-%m-%Y')
+
+stages:
+  - build
+  - deploy
+
+cache:
+  untracked: true
+  paths:
+    - node_modules/
+    - bower_components/
+
+Build:
+  stage: build
+  only:
+    - master
+  before_script:
+    - npm install
+  script:
+    - CI="" npm run build
+  artifacts:
+    paths:
+    - build/
+
+Deploy:
+  stage: deploy
+  only:
+    - master
+  before_script:
+    - TMPDIR=$(ssh suadm@192.168.13.46 "mktemp -d")
+  script:
+    - npm publish
+    - npm run styleguide:build
+    - scp -r docs/* suadm@192.168.13.46:$TMPDIR
+    - ssh suadm@192.168.13.46 "sudo /opt/deploy front $PROJECT $NAMESPACE $APP $TMPDIR"
+

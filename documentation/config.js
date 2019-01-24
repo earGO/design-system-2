@@ -93,6 +93,16 @@ module.exports = {
     {
       name: 'Элементы',
       description: 'Компоненты-элементы используются, как строительные блоки для более сложных компонентов.',
+      sections: [
+        {
+          name: 'Collapse',
+          content: 'CollapseSummary.md',
+          components: () => [
+            makeAbsolutePath('../src/elements/Collapse', 'Collapse.js'),
+            makeAbsolutePath('../src/elements/Collapse', 'Panel.js'),
+          ]
+        }
+      ],
       components: () => [
         makeAbsolutePath('../src/elements', 'Text.js'),
         makeAbsolutePath('../src/elements', 'Heading.js'),
@@ -100,6 +110,14 @@ module.exports = {
         makeAbsolutePath('../src/elements', 'Button.js'),
         makeAbsolutePath('../src/elements', 'Divider.js'),
       ],
+    },
+    {
+      name: 'Данные',
+      description: 'Компоненты для получения данных, введенных пользователем.',
+      components: () => [
+        makeAbsolutePath('../src/data', 'Input.js'),
+        makeAbsolutePath('../src/data', 'Checkbox.js'),
+      ]
     },
     {
       name: 'Ядро системы',

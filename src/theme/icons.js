@@ -1,6 +1,6 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faBeer, faCog, faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { faBeer, faCog, faSpinner, faCheck, faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faBeer, faCog, faSpinner)
+library.add(faBeer, faCog, faSpinner, faCheck, faChevronDown)
 
 export default library
