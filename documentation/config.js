@@ -21,7 +21,7 @@ module.exports = {
   exampleMode: 'collapse',
   usageMode: 'collapse',
   ignore: ['/index.js', '/*.test.js', '**/*.spec.js'],
-  serverPort: 6060,
+  serverPort: 3000,
   webpackConfig: {
     module: {
       rules: [
