@@ -57,6 +57,6 @@
     "webpack": "^4.29.0"
   },
   "publishConfig": {
-    "registry": "https://gitlab.ursip.ru/nexus/repository/npm-local"
+    "registry": "https://gitlab.ursip.ru/nexus/repository/npm-local/"
   }
 }
