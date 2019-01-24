@@ -1,7 +1,9 @@
 import React from 'react'
 import propTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import { Box, Icon, Flex } from '../../index'
+import Box from '../primitives/Box'
+import Flex from '../primitives/Flex'
+import Icon from './Icon'
 
 const noop = () => {}
 
@@ -41,14 +43,12 @@ const PanelHeader = ({ title, togglePanel, isOpen, panelKey, disabled }) => (
     onClick={disabled ? noop : () => togglePanel(panelKey)}
   >
     {title}
-    <AnimatedScaledIcon
-      isOpen={isOpen}
-      name="chevron-down"
-    />
+    <AnimatedScaledIcon isOpen={isOpen} name="chevron-down" />
   </PanelHeaderWrapper>
 )
 
-class Panel extends React.Component {
+/** Отвечает за вывод содержимого */
+class CollapsePanel extends React.Component {
   state = {
     contentHeight: 0,
   }
@@ -71,20 +71,19 @@ class Panel extends React.Component {
   }
 }
 
-Panel.propTypes = {
+CollapsePanel.propTypes = {
   /** Возможность скрыть-раскрыть панель */
   disabled: propTypes.bool,
   /** Заголовок панели. */
   title: propTypes.oneOfType([propTypes.string, propTypes.element]),
 }
 
-Panel.defaultProps = {
+CollapsePanel.defaultProps = {
   disabled: false,
   title: '',
 }
 
-// Оставить для доков?
-// Panel.displayName = 'Collapse.Panel'
+CollapsePanel.displayName = 'Collapse.Panel'
 
 /** @component */
-export default Panel
+export default CollapsePanel

@@ -15,8 +15,8 @@ export { default as Heading } from './elements/Heading'
 export { default as Button } from './elements/Button'
 export { default as Icon } from './elements/Icon'
 export { default as Divider } from './elements/Divider'
-export { default as Collapse } from './elements/Collapse/Collapse'
-
+export { default as Collapse } from './elements/Collapse'
+export { default as CollapsePanel } from './elements/CollapsePanel'
 /** Data */
 export { default as Input } from './data/Input'
 export { default as Checkbox } from './data/Checkbox'

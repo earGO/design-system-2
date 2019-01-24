@@ -1,8 +1,9 @@
 import React from 'react'
 import propTypes from 'prop-types'
-import Box from '../../primitives/Box'
-import CollapsePanel from './Panel'
+import Box from '../primitives/Box'
+import CollapsePanel from './CollapsePanel'
 
+/** Используется, если необходимо сгруппировать или скрыть большое количество содержимого. */
 class Collapse extends React.Component {
   constructor(props) {
     super(props)
@@ -51,8 +52,6 @@ class Collapse extends React.Component {
   }
 }
 
-Collapse.Panel = CollapsePanel
-
 Collapse.propTypes = {
   /** Список открытых панелей. */
   activeKeys: propTypes.arrayOf(propTypes.string),
@@ -61,6 +60,8 @@ Collapse.propTypes = {
   /** Функция-хендлер */
   onChange: propTypes.func,
 }
+
+Collapse.Panel = CollapsePanel
 
 /** @component */
 export default Collapse

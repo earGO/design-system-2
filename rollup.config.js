@@ -5,7 +5,7 @@ import resolve from 'rollup-plugin-node-resolve'
 import url from 'rollup-plugin-url'
 import svgr from '@svgr/rollup'
 import json from 'rollup-plugin-json'
-
+import { uglify } from 'rollup-plugin-uglify'
 import pkg from './package.json'
 
 export default {
@@ -14,11 +14,6 @@ export default {
     {
       file: pkg.main,
       format: 'cjs',
-      sourcemap: true,
-    },
-    {
-      file: pkg.module,
-      format: 'es',
       sourcemap: true,
     },
   ],
@@ -70,5 +65,6 @@ export default {
       },
     }),
     json(),
+    uglify(),
   ],
 }
