@@ -6,7 +6,7 @@
 
 Иконка до и иконка после:
 ```js
-<Input prefix={<Icon name="beer" />} suffix={<Icon name="cog" />} width={300}/>
+<Input prefix={<Icon name="beer" color="grey" />} suffix={<Icon name="cog" color="grey" />} width={300}/>
 ```
 
 
