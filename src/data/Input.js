@@ -39,9 +39,11 @@ const size = ({ size = 'medium', theme }) => {
 }
 
 const HTMLInput = styled('input')`
-  border: 0;
+  border-width: 1px;
+  border-style: solid;
+  border-color: ${props => props.theme.colors.border};
   border-radius: ${props => props.theme.radii[1] + 'px'};
-  background: ${props => props.theme.colors.lightGrey};
+  background: ${props => props.theme.colors.white};
 
   ${width}
   ${space}
