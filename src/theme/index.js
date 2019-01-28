@@ -14,9 +14,9 @@ export default {
   breakpoints,
   mediaQueries,
   font: {
-    main: '"PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif',
-    heading: '"PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif',
-    monospaced: '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace',
+    main: "'PT Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+    heading: "'PT Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+    monospaced: "'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace",
   },
   /** Отступы для margin и padding  */
   space: [0, 4, 8, 16, 32, 64, 128],
