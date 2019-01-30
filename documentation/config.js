@@ -98,6 +98,7 @@ module.exports = {
         makeAbsolutePath('../src/primitives', 'Relative.js'),
         makeAbsolutePath('../src/primitives', 'Absolute.js'),
         makeAbsolutePath('../src/primitives', 'Card.js'),
+        makeAbsolutePath('../src/primitives', 'Positional.js'),
       ],
     },
     {

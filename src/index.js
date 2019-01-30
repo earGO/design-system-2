@@ -8,6 +8,7 @@ export { default as Flex } from './primitives/Flex'
 export { default as Card } from './primitives/Card'
 export { default as Relative } from './primitives/Relative'
 export { default as Absolute } from './primitives/Absolute'
+export { default as Positional } from './primitives/Positional'
 
 /** Elements */
 export { default as Text } from './elements/Text'
