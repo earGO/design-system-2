@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import Trigger from 'rc-trigger'
-// import "rc-trigger/assets/index.css" // @todo подключить
+import 'rc-trigger/assets/index.css' // @todo подключить
 import React, { Component } from 'react'
 
 function getPopupAlign(align) {
