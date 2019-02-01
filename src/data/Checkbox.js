@@ -4,6 +4,7 @@ import Icon from '../elements/Icon'
 import propTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import { space } from 'styled-system'
+import { FIELD_DATA_PROP } from './Form'
 
 const size = ({ size = 'medium' }) => {
   const sizes = {
@@ -56,7 +57,7 @@ const CheckboxInput = styled.input.attrs({ type: 'checkbox' })`
   width: 1px;
 `
 
-const StyledCheckbox = styled(Flex)`
+export const StyledCheckbox = styled(Flex)`
   justify-content: center;
   align-items: center;
   border: ${props => (props.checked ? 'none' : `1px solid ${props.theme.colors.semiLightGrey}`)};
@@ -100,16 +101,22 @@ class Checkbox extends Component {
   }
 
   getCheckedValue = () => {
-    // If controlled, props value > state.value
-    return typeof this.props.checked !== 'undefined' ? this.props.checked : this.state.checked
+    if (this.props[FIELD_DATA_PROP]) {
+      // Controlled by rc-form, use value prop
+      return this.props.value;
+    }
+    // If controlled (not by rc-form), props value > state.value
+    return typeof this.props.checked !== 'undefined' 
+      ? this.props.checked 
+      : this.state.checked
   }
 
   render() {
     return (
       <Label {...this.props}>
         <CheckboxContainer onChange={this.handleChange}>
-          <CheckboxInput {...this.props} checked={this.getCheckedValue()} />
-          <StyledCheckbox checked={this.getCheckedValue()} size={this.props.size} disabled={this.props.disabled}>
+          <CheckboxInput {...this.props} checked={this.getCheckedValue()} value={this.props.value} />
+          <StyledCheckbox checked={this.getCheckedValue()} size={this.props.size} disabled={this.props.disabled} value={this.props.value}>
             <Icon name="check" color="white" />
           </StyledCheckbox>
         </CheckboxContainer>
