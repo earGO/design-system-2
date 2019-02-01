@@ -1,11 +1,7 @@
 ```js
-<Box>
-  <Positional
-  // events={['click']}
-  // placement={'bottom'}
-  // popupComponent={<Heading color="primary">Дарова</Heading>}
-  >
-    <Text color="primary">Наведи на меня</Text>
-  </Positional>
-</Box>
+<Positional events={['click']} placement={'bottomLeft'} popupComponent={<Text color="primary">День добрый</Text>}>
+  <Text color="primary" style={{ cursor: 'pointer' }}>
+    Кликни
+  </Text>
+</Positional>
 ```

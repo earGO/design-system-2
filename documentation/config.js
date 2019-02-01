@@ -115,6 +115,7 @@ module.exports = {
         makeAbsolutePath('../src/elements', 'Divider.js'),
         makeAbsolutePath('../src/elements', 'Collapse.js'),
         makeAbsolutePath('../src/elements', 'CollapsePanel.js'),
+        makeAbsolutePath('../src/elements', 'Tooltip.js'),
       ],
     },
     {
