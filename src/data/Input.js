@@ -51,7 +51,7 @@ const HTMLInput = styled('input')`
   ${disabled};
 `
 
-const Wrapper = styled(Relative)({
+export const InputWrapper = styled(Relative)({
   display: 'flex',
   alignItems: 'center',
 })
@@ -93,7 +93,7 @@ class Input extends Component {
   render() {
     const { prefix, suffix, width } = this.props
     return (
-      <Wrapper width={width}>
+      <InputWrapper width={width}>
         {prefix && (
           <Adornment left={0} pl={2}>
             {prefix}
@@ -112,7 +112,7 @@ class Input extends Component {
             {suffix}
           </Adornment>
         )}
-      </Wrapper>
+      </InputWrapper>
     )
   }
 }
