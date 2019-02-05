@@ -36,6 +36,10 @@ export const system = {
 
   // Disabled
   disabled: palette.lightGrey,
+  // Highlight? placeholder for now.
+  highlight: palette.semiLightBlue,
+  // Scrollbar
+  scrollbar: palette.semiLightGrey,
 }
 
 const mixes = {

@@ -126,6 +126,7 @@ module.exports = {
         makeAbsolutePath('../src/data', 'Checkbox.js'),
         makeAbsolutePath('../src/data', 'Form.js'),
         makeAbsolutePath('../src/data', 'FormItem.js'),
+        makeAbsolutePath('../src/data', 'Select.js'),
       ],
     },
     {

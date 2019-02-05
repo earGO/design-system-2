@@ -115,7 +115,7 @@ class Checkbox extends Component {
     return (
       <Label {...this.props}>
         <CheckboxContainer onChange={this.handleChange}>
-          <CheckboxInput {...this.props} checked={this.getCheckedValue()} value={this.props.value} />
+          <CheckboxInput {...this.props} checked={this.getCheckedValue()} value={this.props.value} readOnly/>
           <StyledCheckbox checked={this.getCheckedValue()} size={this.props.size} disabled={this.props.disabled} value={this.props.value}>
             <Icon name="check" color="white" />
           </StyledCheckbox>
