@@ -79,10 +79,6 @@ const StyledList = styled(List)`
   ${scrollStyles}
 `
 
-const StyledDefaultMenuList = styled(props => <components.MenuList {...props} isDefaultList={true} />)`
-  ${scrollStyles}
-`
-
 const MenuList = optionHeight =>
   /** Класс, чтобы ArrowUp/ArrowDown скроллили List */
   class MenuList extends React.Component {
@@ -195,7 +191,7 @@ class Select extends React.Component {
       styles: customStyles,
       components: {
         DropdownIndicator,
-        MenuList: virtualized ? MenuList(optionHeight || OPTION_HEIGHT) : StyledDefaultMenuList,
+        MenuList: virtualized ? MenuList(optionHeight || OPTION_HEIGHT) : components.MenuList,
       },
       ...this.props,
     }
@@ -203,9 +199,9 @@ class Select extends React.Component {
       <ThemeConsumer>
         {systemTheme =>
           async ? (
-            <AsyncRSelect systemTheme={systemTheme} {...selectProps} theme={this.withSystemTheme(size, systemTheme)} />
+            <AsyncRSelect {...selectProps} systemTheme={systemTheme} theme={this.withSystemTheme(size, systemTheme)} />
           ) : (
-            <RSelect systemTheme={systemTheme} {...selectProps} theme={this.withSystemTheme(size, systemTheme)} />
+            <RSelect {...selectProps} systemTheme={systemTheme} theme={this.withSystemTheme(size, systemTheme)} />
           )
         }
       </ThemeConsumer>
