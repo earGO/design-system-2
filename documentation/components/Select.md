@@ -96,3 +96,16 @@ const loadOptions = query => {
   defaultOptions
 />
 ```
+
+Размеры:
+```js
+const options = Array(30)
+  .fill(true)
+  .map((_, i) => ({ value: i, label: `Option ${i}` }))
+
+;<Flex flexDirection="column" width={1/3} height={160} justifyContent="space-between">
+  <Select options={options} placeholder="small" size="small" />
+  <Select options={options} placeholder="medium" size="medium" />
+  <Select options={options} placeholder="large" size="large" />
+</Flex>
+```

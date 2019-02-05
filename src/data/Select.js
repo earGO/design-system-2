@@ -163,11 +163,15 @@ const Hooks_MenuList = optionHeight => ({ options, children, maxHeight, getValue
 class Select extends React.Component {
   withSystemTheme = (size, systemTheme) => theme => {
     let controlHeight = 0
+    // #TODO Probably will break in combobox + size===small.
+    // https://github.com/JedWatson/react-select/issues/1322
     switch (size) {
       case 'small':
         controlHeight = 30
+        break;
       case 'large':
         controlHeight = 46
+        break;
       default:
         controlHeight = 38
     }
@@ -179,8 +183,8 @@ class Select extends React.Component {
       colors: theme.colors,
       spacing: {
         controlHeight,
-        baseUnit: 4,
-        menuGutter: 8,
+        baseUnit: size === 'small' ? 1.5 : 4,
+        menuGutter: size === 'small' ? 2 : 8,
       },
     }
   }
@@ -218,6 +222,8 @@ Select.defaultProps = {
 }
 
 Select.propTypes = {
+  /** Размер */
+  size: propTypes.oneOf(['small', 'medium', 'large']),
   /** Можно ли выбирать несколько значений */
   isMulti: propTypes.bool,
   /** Доступен ли поиск. */
