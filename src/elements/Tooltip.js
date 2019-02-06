@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
 import Positional from '../primitives/Positional'
 import PropTypes from 'prop-types'
-import config from '../theme'
+import theme from '../theme'
 
 const Body = styled.div.attrs(props => ({
+  font: props.font,
   placement: props.placement,
 }))`
   position: relative;
-  font-family: ${config.font.main};
+  font-family: ${props => props.font};
   background-color: #373a43;
   border-radius: 15px;
   opacity: 0.85;
@@ -120,10 +121,10 @@ const getAlign = placement => {
 /** Применяется для вывода уточняющей информации во всплывающем окне */
 class Tooltip extends Component {
   render() {
-    const { children, events, placement, text, transitionName } = this.props
+    const { children, events, font, placement, text, transitionName } = this.props
 
     const popupComponent = (
-      <Body placement={placement}>
+      <Body font={font} placement={placement}>
         <p>{text}</p>
       </Body>
     )
@@ -147,6 +148,8 @@ Tooltip.propTypes = {
   children: PropTypes.element,
   /** Ивенты, вызывающие появляение тултипа. Возможные ивенты - click, contextMenu, focus, hover */
   events: PropTypes.arrayOf(PropTypes.string),
+  /** Шрифт, используемый в тултипе */
+  font: PropTypes.string,
   /** Позиционирование компонента относительно родительского компонента. Аргументы формируются исходя из параметра builtinPlacements */
   placement: PropTypes.oneOf(['left', 'right', 'top', 'bottom', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight']),
   /** Текст в тултипе */
@@ -158,6 +161,7 @@ Tooltip.propTypes = {
 Tooltip.defaultProps = {
   children: <div>Default Tooltip Div</div>,
   events: ['hover'],
+  font: theme.font.main,
   placement: 'top',
   text: 'Полезный тултип',
   transitionName: 'rc-trigger-popup-fade',
