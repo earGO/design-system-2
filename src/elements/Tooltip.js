@@ -2,11 +2,13 @@ import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
 import Positional from '../primitives/Positional'
 import PropTypes from 'prop-types'
+import config from '../theme'
 
 const Body = styled.div.attrs(props => ({
   placement: props.placement,
 }))`
   position: relative;
+  font-family: ${config.font.main};
   background-color: #373a43;
   border-radius: 15px;
   opacity: 0.85;
