@@ -3,8 +3,9 @@ import Flex from '../primitives/Flex'
 import Icon from '../elements/Icon'
 import propTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import { space } from 'styled-system'
+import { space, themeGet } from 'styled-system'
 import { FIELD_DATA_PROP } from './Form'
+import omit from 'lodash/omit'
 
 const size = ({ size = 'medium' }) => {
   const sizes = {
@@ -34,14 +35,23 @@ const iconSize = ({ size = 'medium' }) => {
 }
 
 const background = ({ checked, disabled, ...rest }) => {
-  const { colors } = rest.theme
+  const { checkbox } = rest.theme.colors
   const getColor = (checked, disabled) => {
-    if (checked) {
-      return disabled ? colors.disabledPrimary : colors.primary
+    if (disabled) {
+      return checkbox.disabled
     }
-    return disabled ? colors.disabled : colors.white
+    return checked
+      ? checkbox.checked
+      : checkbox.unchecked
   }
   return `background: ${getColor(checked, disabled)}`
+}
+
+const border = ({ checked, disabled, ...rest }) => {
+  const { colors } = rest.theme
+  return !(checked || disabled)
+    ?` border: 1px solid ${colors.black}`
+    : 'none'
 }
 
 const CheckboxInput = styled.input.attrs({ type: 'checkbox' })`
@@ -60,11 +70,11 @@ const CheckboxInput = styled.input.attrs({ type: 'checkbox' })`
 export const StyledCheckbox = styled(Flex)`
   justify-content: center;
   align-items: center;
-  border: ${props => (props.checked ? 'none' : `1px solid ${props.theme.colors.semiLightGrey}`)};
+  border-radius: ${themeGet('radii[1]', 4)}px;
+  transition: all ${themeGet('duration.fast', 300)};
   ${size}
   ${background}
-  ${props => `border-radius: ${props.theme.radii[1] + 'px'}`}
-  ${props => `transition: all ${props.theme.duration.fast}`}
+  ${border}
   ${Icon} {
     ${iconSize}
     visibility: ${props => (props.checked ? 'visible' : 'hidden')}
@@ -115,7 +125,7 @@ class Checkbox extends Component {
     return (
       <Label {...this.props}>
         <CheckboxContainer onChange={this.handleChange}>
-          <CheckboxInput {...this.props} checked={this.getCheckedValue()} value={this.props.value} readOnly/>
+          <CheckboxInput {...omit(this.props, ['onChange'])} checked={this.getCheckedValue()} value={this.props.value} readOnly/>
           <StyledCheckbox checked={this.getCheckedValue()} size={this.props.size} disabled={this.props.disabled} value={this.props.value}>
             <Icon name="check" color="white" />
           </StyledCheckbox>

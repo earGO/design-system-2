@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import propTypes from 'prop-types'
 import Relative from '../primitives/Relative'
 import Absolute from '../primitives/Absolute'
-import { space, width } from 'styled-system'
+import { space, width, themeGet } from 'styled-system'
 import omit from 'lodash/omit'
 
 // #TBD: Input.TextArea + allowClear prop. Как будет работать c suffix?
@@ -13,9 +13,7 @@ const propsToOmit = ['suffix', 'prefix', 'width', 'value', 'wrapperStyle']
 const disabled = props =>
   props.disabled &&
   css`
-    opacity: 0.4;
-    /* color: ${props.theme.colors.Grey};
-    background: ${props.theme.colors.semiLightGrey}; */
+    background: ${themeGet('colors.input.disabled', '#b5b5b5')};
     cursor: not-allowed;
   `
 
@@ -23,16 +21,16 @@ const size = ({ size = 'medium', theme }) => {
   const sizes = {
     // Same as button heights, but with height, instead of paddings.
     small: {
-      fontSize: theme.fontSizes[0],
-      height: 30,
+      fontSize: theme.fontSizes[1],
+      height: 32,
     },
     medium: {
       fontSize: theme.fontSizes[1],
-      height: 38,
+      height: 40,
     },
     large: {
-      fontSize: theme.fontSizes[2],
-      height: 46,
+      fontSize: theme.fontSizes[1],
+      height: 48,
     },
   }
   return sizes[size]
@@ -43,7 +41,7 @@ const HTMLInput = styled('input')`
   border-style: solid;
   border-color: ${props => props.theme.colors.border};
   border-radius: ${props => props.theme.radii[1] + 'px'};
-  background: ${props => props.theme.colors.white};
+  background: ${props => props.theme.colors.lightGrey};
 
   ${width}
   ${space}

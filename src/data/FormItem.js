@@ -5,6 +5,7 @@ import styled, { css } from 'styled-components'
 import pick from 'lodash/pick'
 import { FIELD_META_PROP, FIELD_DATA_PROP } from './Form'
 import { StyledCheckbox } from './Checkbox';
+import { themeGet } from 'styled-system'
 
 /*Общий комментарий:
   Большая часть кода взята из antd Form и Form.Item
@@ -22,24 +23,12 @@ function intersperseSpace(list) {
 const withRequiredAsterisk = props =>
   props.required &&
   css`
-    & > ${Label}:before {
+    & > ${Label}:after {
       display: inline-block;
       margin-right: 4px;
       content: '*';
       line-height: 1;
-      font-size: 14px;
-      color: #f5222d;
-    }
-  `
-
-const withColon = props =>
-  props.colon &&
-  css`
-    & > ${Label}:after {
-      content: ':';
-      margin: 0 8px 0 2px;
-      position: relative;
-      top: -0.5px;
+      font-size: ${props.theme.fontSizes[1]}px;
     }
   `
 
@@ -52,6 +41,8 @@ const hasError = props =>
     */
     & input {
       border-color: ${props.theme.colors.error};
+      /* Dunno, I just fly the drone™ */
+      background: ${props.theme.colors.white};
     }
     ${StyledCheckbox} {
       border-color: ${props.theme.colors.error}
@@ -59,44 +50,49 @@ const hasError = props =>
   `
 
 const FormItemWrapper = styled(Box)`
+  display: flex;
+  flex-direction: column;
   margin-bottom: ${props => props.theme.space[3]}px;
 `
 
 const LabelWrapper = styled(Box)`
   display: inline-flex;
+  justify-content: space-between;
+  align-content: center;
+  & > label {
+    font-size: ${themeGet('fontSizes[1]', '12px')};
+  }
   ${withRequiredAsterisk}
-  ${withColon}
 `
 
 const ControlWrapper = styled(Box)`
+  margin-top: ${themeGet('space[2]', '8px')};
   display: inline-flex;
   flex-direction: column;
   ${hasError}
 `
 
-const Label = ({ label, labelProps, colon, id, required, onLabelClick }) => {
-  let labelChildren = label
-  // Keep label is original where there should have no colon
-  const haveColon = colon
-  // Remove duplicated user input colon
-  if (haveColon && typeof label === 'string' && label.trim() !== '') {
-    labelChildren = label.replace(/[：|:]\s*$/, '')
-  }
+const HelpWrapper = styled(Box)`
+  color: ${themeGet('colors.error', 'red')};
+  font-size: ${themeGet('fontSizes[0]', '10px')};
+`
 
+const Label = ({ label, labelProps, id, required, onLabelClick }) => {
   return label ? (
-    <LabelWrapper key="label" required={required} colon={colon} {...labelProps}>
+    <LabelWrapper key="label" required={required} {...labelProps}>
       <label htmlFor={id} title={typeof label === 'string' ? label : ''} onClick={onLabelClick}>
-        {labelChildren}
+        {label}
       </label>
+      <Icon fontSize={'13px'} name="question-circle" />
     </LabelWrapper>
   ) : null
 }
 
 const Help = ({ children }) => {
   return (
-    <Box className="help" key="help" color="red">
+    <HelpWrapper className="help" key="help" color="red">
       {children}
-    </Box>
+    </HelpWrapper>
   )
 }
 
@@ -225,7 +221,7 @@ class FormItem extends React.Component {
     return (
       <FormItemWrapper className={className} style={style} help={help}>
         <Label
-          {...pick(this.props, ['label', 'labelProps', 'colon'])}
+          {...pick(this.props, ['label', 'labelProps'])}
           id={this.props.id || this.getId()}
           required={this.isRequired()}
           onLabelClick={this.onLabelClick}
@@ -241,7 +237,6 @@ class FormItem extends React.Component {
 }
 
 FormItem.defaultProps = {
-  colon: true,
 }
 
 FormItem.propTypes = {
@@ -257,8 +252,6 @@ FormItem.propTypes = {
   controlProps: propTypes.object,
   /** Обязательность поля. */
   required: propTypes.bool,
-  /** Автоматическое добавление : в лейбле. */
-  colon: propTypes.bool,
 }
 
 /** @component */

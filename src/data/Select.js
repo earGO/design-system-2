@@ -167,13 +167,13 @@ class Select extends React.Component {
     // https://github.com/JedWatson/react-select/issues/1322
     switch (size) {
       case 'small':
-        controlHeight = 30
+        controlHeight = 32
         break;
       case 'large':
-        controlHeight = 46
+        controlHeight = 48
         break;
       default:
-        controlHeight = 38
+        controlHeight = 40
     }
 
     return {
@@ -183,8 +183,8 @@ class Select extends React.Component {
       colors: theme.colors,
       spacing: {
         controlHeight,
-        baseUnit: size === 'small' ? 1.5 : 4,
-        menuGutter: size === 'small' ? 2 : 8,
+        baseUnit: size === 'small' ? 2 : 4,
+        menuGutter: size === 'small' ? 4 : 8,
       },
     }
   }

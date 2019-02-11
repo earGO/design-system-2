@@ -20,10 +20,11 @@ export function mix(color1, color2, ratio) {
 
 export function makeShades(colorName, colorValue) {
   const shades = {
-    dark: color => darken(color, 0.7),
+    // temp
+    _dark: color => darken(color, 0.7),
     semiDark: color => darken(color, 0.35),
     semiLight: color => lighten(color, 0.35),
-    light: color => lighten(color, 0.7),
+    _light: color => lighten(color, 0.7),
   }
 
   return Object.keys(shades).reduce(
