@@ -9,7 +9,7 @@ function makeAbsolutePath(directory, component) {
  * В этом массиве перечислены компоненты, которые являются дочерними к другим.
  * Например компонет CollapsePanel доступен как Collapse.Panel.
  */
-const nestedComponents = ['CollapsePanel', 'FormItem']
+const nestedComponents = ['CollapsePanel', 'FormItem', 'TabPane']
 
 module.exports = {
   title: pkg.name,
@@ -116,6 +116,8 @@ module.exports = {
         makeAbsolutePath('../src/elements', 'Collapse.js'),
         makeAbsolutePath('../src/elements', 'CollapsePanel.js'),
         makeAbsolutePath('../src/elements', 'Tooltip.js'),
+        makeAbsolutePath('../src/elements', 'Tabs.js'),
+        makeAbsolutePath('../src/elements', 'TabPane.js'),
       ],
     },
     {

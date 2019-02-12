@@ -59,6 +59,12 @@ export const system = {
     disabled: palette.grey,
   },
 
+  //Tabs
+  tabs: {
+    active: palette.blue,
+    hover: palette.lightBlue,
+  },
+
   // Disabled
   disabled: palette.grey,
   // Highlight? placeholder for now.
