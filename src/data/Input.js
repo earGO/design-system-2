@@ -41,6 +41,14 @@ const HTMLInput = styled('input')`
   border-style: solid;
   border-color: ${props => props.theme.colors.border};
   border-radius: ${props => props.theme.radii[1] + 'px'};
+  :hover {
+    border-color: ${themeGet('colors.black', '#3a3a3a')}
+  } 
+  :focus {
+    outline: none;
+    background: ${themeGet('colors.white', '#ffffff')};
+    border-color: ${themeGet('colors.lightBlue', '#0091ea')};
+  }
   background: ${props => props.theme.colors.lightGrey};
 
   ${width}

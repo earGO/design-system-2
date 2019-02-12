@@ -49,9 +49,7 @@ const background = ({ checked, disabled, ...rest }) => {
 
 const border = ({ checked, disabled, ...rest }) => {
   const { colors } = rest.theme
-  return !(checked || disabled)
-    ?` border: 1px solid ${colors.black}`
-    : 'none'
+  return !(checked || disabled) && `border: 1px solid ${colors.black}`
 }
 
 const CheckboxInput = styled.input.attrs({ type: 'checkbox' })`
