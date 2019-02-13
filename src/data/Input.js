@@ -107,7 +107,7 @@ class Input extends Component {
         )}
         <HTMLInput
           {...omit(this.props, propsToOmit)}
-          pl={prefix ? 4 : 2}
+          pl={prefix ? 4 : 3}
           pr={suffix ? 4 : 2}
           width="100%"
           value={this.state.value}

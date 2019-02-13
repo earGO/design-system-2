@@ -71,7 +71,7 @@ export const system = {
   highlight: palette.semiLightBlue,
   highlightHover: palette.lightBlue,
   // Scrollbar
-  scrollbar: palette.semiLightGrey,
+  scrollbar: palette.grey,
 }
 
 const mixes = {

@@ -26,7 +26,7 @@ const PanelContent = styled(Box)`
 const AnimatedScaledIcon = styled(({ isOpen, ...rest }) => <Icon {...rest}/>)`
   ${props => `transition: transform ${props.theme.duration.normal};`}
   ${props => props.isOpen ? `transform: rotate(180deg);` : ''}
-  color: hsl(0,0%,80%);
+  color: ${props => props.theme.colors.black};
 `
 
 const PanelHeaderWrapper = styled(Flex)`
