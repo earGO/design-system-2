@@ -123,7 +123,8 @@ class Toggle extends Component {
     return null
   }
 
-  handleChange = () => {
+  handleChange = (event) => {
+    event.preventDefault();
     const flippedValue = !this.state.checked
     this.setState({ checked: flippedValue })
     this.props.onChange && this.props.onChange(flippedValue)
