@@ -33,6 +33,10 @@ module.exports = {
           test: /\.css$/,
           use: ['style-loader', 'css-loader'],
         },
+        {
+          test: /\.less$/,
+          use: ['style-loader', 'css-loader', 'less-loader'],
+        }
       ],
     },
   },
@@ -118,6 +122,7 @@ module.exports = {
         makeAbsolutePath('../src/elements', 'Tooltip.js'),
         makeAbsolutePath('../src/elements', 'Tabs.js'),
         makeAbsolutePath('../src/elements', 'TabPane.js'),
+        makeAbsolutePath('../src/elements', 'Table.js'),
       ],
     },
     {
