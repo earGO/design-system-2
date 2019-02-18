@@ -8,7 +8,7 @@ import omit from 'lodash/omit'
 
 // #TBD: Input.TextArea + allowClear prop. Как будет работать c suffix?
 
-const propsToOmit = ['suffix', 'prefix', 'width', 'value', 'wrapperStyle']
+const propsToOmit = ['suffix', 'prefix', 'width', 'value', 'wrapperStyle', 'onChange']
 
 const disabled = props =>
   props.disabled &&
@@ -59,6 +59,7 @@ const HTMLInput = styled('input')`
 
 export const InputWrapper = styled(Relative)({
   display: 'flex',
+  flexGrow: 1,
   alignItems: 'center',
 })
 
@@ -82,6 +83,14 @@ class Input extends Component {
       }
     }
     return null
+  }
+
+  handleChange = (event) => {
+    const newValue = event.target.value
+    this.setState({
+      value: newValue,
+    })
+    this.props.onChange && this.props.onChange(newValue, event);
   }
 
   saveInput = node => {
@@ -110,8 +119,9 @@ class Input extends Component {
           pl={prefix ? 4 : 3}
           pr={suffix ? 4 : 2}
           width="100%"
-          value={this.state.value}
           ref={this.saveRef}
+          value={this.state.value}
+          onChange={this.handleChange}
         />
         {suffix && (
           <Adornment right={0} pr={2}>

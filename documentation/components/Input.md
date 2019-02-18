@@ -1,12 +1,16 @@
 Как то же нам надо получать данные от пользователя:
 
 ```js
-<Input width={200} />
+<Box width={1 / 4}>
+  <Input />
+</Box>
 ```
 
 Иконка до и иконка после:
 ```js
-<Input prefix={<Icon name="beer" color="grey" />} suffix={<Icon name="cog" color="grey" />} width={300}/>
+<Box width={1 / 4}>
+  <Input prefix={<Icon name="beer" color="grey" />} suffix={<Icon name="cog" color="grey" />}/>
+</Box>
 ```
 
 
@@ -21,7 +25,7 @@ const toggle = () => {
   })
 }
 
-<Flex width={1/4}>
+<Flex width={1 / 4}>
   <Input size="small" disabled={state.disabled} placeholder="Disabled input" />
   <Button onClick={toggle} ml={2} size="small" type="dashed" >Toggle</Button>
 </Flex>
@@ -42,10 +46,8 @@ initialState = {
   value: undefined,
 }
 
-const handleChange = (event) => {
-  setState({
-    value: event.target.value
-  })
+const handleChange = (value) => {
+  setState({ value })
 }
 
 <Box>

@@ -40,9 +40,7 @@ const background = ({ checked, disabled, ...rest }) => {
     if (disabled) {
       return checkbox.disabled
     }
-    return checked
-      ? checkbox.checked
-      : checkbox.unchecked
+    return checked ? checkbox.checked : checkbox.unchecked
   }
   return `background: ${getColor(checked, disabled)}`
 }
@@ -103,28 +101,33 @@ class Checkbox extends Component {
     }
   }
 
-  handleChange = ({ target: { checked } }) => {
+  handleChange = (event) => {
+    const { checked } = event.target
     this.setState({ checked })
-    this.props.onChange && this.props.onChange(checked)
+    this.props.onChange && this.props.onChange(checked, event)
   }
 
-  getCheckedValue = () => {
-    if (this.props[FIELD_DATA_PROP]) {
-      // Controlled by rc-form, use value prop
-      return this.props.value;
+  static getDerivedStateFromProps(nextProps) {
+    // If controlled by form
+    if (nextProps[FIELD_DATA_PROP]) {
+      return {
+        checked: nextProps.value,
+      }
     }
-    // If controlled (not by rc-form), props value > state.value
-    return typeof this.props.checked !== 'undefined' 
-      ? this.props.checked 
-      : this.state.checked
+    if ('checked' in nextProps) {
+      return {
+        checked: nextProps.checked,
+      }
+    }
+    return null
   }
 
   render() {
     return (
       <Label {...this.props}>
         <CheckboxContainer onChange={this.handleChange}>
-          <CheckboxInput {...omit(this.props, ['onChange'])} checked={this.getCheckedValue()} value={this.props.value} readOnly/>
-          <StyledCheckbox checked={this.getCheckedValue()} size={this.props.size} disabled={this.props.disabled} value={this.props.value}>
+          <CheckboxInput {...omit(this.props, ['onChange', 'value'])} checked={this.state.checked} readOnly />
+          <StyledCheckbox checked={this.state.checked} size={this.props.size} disabled={this.props.disabled}>
             <Icon name="check" color="white" />
           </StyledCheckbox>
         </CheckboxContainer>
