@@ -13,8 +13,8 @@
 
 ```js
 <Flex>
-  <Box bg="warning" flex={1} p={3}>
-    <Text color="white">Navbar</Text>
+  <Box bg="lightGrey" flex={1} p={3}>
+    <Text color="black">Navbar</Text>
   </Box>
   <Flex flexDirection="column" flex={5}>
     <Box bg="primary" height="10vh" p={3}>

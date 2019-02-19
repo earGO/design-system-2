@@ -54,13 +54,12 @@ function Palette() {
 ```js static
 {
     primary: "#1890ff",
-    success: "#52c41a",
-    border: "#E7E7E7",
-    black: "#000",
-    white: "#FFF",
-    blue: "#1890ff",
-    lightBlue: "#DBEEFF",
-    lightGrey: "#E7E7E7",
+    success: "#66bb6a",
+    black: "#3a3a3a",
+    white: "#ffffff",
+    blue: "#1e88e5",
+    lightBlue: "#0091ea",
+    lightGrey: "#f5f5f5",
     // ...
 }
 ```
@@ -69,13 +68,11 @@ function Palette() {
 ```html static
 <Heading color="primary">Primary heading</Heading>
 <Heading color="success">Success heading</Heading>
-<Heading color="orange">Orange heading</Heading>
 
 ```
 ```js noeditor
 <Heading color="primary">Primary color heading</Heading>
 <Heading color="success">Success color heading</Heading>
-<Heading color="orange">Orange heading</Heading>
 ```
 
 Если передаваемый цвет не найден в объекте, то он применится, как обычная строка в css color:
@@ -90,12 +87,12 @@ function Palette() {
 
 Поддерживается использование массива значений для поддержки адаптивного дизайна.
 ```js static
-<Box bg={['error', 'warning', 'success', 'info' ]} p={4}>
+<Box bg={['primary', 'error', 'success' ]} p={4}>
     Responsive background color
 </Box>
 ```
 ```js noeditor
-<Box bg={['error', 'warning', 'success', 'info' ]} p={4}>
+<Box bg={['primary', 'error', 'success' ]} p={4}>
     Responsive background color
 </Box>
 ```

@@ -1,7 +1,6 @@
-import { makeShades, mix } from './utils'
-
 const black = '#3a3a3a'
 const white = '#ffffff'
+
 // greys
 const lightGrey = '#f5f5f5'
 const grey = '#b5b5b5'
@@ -13,11 +12,7 @@ const lightBlue = '#0091ea'
 const blue = '#1e88e5'
 const darkBlue = '#1976d2'
 
-const orange = '#ffff00'
-
 export const palette = {
-  ...makeShades('Blue', blue),
-  ...makeShades('Grey', grey),
   black,
   white,
   lightGrey,
@@ -27,22 +22,9 @@ export const palette = {
   lightBlue,
   red,
   green,
-  orange,
 }
 
-export const system = {
-  // Main color
-  primary: palette.blue,
-
-  // States
-  info: palette.semiLightBlue,
-  success: palette.green,
-  warning: palette.orange,
-  error: palette.red,
-
-  // Misc
-  text: palette.black,
-  border: palette.lightGrey,
+const components = {
   // Input element
   input: {
     hover: palette.black,
@@ -64,22 +46,32 @@ export const system = {
     active: palette.blue,
     hover: palette.lightBlue,
   },
+}
+
+export const system = {
+  // Main color
+  primary: palette.blue,
+
+  // States
+  info: palette.lightBlue,
+  success: palette.green,
+  error: palette.red,
+
+  // Misc
+  text: palette.black,
+  border: palette.lightGrey,
 
   // Disabled
   disabled: palette.grey,
   // Highlight? placeholder for now.
-  highlight: palette.semiLightBlue,
+  highlight: palette.lightGrey,
   highlightHover: palette.lightBlue,
   // Scrollbar
   scrollbar: palette.grey,
 }
 
-const mixes = {
-  disabledPrimary: mix(system.primary, system.disabled, 0.7),
-}
-
 export default {
   ...palette,
   ...system,
-  ...mixes,
+  ...components,
 }
