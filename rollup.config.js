@@ -68,6 +68,11 @@ export default {
     }),
     json(),
     uglify(),
-    postcss(),
+    postcss({
+      extensions: ['.css', '.less'],
+      inject: false,
+      extract: true,
+      minimize: true,
+    }),
   ],
 }
