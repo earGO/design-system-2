@@ -31,7 +31,6 @@
 ```js
 <Text color="primary">Primary color text</Text>
 <Text color="success">Success color text</Text>
-<Text color="warning">Warning color text</Text>
 <Text color="error">Error color text</Text>
 ```
 
