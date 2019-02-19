@@ -3,7 +3,6 @@ import commonjs from 'rollup-plugin-commonjs'
 import external from 'rollup-plugin-peer-deps-external'
 import resolve from 'rollup-plugin-node-resolve'
 import url from 'rollup-plugin-url'
-import svgr from '@svgr/rollup'
 import json from 'rollup-plugin-json'
 import { uglify } from 'rollup-plugin-uglify'
 import postcss from 'rollup-plugin-postcss'
@@ -25,7 +24,6 @@ export default {
   plugins: [
     external(),
     url(),
-    svgr(),
     babel({
       babelrc: false,
       runtimeHelpers: true,
