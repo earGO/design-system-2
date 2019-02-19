@@ -3,19 +3,17 @@ import styled, { css } from 'styled-components'
 import propTypes from 'prop-types'
 import Relative from '../primitives/Relative'
 import Absolute from '../primitives/Absolute'
-import { space, width } from 'styled-system'
+import { space, width, themeGet } from 'styled-system'
 import omit from 'lodash/omit'
 
 // #TBD: Input.TextArea + allowClear prop. Как будет работать c suffix?
 
-const propsToOmit = ['suffix', 'prefix', 'width', 'value']
+const propsToOmit = ['suffix', 'prefix', 'width', 'value', 'wrapperStyle', 'onChange']
 
 const disabled = props =>
   props.disabled &&
   css`
-    opacity: 0.4;
-    /* color: ${props.theme.colors.Grey};
-    background: ${props.theme.colors.semiLightGrey}; */
+    background: ${themeGet('colors.input.disabled', '#b5b5b5')};
     cursor: not-allowed;
   `
 
@@ -23,16 +21,16 @@ const size = ({ size = 'medium', theme }) => {
   const sizes = {
     // Same as button heights, but with height, instead of paddings.
     small: {
-      fontSize: theme.fontSizes[0],
-      height: 30,
+      fontSize: theme.fontSizes[1],
+      height: 32,
     },
     medium: {
       fontSize: theme.fontSizes[1],
-      height: 38,
+      height: 40,
     },
     large: {
-      fontSize: theme.fontSizes[2],
-      height: 46,
+      fontSize: theme.fontSizes[1],
+      height: 48,
     },
   }
   return sizes[size]
@@ -43,7 +41,15 @@ const HTMLInput = styled('input')`
   border-style: solid;
   border-color: ${props => props.theme.colors.border};
   border-radius: ${props => props.theme.radii[1] + 'px'};
-  background: ${props => props.theme.colors.white};
+  :hover {
+    border-color: ${themeGet('colors.black', '#3a3a3a')}
+  } 
+  :focus {
+    outline: none;
+    background: ${themeGet('colors.white', '#ffffff')};
+    border-color: ${themeGet('colors.lightBlue', '#0091ea')};
+  }
+  background: ${props => props.theme.colors.lightGrey};
 
   ${width}
   ${space}
@@ -51,8 +57,9 @@ const HTMLInput = styled('input')`
   ${disabled};
 `
 
-const Wrapper = styled(Relative)({
+export const InputWrapper = styled(Relative)({
   display: 'flex',
+  flexGrow: 1,
   alignItems: 'center',
 })
 
@@ -78,6 +85,14 @@ class Input extends Component {
     return null
   }
 
+  handleChange = (event) => {
+    const newValue = event.target.value
+    this.setState({
+      value: newValue,
+    })
+    this.props.onChange && this.props.onChange(newValue, event);
+  }
+
   saveInput = node => {
     this.input = node
   }
@@ -91,9 +106,9 @@ class Input extends Component {
   }
 
   render() {
-    const { prefix, suffix, width } = this.props
+    const { prefix, suffix, width, wrapperStyle } = this.props
     return (
-      <Wrapper width={width}>
+      <InputWrapper width={width} style={wrapperStyle}>
         {prefix && (
           <Adornment left={0} pl={2}>
             {prefix}
@@ -101,18 +116,19 @@ class Input extends Component {
         )}
         <HTMLInput
           {...omit(this.props, propsToOmit)}
-          pl={prefix ? 4 : 2}
+          pl={prefix ? 4 : 3}
           pr={suffix ? 4 : 2}
           width="100%"
-          value={this.state.value}
           ref={this.saveRef}
+          value={this.state.value}
+          onChange={this.handleChange}
         />
         {suffix && (
           <Adornment right={0} pr={2}>
             {suffix}
           </Adornment>
         )}
-      </Wrapper>
+      </InputWrapper>
     )
   }
 }
@@ -126,6 +142,8 @@ Input.propTypes = {
   suffix: propTypes.element,
   /** Размер инпута: */
   size: propTypes.oneOf(['small', 'medium', 'large']),
+  /** Стили враппера */
+  wrapperStyle: propTypes.object,
 }
 
 Input.defaultProps = {

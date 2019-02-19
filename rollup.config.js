@@ -6,6 +6,8 @@ import url from 'rollup-plugin-url'
 import svgr from '@svgr/rollup'
 import json from 'rollup-plugin-json'
 import { uglify } from 'rollup-plugin-uglify'
+import postcss from 'rollup-plugin-postcss'
+
 import pkg from './package.json'
 
 export default {
@@ -66,5 +68,11 @@ export default {
     }),
     json(),
     uglify(),
+    postcss({
+      extensions: ['.css', '.less'],
+      inject: false,
+      extract: true,
+      minimize: true,
+    }),
   ],
 }

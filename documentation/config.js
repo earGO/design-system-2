@@ -9,7 +9,7 @@ function makeAbsolutePath(directory, component) {
  * В этом массиве перечислены компоненты, которые являются дочерними к другим.
  * Например компонет CollapsePanel доступен как Collapse.Panel.
  */
-const nestedComponents = ['CollapsePanel']
+const nestedComponents = ['CollapsePanel', 'FormItem', 'TabPane']
 
 module.exports = {
   title: pkg.name,
@@ -29,6 +29,14 @@ module.exports = {
           exclude: /node_modules/,
           loader: 'babel-loader',
         },
+        {
+          test: /\.css$/,
+          use: ['style-loader', 'css-loader'],
+        },
+        {
+          test: /\.less$/,
+          use: ['style-loader', 'css-loader', 'less-loader'],
+        }
       ],
     },
   },
@@ -98,6 +106,7 @@ module.exports = {
         makeAbsolutePath('../src/primitives', 'Relative.js'),
         makeAbsolutePath('../src/primitives', 'Absolute.js'),
         makeAbsolutePath('../src/primitives', 'Card.js'),
+        makeAbsolutePath('../src/primitives', 'Positional.js'),
       ],
     },
     {
@@ -110,12 +119,23 @@ module.exports = {
         makeAbsolutePath('../src/elements', 'Divider.js'),
         makeAbsolutePath('../src/elements', 'Collapse.js'),
         makeAbsolutePath('../src/elements', 'CollapsePanel.js'),
+        makeAbsolutePath('../src/elements', 'Tooltip.js'),
+        makeAbsolutePath('../src/elements', 'Tabs.js'),
+        makeAbsolutePath('../src/elements', 'TabPane.js'),
+        makeAbsolutePath('../src/elements', 'Table.js'),
       ],
     },
     {
       name: 'Данные',
       description: 'Компоненты для получения данных, введенных пользователем.',
-      components: () => [makeAbsolutePath('../src/data', 'Input.js'), makeAbsolutePath('../src/data', 'Checkbox.js')],
+      components: () => [
+        makeAbsolutePath('../src/data', 'Input.js'),
+        makeAbsolutePath('../src/data', 'Checkbox.js'),
+        makeAbsolutePath('../src/data', 'Form.js'),
+        makeAbsolutePath('../src/data', 'FormItem.js'),
+        makeAbsolutePath('../src/data', 'Select.js'),
+        makeAbsolutePath('../src/data', 'Toggle.js'),
+      ],
     },
     {
       name: 'Ядро системы',

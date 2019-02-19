@@ -17,7 +17,7 @@ function IconCard({ name }) {
 function Icons() {
     return (
         <Flex flexWrap="wrap">
-            {Object.keys(icons).map(name => <IconCard name={name} />)}
+            {Object.keys(icons).map(name => <IconCard key={name} name={name} />)}
         </Flex>
     )
 }

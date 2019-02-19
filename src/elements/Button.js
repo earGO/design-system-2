@@ -5,22 +5,22 @@ import theme from '../theme'
 
 const sizes = {
   small: {
-    fontSize: 0,
+    fontSize: 1,
     diameter: 32,
     px: 10,
-    py: 5,
+    py: 6,
   },
   medium: {
     fontSize: 1,
     diameter: 40,
     px: 16,
-    py: 7.5,
+    py: 8.5,
   },
   large: {
-    fontSize: 2,
+    fontSize: 1,
     diameter: 48,
     px: 20,
-    py: 10,
+    py: 15,
   },
 }
 
@@ -110,7 +110,7 @@ const type = props => {
       return {
         color: colors.white,
         borderColor: disabled ? colors.lightGrey : colors.primary,
-        backgroundColor: disabled ? colors.lightGrey : colors.primary,
+        backgroundColor: disabled ? colors.disabled : colors.primary,
         '&:hover': !disabled && {
           backgroundColor: colors.semiDarkBlue,
           borderColor: colors.semiDarkBlue,
@@ -144,7 +144,6 @@ const Button = styled.button`
   outline: none;
   transition: all ${props => props.theme.duration.normal};
   position: relative;
-
   ${block}
   ${space}
   ${size}

@@ -3,7 +3,9 @@ import Flex from '../primitives/Flex'
 import Icon from '../elements/Icon'
 import propTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import { space } from 'styled-system'
+import { space, themeGet } from 'styled-system'
+import { FIELD_DATA_PROP } from './Form'
+import omit from 'lodash/omit'
 
 const size = ({ size = 'medium' }) => {
   const sizes = {
@@ -33,14 +35,19 @@ const iconSize = ({ size = 'medium' }) => {
 }
 
 const background = ({ checked, disabled, ...rest }) => {
-  const { colors } = rest.theme
+  const { checkbox } = rest.theme.colors
   const getColor = (checked, disabled) => {
-    if (checked) {
-      return disabled ? colors.disabledPrimary : colors.primary
+    if (disabled) {
+      return checkbox.disabled
     }
-    return disabled ? colors.disabled : colors.white
+    return checked ? checkbox.checked : checkbox.unchecked
   }
   return `background: ${getColor(checked, disabled)}`
+}
+
+const border = ({ checked, disabled, ...rest }) => {
+  const { colors } = rest.theme
+  return !(checked || disabled) && `border: 1px solid ${colors.black}`
 }
 
 const CheckboxInput = styled.input.attrs({ type: 'checkbox' })`
@@ -56,14 +63,14 @@ const CheckboxInput = styled.input.attrs({ type: 'checkbox' })`
   width: 1px;
 `
 
-const StyledCheckbox = styled(Flex)`
+export const StyledCheckbox = styled(Flex)`
   justify-content: center;
   align-items: center;
-  border: ${props => (props.checked ? 'none' : `1px solid ${props.theme.colors.semiLightGrey}`)};
+  border-radius: ${themeGet('radii[1]', 4)}px;
+  transition: all ${themeGet('duration.fast', 300)};
   ${size}
   ${background}
-  ${props => `border-radius: ${props.theme.radii[1] + 'px'}`}
-  ${props => `transition: all ${props.theme.duration.fast}`}
+  ${border}
   ${Icon} {
     ${iconSize}
     visibility: ${props => (props.checked ? 'visible' : 'hidden')}
@@ -94,22 +101,33 @@ class Checkbox extends Component {
     }
   }
 
-  handleChange = ({ target: { checked } }) => {
+  handleChange = (event) => {
+    const { checked } = event.target
     this.setState({ checked })
-    this.props.onChange && this.props.onChange(checked)
+    this.props.onChange && this.props.onChange(checked, event)
   }
 
-  getCheckedValue = () => {
-    // If controlled, props value > state.value
-    return typeof this.props.checked !== 'undefined' ? this.props.checked : this.state.checked
+  static getDerivedStateFromProps(nextProps) {
+    // If controlled by form
+    if (nextProps[FIELD_DATA_PROP]) {
+      return {
+        checked: nextProps.value,
+      }
+    }
+    if ('checked' in nextProps) {
+      return {
+        checked: nextProps.checked,
+      }
+    }
+    return null
   }
 
   render() {
     return (
       <Label {...this.props}>
         <CheckboxContainer onChange={this.handleChange}>
-          <CheckboxInput {...this.props} checked={this.getCheckedValue()} />
-          <StyledCheckbox checked={this.getCheckedValue()} size={this.props.size} disabled={this.props.disabled}>
+          <CheckboxInput {...omit(this.props, ['onChange', 'value'])} checked={this.state.checked} readOnly />
+          <StyledCheckbox checked={this.state.checked} size={this.props.size} disabled={this.props.disabled}>
             <Icon name="check" color="white" />
           </StyledCheckbox>
         </CheckboxContainer>
