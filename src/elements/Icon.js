@@ -4,6 +4,37 @@ import styled from 'styled-components'
 import { space, color, fontSize, top, bottom, left, right } from 'styled-system'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import theme from '../theme'
+// Only for testing
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import {
+  faBeer,
+  faCog,
+  faSpinner,
+  faCheck,
+  faChevronDown,
+  faQuestionCircle,
+  faCaretDown,
+  faEdit,
+  faSave,
+  faPlusCircle,
+  faMinusCircle,
+} from '@fortawesome/free-solid-svg-icons'
+// import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons'
+
+library.add(
+  faBeer,
+  faCog,
+  faSpinner,
+  faCheck,
+  faChevronDown,
+  faQuestionCircle,
+  faCaretDown,
+  faEdit,
+  faSave,
+  faPlusCircle,
+  faMinusCircle,
+)
 
 function Base({ name, ...props }) {
   return <FontAwesomeIcon {...props} icon={name} />
