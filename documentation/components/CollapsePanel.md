@@ -34,11 +34,11 @@
 Параметр **defaultActiveKeys** отвечает за открытые панели по умолчанию:
 ```js
 <Collapse defaultActiveKeys={['key1', 'key2']}>
-  <Collapse.Panel key="key1" title="Title number 1">
+  <Collapse.Panel key="key1" title="Title number 1" ml="24px">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
     aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
   </Collapse.Panel>
-  <Collapse.Panel key="key2" title="Title number 2">
+  <Collapse.Panel key="key2" title="Title number 2" ml="24px">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
     aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
