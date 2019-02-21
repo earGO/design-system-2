@@ -3,6 +3,7 @@ const white = '#ffffff'
 
 // greys
 const lightGrey = '#f5f5f5'
+const semiLightGrey = "#ecebeb"
 const grey = '#b5b5b5'
 
 const red = '#ef5350'
@@ -12,14 +13,17 @@ const lightBlue = '#0091ea'
 const blue = '#1e88e5'
 const darkBlue = '#1976d2'
 
+
+
 export const palette = {
   black,
   white,
   lightGrey,
+  semiLightGrey,
   grey,
+  lightBlue,
   blue,
   darkBlue,
-  lightBlue,
   red,
   green,
 }
@@ -68,6 +72,7 @@ export const system = {
   highlightHover: palette.lightBlue,
   // Scrollbar
   scrollbar: palette.grey,
+  border: palette.semiLightGrey,
 }
 
 export default {
