@@ -70,7 +70,7 @@ export default {
       },
     }),
     json(),
-    terser(),
+    // terser(),
     postcss({
       extensions: ['.css', '.less'],
       inject: false,
