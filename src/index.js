@@ -1,4 +1,5 @@
 /** Theme */
+import library from './theme/icons'
 export { default as theme } from './theme'
 export { default as ThemeProvider } from './theme/ThemeProvider'
 
