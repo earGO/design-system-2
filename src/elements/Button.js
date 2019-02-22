@@ -8,19 +8,19 @@ const sizes = {
     fontSize: 1,
     diameter: 32,
     px: 10,
-    py: 6,
+    py: 2,
   },
   medium: {
     fontSize: 1,
     diameter: 40,
     px: 16,
-    py: 8.5,
+    py: 10,
   },
   large: {
     fontSize: 1,
     diameter: 48,
     px: 20,
-    py: 15,
+    py: 18,
   },
 }
 
@@ -105,15 +105,26 @@ const type = props => {
           color: colors.darkBlue,
         },
       }
+
+    case 'secondary': {
+      return {
+        transition: 'background 250ms ease-in-out transform 150ms ease',
+        backgroundColor: disabled ? colors.disabled : colors.lightGrey,
+        color: colors.black,
+        '&:active': !disabled && {
+          transform: 'scale(0.99)',
+        },
+      }
+    }
     case 'primary':
     default:
       return {
         color: colors.white,
         borderColor: disabled ? colors.lightGrey : colors.primary,
-        backgroundColor: disabled ? colors.disabled : colors.primary,
+        backgroundColor: disabled ? colors.disabled : colors.lightBlue,
         '&:hover': !disabled && {
-          backgroundColor: colors.semiDarkBlue,
-          borderColor: colors.semiDarkBlue,
+          backgroundColor: colors.blue,
+          borderColor: colors.blue,
         },
         '&:active': !disabled && {
           backgroundColor: colors.darkBlue,

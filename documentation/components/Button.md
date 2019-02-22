@@ -1,6 +1,7 @@
 **type** отвечает за вид кнопки и может принимать значения: **primary, bordered, dashed, outline, flat**:
 ```js
 <Button mr={2}>Primary</Button>
+<Button type="secondary" mr={2} >Secondary</Button>
 <Button type="bordered" mr={2}>Bordered</Button>
 <Button type="dashed" mr={2}>Dashed</Button>
 <Button type="outline" mr={2}>Оutline</Button>
