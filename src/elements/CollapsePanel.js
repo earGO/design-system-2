@@ -24,8 +24,8 @@ const PanelContent = styled(Box)`
 `
 
 // To fix warning because of passing isOpen prop to <svg />
-const AnimatedScaledIcon = styled(({ isOpen, ...rest }) => (<Icon {...rest}/>))`
-  font-size: ${themeGet('fontSizes[1]', '12px')};
+const AnimatedScaledIcon = styled(({ isOpen, ...rest }) => <Icon {...rest} />)`
+  font-size: ${props => props.theme.fontSizes[0] + 'px'};
   color: ${themeGet('color.black', '#080808')};
   transition: transform ${themeGet('duration.normal', '300ms')};
   ${props => props.isOpen && `transform: rotate(180deg);`}
@@ -40,20 +40,17 @@ const PanelHeaderWrapper = styled(Flex)`
 
 const PanelWrapper = styled(Flex)`
   overflow: hidden;
+  font-size: ${props => props.theme.fontSizes[1] + 'px'};
+  color: ${props => props.theme.colors.black};
   ${disabled}
 `
 
 const PanelHeader = ({ title, togglePanel, isOpen, panelKey, disabled }) => (
-  <PanelHeaderWrapper
-    disabled={disabled}
-    onClick={disabled ? noop : () => togglePanel(panelKey)}
-  >
+  <PanelHeaderWrapper disabled={disabled} onClick={disabled ? noop : () => togglePanel(panelKey)}>
     <Flex justifyContent="center" alignItems="center" width={16} height={16}>
       <AnimatedScaledIcon isOpen={isOpen} name="chevron-down" />
     </Flex>
-    <Box ml={2}>
-      {title}
-    </Box>
+    <Box ml={2}>{title}</Box>
   </PanelHeaderWrapper>
 )
 
@@ -70,7 +67,7 @@ class CollapsePanel extends React.Component {
   }
 
   render() {
-    const mergedStyle = {...this.props.style, height: this.props.isOpen ? this.state.contentHeight : 0 }
+    const mergedStyle = { ...this.props.style, height: this.props.isOpen ? this.state.contentHeight : 0 }
     return (
       <PanelWrapper flexDirection="column" disabled={this.props.disabled}>
         <PanelHeader {...this.props} />

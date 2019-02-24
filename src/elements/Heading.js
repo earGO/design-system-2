@@ -51,7 +51,7 @@ Heading.h6 = Heading.withComponent('h6')
 Heading.h6.defaultProps = {
   bold: true,
   caps: true,
-  fontSize: 0,
+  fontSize: 1,
   m: 0,
 }
 

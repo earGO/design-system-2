@@ -12,7 +12,7 @@ const options = Array(36)
   .map((_, i) => ({ value: i, label: `Option ${i}` }))
 
 ;
-<Box width="192px">
+<Box width="292px">
   <Select placeholder="Раскрывающийся список" options={options} />
 </Box>
 ```

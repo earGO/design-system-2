@@ -65,9 +65,11 @@ Divider.propTypes = {
 }
 
 Divider.defaultProps = {
-  color: 'lightGrey',
+  color: 'border',
   vertical: false,
   theme: theme,
+  mt: 3,
+  mb: 3,
   ml: 0,
   mr: 0,
 }

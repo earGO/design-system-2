@@ -10,27 +10,28 @@ const Body = styled.div.attrs(props => ({
 }))`
   position: relative;
   font-family: ${props => props.font};
-  background-color: #373a43;
-  border-radius: 15px;
+  font-size: ${props => props.theme.fontSizes[0] + 'px'};
+  padding: ${props => `${props.theme.space[2]}px ${props.theme.space[3]}px`};
+  background-color: ${props => props.theme.colors.black};
+  border-radius: ${props => props.theme.radii[2] + 'px'};
   opacity: 0.85;
-  padding: 1px 10px;
   animation: all 0.5s;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-  min-width: 75px;
+  min-width: 50px;
   text-align: center;
 
   & p {
     color: #ffffff;
+    margin: 0;
   }
 
   &:after {
     position: absolute;
-    width: 10px;
-    height: 10px;
-    content: "";
+    width: 8px;
+    height: 8px;
+    content: '';
     transform: rotate(45deg);
-    background-color: #373a43;
-    margin: -5px 0 0 -5px;
+    background-color: ${props => props.theme.colors.black};
+    margin: -4px 0 0 -4px;
 
     ${props =>
       props.placement === 'top' &&
@@ -82,6 +83,10 @@ const Body = styled.div.attrs(props => ({
           top: 50%;
         `}
   }
+`
+
+const Wrapper = styled.span`
+  font-size: ${props => props.theme.fontSizes[1] + 'px'};
 `
 
 const getAlign = placement => {
@@ -137,7 +142,7 @@ class Tooltip extends Component {
         popupComponent={popupComponent}
         transitionName={transitionName}
       >
-        {children}
+        <Wrapper>{children}</Wrapper>
       </Positional>
     )
   }
@@ -159,12 +164,13 @@ Tooltip.propTypes = {
 }
 
 Tooltip.defaultProps = {
-  children: <div>Default Tooltip Div</div>,
+  children: <span>Default tooltip</span>,
   events: ['hover'],
   font: theme.font.main,
   placement: 'top',
-  text: 'Полезный тултип',
+  text: 'help',
   transitionName: 'rc-trigger-popup-fade',
+  theme,
 }
 
 Tooltip.displayName = 'Tooltip'

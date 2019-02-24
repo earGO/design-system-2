@@ -1,8 +1,8 @@
 ```js
 <Relative bg="lightBlue" p={5} zIndex={1}>
-    Relative
+    <Text color="white">Relative</Text>
     <Absolute bg="blue" color="white" p={3} m={2} top={2} right={2}>
-        Absolute
+        <Text color="white">Absolute</Text>
     </Absolute>
 </Relative>
 ```

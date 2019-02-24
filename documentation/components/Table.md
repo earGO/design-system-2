@@ -54,14 +54,14 @@ const dataList = [
   },
 ]
 
-;<Box width={900}>
+;
   <Table data={dataList} height={400}>
-    <Table.Column width={160} sort>
+    <Table.Column width={160} sort fixed>
       <Table.HeaderCell style={{ paddingLeft: '16px' }}>Тип</Table.HeaderCell>
       <Table.Cell dataKey="type" />
     </Table.Column>
 
-    <Table.Column width={128} sort>
+    <Table.Column resizable width={128} sort>
       <Table.HeaderCell>Номер</Table.HeaderCell>
       <Table.Cell dataKey="number" />
     </Table.Column>
@@ -81,7 +81,7 @@ const dataList = [
       <Table.Cell dataKey="dateUpdated" />
     </Table.Column>
   </Table>
-</Box>
+
 ```
 
 "Рецепт" таблицы с возможностью построчного редактирования :
@@ -342,8 +342,8 @@ const dataList = [
     rowKey="id"
     renderTreeToggle={(icon, rowData) => {
       return state.expandedRowKeys.includes(rowData.id)
-        ? <Icon name="minus-circle" onClick={icon.props.onClick} />
-        : <Icon name="plus-circle" onClick={icon.props.onClick} />
+        ? <Icon name="chevron-up" onClick={icon.props.onClick} />
+        : <Icon name="chevron-down" onClick={icon.props.onClick} />
     }}
     expandedRowKeys={state.expandedRowKeys}
     onExpandChange={handleExpandedRowsChange}
