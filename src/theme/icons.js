@@ -4,6 +4,7 @@ import {
   faCog,
   faSpinner,
   faCheck,
+  faChevronUp,
   faChevronDown,
   faQuestionCircle,
   faCaretDown,
@@ -21,6 +22,7 @@ library.add(
   faCog,
   faSpinner,
   faCheck,
+  faChevronUp,
   faChevronDown,
   faQuestionCircle,
   faCaretDown,
@@ -29,7 +31,7 @@ library.add(
   faPlusCircle,
   faMinusCircle,
   faEllipsisV,
-  faEllipsisH
+  faEllipsisH,
 )
 
 export default library

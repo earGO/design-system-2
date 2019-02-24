@@ -6,11 +6,11 @@ import 'rsuite-table/lib/less/index.less'
 import { themeGet } from 'styled-system'
 
 const StyledTable = styled(RSTable)`
-  font-size: 12px;
   & .rs-table-cell-content {
     display: flex;
     align-items: center;
-    padding-left: 16px;
+    font-size: ${props => props.theme.fontSizes[1] + 'px'};
+    padding-left: ${props => props.theme.space[3] + 'px'};
     /* Expand-collapse icon */
     & > span {
       padding: 0 4px;
@@ -19,18 +19,17 @@ const StyledTable = styled(RSTable)`
 `
 const StyledHeader = styled(HeaderCell)`
   background: ${themeGet('colors.lightGrey', '#f5f5f5')};
+  /* font-size: ${props => props.theme.fontSizes[1]}; */
 `
 
 const CustomHeaderCell = props => <StyledHeader {...props} />
 
 /** Используется для отображения структурированной информации. */
-const Table = (props) => (
-  <StyledTable {...props} />
-)
+const Table = props => <StyledTable {...props} />
 
-Table.Column = Column;
-Table.HeaderCell = CustomHeaderCell;
-Table.Cell = Cell;
+Table.Column = Column
+Table.HeaderCell = CustomHeaderCell
+Table.Cell = Cell
 
 Table.propTypes = {
   /** Данные для отображения в таблице. */
@@ -58,7 +57,7 @@ Table.propTypes = {
 Table.defaultProps = {
   headerHeight: 48,
   rowHeight: 48,
-  rowKey: 'key'
+  rowKey: 'key',
 }
 
 export default Table

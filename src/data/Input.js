@@ -36,11 +36,14 @@ const size = ({ size = 'medium', theme }) => {
   return sizes[size]
 }
 
+const inline = ({ inline }) => Boolean(inline) && { display: 'inline-block' }
+
 const HTMLInput = styled('input')`
   border-width: 1px;
   border-style: solid;
   border-color: ${props => props.theme.colors.border};
   border-radius: ${props => props.theme.radii[1] + 'px'};
+  transition: all ${props => props.theme.duration.fast};
   :hover {
     border-color: ${themeGet('colors.black', '#3a3a3a')}
   } 
@@ -54,7 +57,8 @@ const HTMLInput = styled('input')`
   ${width}
   ${space}
   ${size}
-  ${disabled};
+  ${disabled}
+  ${inline};
 `
 
 export const InputWrapper = styled(Relative)({
@@ -85,12 +89,12 @@ class Input extends Component {
     return null
   }
 
-  handleChange = (event) => {
+  handleChange = event => {
     const newValue = event.target.value
     this.setState({
       value: newValue,
     })
-    this.props.onChange && this.props.onChange(newValue, event);
+    this.props.onChange && this.props.onChange(newValue, event)
   }
 
   saveInput = node => {

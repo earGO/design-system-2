@@ -10,16 +10,16 @@ import omit from 'lodash/omit'
 const size = ({ size = 'medium' }) => {
   const sizes = {
     small: {
+      width: '14px',
+      height: '14px',
+    },
+    medium: {
       width: '16px',
       height: '16px',
     },
-    medium: {
+    large: {
       width: '20px',
       height: '20px',
-    },
-    large: {
-      width: '24px',
-      height: '24px',
     },
   }
   return css(sizes[size])
@@ -27,9 +27,9 @@ const size = ({ size = 'medium' }) => {
 
 const iconSize = ({ size = 'medium' }) => {
   const scales = {
-    small: 0.8,
-    medium: 1,
-    large: 1.2,
+    small: 0.6,
+    medium: 0.7,
+    large: 0.8,
   }
   return `transform: scale(${scales[size]});`
 }
@@ -66,7 +66,7 @@ const CheckboxInput = styled.input.attrs({ type: 'checkbox' })`
 export const StyledCheckbox = styled(Flex)`
   justify-content: center;
   align-items: center;
-  border-radius: ${themeGet('radii[1]', 4)}px;
+  border-radius: ${themeGet('radii[0]', 4)}px;
   transition: all ${themeGet('duration.fast', 300)};
   ${size}
   ${background}
@@ -101,7 +101,7 @@ class Checkbox extends Component {
     }
   }
 
-  handleChange = (event) => {
+  handleChange = event => {
     const { checked } = event.target
     this.setState({ checked })
     this.props.onChange && this.props.onChange(checked, event)
@@ -132,9 +132,9 @@ class Checkbox extends Component {
           </StyledCheckbox>
         </CheckboxContainer>
         {/* this.props.children instead of text maybe? */}
-        <Text.span ml={2} regular>
+        <Text inline regular ml={2}>
           {this.props.label}
-        </Text.span>
+        </Text>
       </Label>
     )
   }

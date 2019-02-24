@@ -23,7 +23,7 @@ const boxShadow = props => {
 }
 
 const boxBorder = props => ({
-  border: props.borderWidth === 0 ? '0' : `${props.borderWidth}px solid ${props.theme.colors[props.borderColor]}`,
+  border: `1px solid ${props.theme.colors.border}`,
 })
 
 /** Наследует компонент `<Box />` и расширяет его параметрами **boxShadowSize, borderColor, borderRadius, borderWidth**.
@@ -40,8 +40,6 @@ const Card = styled(Box)`
 Card.propTypes = {
   /** Размер тени */
   boxShadowSize: PropTypes.oneOf(['sm', 'md', 'lg', 'xl']),
-  /** Цвет бордера */
-  borderColor: PropTypes.string,
   /** Радиус скругления блока */
   borderRadius: PropTypes.oneOf([0, 1, 2]),
   /** Ширина бордера */
@@ -51,9 +49,8 @@ Card.propTypes = {
 }
 
 Card.defaultProps = {
-  borderColor: 'lightGrey',
   borderRadius: 1,
-  borderWidth: 1,
+  borderWidth: 0,
   theme: theme,
 }
 

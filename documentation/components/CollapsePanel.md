@@ -1,14 +1,15 @@
 ```js
 <Collapse>
   <Collapse.Panel key="key1" title="Title number 1">
+  <Text p={4}>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</Text>
   </Collapse.Panel>
   <Collapse.Panel key="key2" title="Title number 2">
-    Nunc efficitur lacus a nisi hendrerit congue. Ut sagittis in arcu vitae condimentum. Nunc non sapien in lacus mollis
+    <Text p={4}>Nunc efficitur lacus a nisi hendrerit congue. Ut sagittis in arcu vitae condimentum. Nunc non sapien in lacus mollis
     pharetra eleifend id turpis. Donec eget tempus nisl. Curabitur eu imperdiet felis, vel interdum ex. Vivamus ut mi
     tortor. Sed sit amet tellus tellus. Phasellus finibus nisi a velit pharetra, eget consequat lorem tristique.
-    Suspendisse ut lectus in nibh sagittis ullamcorper. Nunc molestie mauris lacus, id vulputate libero cursus in.
+    Suspendisse ut lectus in nibh sagittis ullamcorper. Nunc molestie mauris lacus, id vulputate libero cursus in.</Text>
   </Collapse.Panel>
   <Collapse.Panel key="key3" title={<Text bold>Title number 3</Text>}>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec dui laoreet, placerat enim eget, dictum arcu.
@@ -34,11 +35,11 @@
 Параметр **defaultActiveKeys** отвечает за открытые панели по умолчанию:
 ```js
 <Collapse defaultActiveKeys={['key1', 'key2']}>
-  <Collapse.Panel key="key1" title="Title number 1" ml="24px">
+  <Collapse.Panel key="key1" title="Title number 1">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
     aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
   </Collapse.Panel>
-  <Collapse.Panel key="key2" title="Title number 2" ml="24px">
+  <Collapse.Panel key="key2" title="Title number 2">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
     aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
