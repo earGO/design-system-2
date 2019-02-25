@@ -1,13 +1,13 @@
 ```js noeditor
-const colors = require('../src/theme/colors').palette
+const colors = require('../src/theme/colors').default
 
 function Palette() {
     return (
         <Flex flexWrap="wrap">
-            {Object.keys(colors).map(color => (
+            {Object.keys(colors.palette).map(color => (
                 <Card width={110} borderColor={color === 'white' ? 'lightGrey' : color} borderRadius={1} mr={3} mb={3}>
                     <Box height={80} bg={color} />
-                    <Divider color={color === 'white' ? 'lightGrey' : color} />
+                    <Divider color={color === 'white' ? 'lightGrey' : color} mt={0} />
                     <Text align="center" fontSize={1} my={2} px={1}>
                         <Text truncated title={color}>{color}</Text>
                         <Text fontSize={0}>  
@@ -18,7 +18,7 @@ function Palette() {
             ))}
         </Flex>
     )
-}
+};
 
 <Palette />
 ```
@@ -26,14 +26,15 @@ function Palette() {
 ### Системные цвета
 Назначаются из палитры
 ```js noeditor
-const colors = require('../src/theme/colors')
+const colors = require('../src/theme/colors').default
+
 function Palette() {
     return (
         <Flex flexWrap="wrap">
             {Object.keys(colors.system).map(color => (
                 <Card width={110} borderColor={color} borderRadius={1} mr={3} mb={3}>
                     <Box height={80} bg={color} />
-                    <Divider color={color} />
+                    <Divider color={color} mt={0} />
                     <Text truncated title={color} align="center" my={2} px={1}>
                         <Text>{color}</Text>
                         <Text fontSize={0}>  
@@ -44,7 +45,7 @@ function Palette() {
             ))}
         </Flex>
     )
-}
+};
 
 <Palette />
 ```

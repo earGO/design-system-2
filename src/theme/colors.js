@@ -74,6 +74,8 @@ const system = {
 }
 
 export default {
+  system,
+  palette,
   ...palette,
   ...system,
   ...components,
