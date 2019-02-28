@@ -45,12 +45,12 @@ const shapeCircle = props => {
 }
 
 const type = props => {
-  const { theme, disabled, size, block } = props
+  const { theme, disabled, size, block, type } = props
   const { colors } = theme
   const { px, py } = getSizeParams(size)
-  const activeScale = block ? 0.995 : 0.96
+  const activeScale = type === 'flat' ? 1 : block ? 0.995 : 0.98
 
-  switch (props.type) {
+  switch (type) {
     case 'bordered':
       return {
         color: disabled ? colors.lightGrey : colors.black,

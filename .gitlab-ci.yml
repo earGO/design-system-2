@@ -18,8 +18,6 @@ cache:
 
 Build:
   stage: build
-  only:
-    - master
   before_script:
     - npm install
   script:
@@ -40,4 +38,14 @@ Deploy:
     - npm publish
     - scp -r docs/* suadm@192.168.13.46:$TMPDIR
     - ssh suadm@192.168.13.46 "sudo /opt/deploy front $PROJECT $NAMESPACE $APP $TMPDIR"
+    
+pages:
+  stage: deploy
+  script:
+    - mv docs public
+  artifacts:
+    paths:
+    - public
+  only:
+    - master
 
