@@ -16,26 +16,61 @@ import Box from '../primitives/Box'
 const OPTION_HEIGHT = 38
 
 const customStyles = {
+  placeholder: (base, props) => {
+    const { systemTheme } = props.selectProps
+    return ({ ...base, fontSize: systemTheme.fontSizes[1], color: systemTheme.colors.black })
+  },
+  input: (base, props, third) => {
+    // Can't access system theme here... ?
+    return ({ ...base, fontSize: 12, color: '#3a3a3a' })
+  },
+  valueContainer: (base, props) => {
+    const { systemTheme } = props.selectProps
+    return ({ ...base, fontSize: systemTheme.fontSizes[1], color: systemTheme.colors.black, paddingLeft: 16 })
+  },
   control: (base, props) => {
     const { systemTheme } = props.selectProps
-    return {
-      ...base,
-      // TBD => focus color.
-      boxShadow: props.isFocused ? `0 0 0 1px ${systemTheme.colors.focus}` : 0,
+    const { isDisabled, isFocused, menuIsOpen } = props;
+    // Disabled styles
+    if (isDisabled) {
+      return {
+        ...base,
+        borderColor: 'transparent',
+        backgroundColor: systemTheme.colors.input.disabled,
+        cursor: 'not-allowed',
+      }
     }
+    if (isFocused || menuIsOpen) {
+      return {
+        ...base,
+        borderColor: systemTheme.colors.input.focus,
+        backgroundColor: systemTheme.colors.white,
+        boxShadow: 'none',
+      }
+    }
+    // Default
+      return {
+        ...base,
+        '&:hover': {
+          borderColor: systemTheme.colors.black,
+        },
+        borderColor: 'transparent',
+        backgroundColor: systemTheme.colors.lightGrey,
+      }
   },
   menuList: (base, props) => {
     const { systemTheme } = props.selectProps
+    // Пока скроллов тоже нет в макетах.
     return {
       ...base,
       '&::-webkit-scrollbar': {
         height: '8px',
         backgroundColor: 'transparent',
-        width: '8px',
+        width: '4px',
       },
       '&::-webkit-scrollbar-thumb': {
         backgroundColor: `${systemTheme.colors.scrollbar}`,
-        borderRadius: '10px',
+        borderRadius: '8px',
       },
       scrollbarColor: `${systemTheme.colors.scrollbar} transparent`,
       scrollbarWidth: 'thin',
@@ -43,15 +78,28 @@ const customStyles = {
   },
   indicatorSeparator: base => ({ ...base, width: '0px' }),
   option: (base, props) => {
+    const { isSelected, isFocused } = props
     const { systemTheme } = props.selectProps
-    return { ...base, ':active': { backgroundColor: systemTheme.colors.highlight } }
+    const baseline = { ...base, color: systemTheme.colors.black, fontSize: systemTheme.fontSizes[1] }
+    if (isSelected) {
+      return ({ ...baseline, backgroundColor: systemTheme.colors.lightGrey })
+    }
+    // Пока одинаковые, нет в макетах.
+    if (isFocused) {
+      return ({ ...baseline, backgroundColor: systemTheme.colors.lightGrey })
+    }
+    return baseline
   },
 }
 
 const DropdownIndicator = props => {
+  const { systemTheme } = props.selectProps
+  // VERY FUCKING HACKY WAY TO DO THAT
+  const { innerProps, ...rest } = props
+  const withPadding = { ...innerProps, style: { paddingRight: 16 }}
   return (
-    <components.DropdownIndicator {...props}>
-      <Icon name="chevron-down" />
+    <components.DropdownIndicator { ...rest } innerProps={withPadding} >
+      <Icon name="caret-down" fontSize={systemTheme.fontSizes[1]} color={systemTheme.colors.black} />
     </components.DropdownIndicator>
   )
 }
@@ -64,7 +112,7 @@ const scrollStyles = ({ theme }) => {
     &::-webkit-scrollbar {
       height: 8px;
       background-color: transparent;
-      width: 8px;
+      width: 4px;
     }
     &::-webkit-scrollbar-thumb {
       background-color: ${theme.colors.scrollbar};

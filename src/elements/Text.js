@@ -8,7 +8,8 @@ const regular = ({ regular, theme }) => Boolean(regular) && { fontWeight: theme.
 const bold = ({ bold, theme }) => Boolean(bold) && { fontWeight: theme.fontWeights.bold }
 const italic = ({ italic }) => Boolean(italic) && { fontStyle: 'italic' }
 const caps = ({ caps }) => Boolean(caps) && { textTransform: 'uppercase' }
-
+const inline = ({ inline }) => Boolean(inline) && { display: 'inline-block' }
+const strike = ({ strike }) => Boolean(strike) && { textDecoration: 'line-through' }
 const truncated = ({ truncated }) =>
   Boolean(truncated) && {
     overflow: 'hidden',
@@ -30,12 +31,14 @@ const Text = styled.div`
   ${caps}
   ${regular}
   ${bold} 
-  ${align};
+  ${align}
+  ${inline}
+  ${strike};
 `
 
-Text.span = Text.withComponent('span')
-Text.p = Text.withComponent('p')
-Text.s = Text.withComponent('s')
+// Text.span = Text.withComponent('span')
+// Text.p = Text.withComponent('p')
+// Text.s = Text.withComponent('s')
 
 Text.displayName = 'Text'
 
@@ -56,6 +59,10 @@ Text.propTypes = {
   color: PropTypes.string,
   /** Обрезать текст по ширине родительского блока */
   truncated: PropTypes.bool,
+  /** Инлайновый текст */
+  inline: PropTypes.bool,
+  /** Зачеркнутый текст */
+  strike: PropTypes.bool,
   /** margin */
   m: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
   /** margin-top*/
@@ -89,7 +96,7 @@ Text.propTypes = {
 }
 
 Text.defaultProps = {
-  fontSize: 2,
+  fontSize: 1,
   regular: true,
   bold: false,
   italic: false,

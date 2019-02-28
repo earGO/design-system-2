@@ -33,6 +33,10 @@ module.exports = {
           test: /\.css$/,
           use: ['style-loader', 'css-loader'],
         },
+        {
+          test: /\.less$/,
+          use: ['style-loader', 'css-loader', 'less-loader'],
+        },
       ],
     },
   },
@@ -54,6 +58,17 @@ module.exports = {
   theme: {
     fontFamily: {
       base: '"PT Sans", sans-serif',
+    },
+    fontSize: {
+      base: 14,
+      text: 14,
+      small: 12,
+      // h1: theme.fontSizes[6],
+      // h2: theme.fontSizes[5],
+      // h3: theme.fontSizes[4],
+      // h4: theme.fontSizes[3],
+      // h5: theme.fontSizes[2],
+      // h6: theme.fontSizes[1],
     },
   },
   getComponentPathLine(componentPath) {
@@ -118,6 +133,7 @@ module.exports = {
         makeAbsolutePath('../src/elements', 'Tooltip.js'),
         makeAbsolutePath('../src/elements', 'Tabs.js'),
         makeAbsolutePath('../src/elements', 'TabPane.js'),
+        makeAbsolutePath('../src/elements', 'Table.js'),
       ],
     },
     {
@@ -129,7 +145,11 @@ module.exports = {
         makeAbsolutePath('../src/data', 'Form.js'),
         makeAbsolutePath('../src/data', 'FormItem.js'),
         makeAbsolutePath('../src/data', 'Select.js'),
+<<<<<<< HEAD
         makeAbsolutePath('../src/data', 'Datepicker.js'),
+=======
+        makeAbsolutePath('../src/data', 'Toggle.js'),
+>>>>>>> d912a969f2e900931e924ae4fd9c2d58423be035
       ],
     },
     {

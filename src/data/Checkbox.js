@@ -10,16 +10,16 @@ import omit from 'lodash/omit'
 const size = ({ size = 'medium' }) => {
   const sizes = {
     small: {
+      width: '14px',
+      height: '14px',
+    },
+    medium: {
       width: '16px',
       height: '16px',
     },
-    medium: {
+    large: {
       width: '20px',
       height: '20px',
-    },
-    large: {
-      width: '24px',
-      height: '24px',
     },
   }
   return css(sizes[size])
@@ -27,9 +27,9 @@ const size = ({ size = 'medium' }) => {
 
 const iconSize = ({ size = 'medium' }) => {
   const scales = {
-    small: 0.8,
-    medium: 1,
-    large: 1.2,
+    small: 0.6,
+    medium: 0.7,
+    large: 0.8,
   }
   return `transform: scale(${scales[size]});`
 }
@@ -40,9 +40,7 @@ const background = ({ checked, disabled, ...rest }) => {
     if (disabled) {
       return checkbox.disabled
     }
-    return checked
-      ? checkbox.checked
-      : checkbox.unchecked
+    return checked ? checkbox.checked : checkbox.unchecked
   }
   return `background: ${getColor(checked, disabled)}`
 }
@@ -68,7 +66,7 @@ const CheckboxInput = styled.input.attrs({ type: 'checkbox' })`
 export const StyledCheckbox = styled(Flex)`
   justify-content: center;
   align-items: center;
-  border-radius: ${themeGet('radii[1]', 4)}px;
+  border-radius: ${themeGet('radii[0]', 4)}px;
   transition: all ${themeGet('duration.fast', 300)};
   ${size}
   ${background}
@@ -103,35 +101,40 @@ class Checkbox extends Component {
     }
   }
 
-  handleChange = ({ target: { checked } }) => {
+  handleChange = event => {
+    const { checked } = event.target
     this.setState({ checked })
-    this.props.onChange && this.props.onChange(checked)
+    this.props.onChange && this.props.onChange(checked, event)
   }
 
-  getCheckedValue = () => {
-    if (this.props[FIELD_DATA_PROP]) {
-      // Controlled by rc-form, use value prop
-      return this.props.value;
+  static getDerivedStateFromProps(nextProps) {
+    // If controlled by form
+    if (nextProps[FIELD_DATA_PROP]) {
+      return {
+        checked: nextProps.value,
+      }
     }
-    // If controlled (not by rc-form), props value > state.value
-    return typeof this.props.checked !== 'undefined' 
-      ? this.props.checked 
-      : this.state.checked
+    if ('checked' in nextProps) {
+      return {
+        checked: nextProps.checked,
+      }
+    }
+    return null
   }
 
   render() {
     return (
       <Label {...this.props}>
         <CheckboxContainer onChange={this.handleChange}>
-          <CheckboxInput {...omit(this.props, ['onChange'])} checked={this.getCheckedValue()} value={this.props.value} readOnly/>
-          <StyledCheckbox checked={this.getCheckedValue()} size={this.props.size} disabled={this.props.disabled} value={this.props.value}>
+          <CheckboxInput {...omit(this.props, ['onChange', 'value'])} checked={this.state.checked} readOnly />
+          <StyledCheckbox checked={this.state.checked} size={this.props.size} disabled={this.props.disabled}>
             <Icon name="check" color="white" />
           </StyledCheckbox>
         </CheckboxContainer>
         {/* this.props.children instead of text maybe? */}
-        <Text.span ml={2} regular>
+        <Text inline regular ml={2}>
           {this.props.label}
-        </Text.span>
+        </Text>
       </Label>
     )
   }

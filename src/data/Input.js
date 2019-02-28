@@ -8,7 +8,7 @@ import omit from 'lodash/omit'
 
 // #TBD: Input.TextArea + allowClear prop. Как будет работать c suffix?
 
-const propsToOmit = ['suffix', 'prefix', 'width', 'value', 'wrapperStyle']
+const propsToOmit = ['suffix', 'prefix', 'width', 'value', 'wrapperStyle', 'onChange']
 
 const disabled = props =>
   props.disabled &&
@@ -36,11 +36,14 @@ const size = ({ size = 'medium', theme }) => {
   return sizes[size]
 }
 
+const inline = ({ inline }) => Boolean(inline) && { display: 'inline-block' }
+
 const HTMLInput = styled('input')`
   border-width: 1px;
   border-style: solid;
   border-color: ${props => props.theme.colors.border};
   border-radius: ${props => props.theme.radii[1] + 'px'};
+  transition: all ${props => props.theme.duration.fast};
   :hover {
     border-color: ${themeGet('colors.black', '#3a3a3a')}
   } 
@@ -54,11 +57,13 @@ const HTMLInput = styled('input')`
   ${width}
   ${space}
   ${size}
-  ${disabled};
+  ${disabled}
+  ${inline};
 `
 
 export const InputWrapper = styled(Relative)({
   display: 'flex',
+  flexGrow: 1,
   alignItems: 'center',
 })
 
@@ -84,6 +89,14 @@ class Input extends Component {
     return null
   }
 
+  handleChange = event => {
+    const newValue = event.target.value
+    this.setState({
+      value: newValue,
+    })
+    this.props.onChange && this.props.onChange(newValue, event)
+  }
+
   saveInput = node => {
     this.input = node
   }
@@ -107,11 +120,12 @@ class Input extends Component {
         )}
         <HTMLInput
           {...omit(this.props, propsToOmit)}
-          pl={prefix ? 4 : 2}
+          pl={prefix ? 4 : 3}
           pr={suffix ? 4 : 2}
           width="100%"
-          value={this.state.value}
           ref={this.saveRef}
+          value={this.state.value}
+          onChange={this.handleChange}
         />
         {suffix && (
           <Adornment right={0} pr={2}>

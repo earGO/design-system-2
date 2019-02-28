@@ -3,9 +3,8 @@ import commonjs from 'rollup-plugin-commonjs'
 import external from 'rollup-plugin-peer-deps-external'
 import resolve from 'rollup-plugin-node-resolve'
 import url from 'rollup-plugin-url'
-import svgr from '@svgr/rollup'
 import json from 'rollup-plugin-json'
-import { uglify } from 'rollup-plugin-uglify'
+import { terser } from "rollup-plugin-terser";
 import postcss from 'rollup-plugin-postcss'
 
 import pkg from './package.json'
@@ -18,6 +17,11 @@ export default {
       format: 'cjs',
       sourcemap: true,
     },
+    {
+      file: pkg.module,
+      format: 'es',
+      sourcemap: true,
+    }
   ],
   external: ['styled-components'],
   // https://github.com/WebReflection/hyperHTML/issues/304#issuecomment-443950244
@@ -25,7 +29,6 @@ export default {
   plugins: [
     external(),
     url(),
-    svgr(),
     babel({
       babelrc: false,
       runtimeHelpers: true,
@@ -67,7 +70,12 @@ export default {
       },
     }),
     json(),
-    uglify(),
-    postcss(),
+    // terser(),
+    postcss({
+      extensions: ['.css', '.less'],
+      inject: false,
+      extract: true,
+      minimize: true,
+    }),
   ],
 }

@@ -8,19 +8,19 @@ const sizes = {
     fontSize: 1,
     diameter: 32,
     px: 10,
-    py: 6,
+    py: 2,
   },
   medium: {
     fontSize: 1,
     diameter: 40,
     px: 16,
-    py: 8.5,
+    py: 10,
   },
   large: {
     fontSize: 1,
     diameter: 48,
     px: 20,
-    py: 15,
+    py: 18,
   },
 }
 
@@ -40,20 +40,21 @@ const block = props => Boolean(props.block) && { width: '100%' }
 const shapeCircle = props => {
   if (props.circle) {
     const { diameter } = sizes[props.size] || sizes.medium
-    return { borderRadius: '50%', padding: 0, width: `${diameter}px`, height: `${diameter}px` }
+    return { borderRadius: '50%', padding: 0, width: `${diameter}px`, height: `${diameter}px`, minWidth: 'auto' }
   }
 }
 
 const type = props => {
-  const { theme, disabled, size } = props
+  const { theme, disabled, size, block, type } = props
   const { colors } = theme
   const { px, py } = getSizeParams(size)
+  const activeScale = type === 'flat' ? 1 : block ? 0.995 : 0.98
 
-  switch (props.type) {
+  switch (type) {
     case 'bordered':
       return {
-        color: disabled ? colors.lightGrey : colors.grey,
-        borderColor: disabled ? colors.lightGrey : colors.semiLightGrey,
+        color: disabled ? colors.lightGrey : colors.black,
+        borderColor: disabled ? colors.lightGrey : colors.grey,
         backgroundColor: 'transparent',
         '&:hover': !disabled && {
           color: colors.blue,
@@ -62,14 +63,15 @@ const type = props => {
         '&:active': !disabled && {
           color: colors.darkBlue,
           borderColor: colors.darkBlue,
+          transform: `scale(${activeScale})`,
         },
       }
     case 'dashed':
       return {
-        color: disabled ? colors.lightGrey : colors.grey,
-        borderColor: disabled ? colors.lightGrey : colors.semiLightGrey,
+        color: disabled ? colors.lightGrey : colors.black,
+        borderColor: disabled ? colors.lightGrey : colors.grey,
         backgroundColor: 'transparent',
-        borderStyle: 'dotted',
+        borderStyle: 'dashed',
         borderWidth: '1px',
         padding: `${py}px ${px}px`,
         '&:hover': !disabled && {
@@ -79,45 +81,45 @@ const type = props => {
         '&:active': !disabled && {
           color: colors.darkBlue,
           borderColor: colors.darkBlue,
-        },
-      }
-    case 'outline':
-      return {
-        backgroundColor: 'transparent',
-        color: disabled ? colors.lightGrey : colors.blue,
-        '&:hover': !disabled && {
-          backgroundColor: colors.lightBlue,
-        },
-        '&:active': !disabled && {
-          backgroundColor: 'transparent',
-          color: colors.darkBlue,
-          borderColor: 'transparent',
+          transform: `scale(${activeScale})`,
         },
       }
     case 'flat':
       return {
         backgroundColor: 'transparent',
-        color: disabled ? colors.lightGrey : colors.grey,
+        color: disabled ? colors.lightGrey : colors.black,
         '&:hover': !disabled && {
           color: colors.blue,
         },
         '&:active': !disabled && {
           color: colors.darkBlue,
+          transform: `scale(${activeScale})`,
         },
       }
+
+    case 'secondary': {
+      return {
+        backgroundColor: disabled ? colors.disabled : colors.lightGrey,
+        color: colors.black,
+        '&:active': !disabled && {
+          transform: `scale(${activeScale})`,
+        },
+      }
+    }
     case 'primary':
     default:
       return {
         color: colors.white,
         borderColor: disabled ? colors.lightGrey : colors.primary,
-        backgroundColor: disabled ? colors.disabled : colors.primary,
+        backgroundColor: disabled ? colors.disabled : colors.lightBlue,
         '&:hover': !disabled && {
-          backgroundColor: colors.semiDarkBlue,
-          borderColor: colors.semiDarkBlue,
+          backgroundColor: colors.blue,
+          borderColor: colors.blue,
         },
         '&:active': !disabled && {
           backgroundColor: colors.darkBlue,
           borderColor: colors.darkBlue,
+          transform: `scale(${activeScale})`,
         },
       }
   }
@@ -133,7 +135,7 @@ const Button = styled.button`
   text-align: center;
   text-decoration: none;
   font-family: inherit;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.5;
   cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
   border-radius: ${props => props.theme.radii[1] + 'px'};
@@ -142,8 +144,10 @@ const Button = styled.button`
   border-style: solid;
   border-color: transparent;
   outline: none;
-  transition: all ${props => props.theme.duration.normal};
+  transition: all ${props => props.theme.duration.fast};
   position: relative;
+  min-width: 64px;
+
   ${block}
   ${space}
   ${size}
@@ -153,7 +157,7 @@ const Button = styled.button`
 
 Button.propTypes = {
   /** Вид кнопки */
-  type: PropTypes.oneOf(['primary', 'bordered', 'dashed', 'outline', 'flat']),
+  type: PropTypes.oneOf(['primary', 'bordered', 'dashed', 'flat']),
   /** Размер кнопки */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   /** Растягивает кнопку на 100% родительского блока */

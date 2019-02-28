@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components'
 import Box from '../primitives/Box'
 import Flex from '../primitives/Flex'
 import Icon from './Icon'
+import { themeGet } from 'styled-system'
 
 const noop = () => {}
 
@@ -11,7 +12,7 @@ const disabled = props => {
   return (
     props.disabled &&
     css`
-      background: ${props.theme.colors.disabled};
+      opacity: 0.4;
       cursor: not-allowed;
     `
   )
@@ -23,29 +24,33 @@ const PanelContent = styled(Box)`
 `
 
 // To fix warning because of passing isOpen prop to <svg />
-const AnimatedScaledIcon = styled(({ isOpen, ...rest }) => <Icon {...rest}/>)`
-  ${props => `transition: transform ${props.theme.duration.normal};`}
-  ${props => props.isOpen ? `transform: rotate(180deg);` : ''}
-  color: hsl(0,0%,80%);
+const AnimatedScaledIcon = styled(({ isOpen, ...rest }) => <Icon {...rest} />)`
+  font-size: ${props => props.theme.fontSizes[0] + 'px'};
+  color: ${themeGet('color.black', '#080808')};
+  transition: transform ${themeGet('duration.normal', '300ms')};
+  ${props => props.isOpen && `transform: rotate(180deg);`}
 `
 
 const PanelHeaderWrapper = styled(Flex)`
+  height: 32px;
+  align-items: center;
+  border-bottom: 1px solid ${themeGet('colors.border', '#ecebeb')};
   ${props => (props.disabled ? 'cursor: not-allowed;' : 'cursor: pointer;')}
 `
 
 const PanelWrapper = styled(Flex)`
   overflow: hidden;
+  font-size: ${props => props.theme.fontSizes[1] + 'px'};
+  color: ${props => props.theme.colors.black};
   ${disabled}
 `
 
 const PanelHeader = ({ title, togglePanel, isOpen, panelKey, disabled }) => (
-  <PanelHeaderWrapper
-    disabled={disabled}
-    justifyContent="space-between"
-    onClick={disabled ? noop : () => togglePanel(panelKey)}
-  >
-    {title}
-    <AnimatedScaledIcon isOpen={isOpen} name="chevron-down" />
+  <PanelHeaderWrapper disabled={disabled} onClick={disabled ? noop : () => togglePanel(panelKey)}>
+    <Flex justifyContent="center" alignItems="center" width={16} height={16}>
+      <AnimatedScaledIcon isOpen={isOpen} name="chevron-down" />
+    </Flex>
+    <Box ml={2}>{title}</Box>
   </PanelHeaderWrapper>
 )
 
@@ -62,10 +67,11 @@ class CollapsePanel extends React.Component {
   }
 
   render() {
+    const mergedStyle = { ...this.props.style, height: this.props.isOpen ? this.state.contentHeight : 0 }
     return (
       <PanelWrapper flexDirection="column" disabled={this.props.disabled}>
         <PanelHeader {...this.props} />
-        <PanelContent style={{ height: this.props.isOpen ? this.state.contentHeight : 0 }}>
+        <PanelContent {...this.props} style={mergedStyle}>
           <Box ref={measure => (this.measure = measure)}>{this.props.children}</Box>
         </PanelContent>
       </PanelWrapper>

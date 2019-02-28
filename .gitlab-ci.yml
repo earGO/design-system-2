@@ -18,15 +18,15 @@ cache:
 
 Build:
   stage: build
-  only:
-    - master
   before_script:
     - npm install
   script:
     - CI="" npm run build
+    - npm run styleguide:build
   artifacts:
     paths:
     - build/
+    - docs/
 
 Deploy:
   stage: deploy
@@ -36,7 +36,16 @@ Deploy:
     - TMPDIR=$(ssh suadm@192.168.13.46 "mktemp -d")
   script:
     - npm publish
-    - npm run styleguide:build
     - scp -r docs/* suadm@192.168.13.46:$TMPDIR
     - ssh suadm@192.168.13.46 "sudo /opt/deploy front $PROJECT $NAMESPACE $APP $TMPDIR"
+    
+pages:
+  stage: deploy
+  script:
+    - mv docs public
+  artifacts:
+    paths:
+    - public
+  only:
+    - master
 

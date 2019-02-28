@@ -2,19 +2,15 @@
 
 **Дизайн-система  —  это целостный визуальный язык и его техническое отражение в виде библиотеки компонентов.**
 
-*TODO: Описать преимущества нашей библиотеки, какие задачи она решает и тд..*
-
 Пример реализации комплексного компонента путем комбинирования примитивов и простых элементов:
 ```js
-<Card width={1/2} boxShadowSize="md">
-    <Heading.h5 m={3}>Do you want to read this?</Heading.h5>
-    <Divider mb={2} />
-    <Text mx={3} fontSize={1}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 	dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+<Card width={360} p={4}>
+    <Heading.h4>Внимание! Важное уведомление</Heading.h4>
+    <Text fontSize={1} mt={3}>
+        Сохраните все данные и завершите работу <strong>до 19:00</strong>. Система будет обновлена. 
     </Text>
-    <Text align="right" m={2}>
-        <Button type="outline">Cancel</Button>
-        <Button ml={2}>Apply</Button>
+    <Text align="right" mt={3}>
+        <Button>Ok</Button>
     </Text>
 </Card>
 ```

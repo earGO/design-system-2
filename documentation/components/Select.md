@@ -11,7 +11,10 @@ const options = Array(36)
   .fill(true)
   .map((_, i) => ({ value: i, label: `Option ${i}` }))
 
-;<Select options={options} />
+;
+<Box width="292px">
+  <Select placeholder="Раскрывающийся список" options={options} />
+</Box>
 ```
 
 Virtualized:

@@ -15,30 +15,31 @@ const borderBottom = props => css`
   }
 `
 
-const isDisabled = props => props.disabled && css `
-  cursor: not-allowed;
-  opacity: 0.4;
-`
+const isDisabled = props =>
+  props.disabled &&
+  css`
+    cursor: not-allowed;
+    opacity: 0.4;
+  `
 
 const TabsList = styled(Flex)`
   justify-content: flex-start;
   flex-direction: row;
+  font-size: ${props => props.theme.fontSizes[1] + 'px'};
 `
 
 const Tab = styled(Flex)`
   display: inline-flex;
   align-items: center;
-  padding-right: ${themeGet('space[2]', '8px')};
-  padding-left: ${themeGet('space[2]', '8px')};
+  font-size: ${props => props.theme.fontSizes[1] + 'px'};
+  padding-right: ${themeGet('space[3]', '16px')};
+  padding-left: ${themeGet('space[3]', '16px')};
   height: ${themeGet('heights.medium', '48px')};
   cursor: pointer;
   /* Чтобы не "прыгали" при hover/active */
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid ${props => props.theme.colors.semiLightGrey};
   ${borderBottom}
   ${isDisabled}
-  :first-child {
-    padding-left: 0;
-  }
 `
 
 /** Используется, если необходимо сгруппировать или разграничить содержимое страницы. */
@@ -47,13 +48,13 @@ class Tabs extends React.Component {
     super(props)
     props.children.forEach(child => {
       if (typeof child.props.tabKey === 'undefined') {
-        console.error('<TabPane /> components must have an unique "tabKey" prop. Check <Tabs/> component children.');
+        console.error('<TabPane /> components must have an unique "tabKey" prop. Check <Tabs/> component children.')
       }
     })
     const { children = [] } = props
     const firstChildKey = children[0].props && children[0].props.tabKey
     this.state = {
-      activeKey: this.props.activeKey || this.props.defaultActiveKey || firstChildKey
+      activeKey: this.props.activeKey || this.props.defaultActiveKey || firstChildKey,
     }
   }
 
@@ -103,7 +104,7 @@ class Tabs extends React.Component {
     return children.map(child => {
       const tabKey = child.props.tabKey
       const props = {
-        isActive: activeKey === tabKey
+        isActive: activeKey === tabKey,
       }
       return React.cloneElement(child, props)
     })

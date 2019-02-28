@@ -1,13 +1,13 @@
 ```js noeditor
-const colors = require('../src/theme/colors').palette
+const colors = require('../src/theme/colors').default
 
 function Palette() {
     return (
         <Flex flexWrap="wrap">
-            {Object.keys(colors).map(color => (
+            {Object.keys(colors.palette).map(color => (
                 <Card width={110} borderColor={color === 'white' ? 'lightGrey' : color} borderRadius={1} mr={3} mb={3}>
                     <Box height={80} bg={color} />
-                    <Divider color={color === 'white' ? 'lightGrey' : color} />
+                    <Divider color={color === 'white' ? 'lightGrey' : color} mt={0} />
                     <Text align="center" fontSize={1} my={2} px={1}>
                         <Text truncated title={color}>{color}</Text>
                         <Text fontSize={0}>  
@@ -18,7 +18,7 @@ function Palette() {
             ))}
         </Flex>
     )
-}
+};
 
 <Palette />
 ```
@@ -26,14 +26,15 @@ function Palette() {
 ### Системные цвета
 Назначаются из палитры
 ```js noeditor
-const colors = require('../src/theme/colors')
+const colors = require('../src/theme/colors').default
+
 function Palette() {
     return (
         <Flex flexWrap="wrap">
             {Object.keys(colors.system).map(color => (
                 <Card width={110} borderColor={color} borderRadius={1} mr={3} mb={3}>
                     <Box height={80} bg={color} />
-                    <Divider color={color} />
+                    <Divider color={color} mt={0} />
                     <Text truncated title={color} align="center" my={2} px={1}>
                         <Text>{color}</Text>
                         <Text fontSize={0}>  
@@ -44,7 +45,7 @@ function Palette() {
             ))}
         </Flex>
     )
-}
+};
 
 <Palette />
 ```
@@ -54,13 +55,12 @@ function Palette() {
 ```js static
 {
     primary: "#1890ff",
-    success: "#52c41a",
-    border: "#E7E7E7",
-    black: "#000",
-    white: "#FFF",
-    blue: "#1890ff",
-    lightBlue: "#DBEEFF",
-    lightGrey: "#E7E7E7",
+    success: "#66bb6a",
+    black: "#3a3a3a",
+    white: "#ffffff",
+    blue: "#1e88e5",
+    lightBlue: "#0091ea",
+    lightGrey: "#f5f5f5",
     // ...
 }
 ```
@@ -69,13 +69,11 @@ function Palette() {
 ```html static
 <Heading color="primary">Primary heading</Heading>
 <Heading color="success">Success heading</Heading>
-<Heading color="orange">Orange heading</Heading>
 
 ```
 ```js noeditor
 <Heading color="primary">Primary color heading</Heading>
 <Heading color="success">Success color heading</Heading>
-<Heading color="orange">Orange heading</Heading>
 ```
 
 Если передаваемый цвет не найден в объекте, то он применится, как обычная строка в css color:
@@ -90,12 +88,12 @@ function Palette() {
 
 Поддерживается использование массива значений для поддержки адаптивного дизайна.
 ```js static
-<Box bg={['error', 'warning', 'success', 'info' ]} p={4}>
+<Box bg={['primary', 'error', 'success' ]} p={4}>
     Responsive background color
 </Box>
 ```
 ```js noeditor
-<Box bg={['error', 'warning', 'success', 'info' ]} p={4}>
+<Box bg={['primary', 'error', 'success' ]} p={4}>
     Responsive background color
 </Box>
 ```

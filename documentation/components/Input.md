@@ -1,12 +1,12 @@
-Как то же нам надо получать данные от пользователя:
+Поле для ввода:
 
 ```js
-<Input width={200} />
+  <Input />
 ```
 
 Иконка до и иконка после:
 ```js
-<Input prefix={<Icon name="beer" color="grey" />} suffix={<Icon name="cog" color="grey" />} width={300}/>
+  <Input width={1 / 4} prefix={<Icon name="beer" color="grey" />} suffix={<Icon name="cog" color="grey" />}/>
 ```
 
 
@@ -21,7 +21,7 @@ const toggle = () => {
   })
 }
 
-<Flex width={1/4}>
+<Flex width={1 / 4}>
   <Input size="small" disabled={state.disabled} placeholder="Disabled input" />
   <Button onClick={toggle} ml={2} size="small" type="dashed" >Toggle</Button>
 </Flex>
@@ -42,14 +42,13 @@ initialState = {
   value: undefined,
 }
 
-const handleChange = (event) => {
-  setState({
-    value: event.target.value
-  })
+const handleChange = (value) => {
+  setState({ value })
 }
 
-<Box>
-  <Input value={state.value} onChange={handleChange} width={250} placeholder="Hi') DROP TABLE users;--" />
-  <Text bold>Текущее значение: {state.value}</Text>
+<Box width={250}>
+  <Input value={state.value} onChange={handleChange} placeholder="Enter text" />
+  {state.value && <Divider mt={3} mb={2} />}
+  {state.value && <Text>value: <Text bold inline color="green">{state.value}</Text></Text>}
 </Box>
 ```
