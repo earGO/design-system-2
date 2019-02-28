@@ -21,4 +21,5 @@ export { default as CollapsePanel } from './elements/CollapsePanel'
 export { default as Tooltip } from './elements/Tooltip'
 /** Data */
 export { default as Input } from './data/Input'
+export { default as Datepicker } from './data/Datepicker'
 export { default as Checkbox } from './data/Checkbox'
