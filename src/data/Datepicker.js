@@ -23,7 +23,7 @@ import 'rc-datepicker/lib/style.css'
 //   }
 // `
 
-const MyDatepicker = styled(DatePickerInput)`
+const StyledDatePicker = styled(DatePickerInput)`
   .react-datepicker-input {
     background: ${props => props.theme.colors.lightGrey} !important;
     border: 1px solid ${props => props.theme.colors.border} !important;
@@ -123,10 +123,33 @@ const MyDatepicker = styled(DatePickerInput)`
 
 const onChange = (jsDate, dateString) => {}
 
-/** Получение данных от пользователя.*/
+/** Используется для получение данных типа "Дата" от пользователя.*/
 class Datepicker extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      value: props.value === undefined ? props.value : props.defaultValue || null,
+    }
+  }
+
+  static getDerivedStateFromProps(nextProps) {
+    if ('value' in nextProps) {
+      return {
+        value: nextProps.value,
+      }
+    }
+    return null
+  }
+
+  handleChange = (newDate, b, c) => {
+    this.setState({
+      value: newDate,
+    })
+    this.props.onChange && this.props.onChange(newDate)
+  }
+
   render() {
-    return <MyDatepicker onChange={onChange} />
+    return <StyledDatePicker value={this.state.value} onChange={this.handleChange} />
   }
 }
 
