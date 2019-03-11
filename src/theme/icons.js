@@ -14,6 +14,9 @@ import {
   faMinusCircle,
   faEllipsisV,
   faEllipsisH,
+  faTimes,
+  faTrash,
+  faPencilAlt,
 } from '@fortawesome/free-solid-svg-icons'
 // import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons'
 
@@ -32,6 +35,9 @@ library.add(
   faMinusCircle,
   faEllipsisV,
   faEllipsisH,
+  faTimes,
+  faTrash,
+  faPencilAlt,
 )
 
 export default library

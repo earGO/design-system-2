@@ -7,11 +7,16 @@
 <Button type="flat">Flat</Button>
 ```
 
-**size** задает размер кнопки. Допустимые значения: **large, medium, small**. По умолчанию размер кнопки **medium**:
+**size** задает размер кнопки. Допустимые значения: **verySmall, small, medium, large**. (24px, 32px, 40px, 56px)
+
+По умолчанию размер кнопки **medium**:
 ```js
-<Button size="large" mr={2}>Large</Button>
+<Button size="verySmall" mr={2}>VerySmall</Button>
+<Button size="small" mr={2}>Small</Button>
 <Button size="medium" mr={2}>Medium</Button>
-<Button size="small">Small</Button>
+<Button size="large" mr={2}>Large</Button>
+
+
 ```
 
 **block** делает кнопку шириной 100% родительского блока:

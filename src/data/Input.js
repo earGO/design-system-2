@@ -41,7 +41,7 @@ const inline = ({ inline }) => Boolean(inline) && { display: 'inline-block' }
 const HTMLInput = styled('input')`
   border-width: 1px;
   border-style: solid;
-  border-color: ${props => props.theme.colors.border};
+  border-color: transparent;
   border-radius: ${props => props.theme.radii[1] + 'px'};
   transition: all ${props => props.theme.duration.fast};
   :hover {
