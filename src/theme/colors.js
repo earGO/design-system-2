@@ -61,7 +61,7 @@ const system = {
 
   // Misc
   text: palette.black,
-  border: palette.grey,
+  border: palette.semiLightGrey,
 
   // Disabled
   disabled: palette.grey,
