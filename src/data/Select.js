@@ -18,7 +18,7 @@ const OPTION_HEIGHT = 38
 const customStyles = {
   placeholder: (base, props) => {
     const { systemTheme } = props.selectProps
-    return ({ ...base, fontSize: systemTheme.fontSizes[1], color: systemTheme.colors.black })
+    return ({ ...base, fontSize: systemTheme.fontSizes[0], color: systemTheme.colors.black })
   },
   input: (base, props, third) => {
     // Can't access system theme here... ?
@@ -26,7 +26,7 @@ const customStyles = {
   },
   valueContainer: (base, props) => {
     const { systemTheme } = props.selectProps
-    return ({ ...base, fontSize: systemTheme.fontSizes[1], color: systemTheme.colors.black, paddingLeft: 16 })
+    return ({ ...base, fontSize: systemTheme.fontSizes[0], color: systemTheme.colors.black, paddingLeft: 16 })
   },
   control: (base, props) => {
     const { systemTheme } = props.selectProps
@@ -80,7 +80,7 @@ const customStyles = {
   option: (base, props) => {
     const { isSelected, isFocused } = props
     const { systemTheme } = props.selectProps
-    const baseline = { ...base, color: systemTheme.colors.black, fontSize: systemTheme.fontSizes[1] }
+    const baseline = { ...base, color: systemTheme.colors.black, fontSize: systemTheme.fontSizes[0] }
     if (isSelected) {
       return ({ ...baseline, backgroundColor: systemTheme.colors.lightGrey })
     }
@@ -99,7 +99,7 @@ const DropdownIndicator = props => {
   const withPadding = { ...innerProps, style: { paddingRight: 16 }}
   return (
     <components.DropdownIndicator { ...rest } innerProps={withPadding} >
-      <Icon name="caret-down" fontSize={systemTheme.fontSizes[1]} color={systemTheme.colors.black} />
+      <Icon name="caret-down" fontSize={systemTheme.fontSizes[0]} color={systemTheme.colors.black} />
     </components.DropdownIndicator>
   )
 }
@@ -171,7 +171,7 @@ const MenuList = optionHeight =>
     }
   }
 
-/** тестовый вариант на хуках :) // need react 16.7.0-alpha1 */
+/** тестовый вариант на хуках :) // need react ^16.7.0-alpha1 */
 const Hooks_MenuList = optionHeight => ({ options, children, maxHeight, getValue }) => {
   const listRef = React.useRef(null)
 
@@ -288,5 +288,6 @@ Select.propTypes = {
   /** Содержимое селекта по умолчанию. */
   placeholder: propTypes.string,
 }
+
 /** @component */
 export default Select
