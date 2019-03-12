@@ -7,25 +7,25 @@ const sizes = {
   verySmall: {
     fontSize: 0,
     diameter: 26,
-    px: 10,
+    px: 8,
     py: 2,
   },
   small: {
     fontSize: 0,
     diameter: 32,
-    px: 10,
+    px: 8,
     py: 6,
   },
   medium: {
     fontSize: 0,
     diameter: 40,
-    px: 16,
+    px: 8,
     py: 10,
   },
   large: {
     fontSize: 0,
     diameter: 48,
-    px: 20,
+    px: 8,
     py: 18,
   },
 }
