@@ -39,6 +39,7 @@ const size = ({ size = 'medium', theme }) => {
 const inline = ({ inline }) => Boolean(inline) && { display: 'inline-block' }
 
 const HTMLInput = styled('input')`
+  font-family: ${themeGet('font.main', "'PT Sans'")};
   border-width: 1px;
   border-style: solid;
   border-color: transparent;
