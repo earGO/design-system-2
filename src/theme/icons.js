@@ -17,6 +17,11 @@ import {
   faTimes,
   faTrash,
   faPencilAlt,
+  faSearch,
+  faUserCircle,
+  faTrashAlt,
+  faPlus,
+  faQuestion,
 } from '@fortawesome/free-solid-svg-icons'
 // import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons'
 
@@ -28,6 +33,7 @@ library.add(
   faChevronUp,
   faChevronDown,
   faQuestionCircle,
+  faQuestion,
   faCaretDown,
   faEdit,
   faSave,
@@ -38,6 +44,10 @@ library.add(
   faTimes,
   faTrash,
   faPencilAlt,
+  faSearch,
+  faUserCircle,
+  faTrashAlt,
+  faPlus,
 )
 
 export default library
