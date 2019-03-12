@@ -22,6 +22,7 @@ export { default as Tooltip } from './elements/Tooltip'
 export { default as Table } from './elements/Table'
 /** Data */
 export { default as Input } from './data/Input'
+export { default as Datepicker } from './data/Datepicker'
 export { default as Checkbox } from './data/Checkbox'
 export { default as Form } from './data/Form'
 export { default as Select } from './data/Select'

@@ -145,6 +145,7 @@ module.exports = {
         makeAbsolutePath('../src/data', 'Form.js'),
         makeAbsolutePath('../src/data', 'FormItem.js'),
         makeAbsolutePath('../src/data', 'Select.js'),
+        makeAbsolutePath('../src/data', 'Datepicker.js'),
         makeAbsolutePath('../src/data', 'Toggle.js'),
       ],
     },

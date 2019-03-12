@@ -4,22 +4,28 @@ import { space } from 'styled-system'
 import theme from '../theme'
 
 const sizes = {
-  small: {
-    fontSize: 1,
-    diameter: 32,
-    px: 10,
+  verySmall: {
+    fontSize: 0,
+    diameter: 26,
+    px: 8,
     py: 2,
   },
+  small: {
+    fontSize: 0,
+    diameter: 32,
+    px: 8,
+    py: 6,
+  },
   medium: {
-    fontSize: 1,
+    fontSize: 0,
     diameter: 40,
-    px: 16,
+    px: 8,
     py: 10,
   },
   large: {
-    fontSize: 1,
+    fontSize: 0,
     diameter: 48,
-    px: 20,
+    px: 8,
     py: 18,
   },
 }

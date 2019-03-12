@@ -25,7 +25,7 @@ const PanelContent = styled(Box)`
 
 // To fix warning because of passing isOpen prop to <svg />
 const AnimatedScaledIcon = styled(({ isOpen, ...rest }) => <Icon {...rest} />)`
-  font-size: ${props => props.theme.fontSizes[0] + 'px'};
+  font-size: 10px;
   color: ${themeGet('color.black', '#080808')};
   transition: transform ${themeGet('duration.normal', '300ms')};
   ${props => props.isOpen && `transform: rotate(180deg);`}
@@ -40,7 +40,7 @@ const PanelHeaderWrapper = styled(Flex)`
 
 const PanelWrapper = styled(Flex)`
   overflow: hidden;
-  font-size: ${props => props.theme.fontSizes[1] + 'px'};
+  font-size: ${props => props.theme.fontSizes[0] + 'px'};
   color: ${props => props.theme.colors.black};
   ${disabled}
 `
