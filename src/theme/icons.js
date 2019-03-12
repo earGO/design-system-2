@@ -22,6 +22,7 @@ import {
   faTrashAlt,
   faPlus,
   faQuestion,
+  faMinus,
 } from '@fortawesome/free-solid-svg-icons'
 // import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons'
 
@@ -37,17 +38,18 @@ library.add(
   faCaretDown,
   faEdit,
   faSave,
+  faPlus,
+  faMinus,
   faPlusCircle,
   faMinusCircle,
   faEllipsisV,
   faEllipsisH,
   faTimes,
   faTrash,
+  faTrashAlt,
   faPencilAlt,
   faSearch,
   faUserCircle,
-  faTrashAlt,
-  faPlus,
 )
 
 export default library
