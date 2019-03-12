@@ -9,14 +9,34 @@ const StyledTable = styled(RSTable)`
   & .rs-table-cell-content {
     display: flex;
     align-items: center;
-    font-size: ${props => props.theme.fontSizes[1] + 'px'};
+    font-size: ${props => props.theme.fontSizes[0] + 'px'};
     padding-left: ${props => props.theme.space[3] + 'px'};
     /* Expand-collapse icon */
     & > span {
       padding: 0 4px;
     }
   }
+  &.rs-table {
+    border: none;
+  }
+  & .rs-table-cell-wrap {
+    flex-grow: 1,
+  }
+  &.rs-table-hover .rs-table-body-row-wrapper {
+    .rs-table-row:hover {
+      background: ${themeGet('colors.highlightss', '#fbfbfb')};
+    }
+
+    .rs-table-row:hover .rs-table-cell-group {
+      background: ${themeGet('colors.highlightss', '#fbfbfb')};
+    }
+
+    .rs-table-row:hover .rs-table-cell {
+      background: ${themeGet('colors.highlightss', '#fbfbfb')};
+    }
+  }
 `
+
 const StyledHeader = styled(HeaderCell)`
   background: ${themeGet('colors.lightGrey', '#f5f5f5')};
   /* font-size: ${props => props.theme.fontSizes[1]}; */

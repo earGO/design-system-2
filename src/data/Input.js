@@ -21,15 +21,15 @@ const size = ({ size = 'medium', theme }) => {
   const sizes = {
     // Same as button heights, but with height, instead of paddings.
     small: {
-      fontSize: theme.fontSizes[1],
+      fontSize: theme.fontSizes[0],
       height: 32,
     },
     medium: {
-      fontSize: theme.fontSizes[1],
+      fontSize: theme.fontSizes[0],
       height: 40,
     },
     large: {
-      fontSize: theme.fontSizes[1],
+      fontSize: theme.fontSizes[0],
       height: 48,
     },
   }
