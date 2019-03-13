@@ -1,4 +1,5 @@
 /** Theme */
+// DONT TOUCH LIBRARY, EVEN IF ITS GRAY.
 import library from './theme/icons'
 export { default as theme } from './theme'
 export { default as ThemeProvider } from './theme/ThemeProvider'
@@ -19,7 +20,10 @@ export { default as Icon } from './elements/Icon'
 export { default as Divider } from './elements/Divider'
 export { default as Collapse } from './elements/Collapse'
 export { default as Tooltip } from './elements/Tooltip'
+export { default as Popover } from './elements/Popover'
 export { default as Table } from './elements/Table'
+export { default as Tabs } from './elements/Tabs'
+
 /** Data */
 export { default as Input } from './data/Input'
 export { default as Datepicker } from './data/Datepicker'
