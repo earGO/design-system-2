@@ -78,6 +78,10 @@ Table.defaultProps = {
   headerHeight: 48,
   rowHeight: 48,
   rowKey: 'key',
+  locale: {
+    emptyMessage: 'Нет данных',
+    loading: 'Загрузка...'
+  },
 }
 
 export default Table

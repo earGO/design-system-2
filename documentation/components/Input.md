@@ -4,6 +4,13 @@
   <Input />
 ```
 
+Только численные значения
+```js
+<Box width={0.25}>
+  <Input type="number" />
+</Box>
+```
+
 Иконка до и иконка после:
 ```js
   <Input width={1 / 4} prefix={<Icon name="beer" color="grey" />} suffix={<Icon name="cog" color="grey" />}/>
