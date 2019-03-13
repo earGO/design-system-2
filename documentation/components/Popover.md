@@ -9,18 +9,18 @@ const content = (
   </Flex>
 )
 ;
-<Box>
+<Flex width={400} justifyContent="space-around">
   <Popover content={content} events={['click']} placement="right">
-    <Button>Нажми меня</Button>
+    <Button>Справа</Button>
   </Popover>
   <Popover content={content} events={['click']} placement="top">
-    <Button>Нажми меня</Button>
+    <Button>Сверху</Button>
   </Popover>
   <Popover content={content} events={['click']} placement="left">
-    <Button>Нажми меня</Button>
+    <Button>Слева</Button>
   </Popover>
   <Popover content={content} events={['click']} placement="bottom">
-    <Button>Нажми меня</Button>
+    <Button>Снизу</Button>
   </Popover>
-</Box>
+</Flex>
 ```
