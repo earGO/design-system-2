@@ -42,7 +42,8 @@ Deploy:
 pages:
   stage: deploy
   script:
-    - mv docs public
+    - rm -rf public/
+    - rename docs public
   artifacts:
     paths:
     - public
