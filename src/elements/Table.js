@@ -20,7 +20,7 @@ const StyledTable = styled(RSTable)`
     border: none;
   }
   & .rs-table-cell-wrap {
-    flex-grow: 1,
+    flex: 1,
   }
   &.rs-table-hover .rs-table-body-row-wrapper {
     .rs-table-row:hover {
