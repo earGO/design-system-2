@@ -43,7 +43,7 @@ pages:
   stage: deploy
   script:
     - rm -rf public/
-    - rename docs public
+    - cp -r docs public
   artifacts:
     paths:
     - public
