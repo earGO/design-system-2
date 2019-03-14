@@ -17,7 +17,7 @@ const Body = styled.div.attrs(props => ({
   text-align: center;
   box-shadow: 0 1px 4px 0 rgba(58, 58, 58, 0.2), 0 8px 20px 0 rgba(58, 58, 58, 0.06);
   margin: 4px;
-
+  
   & p {
     color: #ffffff;
     margin: 0;
@@ -27,7 +27,7 @@ const Body = styled.div.attrs(props => ({
     position: absolute;
     content: '';
     transform-origin: 0 0;
-    border: 0.5em solid transparent;
+    border: 6px solid transparent;
     border-color: transparent transparent #fff #fff;
     box-shadow: -1px 1px 0px 0 rgba(0, 0, 0, 0.06);
 
@@ -35,8 +35,7 @@ const Body = styled.div.attrs(props => ({
       props.placement === 'top' &&
       css`
         left: 50%;
-        margin-left: -0.5em;
-        bottom: -1em;
+        margin-left: -8px;
         transform: rotate(-45deg);
       `}
 
@@ -58,7 +57,7 @@ const Body = styled.div.attrs(props => ({
           left: 50%;
           top: 0;
           bottom: inherit;
-          margin-left: 0.5em;
+          margin-left: 8px;
           transform: rotate(135deg);
           box-shadow: -1px 1px 0px 0 rgba(0, 0, 0, 0.03);
         `}
