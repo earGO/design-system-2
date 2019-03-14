@@ -10,8 +10,6 @@ const Body = styled.div.attrs(props => ({
 }))`
   position: relative;
   font-family: ${props => props.font};
-  font-size: ${props => props.theme.fontSizes[0] + 'px'};
-  padding: ${props => `${props.theme.space[2]}px ${props.theme.space[3]}px`};
   background-color: ${props => props.theme.colors.white};
   border-radius: ${props => props.theme.radii[2] + 'px'};
   animation: all 0.5s;
