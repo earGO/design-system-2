@@ -40,7 +40,7 @@ const PanelHeaderWrapper = styled(Flex)`
 
 const PanelWrapper = styled(Flex)`
   overflow: hidden;
-  font-size: ${props => props.theme.fontSizes[0] + 'px'};
+  font-size: ${props => props.theme.fontSizes[1] + 'px'};
   color: ${props => props.theme.colors.black};
   ${disabled}
 `

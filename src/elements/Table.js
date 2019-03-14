@@ -9,7 +9,7 @@ const StyledTable = styled(RSTable)`
   & .rs-table-cell-content {
     display: flex;
     align-items: center;
-    font-size: ${props => props.theme.fontSizes[0] + 'px'};
+    font-size: ${props => props.theme.fontSizes[1] + 'px'};
     padding-left: ${props => props.theme.space[3] + 'px'};
     /* Expand-collapse icon */
     & > span {
@@ -20,7 +20,7 @@ const StyledTable = styled(RSTable)`
     border: none;
   }
   & .rs-table-cell-wrap {
-    flex: 1,
+    flex: 1;
   }
   &.rs-table-hover .rs-table-body-row-wrapper {
     .rs-table-row:hover {
@@ -80,7 +80,7 @@ Table.defaultProps = {
   rowKey: 'key',
   locale: {
     emptyMessage: 'Нет данных',
-    loading: 'Загрузка...'
+    loading: 'Загрузка...',
   },
 }
 

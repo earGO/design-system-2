@@ -4,21 +4,6 @@ import Positional from '../primitives/Positional'
 import PropTypes from 'prop-types'
 import theme from '../theme'
 
-
-const arrowTransform = ({ placement }) => {
-  // #Todo.
-  if (['right', 'top'].includes(placement)) {
-    return css`
-      transform: rotate(45deg);
-    `
-  }
-  if (['left', 'bottom'].includes(placement)) {
-    return css`
-      transform: rotate(315deg);
-    `
-  }
-}
-
 const Body = styled.div.attrs(props => ({
   font: props.font,
   placement: props.placement,
@@ -33,6 +18,7 @@ const Body = styled.div.attrs(props => ({
   min-width: 50px;
   text-align: center;
   box-shadow: 0 1px 4px 0 rgba(58, 58, 58, 0.2), 0 8px 20px 0 rgba(58, 58, 58, 0.06);
+  margin: 4px;
 
   & p {
     color: #ffffff;
@@ -41,19 +27,19 @@ const Body = styled.div.attrs(props => ({
 
   &:after {
     position: absolute;
-    width: 8px;
-    height: 8px;
     content: '';
-    ${arrowTransform}
-    background-color: ${props => props.theme.colors.white};
-    margin: -4px 0 0 -4px;
-    box-shadow: 0 1px 0px 0 rgba(58,58,58,0.2), 0 8px 20px 0 rgba(58,58,58,0.06);
+    transform-origin: 0 0;
+    border: 0.5em solid transparent;
+    border-color: transparent transparent #fff #fff;
+    box-shadow: -1px 1px 0px 0 rgba(0, 0, 0, 0.06);
 
     ${props =>
       props.placement === 'top' &&
       css`
         left: 50%;
-        top: 100%;
+        margin-left: -0.5em;
+        bottom: -1em;
+        transform: rotate(-45deg);
       `}
 
       ${props =>
@@ -72,25 +58,39 @@ const Body = styled.div.attrs(props => ({
         props.placement === 'bottom' &&
         css`
           left: 50%;
-          top: 0%;
+          top: 0;
+          bottom: inherit;
+          margin-left: 0.5em;
+          transform: rotate(135deg);
+          box-shadow: -1px 1px 0px 0 rgba(0, 0, 0, 0.03);
         `}
       ${props =>
         props.placement === 'bottomLeft' &&
         css`
           left: 25%;
-          top: 0%;
+          top: 0;
+          bottom: inherit;
+          margin-left: 0.5em;
+          transform: rotate(135deg);
+          box-shadow: -1px 1px 0px 0 rgba(0, 0, 0, 0.03);
         `}
       ${props =>
         props.placement === 'bottomRight' &&
         css`
           left: 75%;
-          top: 0%;
+          top: 0;
+          bottom: inherit;
+          margin-left: 0.5em;
+          transform: rotate(135deg);
+          box-shadow: -1px 1px 0px 0 rgba(0, 0, 0, 0.03);
         `}
       ${props =>
         props.placement === 'left' &&
         css`
-          left: 100%;
+          right: 0;
           top: 50%;
+          margin-top: -0.5em;
+          transform: rotate(-135deg);
         `}
       ${props =>
         props.placement === 'right' &&
@@ -146,9 +146,7 @@ class Popover extends Component {
 
     const popupComponent = (
       <Body font={font} placement={placement}>
-        {typeof content === 'string' 
-          ?<p>{content}</p>
-          : content }
+        {typeof content === 'string' ? <p>{content}</p> : content}
       </Body>
     )
 
