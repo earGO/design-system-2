@@ -2,10 +2,10 @@
 
 ```js
 const content = (
-  <Flex flexDirection="column" p={0}>
-    <Text width="100%" fontSize={0}>Hello</Text>
+  <Flex flexDirection="column" p={2}>
+    <Text width="100%">Hello</Text>
     <Divider my={1} />
-    <Text width="100%" fontSize={0}>Hello</Text>
+    <Text width="100%">Hello</Text>
   </Flex>
 )
 ;
