@@ -11,19 +11,19 @@ const sizes = {
     py: 2,
   },
   small: {
-    fontSize: 0,
+    fontSize: 1,
     diameter: 32,
     px: 8,
     py: 6,
   },
   medium: {
-    fontSize: 0,
+    fontSize: 1,
     diameter: 40,
     px: 8,
     py: 10,
   },
   large: {
-    fontSize: 0,
+    fontSize: 1,
     diameter: 48,
     px: 8,
     py: 18,
@@ -69,7 +69,7 @@ const type = props => {
         '&:active': !disabled && {
           color: colors.darkBlue,
           borderColor: colors.darkBlue,
-          transform: `scale(${activeScale})`,
+          // transform: `scale(${activeScale})`,
         },
       }
     case 'dashed':
@@ -87,7 +87,7 @@ const type = props => {
         '&:active': !disabled && {
           color: colors.darkBlue,
           borderColor: colors.darkBlue,
-          transform: `scale(${activeScale})`,
+          // transform: `scale(${activeScale})`,
         },
       }
     case 'flat':
@@ -99,7 +99,7 @@ const type = props => {
         },
         '&:active': !disabled && {
           color: colors.darkBlue,
-          transform: `scale(${activeScale})`,
+          // transform: `scale(${activeScale})`,
         },
       }
 
@@ -107,9 +107,11 @@ const type = props => {
       return {
         backgroundColor: disabled ? colors.disabled : colors.lightGrey,
         color: colors.black,
-        '&:active': !disabled && {
-          transform: `scale(${activeScale})`,
-        },
+        '&:active':
+          !disabled &&
+          {
+            // transform: `scale(${activeScale})`,
+          },
       }
     }
     case 'primary':
@@ -125,7 +127,7 @@ const type = props => {
         '&:active': !disabled && {
           backgroundColor: colors.darkBlue,
           borderColor: colors.darkBlue,
-          transform: `scale(${activeScale})`,
+          // transform: `scale(${activeScale})`,
         },
       }
   }
