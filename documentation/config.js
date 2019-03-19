@@ -148,6 +148,8 @@ module.exports = {
         makeAbsolutePath('../src/data', 'Select.js'),
         makeAbsolutePath('../src/data', 'Datepicker.js'),
         makeAbsolutePath('../src/data', 'Toggle.js'),
+        makeAbsolutePath('../src/data', 'Radio.js'),
+        makeAbsolutePath('../src/data', 'RadioGroup.js'),
       ],
     },
     {
