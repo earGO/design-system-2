@@ -44,12 +44,16 @@ const Body = styled.div.attrs(props => ({
         css`
           left: 25%;
           top: 100%;
+          margin-left: -0.3em;
+          transform: rotate(-45deg);
         `}
       ${props =>
         props.placement === 'topRight' &&
         css`
           left: 75%;
           top: 100%;
+          transform: rotate(-45deg);
+          margin-left: -0.8em;
         `}
       ${props =>
         props.placement === 'bottom' &&
@@ -67,7 +71,7 @@ const Body = styled.div.attrs(props => ({
           left: 25%;
           top: 0;
           bottom: inherit;
-          margin-left: 0.5em;
+          margin-left: 0.8em;
           transform: rotate(135deg);
           box-shadow: -1px 1px 0px 0 rgba(0, 0, 0, 0.03);
         `}
@@ -77,7 +81,7 @@ const Body = styled.div.attrs(props => ({
           left: 75%;
           top: 0;
           bottom: inherit;
-          margin-left: 0.5em;
+          margin-left: 0.3em;
           transform: rotate(135deg);
           box-shadow: -1px 1px 0px 0 rgba(0, 0, 0, 0.03);
         `}
@@ -94,6 +98,8 @@ const Body = styled.div.attrs(props => ({
         css`
           left: 0%;
           top: 50%;
+          transform: rotate(45deg);
+          margin-top: -8px;
         `}
   }
 `
@@ -171,7 +177,7 @@ Popover.propTypes = {
   /** Позиционирование компонента относительно родительского компонента. Аргументы формируются исходя из параметра builtinPlacements */
   placement: PropTypes.oneOf(['left', 'right', 'top', 'bottom', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight']),
   /** Содержимое */
-  content: PropTypes.string,
+  content: PropTypes.oneOfType([ PropTypes.string, PropTypes.element ]),
   /** Имя класса для анимаций. Например, rc-trigger-popup-zoom. Стандартная анимация убирается передачей null */
   transitionName: PropTypes.string,
 }
