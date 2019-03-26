@@ -23,6 +23,7 @@ export { default as Tooltip } from './elements/Tooltip'
 export { default as Popover } from './elements/Popover'
 export { default as Table } from './elements/Table'
 export { default as Tabs } from './elements/Tabs'
+export { default as Modal } from './elements/Modal'
 
 /** Data */
 export { default as Input } from './data/Input'
