@@ -66,6 +66,15 @@ class CollapsePanel extends React.Component {
     })
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.measure) {
+      if (prevState.contentHeight !== this.measure.clientHeight)
+      this.setState({
+        contentHeight: this.measure.clientHeight,
+      })
+    }
+  }
+
   render() {
     const mergedStyle = { ...this.props.style, height: this.props.isOpen ? this.state.contentHeight : 0 }
     return (

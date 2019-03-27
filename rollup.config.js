@@ -67,7 +67,7 @@ export default {
           'isValidElementType',
         ],
         'node_modules/react-dom/index.js': ['render', 'hydrate'],
-        'node_modules/rc-datepicker/index.js': [ 'DatePickerInput' ],
+        'node_modules/react-dates/index.js': [ 'SingleDatePicker' ],
       },
     }),
     json(),
