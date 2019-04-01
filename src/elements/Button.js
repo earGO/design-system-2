@@ -165,7 +165,7 @@ const Button = styled.button`
 
 Button.propTypes = {
   /** Вид кнопки */
-  type: PropTypes.oneOf(['primary', 'bordered', 'dashed', 'flat']),
+  type: PropTypes.oneOf(['primary', 'secondary', 'bordered', 'dashed', 'flat']),
   /** Размер кнопки */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   /** Растягивает кнопку на 100% родительского блока */

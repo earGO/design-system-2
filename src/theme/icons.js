@@ -23,6 +23,8 @@ import {
   faPlus,
   faQuestion,
   faMinus,
+  faArrowUp,
+  faArrowDown,
 } from '@fortawesome/free-solid-svg-icons'
 // import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons'
 
@@ -50,6 +52,8 @@ library.add(
   faPencilAlt,
   faSearch,
   faUserCircle,
+  faArrowDown,
+  faArrowUp,
 )
 
 export default library
