@@ -7,20 +7,24 @@ const content = (
     <Divider my={1} />
     <Text width="100%">Hello</Text>
   </Flex>
-)
-;
-<Flex width={400} justifyContent="space-around">
-  <Popover content={content} events={['click']} placement="right">
-    <Button>Справа</Button>
-  </Popover>
-  <Popover content={content} events={['click']} placement="top">
-    <Button>Сверху</Button>
-  </Popover>
-  <Popover content={content} events={['click']} placement="left">
-    <Button>Слева</Button>
-  </Popover>
-  <Popover content={content} events={['click']} placement="bottom">
-    <Button>Снизу</Button>
-  </Popover>
+);
+
+const placements = {
+  topLeft: 'Top Left',
+  top: 'Top',
+  topRight: 'Top Right',
+  right: 'Right',
+  bottomRight: 'Bottom Right',
+  bottom: 'Bottom',
+  bottomLeft: 'Bottom Left',
+  left: 'Left',
+};
+
+<Flex width={800} justifyContent="space-around">
+  {Object.keys(placements).map(placement => (
+    <Popover content={content} events={['click']} placement={String(placement)}>
+      <Button>{placements[placement]}</Button>
+    </Popover>
+  ))}
 </Flex>
 ```

@@ -135,6 +135,7 @@ module.exports = {
         makeAbsolutePath('../src/elements', 'TabPane.js'),
         makeAbsolutePath('../src/elements', 'Table.js'),
         makeAbsolutePath('../src/elements', 'Popover.js'),
+        makeAbsolutePath('../src/elements', 'Modal.js'),
       ],
     },
     {
