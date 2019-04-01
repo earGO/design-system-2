@@ -48,6 +48,12 @@ const components = {
     active: palette.blue,
     hover: palette.lightBlue,
   },
+  //Radio
+  radio: {
+    checked: palette.lightBlue,
+    unchecked: palette.lightGrey,
+    disabled: palette.grey,
+  }
 }
 
 const system = {
