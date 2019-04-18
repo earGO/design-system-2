@@ -1,15 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { ThemeProvider as StyledThemeProvider, createGlobalStyle } from 'styled-components'
-
+import normalize from 'styled-normalize'
 import baseTheme from '.'
+console.log(normalize)
 
-createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
 html,
 body {
   height: 100%;
-  margin: 0;
 }
+
+${normalize};
 `
 
 export const Base = styled.div`
@@ -31,9 +33,12 @@ const ThemeProvider = ({ customBreakpoints, ...props }) => {
   }
 
   return (
-    <StyledThemeProvider theme={theme}>
-      <Base {...props} />
-    </StyledThemeProvider>
+    <React.Fragment>
+      <GlobalStyle />
+      <StyledThemeProvider theme={theme}>
+        <Base {...props} />
+      </StyledThemeProvider>
+    </React.Fragment>
   )
 }
 
