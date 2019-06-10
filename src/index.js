@@ -33,3 +33,6 @@ export { default as Form } from './data/Form'
 export { default as Select } from './data/Select'
 export { default as Toggle } from './data/Toggle'
 export { default as Radio } from './data/Radio'
+
+/** Experimental*/
+export { default as HeadingAlternate } from './elements/HeadingAlternate'
