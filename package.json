@@ -2,7 +2,7 @@
   "name": "@ursip/design-system",
   "version": "1.0.1",
   "main": "build/index.js",
-  "module": "build/index.es.js",
+  "module": "build/index.es.j s",
   "jsnext:main": "build/index.es.js",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.12",
@@ -59,10 +59,10 @@
     "css-loader": "^2.1.0",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
-    "react": "^16.8.0",
+    "react": "^16.8.6",
     "react-dom": "^16.8.0",
     "react-styleguidist": "^8.0.6",
-    "rollup": "^1.1.0",
+    "rollup": "^1.14.6",
     "rollup-plugin-babel": "^4.3.0",
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-json": "^3.1.0",
@@ -71,7 +71,8 @@
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-terser": "^4.0.4",
     "rollup-plugin-url": "^2.1.0",
-    "webpack": "^4.29.0"
+    "webpack": "^4.29.0",
+    "prettier": "^1.18.2"
   },
   "publishConfig": {
     "registry": "https://gitlab.ursip.ru/nexus/repository/npm-local/"

@@ -125,6 +125,7 @@ module.exports = {
       components: () => [
         makeAbsolutePath('../src/elements', 'Text.js'),
         makeAbsolutePath('../src/elements', 'Heading.js'),
+        makeAbsolutePath('../src/elements', 'HeadingAlternate.js'),
         makeAbsolutePath('../src/elements', 'Icon.js'),
         makeAbsolutePath('../src/elements', 'Button.js'),
         makeAbsolutePath('../src/elements', 'Divider.js'),
