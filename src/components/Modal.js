@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react'
 import propTypes from 'prop-types'
 import styled from 'styled-components'
-import Absolute from '../primitives/Absolute'
-import Relative from '../primitives/Relative'
-import Box from '../primitives/Box'
-import Flex from '../primitives/Flex'
-import Icon from '../elements/Icon'
+import Absolute from './Absolute'
+import Relative from './Relative'
+import Box from './Box'
+import Flex from './Flex'
+import Icon from './Icon'
 import { themeGet } from 'styled-system'
 
 const ModalBackdrop = styled(Relative)`
@@ -38,7 +38,7 @@ const CloseButton = styled(Absolute)`
   justify-content: center;
   align-items: center;
   :hover {
-    background: ${themeGet('colors.lightGrey', 'f5f5f5')}
+    background: ${themeGet('colors.lightGrey', 'f5f5f5')};
   }
 `
 
@@ -48,7 +48,7 @@ const ModalFooter = styled(Flex)`
 `
 
 const blockScroll = () => {
-  const [ bodyStyle, _ ] = useState(document.body.style)
+  const [bodyStyle, _] = useState(document.body.style)
   useEffect(() => {
     // чтобы не двигался контент, добавим паддинг справа вместо скроллбара.
     document.body.style = 'padding-right: 17px; overflow: hidden;'
@@ -91,7 +91,11 @@ const Modal = ({ children, closeModal, title, footer, closeOnBackdropClick }) =>
         <ContentWrapper pt={3} pb={footer ? 3 : 4}>
           {children}
         </ContentWrapper>
-        {footer && <ModalFooter pt={3} pb={4}>{footer}</ModalFooter>}
+        {footer && (
+          <ModalFooter pt={3} pb={4}>
+            {footer}
+          </ModalFooter>
+        )}
       </ModalWrapper>
     </ModalBackdrop>
   )
@@ -101,11 +105,11 @@ Modal.propTypes = {
   /** Содержимое модального окна */
   children: propTypes.element,
   /** Заголовок модального окна */
-  title: propTypes.oneOfType([ propTypes.string, propTypes.element]),
+  title: propTypes.oneOfType([propTypes.string, propTypes.element]),
   /** Функция, вызывающаяся при клике за модальным окном либо на кнопку закрытия */
   closeModal: propTypes.func,
   /** Футер модального окна */
-  footer: propTypes.oneOfType([ propTypes.string, propTypes.element ]),
+  footer: propTypes.oneOfType([propTypes.string, propTypes.element]),
   /** Закрывать ли окно при клике на бэкдроп */
   closeOnBackdropClick: propTypes.bool,
 }

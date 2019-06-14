@@ -5,7 +5,7 @@ function Palette() {
     return (
         <Flex flexWrap="wrap">
             {Object.keys(colors.palette).map(color => (
-                <Card width={110} borderColor={color === 'white' ? 'lightGrey' : color} borderRadius={1} mr={3} mb={3}>
+                <Card key={color} width={110} borderColor={color === 'white' ? 'lightGrey' : color} borderRadius={1} mr={3} mb={3}>
                     <Box height={80} bg={color} />
                     <Divider color={color === 'white' ? 'lightGrey' : color} mt={0} />
                     <Text align="center" fontSize={1} my={2} px={1}>
@@ -32,7 +32,7 @@ function Palette() {
     return (
         <Flex flexWrap="wrap">
             {Object.keys(colors.system).map(color => (
-                <Card width={110} borderColor={color} borderRadius={1} mr={3} mb={3}>
+                <Card key={color} width={110} borderColor={color} borderRadius={1} mr={3} mb={3}>
                     <Box height={80} bg={color} />
                     <Divider color={color} mt={0} />
                     <Text truncated title={color} align="center" my={2} px={1}>

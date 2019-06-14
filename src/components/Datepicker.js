@@ -2,48 +2,48 @@
 // Сначала - темы.
 import produce from 'immer'
 import moment from 'moment'
-import ThemedStyleSheet from 'react-with-styles/lib/ThemedStyleSheet';
-import aphroditeInterface from 'react-with-styles-interface-aphrodite';
-import DefaultTheme from 'react-dates/lib/theme/DefaultTheme';
+import ThemedStyleSheet from 'react-with-styles/lib/ThemedStyleSheet'
+import aphroditeInterface from 'react-with-styles-interface-aphrodite'
+import DefaultTheme from 'react-dates/lib/theme/DefaultTheme'
 // https://github.com/airbnb/react-dates/blob/master/src/theme/DefaultTheme.js
 
 // Хз как сюда динамически запихнуть переменные из темы.
 // Наверное, стоит убрать этот react-with-styles и старым добрым оверрайдом ксс застайлить.
 // Допустим, добавить размер large - без цирковых представлений не обойдется.
 // #TODO.
-ThemedStyleSheet.registerInterface(aphroditeInterface);
+ThemedStyleSheet.registerInterface(aphroditeInterface)
 const DesignSystemTheme = produce(DefaultTheme, draft => {
   const { input, pickerInput } = draft.reactDates.border
-  input.border = '1px solid transparent';
+  input.border = '1px solid transparent'
   input.borderTop = '1px solid transparent'
-  input.borderBottom ='1px solid transparent'
+  input.borderBottom = '1px solid transparent'
   input.borderLeft = '1px solid transparent'
-  input.borderRight= '1px solid transparent';
-  input.borderTopFocused = '1px solid #0091ea';
-  input.borderLeftFocused= '1px solid #0091ea';
-  input.borderBottomFocused= '1px solid #0091ea';
-  input.borderRightFocused= '1px solid #0091ea';
-  input.borderRadius = 4;
+  input.borderRight = '1px solid transparent'
+  input.borderTopFocused = '1px solid #0091ea'
+  input.borderLeftFocused = '1px solid #0091ea'
+  input.borderBottomFocused = '1px solid #0091ea'
+  input.borderRightFocused = '1px solid #0091ea'
+  input.borderRadius = 4
   pickerInput.borderRadius = 4
   // Цвета:
   const { color } = draft.reactDates
-  color.background = '#ffffff';
-  color.backgroundFocused = '#ffffff';
-  color.border = 'transparent';
-  color.selected.backgroundColor = "#1976d2"
-  color.selected.backgroundColor_hover = '#1976d2';
-  color.selected.borderColor = "#1976d2"
-  color.selected.borderColor_hover = "#1976d2"
-  const { spacing }= draft.reactDates
-  spacing.displayTextPaddingTop = 7;
-  spacing.displayTextPaddingBottom = 7;
-  spacing.displayTextPaddingLeft = 16;
-  spacing.displayTextPaddingRight = 8;
+  color.background = '#ffffff'
+  color.backgroundFocused = '#ffffff'
+  color.border = 'transparent'
+  color.selected.backgroundColor = '#1976d2'
+  color.selected.backgroundColor_hover = '#1976d2'
+  color.selected.borderColor = '#1976d2'
+  color.selected.borderColor_hover = '#1976d2'
+  const { spacing } = draft.reactDates
+  spacing.displayTextPaddingTop = 7
+  spacing.displayTextPaddingBottom = 7
+  spacing.displayTextPaddingLeft = 16
+  spacing.displayTextPaddingRight = 8
   const { font } = draft.reactDates
-  font.input.size = 14;
-  font.input.size_small = 14;
+  font.input.size = 14
+  font.input.size_small = 14
 })
-ThemedStyleSheet.registerTheme(DesignSystemTheme);
+ThemedStyleSheet.registerTheme(DesignSystemTheme)
 
 // Проставим локаль.
 import 'moment/locale/ru'
@@ -54,7 +54,7 @@ moment.locale('ru')
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates'
-import Box from '../primitives/Box'
+import Box from './Box'
 
 // TBD - подумать.
 const Wrapper = styled(Box)`
@@ -88,7 +88,7 @@ class Datepicker extends Component {
     return null
   }
 
-  handleChange = (newDate) => {
+  handleChange = newDate => {
     this.setState({
       value: newDate,
     })

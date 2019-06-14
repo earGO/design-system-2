@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
-import Positional from '../primitives/Positional'
+import Positional from './Positional'
 import PropTypes from 'prop-types'
 import theme from '../theme'
 
@@ -177,7 +177,7 @@ Popover.propTypes = {
   /** Позиционирование компонента относительно родительского компонента. Аргументы формируются исходя из параметра builtinPlacements */
   placement: PropTypes.oneOf(['left', 'right', 'top', 'bottom', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight']),
   /** Содержимое */
-  content: PropTypes.oneOfType([ PropTypes.string, PropTypes.element ]),
+  content: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   /** Имя класса для анимаций. Например, rc-trigger-popup-zoom. Стандартная анимация убирается передачей null */
   transitionName: PropTypes.string,
 }

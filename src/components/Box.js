@@ -8,6 +8,7 @@ import { space, color, width, height, minWidth, maxWidth, fontSize, flex, order,
 const Box = styled('div')(
   {
     boxSizing: 'border-box',
+    position: 'relative',
   },
   space,
   color,

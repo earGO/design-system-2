@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { space } from 'styled-system'
-import Box from '../primitives/Box'
+import Box from './Box'
 import theme from '../theme'
 
 const TabPane = styled(Box)`

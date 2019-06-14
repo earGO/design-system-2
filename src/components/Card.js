@@ -19,7 +19,7 @@ const boxShadow = props => {
       'box-shadow': props.theme.boxShadows[3],
     },
   }
-  return boxShadows[props.boxShadowSize]
+  return boxShadows[props.boxShadowSize] || {}
 }
 
 const boxBorder = props => ({
@@ -31,6 +31,7 @@ const boxBorder = props => ({
  * */
 const Card = styled(Box)`
   overflow: hidden;
+  position: relative;
 
   ${boxShadow} 
   ${boxBorder} 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Flex from '../primitives/Flex'
-import Icon from '../elements/Icon'
+import Flex from './Flex'
+import Icon from './Icon'
 import propTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import { space, themeGet } from 'styled-system'

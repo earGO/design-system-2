@@ -54,7 +54,6 @@ const type = props => {
   const { theme, disabled, size, block, type } = props
   const { colors } = theme
   const { px, py } = getSizeParams(size)
-  const activeScale = type === 'flat' ? 1 : block ? 0.995 : 0.98
 
   switch (type) {
     case 'bordered':
@@ -69,7 +68,6 @@ const type = props => {
         '&:active': !disabled && {
           color: colors.darkBlue,
           borderColor: colors.darkBlue,
-          // transform: `scale(${activeScale})`,
         },
       }
     case 'dashed':
@@ -87,7 +85,6 @@ const type = props => {
         '&:active': !disabled && {
           color: colors.darkBlue,
           borderColor: colors.darkBlue,
-          // transform: `scale(${activeScale})`,
         },
       }
     case 'flat':
@@ -99,7 +96,6 @@ const type = props => {
         },
         '&:active': !disabled && {
           color: colors.darkBlue,
-          // transform: `scale(${activeScale})`,
         },
       }
 
@@ -107,11 +103,6 @@ const type = props => {
       return {
         backgroundColor: disabled ? colors.disabled : colors.lightGrey,
         color: colors.black,
-        '&:active':
-          !disabled &&
-          {
-            // transform: `scale(${activeScale})`,
-          },
       }
     }
     case 'primary':
@@ -127,7 +118,6 @@ const type = props => {
         '&:active': !disabled && {
           backgroundColor: colors.darkBlue,
           borderColor: colors.darkBlue,
-          // transform: `scale(${activeScale})`,
         },
       }
   }

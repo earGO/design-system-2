@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Flex from '../primitives/Flex'
+import Flex from './Flex'
 import propTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import { space, themeGet } from 'styled-system'
@@ -89,7 +89,7 @@ class Radio extends Component {
   handleChange = event => {
     const { checked } = event.target
     this.setState({ checked })
-    console.log('Radio handleChange', {'this.props': this.props})
+    console.log('Radio handleChange', { 'this.props': this.props })
     this.props.onChange && this.props.onChange(checked, this.props.value)
   }
 
@@ -112,12 +112,17 @@ class Radio extends Component {
     return (
       <Label {...this.props}>
         <RadioContainer onChange={this.handleChange}>
-          <RadioInput {...omit(this.props, ['onChange', 'value'])} checked={this.state.checked} name={this.props.name} readOnly />
+          <RadioInput
+            {...omit(this.props, ['onChange', 'value'])}
+            checked={this.state.checked}
+            name={this.props.name}
+            readOnly
+          />
           <StyledRadio checked={this.state.checked} size={this.props.size} disabled={this.props.disabled}>
-          {/* Icon для выстраивания чекбоксов с разными border-width на base line  */}
-              <Icon name="check" color="transparent" />
+            {/* Icon для выстраивания чекбоксов с разными border-width на base line  */}
+            <Icon name="check" color="transparent" />
           </StyledRadio>
-          </RadioContainer>
+        </RadioContainer>
         {/* this.props.children instead of text maybe? */}
         <Text inline regular ml={2}>
           {this.props.label}

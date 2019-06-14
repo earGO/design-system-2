@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
-import Positional from '../primitives/Positional'
+import Positional from './Positional'
 import PropTypes from 'prop-types'
 import theme from '../theme'
 

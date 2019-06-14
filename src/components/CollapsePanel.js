@@ -1,8 +1,8 @@
 import React from 'react'
 import propTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import Box from '../primitives/Box'
-import Flex from '../primitives/Flex'
+import Box from './Box'
+import Flex from './Flex'
 import Icon from './Icon'
 import { themeGet } from 'styled-system'
 
@@ -69,9 +69,9 @@ class CollapsePanel extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     if (this.measure) {
       if (prevState.contentHeight !== this.measure.clientHeight)
-      this.setState({
-        contentHeight: this.measure.clientHeight,
-      })
+        this.setState({
+          contentHeight: this.measure.clientHeight,
+        })
     }
   }
 

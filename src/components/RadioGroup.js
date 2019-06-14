@@ -36,7 +36,6 @@ class RadioGroup extends Component {
   }
 
   render() {
-    console.log('Radiogroup state', this.state)
     return <Box>{this.getChildren()}</Box>
   }
 }
