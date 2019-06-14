@@ -5,7 +5,7 @@
 ```
 
 ```js
-<Heading.h1>h1 заголовок</Heading.h1>
+<Heading.h1>h1 заголовок </Heading.h1>
 <Heading.h2>h2 заголовок</Heading.h2>
 <Heading.h3>h3 заголовок</Heading.h3>
 <Heading.h4>h4 заголовок</Heading.h4>

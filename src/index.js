@@ -27,6 +27,7 @@ export { default as Tabs } from './components/Tabs'
 export { default as Modal } from './components/Modal'
 
 /** Data */
+<<<<<<< HEAD
 export { default as Input } from './components/Input'
 export { default as Textarea } from './components/Textarea'
 export { default as Datepicker } from './components/Datepicker'
@@ -36,3 +37,15 @@ export { default as Select } from './components/Select'
 export { default as Toggle } from './components/Toggle'
 export { default as Radio } from './components/Radio'
 export { default as Tree } from './components/Tree'
+=======
+export { default as Input } from './data/Input'
+export { default as Datepicker } from './data/Datepicker'
+export { default as Checkbox } from './data/Checkbox'
+export { default as Form } from './data/Form'
+export { default as Select } from './data/Select'
+export { default as Toggle } from './data/Toggle'
+export { default as Radio } from './data/Radio'
+
+/** Experimental*/
+export { default as HeadingAlternate } from './elements/HeadingAlternate'
+>>>>>>> 83ad1670afb119319eaf4f6183e800bf291aaaad
