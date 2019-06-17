@@ -1,69 +1,54 @@
-import theme from '../theme'
+import React from 'react'
+import PropTypes from 'prop-types'
 import Text from './Text'
-import React from 'react';
 
-const Heading = Text.withComponent('h3');
+function Heading({ tag, ...props }) {
+  const headings = {
+    h1: {
+      fontSize: 6,
+      caps: false,
+      bold: true,
+    },
+    h2: {
+      fontSize: 5,
+      caps: false,
+      bold: true,
+    },
+    h3: {
+      fontSize: 4,
+      caps: false,
+      bold: false,
+    },
+    h4: {
+      fontSize: 3,
+      caps: false,
+      bold: false,
+    },
+    h5: {
+      fontSize: 2,
+      caps: false,
+      bold: true,
+    },
+    h6: {
+      fontSize: 1,
+      caps: true,
+      bold: false,
+    },
+  }
 
-Heading.displayName = 'Heading';
+  return <Text {...props} {...headings[tag]} />
+}
+
+Heading.propTypes = {
+  tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
+}
 
 Heading.defaultProps = {
-  color: 'text',
-  regular: true,
-  fontSize: 4,
+  tag: 'h3',
   m: 0,
-  theme: theme,
-};
+}
 
-
-Heading.h1 = Heading.withComponent('h1');
-Heading.h1.defaultProps = {
-  color: 'text',
-  bold: true,
-  fontSize: 6,
-  m: 0,
-};
-
-Heading.h2 = Heading.withComponent('h2');
-Heading.h2.defaultProps = {
-  color: 'text',
-  bold: true,
-  fontSize: 5,
-  m: 0,
-};
-
-Heading.h3 = Heading.withComponent('h3');
-Heading.h3.defaultProps = {
-  color: 'text',
-  regular: true,
-  fontSize: 4,
-  m: 0,
-};
-
-Heading.h4 = Heading.withComponent('h4');
-Heading.h4.defaultProps = {
-  color: 'text',
-  regular: true,
-  fontSize: 3,
-  m: 0,
-};
-
-Heading.h5 = Heading.withComponent('h5');
-Heading.h5.defaultProps = {
-  color: 'text',
-  bold: true,
-  fontSize: 2,
-  m: 0,
-};
-
-Heading.h6 = Heading.withComponent('h6');
-Heading.h6.defaultProps = {
-  color: 'text',
-  bold: true,
-  caps: true,
-  fontSize: 1,
-  m: 0,
-};
+Heading.displayName = 'Heading'
 
 /** @component */
-export default Heading;
-
+export default Heading

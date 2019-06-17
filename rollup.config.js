@@ -4,7 +4,7 @@ import external from 'rollup-plugin-peer-deps-external'
 import resolve from 'rollup-plugin-node-resolve'
 import url from 'rollup-plugin-url'
 import json from 'rollup-plugin-json'
-import { terser } from "rollup-plugin-terser";
+import { terser } from 'rollup-plugin-terser'
 import postcss from 'rollup-plugin-postcss'
 
 import pkg from './package.json'
@@ -21,7 +21,7 @@ export default {
       file: pkg.module,
       format: 'es',
       sourcemap: true,
-    }
+    },
   ],
   external: ['styled-components'],
   // https://github.com/WebReflection/hyperHTML/issues/304#issuecomment-443950244
@@ -67,11 +67,11 @@ export default {
           'isValidElementType',
         ],
         'node_modules/react-dom/index.js': ['render', 'hydrate'],
-        'node_modules/react-dates/index.js': [ 'SingleDatePicker' ],
+        'node_modules/react-dates/index.js': ['SingleDatePicker'],
       },
     }),
     json(),
-    // terser(),
+    terser(),
     postcss({
       extensions: ['.css', '.less'],
       inject: false,

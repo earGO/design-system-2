@@ -1,8 +1,8 @@
 ```js
 <Box width={300} height={300}>
-    <Overlay onClick={() => alert('overlay has clicked')}>
+    <Overlay onClick={() => alert('overlay clicked')}>
         <Card bg="white" boxShadowSize="md" p={3}>
-            <Heading.h4>Heading</Heading.h4>
+            <Heading tag="h4">Heading</Heading>
             <Divider my={2} />
             <Text>Lorem ipsum</Text>
         </Card>

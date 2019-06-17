@@ -1,9 +1,16 @@
 ```js noeditor
 const colors = require('../src/theme/colors').default
 
+initialState = {
+  collapsed: true,
+}
+
+const togglePalette = () => setState({ collapsed: !state.collapsed })
+
 function Palette() {
     return (
-        <Flex flexWrap="wrap">
+    <Box>
+        <Flex flexWrap="wrap" height={state.collapsed && 315} style={{overflow: 'hidden'}}>
             {Object.keys(colors.palette).map(color => (
                 <Card key={color} width={110} borderColor={color === 'white' ? 'lightGrey' : color} borderRadius={1} mr={3} mb={3}>
                     <Box height={80} bg={color} />
@@ -17,6 +24,12 @@ function Palette() {
                 </Card>
             ))}
         </Flex>
+        <Divider my={0} />
+        <Button type="flat" block onClick={togglePalette}>
+            <Icon mr={2} name={state.collapsed ? 'chevron-down' : 'chevron-up'} />
+            {state.collapsed ? 'Показать все цвета' : 'Скрыть'} 
+        </Button>
+    </Box>
     )
 };
 

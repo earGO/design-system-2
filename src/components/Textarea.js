@@ -82,7 +82,7 @@ class Textarea extends Component {
   }
 
   render() {
-    const { width, wrapperStyle, ...props } = this.props
+    const { width, wrapperStyle, children, ...props } = this.props
     return (
       <InputWrapper width={width} style={wrapperStyle}>
         <HTMLTextarea

@@ -1,122 +1,57 @@
-import React, { useEffect, useState, useRef } from 'react'
-import propTypes from 'prop-types'
-import styled from 'styled-components'
-import Absolute from './Absolute'
-import Relative from './Relative'
-import Box from './Box'
-import Flex from './Flex'
-import Icon from './Icon'
-import { themeGet } from 'styled-system'
+import React from 'react'
+import PropTypes from 'prop-types'
+import ReactModal from 'react-modal'
 
-const ModalBackdrop = styled(Relative)`
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.85);
-  width: 100vw;
-  height: 100vh;
-  z-index: 1000;
-  overflow: auto;
-`
-
-const ModalWrapper = styled(Absolute)`
-  top: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #ffffff;
-  display: flex;
-  flex-direction: column;
-`
-
-// Крест 16x16, поэтому сама кнопка 16x3
-const CloseButton = styled(Absolute)`
-  top: 0px;
-  right: 0px;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  :hover {
-    background: ${themeGet('colors.lightGrey', 'f5f5f5')};
+/**
+ * Модальное окно
+ */
+function Modal({ visible, nodeId, ...props }) {
+  const customModalStyles = {
+    overlay: {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(0, 0, 0, 0.75)',
+      zIndex: 2,
+    },
+    content: {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      border: 'none',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      background: 'transparent',
+      overflow: 'auto',
+      WebkitOverflowScrolling: 'touch',
+      borderRadius: '0px',
+      outline: 'none',
+      padding: '0px',
+    },
   }
-`
 
-const ContentWrapper = styled(Box)``
-const ModalFooter = styled(Flex)`
-  justify-content: flex-end;
-`
-
-const blockScroll = () => {
-  const [bodyStyle, _] = useState(document.body.style)
-  useEffect(() => {
-    // чтобы не двигался контент, добавим паддинг справа вместо скроллбара.
-    document.body.style = 'padding-right: 17px; overflow: hidden;'
-    return () => {
-      document.body.style = bodyStyle
-    }
+  React.useEffect(() => {
+    ReactModal.setAppElement(document.getElementById(nodeId))
   }, [])
-}
 
-const handleClickOutside = (elementRef, handler, closeOnBackdropClick) => {
-  const handleClick = event => {
-    if (elementRef && !elementRef.current.contains(event.target)) {
-      handler()
-    }
-  }
-  useEffect(() => {
-    if (closeOnBackdropClick) {
-      document.addEventListener('mousedown', handleClick)
-      return () => {
-        document.removeEventListener('mousedown', handleClick)
-      }
-    }
-  }, [])
-}
-
-/** Используется для взаимодействия пользователя с системой без отрыва от текущего контекста. */
-const Modal = ({ children, closeModal, title, footer, closeOnBackdropClick }) => {
-  const wrapperRef = useRef(null)
-  blockScroll()
-  handleClickOutside(wrapperRef, closeModal, closeOnBackdropClick)
-  return (
-    <ModalBackdrop>
-      <ModalWrapper ref={wrapperRef} px={4}>
-        <CloseButton onClick={closeModal}>
-          <Icon name="times" style={{ cursor: 'pointer' }} />
-        </CloseButton>
-        <Box className="header" pt={4} pb={3}>
-          <Text fontSize={2}>{title}</Text>
-        </Box>
-        <ContentWrapper pt={3} pb={footer ? 3 : 4}>
-          {children}
-        </ContentWrapper>
-        {footer && (
-          <ModalFooter pt={3} pb={4}>
-            {footer}
-          </ModalFooter>
-        )}
-      </ModalWrapper>
-    </ModalBackdrop>
-  )
+  return <ReactModal style={customModalStyles} {...props} />
 }
 
 Modal.propTypes = {
-  /** Содержимое модального окна */
-  children: propTypes.element,
-  /** Заголовок модального окна */
-  title: propTypes.oneOfType([propTypes.string, propTypes.element]),
-  /** Функция, вызывающаяся при клике за модальным окном либо на кнопку закрытия */
-  closeModal: propTypes.func,
-  /** Футер модального окна */
-  footer: propTypes.oneOfType([propTypes.string, propTypes.element]),
-  /** Закрывать ли окно при клике на бэкдроп */
-  closeOnBackdropClick: propTypes.bool,
+  isOpen: PropTypes.bool,
+  nodeId: PropTypes.string,
 }
 
 Modal.defaultProps = {
-  closeOnBackdropClick: true,
+  isOpen: false,
+  nodeId: 'root',
 }
+
+Modal.displayName = 'Modal'
 
 /** @component */
 export default Modal

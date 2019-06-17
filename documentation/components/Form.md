@@ -5,7 +5,7 @@
 Пример формы:
 
 ```js
-const createForm = Form.createForm
+const createForm = Form.create
 const FormItem = Form.Item
 
 class ExampleForm extends React.Component {

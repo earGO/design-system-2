@@ -157,7 +157,7 @@ Button.propTypes = {
   /** Вид кнопки */
   type: PropTypes.oneOf(['primary', 'secondary', 'bordered', 'dashed', 'flat']),
   /** Размер кнопки */
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  size: PropTypes.oneOf(['verySmall', 'small', 'medium', 'large']),
   /** Растягивает кнопку на 100% родительского блока */
   block: PropTypes.bool,
   /** Круглая кнопка */

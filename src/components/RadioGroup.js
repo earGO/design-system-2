@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import propTypes from 'prop-types'
+// import propTypes from 'prop-types'
 
 class RadioGroup extends Component {
   constructor(props) {
@@ -28,6 +28,7 @@ class RadioGroup extends Component {
     return children.map(child => {
       const value = child.props.value
       const props = {
+        key: value,
         checked: activeValue === value,
         onChange: this.onRadioChange,
       }

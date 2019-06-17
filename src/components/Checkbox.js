@@ -146,7 +146,7 @@ Checkbox.propTypes = {
   /** Возможность редактирования */
   disabled: propTypes.bool,
   /** Текст чекбокса. */
-  label: propTypes.string,
+  label: propTypes.oneOfType([propTypes.number, propTypes.string, propTypes.node]),
   /** Размер чекбокса */
   size: propTypes.oneOf(['small', 'medium', 'large']),
   /** Функция - хендлер, вызывается при клике на чекбокс */

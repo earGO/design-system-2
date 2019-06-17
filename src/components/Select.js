@@ -6,7 +6,7 @@ import { FixedSizeList as List } from 'react-window'
 import styled, { ThemeConsumer, css } from 'styled-components'
 import Icon from './Icon'
 import Box from './Box'
-// import Text from './Text'
+
 /**
  * TODO:
  * 1) Combobox values remake/restyling.
@@ -232,6 +232,9 @@ const Hooks_MenuList = optionHeight => ({ options, children, maxHeight, getValue
   )
 }
 
+/**
+ * Используется для выбора значения из списка.
+ */
 class Select extends React.Component {
   withSystemTheme = (size, systemTheme) => theme => {
     let controlHeight = 0

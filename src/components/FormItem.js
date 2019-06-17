@@ -1,11 +1,9 @@
 import React from 'react'
 import propTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import { themeGet } from 'styled-system'
 import pick from 'lodash/pick'
 import { FIELD_META_PROP, FIELD_DATA_PROP } from './Form'
 import { StyledCheckbox } from './Checkbox'
-import Icon from './Icon'
 import Flex from './Box'
 import Box from './Box'
 
@@ -28,8 +26,8 @@ const withRequiredAsterisk = props =>
     & > ${Label}:after {
       content: ' *';
       display: inline-block;
-      margin-right: 4px;
-      margin-left: 4px;
+      margin-right: ${props.theme.space[1]}px;
+      margin-left: ${props.theme.space[1]}px;
       line-height: 1;
       color: ${props.theme.colors.error};
       font-size: ${props.theme.fontSizes[2]}px;
@@ -39,7 +37,7 @@ const withRequiredAsterisk = props =>
 const hasError = props =>
   props.help &&
   css`
-    /* margin-bottom: ${props.theme.space[2]}px; */
+    margin-bottom: ${props.theme.space[2]}px;
     /* Подход если честно так себе, но я без понятия как сделать лучше
       #TODO: добавить border: error к остальным типам элементов? Как?
     */
@@ -54,7 +52,7 @@ const hasError = props =>
   `
 
 const LabelWrapper = styled(Box)`
-  /* width: ${props => (props.inline ? '20%' : '100%')}; */
+  width: ${props => (props.inline ? '20%' : '100%')};
   & > label {
     font-size: ${props => props.theme.fontSizes[1]}px;
   }
@@ -62,7 +60,7 @@ const LabelWrapper = styled(Box)`
 `
 
 const ControlWrapper = styled(Box)`
-  /* margin-top: ${props => props.theme.space[2]}px; */
+  margin-top: ${props => props.theme.space[2]}px;
   ${hasError}
 `
 
@@ -90,9 +88,6 @@ const Help = ({ children }) => {
     </HelpWrapper>
   )
 }
-
-// #TBD
-// const Extra = ({ extra }) => <Box className="extra">{extra}</Box>
 
 class FormItem extends React.Component {
   isRequired = () => {
@@ -137,7 +132,7 @@ class FormItem extends React.Component {
     return controls
   }
 
-  /** Возвращает ноду элемента, который собственно, вводит данные, например - <Input /> */
+  /** Возвращает ноду элемента, который вводит данные, например - <Input /> */
   getOnlyControl() {
     const child = this.getControls(this.props.children, false)[0]
     return child !== undefined ? child : null
@@ -214,7 +209,7 @@ class FormItem extends React.Component {
     const { style, children, ...props } = this.props
     const help = this.getHelpMessage()
     return (
-      <Flex flexDirection="row" style={style} help={help} {...props}>
+      <Flex style={style} help={help} {...props}>
         <Label
           {...pick(this.props, ['label', 'labelProps'])}
           id={this.props.id || this.getId()}
@@ -224,7 +219,6 @@ class FormItem extends React.Component {
         <ControlWrapper {...this.props.controlProps} help={help}>
           {children}
           {help && <Help>{help}</Help>}
-          {/* {extra && <Extra {...pick(this.props, ['extra'])} />} */}
         </ControlWrapper>
       </Flex>
     )
