@@ -1,25 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { ThemeProvider as StyledThemeProvider, createGlobalStyle } from 'styled-components'
-
+// import { Normalize } from 'styled-normalize'
 import baseTheme from '.'
 
-createGlobalStyle`
-html,
-body {
-  height: 100%;
-  margin: 0;
-}
-`
-
 export const Base = styled.div`
-  font-family: ${props => props.theme.font.main};
-  line-height: 1.4;
+  width: 100%;
   height: 100%;
-
-  * {
-    box-sizing: border-box;
-  }
 `
 
 const ThemeProvider = ({ customBreakpoints, ...props }) => {
@@ -30,10 +17,27 @@ const ThemeProvider = ({ customBreakpoints, ...props }) => {
     breakpoints,
   }
 
+  const GlobalStyle = createGlobalStyle`
+    html,
+    body {
+      font-family: ${props.theme.font.main};
+      font-size: ${props.theme.fontSizes[1]}px;
+      line-height: 1.4;
+      height: 100%;
+    }
+
+    * {
+        box-sizing: border-box;
+      }
+`
+
   return (
-    <StyledThemeProvider theme={theme}>
-      <Base {...props} />
-    </StyledThemeProvider>
+    <React.Fragment>
+      <GlobalStyle />
+      <StyledThemeProvider theme={theme}>
+        <Base {...props} />
+      </StyledThemeProvider>
+    </React.Fragment>
   )
 }
 

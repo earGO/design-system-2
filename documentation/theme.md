@@ -1,3 +1,5 @@
+Спецификация https://system-ui.com/theme
+
 Для кастомизации стандартной темы можно создать свой файл:
 ```js static
 // custom-theme.js

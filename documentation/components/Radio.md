@@ -1,8 +1,3 @@
-Радио баттон. 
-Используется для выбора одного из нескольких вариантов.
-В отличие от селекта, все варианты видимы.
-
-Пример использования:
 ```js
 initialState = {
   checked: true
@@ -15,8 +10,8 @@ const handleChange = (checked) => {
 }
 
 <Box>
-    <Radio mr={2} label="Согласен" checked={state.checked} onChange={handleChange}/>
-    <Radio label="Не согласен" checked={!state.checked} onChange={handleChange} />
+    <Radio mr={2} label="Yes" checked={state.checked} onChange={handleChange}/>
+    <Radio label="No" checked={!state.checked} onChange={handleChange} />
 </Box>
 ```
 
@@ -47,9 +42,9 @@ const handleChange = activeValue => {
   setState({value: activeValue})
 }
 
-<Radio.Group onChange={handleChange} value={state.value} defaultValue='2'>
-  <Radio label="Раз" value='1'/>
-  <Radio label="Два" value='2' ml={2} />
-  <Radio label="Три" value='3' ml={2} />
+<Radio.Group onChange={handleChange} value={state.value} defaultValue="one">
+  <Radio label="One" value="one" />
+  <Radio label="Two" value="two" ml={2} />
+  <Radio label="Three" value="three" ml={2} />
 </Radio.Group>
 ```

@@ -5,11 +5,15 @@ function makeAbsolutePath(directory, component) {
   return path.resolve(__dirname, directory, component)
 }
 
+function getComponents(names = []) {
+  return names.map(name => makeAbsolutePath('../src/components', name + '.js'))
+}
+
 /**
  * В этом массиве перечислены компоненты, которые являются дочерними к другим.
  * Например компонет CollapsePanel доступен как Collapse.Panel.
  */
-const nestedComponents = ['CollapsePanel', 'FormItem', 'TabPane']
+const nestedComponents = ['CollapsePanel', 'FormItem', 'TabPane', 'RadioGroup']
 
 module.exports = {
   title: pkg.name,
@@ -63,12 +67,6 @@ module.exports = {
       base: 14,
       text: 14,
       small: 12,
-      // h1: theme.fontSizes[6],
-      // h2: theme.fontSizes[5],
-      // h3: theme.fontSizes[4],
-      // h4: theme.fontSizes[3],
-      // h5: theme.fontSizes[2],
-      // h6: theme.fontSizes[1],
     },
   },
   getComponentPathLine(componentPath) {
@@ -106,56 +104,32 @@ module.exports = {
           name: 'Настройка темы',
           content: 'theme.md',
         },
+        {
+          name: 'Ядро системы',
+          content: 'core.md',
+        },
       ],
     },
     {
       name: 'Примитивы',
       description: 'Компоненты-примитивы используются для управления расположением элементов интерфейса на экране.',
-      components: () => [
-        makeAbsolutePath('../src/primitives', 'Box.js'),
-        makeAbsolutePath('../src/primitives', 'Flex.js'),
-        makeAbsolutePath('../src/primitives', 'Relative.js'),
-        makeAbsolutePath('../src/primitives', 'Absolute.js'),
-        makeAbsolutePath('../src/primitives', 'Card.js'),
-        makeAbsolutePath('../src/primitives', 'Positional.js'),
-      ],
+      components: () => getComponents(['Box', 'Flex', 'Relative', 'Absolute', 'Card', 'Overlay']),
     },
     {
       name: 'Элементы',
-      components: () => [
-        makeAbsolutePath('../src/elements', 'Text.js'),
-        makeAbsolutePath('../src/elements', 'Heading.js'),
-        makeAbsolutePath('../src/elements', 'Icon.js'),
-        makeAbsolutePath('../src/elements', 'Button.js'),
-        makeAbsolutePath('../src/elements', 'Divider.js'),
-        makeAbsolutePath('../src/elements', 'Collapse.js'),
-        makeAbsolutePath('../src/elements', 'CollapsePanel.js'),
-        makeAbsolutePath('../src/elements', 'Tooltip.js'),
-        makeAbsolutePath('../src/elements', 'Tabs.js'),
-        makeAbsolutePath('../src/elements', 'TabPane.js'),
-        makeAbsolutePath('../src/elements', 'Table.js'),
-        makeAbsolutePath('../src/elements', 'Popover.js'),
-        makeAbsolutePath('../src/elements', 'Modal.js'),
-      ],
+      components: () =>
+        getComponents(['Text', 'Heading', 'Icon', 'Button', 'Divider', 'Scrollbars', 'Modal', 'Popover']),
     },
     {
-      name: 'Данные',
+      name: 'Ввод данных',
       description: 'Компоненты для получения данных, введенных пользователем.',
-      components: () => [
-        makeAbsolutePath('../src/data', 'Input.js'),
-        makeAbsolutePath('../src/data', 'Checkbox.js'),
-        makeAbsolutePath('../src/data', 'Form.js'),
-        makeAbsolutePath('../src/data', 'FormItem.js'),
-        makeAbsolutePath('../src/data', 'Select.js'),
-        makeAbsolutePath('../src/data', 'Datepicker.js'),
-        makeAbsolutePath('../src/data', 'Toggle.js'),
-        makeAbsolutePath('../src/data', 'Radio.js'),
-        makeAbsolutePath('../src/data', 'RadioGroup.js'),
-      ],
+      components: () =>
+        getComponents(['Form', 'FormItem', 'Input', 'Textarea', 'Checkbox', 'Toggle', 'Radio', 'RadioGroup', 'Select']),
     },
     {
-      name: 'Ядро системы',
-      content: 'core.md',
+      name: 'Отображение данных',
+      description: 'Компоненты для отображения данных',
+      components: () => getComponents(['Collapse', 'CollapsePanel', 'Tabs', 'TabPane', 'Table']),
     },
   ],
 }

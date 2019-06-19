@@ -1,3 +1,6 @@
+import csscolors from 'css-color-names'
+import { lighten, darken } from './utils'
+
 const black = '#3a3a3a'
 const white = '#ffffff'
 
@@ -11,9 +14,10 @@ const green = '#66bb6a'
 // blues
 const lightBlue = '#0091ea'
 const blue = '#1e88e5'
-const darkBlue = '#1976d2'
+const darkBlue = darken(blue, 0.75)
 
 const palette = {
+  ...csscolors,
   black,
   white,
   lightGrey,
@@ -53,7 +57,7 @@ const components = {
     checked: palette.lightBlue,
     unchecked: palette.lightGrey,
     disabled: palette.grey,
-  }
+  },
 }
 
 const system = {
@@ -63,10 +67,11 @@ const system = {
   // States
   info: palette.lightBlue,
   success: palette.green,
+  warning: palette.orange,
   error: palette.red,
 
   // Misc
-  text: palette.black,
+  text: palette.darkBlue,
   border: palette.semiLightGrey,
 
   // Disabled

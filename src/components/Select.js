@@ -4,8 +4,8 @@ import RSelect, { components } from 'react-select'
 import AsyncRSelect from 'react-select/lib/Async'
 import { FixedSizeList as List } from 'react-window'
 import styled, { ThemeConsumer, css } from 'styled-components'
-import Icon from '../elements/Icon'
-import Box from '../primitives/Box'
+import Icon from './Icon'
+import Box from './Box'
 
 /**
  * TODO:
@@ -15,22 +15,43 @@ import Box from '../primitives/Box'
 
 const OPTION_HEIGHT = 38
 
+const getSize = size => {
+  switch (size) {
+    case 'small':
+      return 0
+    case 'medium':
+      return 1
+    case 'large':
+      return 2
+    default:
+      return 1
+  }
+}
+
 const customStyles = {
   placeholder: (base, props) => {
-    const { systemTheme } = props.selectProps
-    return ({ ...base, fontSize: systemTheme.fontSizes[0], color: systemTheme.colors.black })
+    const { systemTheme, size } = props.selectProps
+    const sizeIndex = getSize(size)
+    return { ...base, fontSize: systemTheme.fontSizes[sizeIndex], color: systemTheme.colors.black }
   },
   input: (base, props, third) => {
     // Can't access system theme here... ?
-    return ({ ...base, fontSize: 12, color: '#3a3a3a' })
+    return { ...base, fontSize: 14, color: '#3a3a3a' }
   },
   valueContainer: (base, props) => {
-    const { systemTheme } = props.selectProps
-    return ({ ...base, fontSize: systemTheme.fontSizes[0], color: systemTheme.colors.black, paddingLeft: 16 })
+    const { systemTheme, size } = props.selectProps
+    const sizeIndex = getSize(size)
+
+    return {
+      ...base,
+      fontSize: systemTheme.fontSizes[sizeIndex],
+      color: systemTheme.colors.black,
+      paddingLeft: systemTheme.space[3],
+    }
   },
   control: (base, props) => {
     const { systemTheme } = props.selectProps
-    const { isDisabled, isFocused, menuIsOpen } = props;
+    const { isDisabled, isFocused, menuIsOpen } = props
     // Disabled styles
     if (isDisabled) {
       return {
@@ -49,14 +70,14 @@ const customStyles = {
       }
     }
     // Default
-      return {
-        ...base,
-        '&:hover': {
-          borderColor: systemTheme.colors.black,
-        },
-        borderColor: 'transparent',
-        backgroundColor: systemTheme.colors.lightGrey,
-      }
+    return {
+      ...base,
+      '&:hover': {
+        borderColor: systemTheme.colors.black,
+      },
+      borderColor: 'transparent',
+      backgroundColor: systemTheme.colors.lightGrey,
+    }
   },
   menuList: (base, props) => {
     const { systemTheme } = props.selectProps
@@ -79,27 +100,30 @@ const customStyles = {
   indicatorSeparator: base => ({ ...base, width: '0px' }),
   option: (base, props) => {
     const { isSelected, isFocused } = props
-    const { systemTheme } = props.selectProps
-    const baseline = { ...base, color: systemTheme.colors.black, fontSize: systemTheme.fontSizes[0] }
+    const { systemTheme, size } = props.selectProps
+    const sizeIndex = getSize(size)
+    const baseline = { ...base, color: systemTheme.colors.black, fontSize: systemTheme.fontSizes[sizeIndex] }
     if (isSelected) {
-      return ({ ...baseline, backgroundColor: systemTheme.colors.lightGrey })
+      return { ...baseline, backgroundColor: systemTheme.colors.lightGrey }
     }
     // Пока одинаковые, нет в макетах.
     if (isFocused) {
-      return ({ ...baseline, backgroundColor: systemTheme.colors.lightGrey })
+      return { ...baseline, backgroundColor: systemTheme.colors.lightGrey }
     }
     return baseline
   },
 }
 
 const DropdownIndicator = props => {
-  const { systemTheme } = props.selectProps
+  const { systemTheme, size } = props.selectProps
+  const sizeIndex = getSize(size)
+
   // VERY FUCKING HACKY WAY TO DO THAT
   const { innerProps, ...rest } = props
-  const withPadding = { ...innerProps, style: { paddingRight: 16 }}
+  const withPadding = { ...innerProps, style: { paddingRight: 16 } }
   return (
-    <components.DropdownIndicator { ...rest } innerProps={withPadding} >
-      <Icon name="caret-down" fontSize={systemTheme.fontSizes[0]} color={systemTheme.colors.black} />
+    <components.DropdownIndicator {...rest} innerProps={withPadding}>
+      <Icon name="caret-down" fontSize={systemTheme.fontSizes[sizeIndex]} color={systemTheme.colors.black} />
     </components.DropdownIndicator>
   )
 }
@@ -155,7 +179,7 @@ const MenuList = optionHeight =>
       const initialOffset = options.indexOf(value) * optionHeight
       if (!children.length) {
         /* No option message */
-        return <Box>{children}</Box>
+        return <Box>{children}1</Box>
       }
       return (
         <StyledList
@@ -208,6 +232,9 @@ const Hooks_MenuList = optionHeight => ({ options, children, maxHeight, getValue
   )
 }
 
+/**
+ * Используется для выбора значения из списка.
+ */
 class Select extends React.Component {
   withSystemTheme = (size, systemTheme) => theme => {
     let controlHeight = 0
@@ -216,10 +243,10 @@ class Select extends React.Component {
     switch (size) {
       case 'small':
         controlHeight = 32
-        break;
+        break
       case 'large':
         controlHeight = 48
-        break;
+        break
       default:
         controlHeight = 40
     }

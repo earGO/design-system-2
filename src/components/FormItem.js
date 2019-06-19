@@ -1,11 +1,11 @@
 import React from 'react'
-import Box from '../primitives/Box'
 import propTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import pick from 'lodash/pick'
 import { FIELD_META_PROP, FIELD_DATA_PROP } from './Form'
-import { StyledCheckbox } from './Checkbox';
-import { themeGet } from 'styled-system'
+import { StyledCheckbox } from './Checkbox'
+import Flex from './Box'
+import Box from './Box'
 
 /*Общий комментарий:
   Большая часть кода взята из antd Form и Form.Item
@@ -24,11 +24,13 @@ const withRequiredAsterisk = props =>
   props.required &&
   css`
     & > ${Label}:after {
+      content: ' *';
       display: inline-block;
-      margin-right: 4px;
-      content: '*';
+      margin-right: ${props.theme.space[1]}px;
+      margin-left: ${props.theme.space[1]}px;
       line-height: 1;
-      font-size: ${props.theme.fontSizes[1]}px;
+      color: ${props.theme.colors.error};
+      font-size: ${props.theme.fontSizes[2]}px;
     }
   `
 
@@ -45,47 +47,38 @@ const hasError = props =>
       background: ${props.theme.colors.white};
     }
     ${StyledCheckbox} {
-      border-color: ${props.theme.colors.error}
+      border-color: ${props.theme.colors.error};
     }
   `
 
-const FormItemWrapper = styled(Box)`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: ${props => props.theme.space[3]}px;
-`
-
 const LabelWrapper = styled(Box)`
-  display: inline-flex;
-  justify-content: space-between;
-  align-content: center;
+  width: ${props => (props.inline ? '20%' : '100%')};
   & > label {
-    font-size: ${themeGet('fontSizes[1]', '12px')};
+    font-size: ${props => props.theme.fontSizes[1]}px;
   }
   ${withRequiredAsterisk}
 `
 
 const ControlWrapper = styled(Box)`
-  margin-top: ${themeGet('space[2]', '8px')};
-  display: inline-flex;
-  flex-direction: column;
+  margin-top: ${props => props.theme.space[2]}px;
   ${hasError}
 `
 
 const HelpWrapper = styled(Box)`
-  color: ${themeGet('colors.error', 'red')};
-  font-size: ${themeGet('fontSizes[0]', '10px')};
+  color: ${props => props.theme.colors.error};
+  font-size: ${props => props.theme.fontSizes[1]};
 `
 
 const Label = ({ label, labelProps, id, required, onLabelClick }) => {
-  return label ? (
-    <LabelWrapper key="label" required={required} {...labelProps}>
-      <label htmlFor={id} title={typeof label === 'string' ? label : ''} onClick={onLabelClick}>
-        {label}
-      </label>
-      <Icon fontSize={'13px'} name="question-circle" />
-    </LabelWrapper>
-  ) : null
+  return (
+    Boolean(label) && (
+      <LabelWrapper key="label" required={required} {...labelProps}>
+        <label htmlFor={id} title={typeof label === 'string' ? label : ''} onClick={onLabelClick}>
+          {label}
+        </label>
+      </LabelWrapper>
+    )
+  )
 }
 
 const Help = ({ children }) => {
@@ -95,9 +88,6 @@ const Help = ({ children }) => {
     </HelpWrapper>
   )
 }
-
-// #TBD
-// const Extra = ({ extra }) => <Box className="extra">{extra}</Box>
 
 class FormItem extends React.Component {
   isRequired = () => {
@@ -142,7 +132,7 @@ class FormItem extends React.Component {
     return controls
   }
 
-  /** Возвращает ноду элемента, который собственно, вводит данные, например - <Input /> */
+  /** Возвращает ноду элемента, который вводит данные, например - <Input /> */
   getOnlyControl() {
     const child = this.getControls(this.props.children, false)[0]
     return child !== undefined ? child : null
@@ -216,10 +206,10 @@ class FormItem extends React.Component {
   }
 
   render() {
-    const { style, className, children } = this.props
+    const { style, children, ...props } = this.props
     const help = this.getHelpMessage()
     return (
-      <FormItemWrapper className={className} style={style} help={help}>
+      <Flex style={style} help={help} {...props}>
         <Label
           {...pick(this.props, ['label', 'labelProps'])}
           id={this.props.id || this.getId()}
@@ -229,21 +219,17 @@ class FormItem extends React.Component {
         <ControlWrapper {...this.props.controlProps} help={help}>
           {children}
           {help && <Help>{help}</Help>}
-          {/* {extra && <Extra {...pick(this.props, ['extra'])} />} */}
         </ControlWrapper>
-      </FormItemWrapper>
+      </Flex>
     )
   }
 }
 
-FormItem.defaultProps = {
-}
+FormItem.defaultProps = {}
 
 FormItem.propTypes = {
   /** Стили обертки. */
   style: propTypes.object,
-  /** css класс обертки, если необходимо. */
-  className: propTypes.string,
   /** Содержимое лейбла */
   label: propTypes.oneOfType([propTypes.string, propTypes.element]),
   /** Пропсы для обертки лейбла */
@@ -252,6 +238,8 @@ FormItem.propTypes = {
   controlProps: propTypes.object,
   /** Обязательность поля. */
   required: propTypes.bool,
+  /** Однострочное поле. */
+  inline: propTypes.bool,
 }
 
 /** @component */

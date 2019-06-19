@@ -1,6 +1,6 @@
 import React from 'react'
 import propTypes from 'prop-types'
-import Box from '../primitives/Box'
+import Box from './Box'
 import CollapsePanel from './CollapsePanel'
 
 /** Используется, если необходимо сгруппировать или скрыть большое количество содержимого. */

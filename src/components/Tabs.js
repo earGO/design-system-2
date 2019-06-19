@@ -1,8 +1,8 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import propTypes from 'prop-types'
-import Flex from '../primitives/Flex'
-import Box from '../primitives/Box'
+import Flex from './Flex'
+import Box from './Box'
 import TabPane from './TabPane'
 import { themeGet } from 'styled-system'
 

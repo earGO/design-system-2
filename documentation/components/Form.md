@@ -5,7 +5,7 @@
 Пример формы:
 
 ```js
-const createForm = Form.createForm
+const createForm = Form.create
 const FormItem = Form.Item
 
 class ExampleForm extends React.Component {
@@ -38,13 +38,13 @@ class ExampleForm extends React.Component {
       <Box width={1/3}>
         <Form >
           <Heading>Registration form:</Heading>
-          <FormItem label="Name">
+          <FormItem  inline label="Name">
             {getFieldDecorator('name', {
               rules: [{ required: true, message: 'Заполните поле name' }],
             })(<Input />)}
           </FormItem>
           {/* Хоть мы и не дали prop required в этот FormItem, из-за rule required:true, * все равно будет. */}
-          <FormItem label="Surname">
+          <FormItem inline label="Surname">
             {getFieldDecorator('surname', {
               rules: [{ required: true, message: 'Заполните поле surname' }],
             })(<Input />)}

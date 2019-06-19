@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import propTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import { themeGet } from 'styled-system'
-import Absolute from '../primitives/Absolute'
+import Absolute from './Absolute'
 import { FIELD_DATA_PROP } from './Form'
 
 const noop = () => {}
@@ -123,8 +123,8 @@ class Toggle extends Component {
     return null
   }
 
-  handleChange = (event) => {
-    event.preventDefault();
+  handleChange = event => {
+    event.preventDefault()
     const flippedValue = !this.state.checked
     this.setState({ checked: flippedValue })
     this.props.onChange && this.props.onChange(flippedValue)

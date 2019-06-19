@@ -1,6 +1,5 @@
-Используется для выбора значения из списка.
 
-Так как селекты - дело сложное, за основу взят [react-select](https://react-select.com/) + добавлена виртуализация.
+За основу взят [react-select](https://react-select.com/) + добавлена виртуализация.
 
 Полный список пропсов: [https://react-select.com/props#api](https://react-select.com/props#api)
 

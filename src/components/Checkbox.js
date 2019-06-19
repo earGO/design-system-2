@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import Flex from '../primitives/Flex'
+import Flex from './Flex'
+import Icon from './Icon'
 import propTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import { space, themeGet } from 'styled-system'
 import { FIELD_DATA_PROP } from './Form'
-import RadioGroup from './RadioGroup'
 import omit from 'lodash/omit'
 
 const size = ({ size = 'medium' }) => {
@@ -25,25 +25,32 @@ const size = ({ size = 'medium' }) => {
   return css(sizes[size])
 }
 
+const iconSize = ({ size = 'medium' }) => {
+  const scales = {
+    small: 0.6,
+    medium: 0.7,
+    large: 0.8,
+  }
+  return `transform: scale(${scales[size]});`
+}
+
 const background = ({ checked, disabled, ...rest }) => {
-  const { colors } = rest.theme
-  const { radio } = colors
-  const bgColor = checked && disabled ? radio.disabled : colors.lightGrey
-  return `background: ${bgColor}`
+  const { checkbox } = rest.theme.colors
+  const getColor = (checked, disabled) => {
+    if (disabled) {
+      return checkbox.disabled
+    }
+    return checked ? checkbox.checked : checkbox.unchecked
+  }
+  return `background: ${getColor(checked, disabled)}`
 }
 
 const border = ({ checked, disabled, ...rest }) => {
   const { colors } = rest.theme
-  const { radio } = colors
-  if (disabled) {
-    return `border: solid 3px ${radio.disabled}`
-  } else if (checked) {
-    return `border: solid 3px ${radio.checked}`
-  }
-  return `border: solid 1px ${colors.black}`
+  return !(checked || disabled) && `border: 1px solid ${colors.black}`
 }
 
-const RadioInput = styled.input.attrs({ type: 'radio' })`
+const CheckboxInput = styled.input.attrs({ type: 'checkbox' })`
   border: 0;
   clip: rect(0 0 0 0);
   clippath: inset(50%);
@@ -56,14 +63,21 @@ const RadioInput = styled.input.attrs({ type: 'radio' })`
   width: 1px;
 `
 
-export const StyledRadio = styled(Flex)`
+export const StyledCheckbox = styled(Flex)`
   justify-content: center;
   align-items: center;
+  border-radius: ${themeGet('radii[0]', 4)}px;
   transition: all ${themeGet('duration.fast', 300)};
-  border-radius: 50%;
   ${size}
   ${background}
   ${border}
+  ${Icon} {
+    ${iconSize}
+    visibility: ${props => (props.checked ? 'visible' : 'hidden')}
+  }
+  ${CheckboxInput}:focus + & {
+    box-shadow: 0 0 0 1px ${props => props.theme.colors.blue};
+  }
 `
 
 const Label = styled.label`
@@ -73,12 +87,13 @@ const Label = styled.label`
   ${space}
 `
 
-const RadioContainer = styled(Flex)`
+const CheckboxContainer = styled(Flex)`
   display: inline-flex;
   align-content: center;
 `
 
-class Radio extends Component {
+/** Используется для выбора одного или нескольких значений из представленных вариантов */
+class Checkbox extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -89,8 +104,7 @@ class Radio extends Component {
   handleChange = event => {
     const { checked } = event.target
     this.setState({ checked })
-    console.log('Radio handleChange', {'this.props': this.props})
-    this.props.onChange && this.props.onChange(checked, this.props.value)
+    this.props.onChange && this.props.onChange(checked, event)
   }
 
   static getDerivedStateFromProps(nextProps) {
@@ -111,13 +125,12 @@ class Radio extends Component {
   render() {
     return (
       <Label {...this.props}>
-        <RadioContainer onChange={this.handleChange}>
-          <RadioInput {...omit(this.props, ['onChange', 'value'])} checked={this.state.checked} name={this.props.name} readOnly />
-          <StyledRadio checked={this.state.checked} size={this.props.size} disabled={this.props.disabled}>
-          {/* Icon для выстраивания чекбоксов с разными border-width на base line  */}
-              <Icon name="check" color="transparent" />
-          </StyledRadio>
-          </RadioContainer>
+        <CheckboxContainer onChange={this.handleChange}>
+          <CheckboxInput {...omit(this.props, ['onChange', 'value'])} checked={this.state.checked} readOnly />
+          <StyledCheckbox checked={this.state.checked} size={this.props.size} disabled={this.props.disabled}>
+            <Icon name="check" color="white" />
+          </StyledCheckbox>
+        </CheckboxContainer>
         {/* this.props.children instead of text maybe? */}
         <Text inline regular ml={2}>
           {this.props.label}
@@ -127,16 +140,16 @@ class Radio extends Component {
   }
 }
 
-Radio.propTypes = {
-  /** Состояние радио баттона - выбран или нет. */
+Checkbox.propTypes = {
+  /** Состояние чекбокса - выбран или нет. */
   checked: propTypes.bool,
   /** Возможность редактирования */
   disabled: propTypes.bool,
-  /** Текст радио баттона */
-  label: propTypes.string,
-  /** Размер радио баттона */
+  /** Текст чекбокса. */
+  label: propTypes.oneOfType([propTypes.number, propTypes.string, propTypes.node]),
+  /** Размер чекбокса */
   size: propTypes.oneOf(['small', 'medium', 'large']),
-  /** Функция - хендлер, вызывается при клике на радио баттон */
+  /** Функция - хендлер, вызывается при клике на чекбокс */
   onChange: propTypes.func,
   /** margin */
   m: propTypes.oneOfType([propTypes.number, propTypes.string, propTypes.array]),
@@ -168,7 +181,5 @@ Radio.propTypes = {
   py: propTypes.oneOfType([propTypes.number, propTypes.string, propTypes.array]),
 }
 
-Radio.Group = RadioGroup
-
 /** @component */
-export default Radio
+export default Checkbox

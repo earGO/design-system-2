@@ -1,11 +1,18 @@
 ```js noeditor
 const colors = require('../src/theme/colors').default
 
+initialState = {
+  collapsed: true,
+}
+
+const togglePalette = () => setState({ collapsed: !state.collapsed })
+
 function Palette() {
     return (
-        <Flex flexWrap="wrap">
+    <Box>
+        <Flex flexWrap="wrap" height={state.collapsed && 315} style={{overflow: 'hidden'}}>
             {Object.keys(colors.palette).map(color => (
-                <Card width={110} borderColor={color === 'white' ? 'lightGrey' : color} borderRadius={1} mr={3} mb={3}>
+                <Card key={color} width={110} borderColor={color === 'white' ? 'lightGrey' : color} borderRadius={1} mr={3} mb={3}>
                     <Box height={80} bg={color} />
                     <Divider color={color === 'white' ? 'lightGrey' : color} mt={0} />
                     <Text align="center" fontSize={1} my={2} px={1}>
@@ -17,6 +24,12 @@ function Palette() {
                 </Card>
             ))}
         </Flex>
+        <Divider my={0} />
+        <Button type="flat" block onClick={togglePalette}>
+            <Icon mr={2} name={state.collapsed ? 'chevron-down' : 'chevron-up'} />
+            {state.collapsed ? 'Показать все цвета' : 'Скрыть'} 
+        </Button>
+    </Box>
     )
 };
 
@@ -32,7 +45,7 @@ function Palette() {
     return (
         <Flex flexWrap="wrap">
             {Object.keys(colors.system).map(color => (
-                <Card width={110} borderColor={color} borderRadius={1} mr={3} mb={3}>
+                <Card key={color} width={110} borderColor={color} borderRadius={1} mr={3} mb={3}>
                     <Box height={80} bg={color} />
                     <Divider color={color} mt={0} />
                     <Text truncated title={color} align="center" my={2} px={1}>
