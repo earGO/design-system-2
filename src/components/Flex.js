@@ -19,14 +19,10 @@ const Flex = styled(Box)`
 Flex.propTypes = {
   /** Выравнивание по-вертикали */
   alignItems: PropTypes.oneOf(['flex-start', 'flex-end', 'center', 'baseline', 'stretch']),
-  /** Выравнивание по-горизонтали */
-  justifyContent: PropTypes.oneOf([
-    'flex-start',
-    'flex-end',
-    'center',
-    'space-between',
-    'space-around',
-    'space-evenly',
+  /** Выравнивание по-горизонтали, массив добавлен для брейкпоинтов */
+  justifyContent: PropTypes.oneOfType([
+    PropTypes.oneOf(['flex-start', 'flex-end', 'center', 'space-between', 'space-around', 'space-evenly']),
+    PropTypes.array,
   ]),
   /**
    * Задает правила вывода flex-элементов —  в одну строку или в несколько, с переносом блоков.
