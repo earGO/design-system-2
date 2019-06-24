@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { space } from 'styled-system'
@@ -64,9 +65,10 @@ Divider.propTypes = {
   theme: PropTypes.any,
 }
 
-Divider.defaultProps = {
+const HorizontalDivider = Object.assign({}, Divider)
+
+HorizontalDivider.defaultProps = {
   color: 'border',
-  vertical: false,
   theme: theme,
   mt: 3,
   mb: 3,
@@ -74,5 +76,18 @@ Divider.defaultProps = {
   mr: 0,
 }
 
+const VerticalDivider = Object.assign({}, Divider)
+VerticalDivider.defaultProps = {
+  color: 'border',
+  theme: theme,
+  mt: 0,
+  mb: 0,
+  ml: 3,
+  mr: 3,
+}
+
 /** @component */
-export default Divider
+export default ({ vertical, ...rest }) => {
+  if (vertical) return <VerticalDivider vertical={true} {...rest} />
+  return <HorizontalDivider vertical={false} {...rest} />
+}
