@@ -14,7 +14,7 @@ const vertical = ({ vertical }) =>
   }
 
 /** Используется для разделения информации линиями. */
-const Divider = styled.div`
+const DividerComponent = styled.div`
   position: relative;
   border: 0;
   border-bottom-style: solid;
@@ -25,6 +25,31 @@ const Divider = styled.div`
   ${space}
   ${vertical};
 `
+
+const HorizontalDivider = Object.assign({}, DividerComponent)
+
+HorizontalDivider.defaultProps = {
+  theme: theme,
+  mt: 3,
+  mb: 3,
+  ml: 0,
+  mr: 0,
+}
+
+const VerticalDivider = Object.assign({}, DividerComponent)
+VerticalDivider.defaultProps = {
+  theme: theme,
+  mt: 0,
+  mb: 0,
+  ml: 3,
+  mr: 3,
+}
+
+/** @component */
+const Divider = ({ vertical, ...rest }) => {
+  if (vertical) return <VerticalDivider vertical={true} {...rest} />
+  return <HorizontalDivider vertical={false} {...rest} />
+}
 
 Divider.displayName = 'Divider'
 
@@ -65,29 +90,8 @@ Divider.propTypes = {
   theme: PropTypes.any,
 }
 
-const HorizontalDivider = Object.assign({}, Divider)
-
-HorizontalDivider.defaultProps = {
+Divider.defaultProps = {
   color: 'border',
-  theme: theme,
-  mt: 3,
-  mb: 3,
-  ml: 0,
-  mr: 0,
 }
 
-const VerticalDivider = Object.assign({}, Divider)
-VerticalDivider.defaultProps = {
-  color: 'border',
-  theme: theme,
-  mt: 0,
-  mb: 0,
-  ml: 3,
-  mr: 3,
-}
-
-/** @component */
-export default ({ vertical, ...rest }) => {
-  if (vertical) return <VerticalDivider vertical={true} {...rest} />
-  return <HorizontalDivider vertical={false} {...rest} />
-}
+export default Divider
