@@ -1,15 +1,15 @@
 ```js
 <Flex color="white">
-  <Box bg="blue" width={1/2} p={2}>
+  <Box bg="blue" width={1 / 2} p={2}>
     Flex
   </Box>
-  <Box bg="red" width={1/2} p={2}>
+  <Box bg="red" width={1 / 2} p={2}>
     Box
   </Box>
 </Flex>
 ```
 
-Комбинирую компоненты `<Flex />` и `<Box />` можно создавать layout-разметку для расположения элементов на экране:
+Комбинируя компоненты `<Flex />` и `<Box />` можно создавать layout-разметку для расположения элементов на экране:
 
 ```js
 <Flex>
