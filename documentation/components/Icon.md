@@ -25,12 +25,12 @@ function Icons() {
 <Icons />
 ```
 
-Система использует [Font Awesome](https://fontawesome.com/icons?d=gallery&m=free) в качестве базы данных иконок. 
-Из него доступны только те иконки, которые перечислены в файле:
-```js static
-src/theme/icons.js
-```
-
+Система использует [MaterialDesignIcons]в качестве базы данных иконок.
+Общая документация по компонентам
+https://dev.materialdesignicons.com/getting-started
+Git-репозиторий
+ https://github.com/Templarian/MaterialDesign-React
+ https://github.com/Templarian/MaterialDesign-JS
 
 Чтобы вывести иконку, необходимо передать в параметр **name** ее название:
 ```js 
@@ -39,7 +39,7 @@ src/theme/icons.js
 
 Иконка поддерживает систему отступов:
 ```js
-<Icon name="beer" m={4} />
+<Icon name="face" color={'#0d0d0d'} size={4}/>
 ```
 
 По умолчанию цвет иконки наследуется от родителя, но с помощью свойства **color** можно явно указать ее цвет:
@@ -63,7 +63,7 @@ src/theme/icons.js
 **template.space** и **template.breakpoints** в этих параметрах не поддерживаются, так как обычно позиционирование следует применять в случае, если сама иконка из пакета [Font Awesome](https://fontawesome.com/icons?d=gallery&m=free) немного смещена и для этого используются маленькие значения в px:
 ```js
 <Card borderColor="primary" mb={2}>
-    <Icon name="beer" />
+    <Icon name="account_circle" />
 </Card>
 <Card borderColor="primary">
     <Icon name="beer" top={1} left={3} />
