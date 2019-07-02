@@ -11,17 +11,18 @@ const sizes = {
 
 const colors = {
   primary: ' blue',
-  info: ' lightBlue',
+  hover: ' lightBlue',
   success: ' green',
   warning: ' orange',
   error: ' red',
   border: ' semiLightGrey',
   disabled: ' grey',
   highlight: ' lightGrey',
-  highlightHover: ' lightBlue',
+  onclick: ' darkBlue',
   scrollbar: ' grey',
   black: ' black',
   white: ' white',
+  text: ' black',
 }
 
 const Icon = ({ name, size, color }) => {

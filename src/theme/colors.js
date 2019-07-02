@@ -1,21 +1,21 @@
 import csscolors from 'css-color-names'
-import { lighten, darken } from './utils'
 
 const black = '#3a3a3a'
 const white = '#ffffff'
 
 // greys
 const lightGrey = '#f5f5f5'
-const semiLightGrey = '#f5f5f5'
+const semiLightGrey = '#ecebeb'
 const grey = '#b5b5b5'
+const darkGrey = '#b5b5b5'
 
 const red = '#ef5350'
 const green = '#66bb6a'
+const orange = '#ffc324'
 // blues
 const lightBlue = '#1e88e5'
 const blue = '#0091ea'
 const darkBlue = '#1976d2'
-const orange = '#ffc324'
 
 const palette = {
   ...csscolors,
@@ -30,6 +30,7 @@ const palette = {
   red,
   green,
   orange,
+  darkGrey,
 }
 
 const components = {
@@ -67,23 +68,25 @@ const system = {
   primary: palette.blue,
 
   // States
-  info: palette.lightBlue,
+  hover: palette.lightBlue,
   success: palette.green,
   warning: palette.orange,
   error: palette.red,
 
   // Misc
-  text: palette.darkBlue,
+  text: palette.black,
   border: palette.semiLightGrey,
 
   // Disabled
   disabled: palette.grey,
-  // Highlight? placeholder for now.
   highlight: palette.lightGrey,
-  highlightHover: palette.lightBlue,
+  onclick: palette.darkBlue,
   // Scrollbar
-  scrollbar: palette.grey,
-  // border: palette.semiLightGrey,
+  scrollbar: palette.darkGrey,
+
+  //legacy
+  info: palette.lightBlue,
+  highlightHover: palette.lightBlue,
 }
 
 export default {
