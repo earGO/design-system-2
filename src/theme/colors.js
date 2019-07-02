@@ -6,15 +6,16 @@ const white = '#ffffff'
 
 // greys
 const lightGrey = '#f5f5f5'
-const semiLightGrey = '#ecebeb'
+const semiLightGrey = '#f5f5f5'
 const grey = '#b5b5b5'
 
 const red = '#ef5350'
 const green = '#66bb6a'
 // blues
-const lightBlue = '#0091ea'
-const blue = '#1e88e5'
-const darkBlue = darken(blue, 0.75)
+const lightBlue = '#1e88e5'
+const blue = '#0091ea'
+const darkBlue = '#1976d2'
+const orange = '#ffc324'
 
 const palette = {
   ...csscolors,
@@ -28,6 +29,7 @@ const palette = {
   darkBlue,
   red,
   green,
+  orange,
 }
 
 const components = {

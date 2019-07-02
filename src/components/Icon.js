@@ -9,9 +9,29 @@ const sizes = {
   4: ' md-48',
 }
 
+const colors = {
+  primary: ' blue',
+  info: ' lightBlue',
+  success: ' green',
+  warning: ' orange',
+  error: ' red',
+  border: ' semiLightGrey',
+  disabled: ' grey',
+  highlight: ' lightGrey',
+  highlightHover: ' lightBlue',
+  scrollbar: ' grey',
+  black: ' black',
+  white: ' white',
+}
+
 const Icon = ({ name, size, color }) => {
-  const nameForClass = 'material-icons' + sizes[size]
-  return <i className={`${nameForClass}`}>{name}</i>
+  let nameForClass = ''
+  if (sizes[size] !== undefined && colors[color] !== undefined) {
+    nameForClass = 'material-icons' + sizes[size] + colors[color]
+  } else {
+    nameForClass = 'material-icons md-18 error'
+    return <i className={`${nameForClass}`}>{name}</i>
+  }
 }
 
 Icon.displayName = 'Icon'
@@ -24,7 +44,7 @@ Icon.propTypes = {
 Icon.defaultProps = {
   name: 'live_help',
   size: 2,
-  color: 'primary',
+  color: 'error',
 }
 
 /** @component */

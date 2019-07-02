@@ -1,12 +1,12 @@
 Доступные для использования иконки:
 ```js noeditor
-const icons = require('../../src/theme/icons').default.definitions.fas
+const icons = require('../../src/theme/icons')
 
 function IconCard({ name }) {
     return (
         <Card width={100} borderRadius={1} mr={3} mb={3}>
             <Flex height={70} justifyContent="center" alignItems="center">
-                <Icon fontSize={5} name={name} />
+                <Icon size={2} name={name} />
             </Flex>
             <Divider />
             <Text truncated title={name} align="center" fontSize={1} my={2} px={1}>{name}</Text>
@@ -17,7 +17,7 @@ function IconCard({ name }) {
 function Icons() {
     return (
         <Flex flexWrap="wrap">
-            {Object.keys(icons).map(name => <IconCard key={name} name={name} />)}
+            {icons.icons.map(name => <IconCard key={name} name={name} />)}
         </Flex>
     )
 }
@@ -25,47 +25,28 @@ function Icons() {
 <Icons />
 ```
 
-Система использует [MaterialDesignIcons]в качестве базы данных иконок.
-Общая документация по компонентам
-https://dev.materialdesignicons.com/getting-started
-Git-репозиторий
- https://github.com/Templarian/MaterialDesign-React
- https://github.com/Templarian/MaterialDesign-JS
+Система использует Material Design Icons в качестве базы данных иконок. Поддерживаются только иконки из палитры выше. Название каждой карточки - имя иконки, которое необходимо передать компоненту для отображения. 
+
+По большому счёту это тег `<i>` с присвоенным ему специальным классом, отображающим иконку из шрифта. Для управления отступами и тонкого позиционирования необходимо заключить иконку в другой компонент, например Box.
 
 Чтобы вывести иконку, необходимо передать в параметр **name** ее название:
 ```js 
-<Icon name="beer" />
+<Icon name="check_circle" />
 ```
 
-Иконка поддерживает систему отступов:
+По умолчанию цвет иконки чёрный, но с помощью свойства **color** можно явно указать ее цвет из цветовой палитры:
 ```js
-<Icon name="face" color={'#0d0d0d'} size={4}/>
+<Icon name="school" color="primary" />
+<Icon name="school" color="warning" />
 ```
 
-По умолчанию цвет иконки наследуется от родителя, но с помощью свойства **color** можно явно указать ее цвет:
+Иконки не наследуют цвета шрифта от родителей - цвет либо чёрный, либо явно указанный в компоненте самой иконки
+
+**size** управляет размером иконки:
 ```js
-<Icon name="beer" color="primary" />
+<Icon name="folder_open" size={1} />
+<Icon name="folder_open" size={2} />
+<Icon name="folder_open" size={3} /> 
+<Icon name="folder_open" size={4} />
 ```
-
-**fontSize** управляет размером иконки:
-```js
-<Icon name="beer" fontSize={3} />
-```
-
-**spin** или **pulse** создают анимацию вращения:
-```js
-<Icon name="spinner" spin />
-<Icon name="cog" pulse ml={2} />
-```
-
-Иконку можно позиционировать относительно исходной точки с помощью параметров **top, right, bottom, left**. 
-
-**template.space** и **template.breakpoints** в этих параметрах не поддерживаются, так как обычно позиционирование следует применять в случае, если сама иконка из пакета [Font Awesome](https://fontawesome.com/icons?d=gallery&m=free) немного смещена и для этого используются маленькие значения в px:
-```js
-<Card borderColor="primary" mb={2}>
-    <Icon name="account_circle" />
-</Card>
-<Card borderColor="primary">
-    <Icon name="beer" top={1} left={3} />
-</Card>
-```
+Поддерживаются размеры в 18, 24, 36 и 48 пикселей (size от 1 до 4 соответственно)
