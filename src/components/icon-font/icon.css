@@ -51,3 +51,16 @@
 .material-icons.darkBlue {color:#1976d2;}
 .material-icons.orange {color: #ffc324;}
 
+.material-icons.spin{
+    animation: icon-spin infinite 10s linear;}
+
+
+@keyframes icon-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+

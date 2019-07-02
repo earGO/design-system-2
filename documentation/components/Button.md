@@ -38,11 +38,13 @@
 ```js
 <Box mb={2}>
     <Button mr={2}>
-        <Icon spin name="spinner" mr={2} top={1} />
+        <Icon spin name="autorenew" />
         Loading...
     </Button>
     <Button circle>
-        <Icon spin name="spinner" top={1} />
+    <Box top={1}>
+       <Icon spin name="autorenew" />
+       </Box>
     </Button>
 </Box>
 <Box>
