@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7877cfa4-e169-4a93-9fc8-5fec215f798b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Checkbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Checkbox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/theme/colors.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme/colors.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/theme/icons.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme/icons.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Icon.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Icon.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/icon-font/icon.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/icon-font/icon.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -58,8 +59,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/Checkbox.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="443">
-                  <caret line="129" column="70" selection-start-line="129" selection-start-column="70" selection-end-line="129" selection-end-column="70" />
+                <state relative-caret-position="391">
+                  <caret line="131" column="61" selection-start-line="131" selection-start-column="61" selection-end-line="131" selection-end-column="61" />
                   <folding>
                     <element signature="e#0#40#0" expanded="true" />
                     <element signature="n#!!block;n#getDerivedStateFromProps#0;n#Checkbox#0" />
@@ -89,15 +90,6 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/icon-font/icon.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="302">
-                  <caret line="53" column="37" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/documentation/components/Icon.md">
               <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
                 <state split_layout="SPLIT">
@@ -122,11 +114,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/Icon.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="353">
-                  <caret line="24" column="17" lean-forward="true" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+                <state relative-caret-position="85">
+                  <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
                   <folding>
                     <element signature="e#0#25#0" expanded="true" />
                   </folding>
@@ -139,6 +131,15 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state>
                   <caret line="30" column="8" lean-forward="true" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/components/icon-font/icon.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="336">
+                  <caret line="55" column="43" selection-start-line="55" selection-start-column="43" selection-end-line="55" selection-end-column="43" />
                 </state>
               </provider>
             </entry>
@@ -169,12 +170,12 @@
         <option value="$PROJECT_DIR$/documentation/colors.md" />
         <option value="$PROJECT_DIR$/documentation/components/Icon.md" />
         <option value="$PROJECT_DIR$/documentation/components/Button.md" />
-        <option value="$PROJECT_DIR$/src/components/icon-font/icon.css" />
-        <option value="$PROJECT_DIR$/src/components/Icon.js" />
         <option value="$PROJECT_DIR$/src/components/Radio.js" />
         <option value="$PROJECT_DIR$/src/theme/colors.js" />
         <option value="$PROJECT_DIR$/src/theme/icons.js" />
+        <option value="$PROJECT_DIR$/src/components/Icon.js" />
         <option value="$PROJECT_DIR$/src/components/Checkbox.js" />
+        <option value="$PROJECT_DIR$/src/components/icon-font/icon.css" />
       </list>
     </option>
   </component>
@@ -287,12 +288,12 @@
       <option name="presentableId" value="Default" />
       <updated>1560517643834</updated>
       <workItem from="1560517644929" duration="367000" />
-      <workItem from="1562070330319" duration="22122000" />
+      <workItem from="1562070330319" duration="24108000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23112000" />
+    <option name="totallyTimeSpent" value="25098000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -564,13 +565,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/icon-font/icon.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="53" column="37" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Radio.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -622,8 +616,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Icon.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="24" column="17" lean-forward="true" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+        <state relative-caret-position="85">
+          <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
@@ -632,12 +626,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Checkbox.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="129" column="70" selection-start-line="129" selection-start-column="70" selection-end-line="129" selection-end-column="70" />
+        <state relative-caret-position="391">
+          <caret line="131" column="61" selection-start-line="131" selection-start-column="61" selection-end-line="131" selection-end-column="61" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
             <element signature="n#!!block;n#getDerivedStateFromProps#0;n#Checkbox#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/icon-font/icon.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="55" column="43" selection-start-line="55" selection-start-column="43" selection-end-line="55" selection-end-column="43" />
         </state>
       </provider>
     </entry>

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import './icon-font/icon.css'
 
 const sizes = {
+  0: ' md-14',
   1: ' md-18',
   2: ' md-24',
   3: ' md-36',

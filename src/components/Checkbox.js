@@ -96,13 +96,12 @@ class Checkbox extends Component {
     super(props)
     this.state = {
       checked: typeof props.checked !== 'undefined' ? props.checked : false,
-      hidden: false,
     }
   }
 
   handleChange = event => {
     const { checked } = event.target
-    this.setState({ checked, hidden: !state.hidden })
+    this.setState({ checked })
     this.props.onChange && this.props.onChange(checked, event)
   }
 
@@ -127,7 +126,11 @@ class Checkbox extends Component {
         <CheckboxContainer onChange={this.handleChange}>
           <CheckboxInput {...omit(this.props, ['onChange', 'value'])} checked={this.state.checked} readOnly />
           <StyledCheckbox checked={this.state.checked} size={this.props.size} disabled={this.props.disabled}>
-            <Icon name="check" color="white" hidden={this.state.hidden} />
+            {this.state.checked ? (
+              <Icon name="check" color="white" size={0} />
+            ) : (
+              <Icon name="check" color="white" hidden size={0} />
+            )}
           </StyledCheckbox>
         </CheckboxContainer>
         {/* this.props.children instead of text maybe? */}
