@@ -123,7 +123,7 @@ const DropdownIndicator = props => {
   const withPadding = { ...innerProps, style: { paddingRight: 16 } }
   return (
     <components.DropdownIndicator {...rest} innerProps={withPadding}>
-      <Icon name="caret-down" fontSize={systemTheme.fontSizes[sizeIndex]} color={systemTheme.colors.black} />
+      <Icon name="arrow_drop_down" size={0} color={systemTheme.colors.black} />
     </components.DropdownIndicator>
   )
 }

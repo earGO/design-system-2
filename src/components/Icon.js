@@ -1,88 +1,64 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { space, color, fontSize, top, bottom, left, right } from 'styled-system'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import theme from '../theme'
+import './icon-font/icon.css'
 
-function Base({ name, ...props }) {
-  return <FontAwesomeIcon {...props} icon={name} />
+const sizes = {
+  0: ' md-14',
+  1: ' md-18',
+  2: ' md-24',
+  3: ' md-36',
+  4: ' md-48',
 }
 
-/**
- * SVG иконка.
- */
-const Icon = styled(Base)`
-  position: relative;
-  flex: none;
+const colors = {
+  primary: ' blue',
+  hover: ' lightBlue',
+  success: ' green',
+  warning: ' orange',
+  error: ' red',
+  border: ' semiLightGrey',
+  disabled: ' grey',
+  highlight: ' lightGrey',
+  onclick: ' darkBlue',
+  scrollbar: ' grey',
+  black: ' black',
+  white: ' white',
+  text: ' black',
+}
 
-  ${fontSize}
-  ${space}
-  ${color}
-  ${top}
-  ${right}
-  ${bottom}
-  ${left};
-`
+const Icon = ({ name, size, color, ...props }) => {
+  let nameForClass = 'material-icons '
+  if (sizes[size] !== undefined) {
+    nameForClass = nameForClass + sizes[size]
+  } else {
+    nameForClass = nameForClass + 'md-18 '
+  }
+  if (colors[color] !== undefined) {
+    nameForClass = nameForClass + colors[color]
+  } else {
+    nameForClass = nameForClass + 'black '
+  }
+  if (props.hasOwnProperty('spin')) {
+  }
+  if (props.hasOwnProperty('hidden')) {
+    nameForClass = nameForClass + ' hidden'
+  }
+  return <i className={`${nameForClass}`}>{name}</i>
+}
 
 Icon.displayName = 'Icon'
 
 Icon.propTypes = {
-  /** Размер шрифта */
-  fontSize: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
-  /** margin */
-  m: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
-  /** margin-top*/
-  mt: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
-  /** margin-right*/
-  mr: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
-  /** margin-bottom*/
-  mb: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
-  /** margin-left*/
-  ml: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
-  /** margin-left and margin-right */
-  mx: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
-  /** margin-top and margin-bottom */
-  my: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
-  /** padding */
-  p: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
-  /** padding-top*/
-  pt: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
-  /** padding-right*/
-  pr: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
-  /** padding-bottom*/
-  pb: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
-  /** padding-left*/
-  pl: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
-  /** padding-left and padding-right */
-  px: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
-  /** padding-top and padding-bottom */
-  py: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
-  /** Смещение сверху */
-  top: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
-  /** Смещение снизу */
-  bottom: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
-  /** Смещение слева */
-  left: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
-  /** Смещение справа */
-  right: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
-  /** Плавная анимация вращения */
-  spin: PropTypes.bool,
-  /** Ступенчатая анимация вращения */
-  pulse: PropTypes.bool,
-  /** Скейлинг. сss transform scale */
-  scale: PropTypes.number,
-  /** Цвет иконки */
+  name: PropTypes.string,
   color: PropTypes.string,
-  /** @ignore */
-  theme: PropTypes.any,
+  size: PropTypes.number,
 }
+// rotate,
 
 Icon.defaultProps = {
-  scale: 1,
-  spin: false,
-  pulse: false,
-  theme: theme,
+  name: 'live_help',
+  size: 2,
+  color: 'text',
 }
 
 /** @component */

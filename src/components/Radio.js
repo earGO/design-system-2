@@ -120,7 +120,7 @@ class Radio extends Component {
           />
           <StyledRadio checked={this.state.checked} size={this.props.size} disabled={this.props.disabled}>
             {/* Icon для выстраивания чекбоксов с разными border-width на base line  */}
-            <Icon name="check" color="transparent" />
+            <Icon name="radio_button_unchecked" hidden />
           </StyledRadio>
         </RadioContainer>
         {/* this.props.children instead of text maybe? */}

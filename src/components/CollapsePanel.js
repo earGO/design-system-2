@@ -48,7 +48,11 @@ const PanelWrapper = styled(Flex)`
 const PanelHeader = ({ title, togglePanel, isOpen, panelKey, disabled }) => (
   <PanelHeaderWrapper disabled={disabled} onClick={disabled ? noop : () => togglePanel(panelKey)}>
     <Flex justifyContent="center" alignItems="center" width={16} height={16}>
-      <AnimatedScaledIcon isOpen={isOpen} name="chevron-down" />
+      {isOpen ? (
+        <AnimatedScaledIcon isOpen={isOpen} name="keyboard_arrow_up" size={1} />
+      ) : (
+        <AnimatedScaledIcon isOpen={isOpen} name="keyboard_arrow_down" size={1} />
+      )}
     </Flex>
     <Box ml={2}>{title}</Box>
   </PanelHeaderWrapper>

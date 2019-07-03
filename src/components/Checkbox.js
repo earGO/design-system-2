@@ -72,10 +72,7 @@ export const StyledCheckbox = styled(Flex)`
   ${size}
   ${background}
   ${border}
-  ${Icon} {
-    ${iconSize}
-    visibility: ${props => (props.checked ? 'visible' : 'hidden')}
-  }
+
   ${CheckboxInput}:focus + & {
     box-shadow: 0 0 0 1px ${props => props.theme.colors.blue};
   }
@@ -129,7 +126,11 @@ class Checkbox extends Component {
         <CheckboxContainer onChange={this.handleChange}>
           <CheckboxInput {...omit(this.props, ['onChange', 'value'])} checked={this.state.checked} readOnly />
           <StyledCheckbox checked={this.state.checked} size={this.props.size} disabled={this.props.disabled}>
-            <Icon name="check" color="white" />
+            {this.state.checked ? (
+              <Icon name="check" color="white" size={0} />
+            ) : (
+              <Icon name="check" color="white" hidden size={0} />
+            )}
           </StyledCheckbox>
         </CheckboxContainer>
         {/* this.props.children instead of text maybe? */}

@@ -37,25 +37,24 @@ function Palette() {
 ```
 
 ### Системные цвета
-Назначаются из палитры
+Назначаются из палитры.
 ```js noeditor
 const colors = require('../src/theme/colors').default
 
 function Palette() {
     return (
         <Flex flexWrap="wrap">
-            {Object.keys(colors.system).map(color => (
+            {Object.keys(colors.system).map(color => {
+            if(color!=='info'&&color!=='highlightHover'){
+             return (                
                 <Card key={color} width={110} borderColor={color} borderRadius={1} mr={3} mb={3}>
                     <Box height={80} bg={color} />
                     <Divider color={color} mt={0} />
                     <Text truncated title={color} align="center" my={2} px={1}>
                         <Text>{color}</Text>
-                        <Text fontSize={0}>  
-                            {Object.keys(colors.palette).find(key => colors.palette[key] === colors.system[color])}
-                        </Text>
                     </Text>
                 </Card>
-            ))}
+            )}})}
         </Flex>
     )
 };
@@ -63,16 +62,15 @@ function Palette() {
 <Palette />
 ```
 
-
 Список цветов доступен в **theme.colors** в виде плоского объекта:
 ```js static
 {
-    primary: "#1890ff",
+    primary: "#0091ea",
     success: "#66bb6a",
     black: "#3a3a3a",
     white: "#ffffff",
-    blue: "#1e88e5",
-    lightBlue: "#0091ea",
+    blue: "#0091ea",
+    lightBlue: "#1e88e5",
     lightGrey: "#f5f5f5",
     // ...
 }
