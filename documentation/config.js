@@ -41,6 +41,39 @@ module.exports = {
           test: /\.less$/,
           use: ['style-loader', 'css-loader', 'less-loader'],
         },
+        {
+          test: /\.svg$/,
+          loader: 'svg-inline-loader',
+        },
+        {
+          test: /\.ttf$/,
+          use: [
+            {
+              loader: 'ttf-loader',
+              options: {
+                name: './font/[hash].[ext]',
+              },
+            },
+          ],
+        },
+        {
+          test: /\.woff$/,
+          use: {
+            loader: 'url-loader',
+            options: {
+              limit: 50000,
+            },
+          },
+        },
+        {
+          test: /\.woff2$/,
+          use: {
+            loader: 'url-loader',
+            options: {
+              limit: 100000,
+            },
+          },
+        },
       ],
     },
   },

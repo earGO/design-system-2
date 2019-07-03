@@ -14,7 +14,7 @@
 /docs
 
 # misc
-/.idea
+*.idea
 
 .DS_Store
 .env.local
