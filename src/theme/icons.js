@@ -14,6 +14,8 @@ const icons = [
   'arrow_drop_up',
   'keyboard_arrow_left',
   'keyboard_arrow_right',
+  'keyboard_arrow_down',
+  'keyboard_arrow_up',
   'expand_less',
   'expand_more',
   'add_circle',
