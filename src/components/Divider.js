@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { space } from 'styled-system'
@@ -13,7 +14,7 @@ const vertical = ({ vertical }) =>
   }
 
 /** Используется для разделения информации линиями. */
-const Divider = styled.div`
+const DividerComponent = styled.div`
   position: relative;
   border: 0;
   border-bottom-style: solid;
@@ -24,6 +25,31 @@ const Divider = styled.div`
   ${space}
   ${vertical};
 `
+
+const HorizontalDivider = Object.assign({}, DividerComponent)
+
+HorizontalDivider.defaultProps = {
+  theme: theme,
+  mt: 3,
+  mb: 3,
+  ml: 0,
+  mr: 0,
+}
+
+const VerticalDivider = Object.assign({}, DividerComponent)
+VerticalDivider.defaultProps = {
+  theme: theme,
+  mt: 0,
+  mb: 0,
+  ml: 3,
+  mr: 3,
+}
+
+/** @component */
+const Divider = ({ vertical, ...rest }) => {
+  if (vertical) return <VerticalDivider vertical={true} {...rest} />
+  return <HorizontalDivider vertical={false} {...rest} />
+}
 
 Divider.displayName = 'Divider'
 
@@ -66,13 +92,6 @@ Divider.propTypes = {
 
 Divider.defaultProps = {
   color: 'border',
-  vertical: false,
-  theme: theme,
-  mt: 3,
-  mb: 3,
-  ml: 0,
-  mr: 0,
 }
 
-/** @component */
 export default Divider

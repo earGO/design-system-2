@@ -15,7 +15,7 @@ TabPane.propTypes = {
   /** Текст вкладки. */
   tab: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   /** Уникальный ключ вкладки */
-  key: PropTypes.string.isRequired,
+  tabKey: PropTypes.string.isRequired,
   /** Заблокирована ли вкладка */
   disabled: PropTypes.bool,
   /** margin */
