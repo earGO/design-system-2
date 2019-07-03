@@ -38,22 +38,34 @@
 ```js
 <Box mb={2}>
     <Button mr={2}>
-        <Icon spin name="autorenew" />
+    <Flex><Box mr={1} mt={1}>
+       <Icon spin name="autorenew" />
+       </Box>
+       <Box mt={1}>
         Loading...
+        </Box>
+        </Flex>
     </Button>
     <Button circle>
-    <Box top={1}>
+    <Box mt={1}>
        <Icon spin name="autorenew" />
        </Box>
     </Button>
 </Box>
 <Box>
     <Button type="bordered" mr={2}>
-        <Icon spin name="spinner" mr={2} top={1} />
+    <Flex><Box mr={1} mt={1}>
+       <Icon spin name="autorenew" />
+       </Box>
+       <Box mt={1}>
         Loading...
+        </Box>
+        </Flex>
     </Button>
     <Button circle type="bordered">
-        <Icon spin name="spinner"  top={1} />
+    <Box mt={1}>
+       <Icon spin name="autorenew" />
+       </Box>
     </Button>
 </Box>
 ```

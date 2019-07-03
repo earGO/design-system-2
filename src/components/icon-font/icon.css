@@ -51,6 +51,8 @@
 .material-icons.darkBlue {color:#1976d2;}
 .material-icons.orange {color: #ffc324;}
 
+.material-icons.hidden {display: none}
+
 .material-icons.spin{
     animation: icon-spin infinite 10s linear;}
 

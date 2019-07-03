@@ -35,6 +35,9 @@ const Icon = ({ name, size, color, ...props }) => {
   if (props.hasOwnProperty('spin')) {
     nameForClass = nameForClass + ' spin'
   }
+  if (props.hasOwnProperty('hidden')) {
+    nameForClass = nameForClass + ' hidden'
+  }
   return <i className={`${nameForClass}`}>{name}</i>
 }
 
