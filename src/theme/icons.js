@@ -34,6 +34,7 @@ const icons = [
   'help',
   'help_outline',
   'folder_open',
+  'check',
   'check_box',
   'check_box_outline_blank',
   'radio_button_checked',

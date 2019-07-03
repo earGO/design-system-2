@@ -87,6 +87,8 @@ const system = {
   //legacy
   info: palette.lightBlue,
   highlightHover: palette.lightBlue,
+  black: palette.black,
+  white: palette.white,
 }
 
 export default {

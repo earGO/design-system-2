@@ -72,10 +72,7 @@ export const StyledCheckbox = styled(Flex)`
   ${size}
   ${background}
   ${border}
-  ${Icon} {
-    ${iconSize}
-    visibility: ${props => (props.checked ? 'visible' : 'hidden')}
-  }
+
   ${CheckboxInput}:focus + & {
     box-shadow: 0 0 0 1px ${props => props.theme.colors.blue};
   }
@@ -99,12 +96,13 @@ class Checkbox extends Component {
     super(props)
     this.state = {
       checked: typeof props.checked !== 'undefined' ? props.checked : false,
+      hidden: false,
     }
   }
 
   handleChange = event => {
     const { checked } = event.target
-    this.setState({ checked })
+    this.setState({ checked, hidden: !state.hidden })
     this.props.onChange && this.props.onChange(checked, event)
   }
 
@@ -129,7 +127,7 @@ class Checkbox extends Component {
         <CheckboxContainer onChange={this.handleChange}>
           <CheckboxInput {...omit(this.props, ['onChange', 'value'])} checked={this.state.checked} readOnly />
           <StyledCheckbox checked={this.state.checked} size={this.props.size} disabled={this.props.disabled}>
-            <Icon name="check" color="white" />
+            <Icon name="check" color="white" hidden={this.state.hidden} />
           </StyledCheckbox>
         </CheckboxContainer>
         {/* this.props.children instead of text maybe? */}
