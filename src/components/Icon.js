@@ -27,14 +27,18 @@ const colors = {
 }
 
 const Icon = ({ name, size, color, ...props }) => {
-  let nameForClass = ''
-  if (sizes[size] !== undefined && colors[color] !== undefined) {
-    nameForClass = 'material-icons' + sizes[size] + colors[color]
+  let nameForClass = 'material-icons '
+  if (sizes[size] !== undefined) {
+    nameForClass = nameForClass + sizes[size]
   } else {
-    nameForClass = 'material-icons md-18 error'
+    nameForClass = nameForClass + 'md-18 '
+  }
+  if (colors[color] !== undefined) {
+    nameForClass = nameForClass + colors[color]
+  } else {
+    nameForClass = nameForClass + 'black '
   }
   if (props.hasOwnProperty('spin')) {
-    nameForClass = nameForClass + ' spin'
   }
   if (props.hasOwnProperty('hidden')) {
     nameForClass = nameForClass + ' hidden'
