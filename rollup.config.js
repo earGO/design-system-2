@@ -23,7 +23,7 @@ export default {
       sourcemap: true,
     },
   ],
-  external: ['styled-components'],
+  external: ['styled-components','styled-normalize','styled-system'],
   // https://github.com/WebReflection/hyperHTML/issues/304#issuecomment-443950244
   context: 'null',
   plugins: [
