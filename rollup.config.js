@@ -28,7 +28,13 @@ export default {
   context: 'null',
   plugins: [
     external(),
-    url(),
+    url({
+      // by default, rollup-plugin-url will not handle font files
+      include: ['**/components/**/*.woff', '**/components/**/*.woff2'],
+      // setting infinite limit will ensure that the files
+      // are always bundled with the code, not copied to /dist
+      limit: Infinity,
+    }),
     babel({
       babelrc: false,
       runtimeHelpers: true,
