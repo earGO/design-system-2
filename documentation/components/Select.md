@@ -111,3 +111,13 @@ const options = Array(30)
   <Select options={options} placeholder="large" size="large" />
 </Flex>
 ```
+
+Чтобы выпадающий список отображался поверх других компонентов, нужно обернуть его в Box, которому присвоить z-index 3 или больше - в сависимости от этого параметра у других компонентов. Если это не помогло, добавить инлайновый стиль:
+```js
+const options = Array(30)
+  .fill(true)
+  .map((_, i) => ({ value: i, label: `Option ${i}` }));
+
+  <Select options={options} placeholder="medium" size="medium" styles={{ menuPortal: base => ({ ...base, zIndex: 9999 }) }}/>
+
+```

@@ -3,7 +3,8 @@ import styled, { css } from 'styled-components'
 import propTypes from 'prop-types'
 import Relative from './Relative'
 import Absolute from './Absolute'
-import { space, width, themeGet } from 'styled-system'
+import { space, width } from 'styled-system'
+import themeGet from '@styled-system/theme-get'
 import omit from 'lodash/omit'
 
 // #TBD: Input.TextArea + allowClear prop. Как будет работать c suffix?
