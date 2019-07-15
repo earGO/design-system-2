@@ -59,3 +59,19 @@ const handleChange = (value) => {
   {state.value && <Text>value: <Text bold inline color="green">{state.value}</Text></Text>}
 </Box>
 ```
+Resizable
+```js
+		<Box width={300}>
+			<ResizableInput
+				size="small"
+				value={value}
+				placeholder={placeholder}
+				prefix={prefix}
+				suffix={Boolean(value) ? suffix : null}
+				onChange={handleChange}
+				shrinkWidth={60}
+				growWidth={260}
+			/>
+		</Box>
+
+```
