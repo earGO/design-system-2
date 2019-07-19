@@ -1,6 +1,6 @@
 Доступные для использования иконки:
 ```js noeditor
-const icons = require('../../src/theme/icons')
+const icons = require('@design-system/theme').icons
 
 function IconCard({ name }) {
     return (
@@ -17,7 +17,7 @@ function IconCard({ name }) {
 function Icons() {
     return (
         <Flex flexWrap="wrap">
-            {icons.icons.map(name => <IconCard key={name} name={name} />)}
+            {icons.map(name => <IconCard key={name} name={name} />)}
         </Flex>
     )
 }

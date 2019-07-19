@@ -1,5 +1,5 @@
 ```js noeditor
-const colors = require('../src/theme/colors').default
+const colors = require('@design-system/theme').default.colors
 
 initialState = {
   collapsed: true,
@@ -39,7 +39,7 @@ function Palette() {
 ### Системные цвета
 Назначаются из палитры.
 ```js noeditor
-const colors = require('../src/theme/colors').default
+const colors = require('@design-system/theme').default.colors
 
 function Palette() {
     return (

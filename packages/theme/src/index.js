@@ -13,6 +13,8 @@ const aliases = ['sm', 'md', 'lg', 'xl']
 addAliases(breakpoints, aliases)
 addAliases(mediaQueries, aliases)
 
+export {ThemeProvider, icons, colors}
+
 export default {
   colors,
   breakpoints,

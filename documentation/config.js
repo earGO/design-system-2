@@ -6,7 +6,9 @@ function makeAbsolutePath(directory, component) {
 }
 
 function getComponents(names = []) {
-  return names.map(name => makeAbsolutePath('../src/components', name + '.js'))
+  return names.map(name =>
+    makeAbsolutePath('../packages/components/src', name + '.js')
+  )
 }
 
 /**
@@ -20,7 +22,7 @@ module.exports = {
   version: pkg.version,
   skipComponentsWithoutExample: true,
   pagePerSection: false,
-  editorConfig: { theme: 'material' },
+  editorConfig: {theme: 'material'},
   exampleMode: 'collapse',
   usageMode: 'collapse',
   ignore: ['/index.js', '/*.test.js', '**/*.spec.js'],
@@ -31,19 +33,19 @@ module.exports = {
         {
           test: /\.jsx?$/,
           exclude: /node_modules/,
-          loader: 'babel-loader',
+          loader: 'babel-loader'
         },
         {
           test: /\.css$/,
-          use: ['style-loader', 'css-loader'],
+          use: ['style-loader', 'css-loader']
         },
         {
           test: /\.less$/,
-          use: ['style-loader', 'css-loader', 'less-loader'],
+          use: ['style-loader', 'css-loader', 'less-loader']
         },
         {
           test: /\.svg$/,
-          loader: 'svg-inline-loader',
+          loader: 'svg-inline-loader'
         },
         {
           test: /\.ttf$/,
@@ -51,66 +53,71 @@ module.exports = {
             {
               loader: 'ttf-loader',
               options: {
-                name: './font/[hash].[ext]',
-              },
-            },
-          ],
+                name: './font/[hash].[ext]'
+              }
+            }
+          ]
         },
         {
           test: /\.woff$/,
           use: {
             loader: 'url-loader',
             options: {
-              limit: 50000,
-            },
-          },
+              limit: 50000
+            }
+          }
         },
         {
           test: /\.woff2$/,
           use: {
             loader: 'url-loader',
             options: {
-              limit: 100000,
-            },
-          },
-        },
-      ],
-    },
+              limit: 100000
+            }
+          }
+        }
+      ]
+    }
   },
   styleguideDir: '../docs',
   /** Используется кастомный враппер для проброса темы через провайдер */
   styleguideComponents: {
-    Wrapper: path.join(__dirname, 'Wrapper'),
+    Wrapper: path.join(__dirname, 'Wrapper')
   },
   template: {
     head: {
       links: [
         {
           rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css?family=PT+Sans',
-        },
-      ],
-    },
+          href: 'https://fonts.googleapis.com/css?family=PT+Sans'
+        }
+      ]
+    }
   },
   theme: {
     fontFamily: {
-      base: '"PT Sans", sans-serif',
+      base: '"PT Sans", sans-serif'
     },
     fontSize: {
       base: 14,
       text: 14,
-      small: 12,
-    },
+      small: 12
+    }
   },
   getComponentPathLine(componentPath) {
     if (nestedComponents.some(component => componentPath.includes(component))) {
       return false
     }
 
-    return `import { ${path.basename(componentPath, '.js')} } from '${pkg.name}'`
+    return `import { ${path.basename(componentPath, '.js')} } from '${
+      pkg.name
+    }'`
   },
   getExampleFilename(componentPath) {
-    return makeAbsolutePath('../documentation/components', path.basename(componentPath.replace(/\.jsx?$/, '.md')))
+    return makeAbsolutePath(
+      '../documentation/components',
+      path.basename(componentPath.replace(/\.jsx?$/, '.md'))
+    )
   },
   sections: [
     {
@@ -119,50 +126,79 @@ module.exports = {
       sections: [
         {
           name: 'Установка',
-          content: 'installation.md',
+          content: 'installation.md'
         },
         {
           name: 'Интеграция',
-          content: 'integration.md',
+          content: 'integration.md'
         },
         {
           name: 'Цветовая палитра',
-          content: 'colors.md',
+          content: 'colors.md'
         },
         {
           name: 'Шрифты',
-          content: 'fonts.md',
+          content: 'fonts.md'
         },
         {
           name: 'Настройка темы',
-          content: 'theme.md',
+          content: 'theme.md'
         },
         {
           name: 'Ядро системы',
-          content: 'core.md',
-        },
-      ],
+          content: 'core.md'
+        }
+      ]
     },
     {
       name: 'Примитивы',
-      description: 'Компоненты-примитивы используются для управления расположением элементов интерфейса на экране.',
-      components: () => getComponents(['Box', 'Flex', 'Relative', 'Absolute', 'Card', 'Overlay']),
+      description:
+        'Компоненты-примитивы используются для управления расположением элементов интерфейса на экране.',
+      components: () =>
+        getComponents([
+          'Box',
+          'Flex',
+          'Relative',
+          'Absolute',
+          'Card',
+          'Overlay'
+        ])
     },
     {
       name: 'Элементы',
       components: () =>
-        getComponents(['Text', 'Heading', 'Icon', 'Button', 'Divider', 'Scrollbars', 'Modal', 'Popover']),
+        getComponents([
+          'Text',
+          'Heading',
+          'Icon',
+          'Button',
+          'Divider',
+          'Scrollbars',
+          'Modal',
+          'Popover'
+        ])
     },
     {
       name: 'Ввод данных',
       description: 'Компоненты для получения данных, введенных пользователем.',
       components: () =>
-        getComponents(['Form', 'FormItem', 'Input', 'Textarea', 'Checkbox', 'Toggle', 'Radio', 'RadioGroup', 'Select']),
+        getComponents([
+          'Form',
+          'FormItem',
+          'Input',
+          'Textarea',
+          'Checkbox',
+          'Toggle',
+          'Radio',
+          'RadioGroup',
+          'Select'
+        ])
     },
     {
       name: 'Отображение данных',
       description: 'Компоненты для отображения данных',
-      components: () => getComponents(['Collapse', 'CollapsePanel', 'Tabs', 'TabPane', 'Table']),
-    },
-  ],
+      components: () =>
+        getComponents(['Collapse', 'CollapsePanel', 'Tabs', 'TabPane', 'Table'])
+    }
+  ]
 }
