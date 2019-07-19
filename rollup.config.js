@@ -10,20 +10,20 @@ import postcss from 'rollup-plugin-postcss'
 import pkg from './package.json'
 
 export default {
-  input: 'src/index.js',
+  input: 'packages/library/src/index.js',
   output: [
     {
       file: pkg.main,
       format: 'cjs',
-      sourcemap: true,
+      sourcemap: true
     },
     {
       file: pkg.module,
       format: 'es',
-      sourcemap: true,
-    },
+      sourcemap: true
+    }
   ],
-  external: ['styled-components','styled-normalize','styled-system'],
+  external: ['styled-components', 'styled-normalize', 'styled-system'],
   // https://github.com/WebReflection/hyperHTML/issues/304#issuecomment-443950244
   context: 'null',
   plugins: [
@@ -33,30 +33,30 @@ export default {
       include: ['**/components/**/*.woff', '**/components/**/*.woff2'],
       // setting infinite limit will ensure that the files
       // are always bundled with the code, not copied to /dist
-      limit: Infinity,
+      limit: Infinity
     }),
     babel({
       babelrc: false,
       runtimeHelpers: true,
-      presets: [['@babel/env', { modules: false }], '@babel/react'],
+      presets: [['@babel/env', {modules: false}], '@babel/react'],
       exclude: ['node_modules/**', '**/*.json'],
       plugins: [
         '@babel/external-helpers',
         [
           '@babel/transform-runtime',
           {
-            regenerator: true,
-          },
+            regenerator: true
+          }
         ],
-        '@babel/plugin-proposal-class-properties',
-      ],
+        '@babel/plugin-proposal-class-properties'
+      ]
     }),
     resolve({
-      browser: true,
+      browser: true
     }),
     commonjs({
       include: ['node_modules/**'],
-      exclude: ['node_modules/process-es6/**'],
+      exclude: ['node_modules/process-es6/**']
     }),
     json(),
     // terser(),
@@ -64,7 +64,7 @@ export default {
       extensions: ['.css', '.less'],
       inject: false,
       extract: true,
-      minimize: true,
-    }),
-  ],
+      minimize: true
+    })
+  ]
 }

@@ -1,0 +1,11 @@
+{
+  "name": "@design-system/blocks",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "main:src": "src/index.js",
+  "license": "MIT",
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
