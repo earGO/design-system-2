@@ -18,7 +18,16 @@
     "start": "rollup -c -w",
     "build": "rollup -c",
     "styleguide": "styleguidist server --config documentation/config.js",
-    "styleguide:build": "styleguidist build --config documentation/config.js"
+    "styleguide:build": "styleguidist build --config documentation/config.js",
+    "unit": "jest --watchAll",
+    "make-version": "lerna version && yarn",
+    "make-release": "lerna version --conventional-commits --create-release github --changelog-preset react && yarn",
+    "storybook": "cd packages/storybook && start-storybook -p 9009 -s public",
+    "build-storybook": "lerna exec --scope library-name -- babel src -d dist --copy-files --ignore \"src/stories/\"",
+    "watch-storybook": "lerna exec --scope library-name -- babel src -d dist --watch --copy-files --ignore \"src/stories/\"",
+    "clean": "oao clean",
+    "status": "oao status",
+    "remove-all": "oao remove-all"
   },
   "dependencies": {
     "@styled-system/theme-get": "^5.0.12",
@@ -64,6 +73,7 @@
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "lint-staged": "^9.2.0",
+    "oao": "^1.6.0",
     "prettier": "^1.18.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.0",
@@ -83,7 +93,6 @@
     "url-loader": "^2.0.1",
     "webpack": "^4.29.0"
   },
-
   "browserslist": [
     ">0.2%",
     "not dead",
@@ -93,7 +102,6 @@
   "files": [
     "build"
   ],
-
   "publishConfig": {
     "registry": "https://gitlab.ursip.ru/nexus/repository/npm-local/"
   }
