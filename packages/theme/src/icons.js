@@ -55,6 +55,4 @@ const icons = [
   'remove_red_eye'
 ]
 
-module.exports = {
-  icons
-}
+export default icons

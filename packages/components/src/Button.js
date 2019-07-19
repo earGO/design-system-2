@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import {space} from 'styled-system'
-import theme from '../theme'
+import theme from '@design-system/theme'
 
 const sizes = {
   verySmall: {

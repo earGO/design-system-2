@@ -2,9 +2,8 @@ import React, {Component} from 'react'
 import styled, {css} from 'styled-components'
 import propTypes from 'prop-types'
 import Relative from './Relative'
-import Absolute from './Absolute'
-import {space, width, themeGet, fontSize} from 'styled-system'
-import omit from 'lodash/omit'
+import {space, width, fontSize} from 'styled-system'
+import themeGet from '@styled-system/theme-get'
 
 const disabled = props =>
   props.disabled &&

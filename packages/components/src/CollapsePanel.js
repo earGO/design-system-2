@@ -4,7 +4,7 @@ import styled, {css} from 'styled-components'
 import Box from './Box'
 import Flex from './Flex'
 import Icon from './Icon'
-import {themeGet} from 'styled-system'
+import themeGet from '@styled-system/theme-get'
 
 const noop = () => {}
 

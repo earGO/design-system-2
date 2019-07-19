@@ -7,7 +7,7 @@ import {
   flexDirection
 } from 'styled-system'
 import Box from './Box'
-import theme from '../theme'
+import theme from '@design-system/theme'
 
 /**
  * Наследует компонент `<Box />`, добавляет ему **display: flex** и расширяет свойствами **alignItems, justifyContent, flexWrap, flexDirection**.

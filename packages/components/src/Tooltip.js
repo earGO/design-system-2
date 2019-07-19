@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import styled, {css} from 'styled-components'
 import Positional from './Positional'
 import PropTypes from 'prop-types'
-import theme from '../theme'
+import theme from '@design-system/theme'
 
 const Body = styled.div.attrs(props => ({
   font: props.font,

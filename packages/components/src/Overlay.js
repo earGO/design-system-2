@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import hexRgb from 'hex-rgb'
-import theme from '../theme'
+import theme from '@design-system/theme'
 import Flex from './Flex'
 
 const getColor = ({theme, bg, opacity}) => {

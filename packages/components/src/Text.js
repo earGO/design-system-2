@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import {fontSize, space, color} from 'styled-system'
-import theme from '../theme'
+import theme from '@design-system/theme'
 
 const align = ({align}) => Boolean(align) && {textAlign: align}
 const regular = ({regular, theme}) =>

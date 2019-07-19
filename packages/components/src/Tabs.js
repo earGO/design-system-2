@@ -4,7 +4,7 @@ import propTypes from 'prop-types'
 import Flex from './Flex'
 import Box from './Box'
 import TabPane from './TabPane'
-import {themeGet} from 'styled-system'
+import themeGet from '@styled-system/theme-get'
 
 const noop = () => {}
 

@@ -1,11 +1,11 @@
 {
-  "name": "@design-system/components",
+  "name": "@design-system/documentation",
   "version": "1.2.0",
   "main": "src/index.js",
   "main:src": "src/index.js",
   "license": "MIT",
   "dependencies": {
-
+    "@design-system/components": ">=1.2.0",
     "@design-system/theme": ">=1.2.0"
   },
   "devDependencies": {

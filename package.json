@@ -14,6 +14,12 @@
       "**/babel-loader"
     ]
   },
+  "scripts": {
+    "start": "rollup -c -w",
+    "build": "rollup -c",
+    "styleguide": "styleguidist server --config documentation/config.js",
+    "styleguide:build": "styleguidist build --config documentation/config.js"
+  },
   "dependencies": {
     "@styled-system/theme-get": "^5.0.12",
     "color": "^3.1.0",
@@ -41,31 +47,18 @@
     "styled-system": "^3.2.0",
     "ttf-loader": "^1.0.2"
   },
-  "scripts": {
-    "start": "rollup -c -w",
-    "build": "rollup -c",
-    "styleguide": "styleguidist server --config documentation/config.js",
-    "styleguide:build": "styleguidist build --config documentation/config.js"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
-  "files": [
-    "build"
-  ],
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/plugin-external-helpers": "^7.2.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-export-default-from": "^7.5.2",
     "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
     "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
     "@svgr/rollup": "^4.1.0",
     "babel-loader": "^8.0.5",
+    "babel-plugin-inline-react-svg": "^1.1.0",
     "css-loader": "^2.1.0",
     "lerna": "^3.15.0",
     "less": "^3.9.0",
@@ -90,6 +83,17 @@
     "url-loader": "^2.0.1",
     "webpack": "^4.29.0"
   },
+
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "files": [
+    "build"
+  ],
+
   "publishConfig": {
     "registry": "https://gitlab.ursip.ru/nexus/repository/npm-local/"
   }

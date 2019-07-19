@@ -1,4 +1,6 @@
 import colors from './colors'
+import icons from './icons'
+import ThemeProvider from './ThemeProvider'
 
 import {addAliases} from './utils'
 
@@ -55,5 +57,7 @@ export default {
     easeInOut: 'cubic-bezier(0.5, 0, 0.25, 1)',
     easeOut: 'cubic-bezier(0, 0, 0.25, 1)',
     easeIn: 'cubic-bezier(0.5, 0, 1, 1)'
-  }
+  },
+  icons,
+  ThemeProvider
 }

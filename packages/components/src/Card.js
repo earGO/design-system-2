@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import {borderRadius, propTypes} from 'styled-system'
+import {borderRadius} from 'styled-system'
 import Box from './Box'
-import theme from '../theme'
+import theme from '@design-system/theme'
 
 const boxShadow = props => {
   const boxShadows = {
