@@ -1,7 +1,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import Box from '../src/Box'
-import theme from '@design-system/theme'
+import theme, {ThemeProvider} from '@design-system/theme'
 
 describe('Box', () => {
   test('renders without props', () => {
@@ -32,18 +32,25 @@ describe('Box', () => {
     expect(json).toMatchSnapshot()
     expect(json).toHaveStyleRule('color', theme.colors.blue)
   })
-
   test('bg prop sets background color', () => {
     const json = renderer.create(<Box bg={theme.colors.green} />).toJSON()
     expect(json).toMatchSnapshot()
     expect(json).toHaveStyleRule('background-color', theme.colors.green)
   })
-
+  test('recieves theme colors', () => {
+    const json = renderer
+      .create(
+        <Box width={1 / 2} bg="primary" color="white" theme={theme}>
+          Hello Box
+        </Box>
+      )
+      .toJSON()
+    expect(json).toMatchSnapshot()
+    expect(json).toHaveStyleRule('background-color', theme.colors.primary)
+  })
   test('align prop triggers warning', () => {
     console.error = jest.fn()
-
     const json = renderer.create(<Box align="center" />).toJSON()
-
     expect(
       console.error.mock.calls
         .toString()

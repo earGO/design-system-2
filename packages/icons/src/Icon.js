@@ -45,7 +45,11 @@ Icon.defaultProps = {
   size: 24,
   'aria-hidden': 'true',
   focusable: 'false',
-  tabIndex: '-1'
+  tabIndex: '-1',
+  title: 'title',
+  desc: 'desc',
+  titleId: 'titleId',
+  descId: 'descId'
 }
 
 Icon.displayName = 'Icon'

@@ -6,8 +6,9 @@
 .pnp.js
 
 # testing
-/coverage
-/__snapshots__
+coverage
+__snapshots__
+.jest-cache
 
 # production
 /build

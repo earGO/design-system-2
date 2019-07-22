@@ -20,11 +20,11 @@
     "prepare-icons": "cd packages/icons && prepare",
     "styleguide": "styleguidist server --config documentation/config.js",
     "styleguide:build": "styleguidist build --config documentation/config.js",
-    "icons-storybook": "cd packages/icons && storybook",
+    "icons-storybook": "cd packages/icons && start-storybook -p 9009",
+    "components-storybook": "cd packages/components && start-storybook -p 9019",
     "unit": "jest --watchAll --updateSnapshot",
     "make-version": "lerna version && yarn",
     "make-release": "lerna version --conventional-commits --create-release github --changelog-preset react && yarn",
-    "watch-storybook": "lerna exec --scope library-name -- babel src -d dist --watch --copy-files --ignore \"src/stories/\"",
     "clean": "oao clean",
     "status": "oao status",
     "remove-all": "oao remove-all"

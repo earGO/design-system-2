@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import propTypes from 'prop-types'
 import styled, {css} from 'styled-components'
-import {themeGet} from 'styled-system'
+import themeGet from '@styled-system/theme-get'
 import Absolute from './Absolute'
 import {FIELD_DATA_PROP} from './Form'
 
