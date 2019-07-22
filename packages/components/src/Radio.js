@@ -1,9 +1,12 @@
 import React, {Component} from 'react'
 import Flex from './Flex'
+import Text from './Text'
+
 import propTypes from 'prop-types'
 import styled, {css} from 'styled-components'
 import {space} from 'styled-system'
 import themeGet from '@styled-system/theme-get'
+import Icon from './Icon'
 import {FIELD_DATA_PROP} from './Form'
 import RadioGroup from './RadioGroup'
 import omit from 'lodash/omit'

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-// import propTypes from 'prop-types'
+import Box from './Box'
 
 class RadioGroup extends Component {
   constructor(props) {

@@ -57,7 +57,7 @@ const shapeCircle = props => {
 }
 
 const type = props => {
-  const {theme, disabled, size, block, type} = props
+  const {theme, disabled, size, type} = props
   const {colors} = theme
   const {px, py} = getSizeParams(size)
 
