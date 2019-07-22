@@ -21,7 +21,7 @@
     "styleguide": "styleguidist server --config documentation/config.js",
     "styleguide:build": "styleguidist build --config documentation/config.js",
     "icons-storybook": "cd packages/icons && storybook",
-    "unit": "jest --watchAll",
+    "unit": "jest --watchAll --updateSnapshot",
     "make-version": "lerna version && yarn",
     "make-release": "lerna version --conventional-commits --create-release github --changelog-preset react && yarn",
     "watch-storybook": "lerna exec --scope library-name -- babel src -d dist --watch --copy-files --ignore \"src/stories/\"",
@@ -67,19 +67,23 @@
     "@babel/plugin-proposal-function-bind": "^7.2.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
     "@babel/plugin-transform-runtime": "^7.2.0",
-    "babel-plugin-inline-react-svg": "^1.1.0",
-    "babel-plugin-react-docgen": "^3.1.0",
-    "babel-plugin-styled-components": "^1.10.6",
-    "babel-plugin-transform-decorators-legacy": "^1.3.5",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
     "@svgr/rollup": "^4.1.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.5",
+    "babel-plugin-inline-react-svg": "^1.1.0",
+    "babel-plugin-react-docgen": "^3.1.0",
+    "babel-plugin-styled-components": "^1.10.6",
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
     "babel-polyfill": "^6.26.0",
     "core-js": "^3.1.4",
     "css-loader": "^3.1.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "jest-prop-type-error": "^1.1.0",
+    "jest-styled-components": "^6.3.3",
     "lerna": "^3.15.0",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
@@ -117,6 +121,19 @@
   "files": [
     "build"
   ],
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    },
+    "testMatch": [
+      "<rootDir>/packages/**/__test__/**/*.js"
+    ]
+  },
   "publishConfig": {
     "registry": "https://gitlab.ursip.ru/nexus/repository/npm-local/"
   }
