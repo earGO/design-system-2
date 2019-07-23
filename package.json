@@ -17,7 +17,7 @@
   "scripts": {
     "start": "rollup -c -w",
     "build": "rollup -c",
-    "prepare-icons": "cd packages/icons && prepare",
+    "prepare-icons": "cd packages/icons && yarn prepare",
     "styleguide": "styleguidist server --config documentation/config.js",
     "styleguide:build": "styleguidist build --config documentation/config.js",
     "icons-storybook": "cd packages/icons && start-storybook -p 9009",

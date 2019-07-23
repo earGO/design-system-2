@@ -2,8 +2,7 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import Card from '../src/Card'
 import theme from '@design-system/theme'
-import {mount, simulate} from 'enzyme'
-import Button from '../src/Button'
+import {mount} from 'enzyme'
 
 describe('Card', () => {
   test('renders small box shadow with default border', () => {

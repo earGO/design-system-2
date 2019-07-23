@@ -24,7 +24,7 @@ const PanelContent = styled(Box)`
 `
 
 // To fix warning because of passing isOpen prop to <svg />
-const AnimatedScaledIcon = styled(({isOpen, ...rest}) => <Icon {...rest} />)`
+const AnimatedScaledIcon = styled(Box)`
   font-size: 10px;
   color: ${themeGet('color.black', '#080808')};
   transition: transform ${themeGet('duration.normal', '300ms')};
@@ -52,23 +52,28 @@ const PanelHeader = ({title, togglePanel, isOpen, panelKey, disabled}) => (
   >
     <Flex justifyContent="center" alignItems="center" width={16} height={16}>
       {isOpen ? (
-        <AnimatedScaledIcon isOpen={isOpen} name="keyboard_arrow_up" size={1} />
+        <AnimatedScaledIcon isOpen={isOpen}>
+          <Icon name={'keyboard_arrow_down'} size={24} />
+        </AnimatedScaledIcon>
       ) : (
-        <AnimatedScaledIcon
-          isOpen={isOpen}
-          name="keyboard_arrow_down"
-          size={1}
-        />
+        <AnimatedScaledIcon isOpen={isOpen}>
+          <Icon name={'keyboard_arrow_up'} size={24} />
+        </AnimatedScaledIcon>
       )}
     </Flex>
-    <Box ml={2}>{title}</Box>
+    <Box ml={2} id={title + '-id'}>
+      {title}
+    </Box>
   </PanelHeaderWrapper>
 )
 
 /** Отвечает за вывод содержимого */
 class CollapsePanel extends React.Component {
-  state = {
-    contentHeight: 0
+  constructor(props) {
+    super(props)
+    this.state = {
+      contentHeight: 0
+    }
   }
 
   componentDidMount() {

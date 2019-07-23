@@ -9,6 +9,7 @@
 # testing
 coverage
 __snapshots__
+/packages/**/__test__/__snapshots__
 .jest-cache
 
 # production

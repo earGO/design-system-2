@@ -17,7 +17,14 @@ storiesOf(`IconButton`, module)
       }
     }
   })
-  .add('Default', () => <IconButton name={'accessible'} />, {
+  .add('Default', () => <IconButton name={'AcUnit'} />, {
+    info: {
+      text: `
+          По умолчанию без параметров иконка выводится в виде знака вопроса. 
+        `
+    }
+  })
+  .add('Arrows', () => <IconButton name={'KeyboardArrowUp'} />, {
     info: {
       text: `
           По умолчанию без параметров иконка выводится в виде знака вопроса. 
