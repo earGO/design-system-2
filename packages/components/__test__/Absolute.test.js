@@ -1,7 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import {Absolute, Icon} from '../src'
-import Box from '../src/Box'
 import theme from '@design-system/theme'
 
 describe('Absolute', () => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import Box from '../src/Box'
-import theme, {ThemeProvider} from '@design-system/theme'
+import theme from '@design-system/theme'
 
 describe('Box', () => {
   test('renders without props', () => {
@@ -59,5 +59,17 @@ describe('Box', () => {
         ) !== -1
     )
     console.error.mockRestore()
+  })
+  test('renders with wrong props', () => {
+    const json = renderer
+      .create(
+        <Box width={1 / 2} bg="unknown" color="wrongone" theme={theme}>
+          Hello Box
+        </Box>
+      )
+      .toJSON()
+    expect(json).toMatchSnapshot()
+    expect(json).toHaveStyleRule('background-color', 'unknown')
+    expect(json).toHaveStyleRule('color', 'wrongone')
   })
 })

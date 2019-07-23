@@ -30,6 +30,8 @@
     "@storybook/theming": "^5.0.10",
     "babel-loader": "^8.0.6",
     "core-js": "3",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "jest-styled-components": "^6.3.3",
     "postcss-loader": "^3.0.0",
     "react-docgen": "^4.1.1",
