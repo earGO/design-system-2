@@ -132,7 +132,7 @@ class Radio extends Component {
           </StyledRadio>
         </RadioContainer>
         {/* this.props.children instead of text maybe? */}
-        <Text inline regular ml={2}>
+        <Text inline regular ml={2} id={`radio-text-${this.props.label}`}>
           {this.props.label}
         </Text>
       </Label>

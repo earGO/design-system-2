@@ -1,17 +1,17 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import Overlay from '../src/Overlay'
+import Positional from '../src/Positional'
 import theme from '@design-system/theme'
 import {mount} from 'enzyme'
 
 const SingleComponent = ({...props}) => (
-  <Overlay id={id} theme={theme} {...props}>
+  <Positional id={id} theme={theme} {...props}>
     <p>Test content</p>
-  </Overlay>
+  </Positional>
 )
 const id = 'fake-test-id'
 
-describe('Overlay', () => {
+describe('Positional', () => {
   test('it renders', () => {
     const json = renderer.create(<SingleComponent />).toJSON()
     expect(json).toMatchSnapshot()
@@ -20,12 +20,5 @@ describe('Overlay', () => {
     const wrapper = mount(<SingleComponent />)
     expect(wrapper.exists()).toBe(true)
     wrapper.unmount()
-  })
-  test('it inherits Flex', () => {
-    const flex = renderer
-      .create(<SingleComponent alignItems={'center'} theme={theme} />)
-      .toJSON()
-    expect(flex).toMatchSnapshot()
-    expect(flex).toHaveStyleRule('align-items', 'center')
   })
 })
