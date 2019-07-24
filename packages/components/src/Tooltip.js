@@ -126,7 +126,15 @@ const getAlign = placement => {
 /** Применяется для вывода уточняющей информации во всплывающем окне */
 class Tooltip extends Component {
   render() {
-    const {children, events, font, placement, text, transitionName} = this.props
+    const {
+      children,
+      events,
+      font,
+      placement,
+      text,
+      transitionName,
+      ...props
+    } = this.props
 
     const popupComponent = (
       <Body font={font} placement={placement}>
@@ -136,13 +144,12 @@ class Tooltip extends Component {
 
     return (
       <Positional
-        align={getAlign(placement)}
         events={events}
         placement={placement}
         popupComponent={popupComponent}
         transitionName={transitionName}
       >
-        <Wrapper>{children}</Wrapper>
+        <Wrapper {...props}>{children}</Wrapper>
       </Positional>
     )
   }

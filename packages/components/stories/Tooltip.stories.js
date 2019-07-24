@@ -1,9 +1,11 @@
 import React from 'react'
 import {storiesOf} from '@storybook/react'
 
-import IconButton from '../src/IconButton'
+import theme, {ThemeProvider} from '@design-system/theme'
 
-storiesOf(`IconButton`, module)
+import Tooltip from '../src/Tooltip'
+
+storiesOf(`Tooltip`, module)
   .addParameters({
     info: {
       inline: true,
@@ -17,14 +19,7 @@ storiesOf(`IconButton`, module)
       }
     }
   })
-  .add('Default', () => <IconButton name={'AcUnit'} />, {
-    info: {
-      text: `
-          По умолчанию без параметров иконка выводится в виде знака вопроса. 
-        `
-    }
-  })
-  .add('Arrows', () => <IconButton name={'KeyboardArrowUp'} />, {
+  .add('Default', () => <Tooltip theme={theme} placement={'top'} />, {
     info: {
       text: `
           По умолчанию без параметров иконка выводится в виде знака вопроса. 
