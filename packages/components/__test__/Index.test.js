@@ -79,7 +79,7 @@ describe('Index exports components', () => {
               nisi ut aliquip ex ea commodo consequat.
             </Text>
           </Collapse.Panel>
-          <Collapse.Panel key="key1" title="Title number 2" theme={theme}>
+          <Collapse.Panel key="key2" title="Title number 2" theme={theme}>
             <Text p={4}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -137,7 +137,7 @@ describe('Index exports components', () => {
       .toJSON()
     expect(container).toMatchSnapshot()
   })
-  test('exports Select', () => {
+  /*  test('exports Select', () => {
     const {Select} = index
     const options = [
       {value: 'template1', label: `Шаблон ИМ многоквартирного дома`},
@@ -151,7 +151,7 @@ describe('Index exports components', () => {
       .create(<Select theme={theme} options={options} />)
       .toJSON()
     expect(container).toMatchSnapshot()
-  })
+  })*/
   test('exports Scrollbars', () => {
     const container = renderer
       .create(<index.Scrollbars theme={theme} />)

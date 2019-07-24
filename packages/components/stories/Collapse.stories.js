@@ -32,7 +32,7 @@ storiesOf(`Collapse`, module)
             aliquip ex ea commodo consequat.
           </Text>
         </Collapse.Panel>
-        <Collapse.Panel key="key1" title="Title number 2" theme={theme}>
+        <Collapse.Panel key="key2" title="Title number 2" theme={theme}>
           <Text p={4}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim

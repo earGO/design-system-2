@@ -1,69 +1,48 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import Flex from '../src/Flex'
+
+import Heading from '../src/Heading'
 import theme from '@design-system/theme'
 
-describe('Flex', () => {
+describe('Heading', () => {
   test('renders', () => {
-    const flex = renderer.create(<Flex theme={theme} />).toJSON()
-    expect(flex).toMatchSnapshot()
-  })
-  test('alignItems prop', () => {
-    const flex = renderer
-      .create(<Flex alignItems={'center'} theme={theme} />)
-      .toJSON()
-    expect(flex).toMatchSnapshot()
-    expect(flex).toHaveStyleRule('align-items', 'center')
+    const json = renderer.create(<Heading theme={theme}>Blah</Heading>).toJSON()
+    expect(json).toMatchSnapshot()
   })
 
-  test('justifyContent prop', () => {
-    const flex = renderer
-      .create(<Flex justifyContent="space-between" theme={theme} />)
-      .toJSON()
-    expect(flex).toMatchSnapshot()
-    expect(flex).toHaveStyleRule('justify-content', 'space-between')
+  const defaultFontSizeTestCase =
+    'Heading component with default theme font size, when "fontSize" prop not used'
+  test(defaultFontSizeTestCase, () => {
+    const json = renderer.create(<Heading theme={theme}>Blah</Heading>).toJSON()
+    expect(json).toMatchSnapshot()
+    expect(json).toHaveStyleRule('font-size', theme.fontSizes[4] + 'px')
   })
 
-  test('flexWrap prop', () => {
-    const flex = renderer
-      .create(<Flex flexWrap="wrap" theme={theme} />)
-      .toJSON()
-    expect(flex).toMatchSnapshot()
-    expect(flex).toHaveStyleRule('flex-wrap', 'wrap')
-  })
-  test('alignItems prop', () => {
-    const flex = renderer
-      .create(<Flex alignItems="stretch" theme={theme} />)
-      .toJSON()
-    expect(flex).toMatchSnapshot()
-    expect(flex).toHaveStyleRule('align-items', 'stretch')
-  })
-  test('recieves wrap prop', () => {
-    const json = renderer
-      .create(<Flex flexWrap={'wrap'} theme={theme} />)
-      .toJSON()
-    const nowrapjson = renderer
-      .create(<Flex flexWrap={'nowrap'} theme={theme} />)
-      .toJSON()
-    expect(json).toHaveStyleRule('flex-wrap', 'wrap')
-    expect(nowrapjson).toHaveStyleRule('flex-wrap', 'nowrap')
-  })
-  test('renders with wrong props', () => {
+  const selectedTagTestCase =
+    'Heading component with selected tag sets theme font size'
+  test(selectedTagTestCase, () => {
     const json = renderer
       .create(
-        <Flex width={1 / 2} bg="unknown" color="wrongone" theme={theme}>
-          Hello Box
-        </Flex>
+        <Heading theme={theme} tag={'h2'}>
+          Blah
+        </Heading>
       )
       .toJSON()
     expect(json).toMatchSnapshot()
-    expect(json).toHaveStyleRule('background-color', 'unknown')
-    expect(json).toHaveStyleRule('color', 'wrongone')
+    expect(json).toHaveStyleRule('font-size', theme.fontSizes[5] + 'px')
   })
-  test('recieves theme props and theming', () => {
+  const usingTextPropsTestCase =
+    'Heading component using <Text> component properties'
+  test(usingTextPropsTestCase, () => {
     const json = renderer
-      .create(<Flex flexWrap={'wrap'} theme={theme} bg={'primary'} />)
+      .create(
+        <Heading align="center" tag={'h2'} color="primary" theme={theme}>
+          Blah
+        </Heading>
+      )
       .toJSON()
-    expect(json).toHaveStyleRule('background-color', theme.colors.primary)
+    expect(json).toMatchSnapshot()
+    expect(json).toHaveStyleRule('text-align', 'center')
+    expect(json).toHaveStyleRule('color', theme.colors.primary)
   })
 })
