@@ -3,14 +3,7 @@ import theme from '@design-system/theme'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import {
-  Icon,
-  Text,
-  Box,
-  Flex,
-  Button,
-  Relative
-} from '@design-system/components'
+import {Icon, Text, Flex} from '@design-system/components'
 
 const Container = styled(Flex)`
   cursor: pointer;

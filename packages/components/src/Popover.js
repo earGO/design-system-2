@@ -1,7 +1,7 @@
 import React from 'react'
-import ReactTinyPopover from 'react-tiny-popover'
+import ReactTinyPopover, {ArrowContainer} from 'react-tiny-popover'
 
-/**
+/*
  * Всплывающий блок с контентом возле элемента.
  * Используется для всплывающих подсказок, выпадающих меню и т.д.
  */
@@ -17,7 +17,7 @@ Popover.defaultProps = {
 
 Popover.displayName = 'Popover'
 
-Popover.ArrowContainer = ReactTinyPopover.ArrowContainer
+Popover.ArrowContainer = ArrowContainer
 
 /** @component */
 export default Popover
