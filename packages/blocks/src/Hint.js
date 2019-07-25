@@ -1,9 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Icon, Flex, Box, Text, Popover, Card} from '@design-system/components'
+import {
+  Icon,
+  Flex,
+  Text,
+  Popover,
+  Card,
+  Button
+} from '@design-system/components'
 import styled from 'styled-components'
 
-const ClickableIcon = styled(Box)`
+const ClickableIcon = styled(Button)`
 cursor: pointer;
 transition: all;
 transition-duration: {$props=>props.theme.duration.fast};
@@ -71,6 +78,7 @@ class Hint extends React.Component {
           })}
         >
           <ClickableIcon
+            type={'flat'}
             onClick={() => this.setState({isPopoverOpen: !isPopoverOpen})}
           >
             <Icon name={'help_outline'} size={size} color={color} />

@@ -37,6 +37,14 @@ const LabeledIconButton = ({
   )
 }
 
+LabeledIconButton.propTypes = {
+  iconName: PropTypes.string,
+  size: PropTypes.number,
+  color: PropTypes.string,
+  caption: PropTypes.string,
+  fontSize: PropTypes.number
+}
+
 LabeledIconButton.defaultProps = {
   iconName: 'error',
   size: 24,

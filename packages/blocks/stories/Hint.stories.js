@@ -112,3 +112,28 @@ storiesOf(`Hint`, module)
       }
     }
   )
+  .add(
+    'Wrongprops',
+    () => (
+      <Flex
+        width={200}
+        theme={theme}
+        height={150}
+        justifyContent={'center'}
+        alignItems={'center'}
+      >
+        <Hint
+          theme={theme}
+          hintText={'This is a hint text'}
+          shiftLeft={'nope'}
+        />
+      </Flex>
+    ),
+    {
+      info: {
+        text: `
+          При передаче неправильных props подсказка не всплывёт, а в консоли будет ошибка. 
+        `
+      }
+    }
+  )
