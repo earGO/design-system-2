@@ -9,7 +9,6 @@
     "build-storybook": "cd storybook && build-storybook"
   },
   "dependencies": {
-    "@design-system/modules": "^1.0.0",
     "@design-system/theme": ">=1.2.0",
     "@react-workspaces/react-scripts": "3.0.0-alpha-04",
     "cross-env": "5.0.5",
