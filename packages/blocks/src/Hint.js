@@ -10,6 +10,7 @@ import {
 } from '@design-system/components'
 import styled from 'styled-components'
 
+/* Styling component with grow animation for clickable Icon of hint */
 const ClickableIcon = styled(Button)`
 cursor: pointer;
 transition: all;
@@ -20,7 +21,7 @@ transition-timing-function: {$props=>props.theme.timingFunction.easeInOut};
   color:  {$props=>props.theme.colors.primary};
 }
 `
-
+/* Z-index adjustment for hint card */
 const HintCard = styled(Card)`
   z-index: 3;
   border-width: 0;
@@ -35,7 +36,7 @@ class Hint extends React.Component {
   }
 
   render() {
-    const {isPopoverOpen} = this.state
+    const {isPopoverOpen} = this.state //State managing hint popover opening
     const {
       size,
       arrowColor,
@@ -57,7 +58,8 @@ class Hint extends React.Component {
         <Popover
           isOpen={isPopoverOpen}
           onClickOutside={() => this.setState({isPopoverOpen: false})}
-          position={position} // preferred position
+          position={position} // popover position from ['top','left','right','bottom']
+          /* Content of a hint */
           content={({position, targetRect, popoverRect}) => (
             <Popover.ArrowContainer
               position={position}
@@ -72,6 +74,7 @@ class Hint extends React.Component {
               </HintCard>
             </Popover.ArrowContainer>
           )}
+          /* Hint card adjustment related to Hint icon */
           contentLocation={({nudgedLeft, nudgedTop}) => ({
             top: nudgedTop + shiftTop,
             left: nudgedLeft + shiftLeft
