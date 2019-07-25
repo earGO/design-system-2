@@ -104,12 +104,6 @@ describe('Radio DOM and integration', () => {
     expect(input).toHaveLength(1)
     const children = wrapper.children().get(0).props.children
     const labelText = children[1].props.children
-    const radioInputDiv = children[0].props.children[0].props
-    const radioIconDiv = children[0].props.children[1].props
-    const radioIcon = radioIconDiv.children
-    const radionInput = radioInputDiv.children
-
-    console.log(radionInput)
     expect(labelText).toBe('Yes')
     wrapper.unmount()
   })
