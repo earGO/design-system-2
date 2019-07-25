@@ -3,7 +3,7 @@ import LabeledIconButton from '../src/LabeledIconButton'
 import theme from '@design-system/theme'
 import {mount} from 'enzyme/build'
 
-describe('Toggle', () => {
+describe('LabeledIconButton', () => {
   test('mounts', () => {
     const wrapper = mount(<LabeledIconButton theme={theme} />)
     expect(wrapper.exists()).toBe(true)

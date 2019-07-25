@@ -4,7 +4,7 @@ import Hint from '../src/Hint'
 import theme from '@design-system/theme'
 import {mount} from 'enzyme/build'
 
-describe('Toggle', () => {
+describe('Hint', () => {
   test('mounts', () => {
     const wrapper = mount(<Hint theme={theme} />)
     expect(wrapper.exists()).toBe(true)
