@@ -1,18 +1,34 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
-import {Flex, Text, Card, Box, Popover} from '@design-system/components'
+import {
+  Flex,
+  Text,
+  Card,
+  Box,
+  Popover,
+  FlexContainerBottomDivider
+} from '@design-system/components'
 import styled from 'styled-components'
+import theme from '@design-system/theme'
 
 const PopoverMenuItem = styled(Box)`
-  width: 120px;
-  height: 20px;
+  width: 208px;
+  height: 32px;
+
   cursor: pointer;
   &:hover {
-    background-color: #34c3ff;
+    background-color: ${theme.colors.lightGrey};
   }
 `
 
-function DropdownMenu({content, position, children, ...props}) {
+function DropdownMenu({
+  content,
+  position,
+  children,
+  shiftLeft,
+  shiftTop,
+  ...props
+}) {
   const [open, setOpen] = useState(false)
   return (
     <Popover
@@ -30,27 +46,37 @@ function DropdownMenu({content, position, children, ...props}) {
         >
           <Card p={3} bg={'white'} boxShadowSize={'md'}>
             {content.map((item, key) => {
-              return <PopoverMenuItem key={key}>item</PopoverMenuItem>
+              return (
+                <FlexContainerBottomDivider key={key}>
+                  <PopoverMenuItem>item</PopoverMenuItem>
+                </FlexContainerBottomDivider>
+              )
             })}
           </Card>
         </Popover.ArrowContainer>
       )}
       contentLocation={({nudgedLeft, nudgedTop}) => ({
-        top: nudgedTop + 0,
-        left: nudgedLeft + 0
+        top: nudgedTop + shiftTop,
+        left: nudgedLeft + shiftLeft
       })}
+      {...props}
     >
-      <Flex onClick={() => setOpen(true)}>{children}</Flex>
+      <Box onClick={() => setOpen(true)}>{children}</Box>
     </Popover>
   )
 }
 
 DropdownMenu.propTypes = {
-  position: PropTypes.string
+  position: PropTypes.string,
+  content: PropTypes.string,
+  shiftLeft: PropTypes.number,
+  shiftTop: PropTypes.number
 }
 
 DropdownMenu.defaultProps = {
-  position: 'bottom'
+  position: 'bottom',
+  shiftLeft: 0,
+  shiftTop: 0
 }
 
 export default DropdownMenu

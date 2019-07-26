@@ -22,3 +22,7 @@ export {default as Scrollbars} from './Scrollbars'
 export {default as Modal} from './Modal'
 export {default as ResizableInput} from './ResizableInput'
 export {default as Icon} from './Icon'
+export {default as ContentBox} from './ContentBox'
+export {
+  default as FlexContainerBottomDivider
+} from './FlexContainerBottomDivider'
