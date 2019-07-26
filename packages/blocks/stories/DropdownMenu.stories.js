@@ -8,6 +8,27 @@ import theme from '@design-system/theme'
 
 const Content = ['item1', 'item2', 'item3']
 
+const FunctionalContent = [
+  {
+    name: 'MenuItem1',
+    HandleClick: something => {
+      console.log('clicked ' + something)
+    }
+  },
+  {
+    name: 'MenuItem2',
+    HandleClick: function(something) {
+      console.log('clicked ' + something)
+    }
+  },
+  {
+    name: 'MenuItem2',
+    HandleClick: function(something) {
+      console.log('clicked ' + something)
+    }
+  }
+]
+
 storiesOf(`DropdownMenu`, module)
   .addParameters({
     info: {
@@ -26,7 +47,7 @@ storiesOf(`DropdownMenu`, module)
     'Default',
     () => (
       <Flex>
-        <DropdownMenu theme={theme} content={Content}>
+        <DropdownMenu theme={theme} content={FunctionalContent}>
           Click Me
         </DropdownMenu>
       </Flex>
@@ -45,7 +66,7 @@ storiesOf(`DropdownMenu`, module)
       <Flex>
         <DropdownMenu
           theme={theme}
-          content={Content}
+          content={FunctionalContent}
           shiftTop={-10}
           shiftLeft={20}
         >

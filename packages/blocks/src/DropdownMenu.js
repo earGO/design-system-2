@@ -14,12 +14,19 @@ import theme from '@design-system/theme'
 const PopoverMenuItem = styled(Box)`
   width: 208px;
   height: 32px;
-
+  padding-top: 8px;
   cursor: pointer;
   &:hover {
     background-color: ${theme.colors.lightGrey};
   }
 `
+
+function PopoverItemSmart({item, ...props}) {
+  const handleClick = e => {
+    item.HandleClick('smart')
+  }
+  return <PopoverMenuItem onClick={handleClick}>{item.name}</PopoverMenuItem>
+}
 
 function DropdownMenu({
   content,
@@ -44,11 +51,11 @@ function DropdownMenu({
           arrowSize={10}
           arrowStyle={{opacity: 1.0, zIndex: 6}}
         >
-          <Card p={3} bg={'white'} boxShadowSize={'md'}>
+          <Card bg={'white'} pl={2} pr={2} boxShadowSize={'md'}>
             {content.map((item, key) => {
               return (
                 <FlexContainerBottomDivider key={key}>
-                  <PopoverMenuItem>item</PopoverMenuItem>
+                  <PopoverItemSmart item={item} />
                 </FlexContainerBottomDivider>
               )
             })}
