@@ -11,6 +11,8 @@ import {
 import styled from 'styled-components'
 import theme from '@design-system/theme'
 
+/** В компонент нужно обернуть кнопку/иконку, при клике на которую должно появиться меню  */
+
 const PopoverMenuItem = styled(Box)`
   width: 208px;
   height: 32px;
@@ -74,8 +76,11 @@ function DropdownMenu({
 }
 
 DropdownMenu.propTypes = {
+  /** ['top','left','bottom','right'], определяет где относительно иконки появляется менюшка */
   position: PropTypes.string,
-  content: PropTypes.string,
+  /** Массив с опциями, из которых состоит появляющееся меню. Каждая опция - объект с полями  "name" для выводимого названия пункта, и
+   * HandleClick - содержит функцию со всеми параметрами, которую вызывает пункт меню по клику на него*/
+  content: PropTypes.array,
   shiftLeft: PropTypes.number,
   shiftTop: PropTypes.number
 }
@@ -83,7 +88,13 @@ DropdownMenu.propTypes = {
 DropdownMenu.defaultProps = {
   position: 'bottom',
   shiftLeft: 0,
-  shiftTop: 0
+  shiftTop: 0,
+  content: {
+    name: 'Добавьте пункты',
+    HandleClick: () => {
+      console.log('click')
+    }
+  }
 }
 
 export default DropdownMenu
