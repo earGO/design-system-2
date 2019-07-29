@@ -1,13 +1,13 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import Tooltip from '../src/Tooltip'
+import Toggle from '../src/Toggle'
 import theme from '@design-system/theme'
 import {mount} from 'enzyme/build'
 
 describe('Toggle', () => {
   test('renders', () => {
     const json = renderer
-      .create(<Tooltip theme={theme} text={'Tooltip popup'} />)
+      .create(<Toggle theme={theme} text={'Toggle '} />)
       .toJSON()
     expect(json).toMatchSnapshot()
   })

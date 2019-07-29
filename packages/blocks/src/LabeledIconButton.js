@@ -50,7 +50,7 @@ LabeledIconButton.defaultProps = {
   size: 24,
   color: 'black',
   caption: 'Default text',
-  fontSize: 1
+  fontSize: 2
 }
 
 export default LabeledIconButton

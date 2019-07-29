@@ -92,16 +92,7 @@ describe('Index exports components', () => {
       .toJSON()
     expect(container).toMatchSnapshot()
   })
-  test('exports Tooltip', () => {
-    const container = renderer
-      .create(
-        <index.Tooltip theme={theme}>
-          <p>Caboomer</p>
-        </index.Tooltip>
-      )
-      .toJSON()
-    expect(container).toMatchSnapshot()
-  })
+
   test('exports Form', () => {
     const container = renderer.create(<index.Form theme={theme} />).toJSON()
     expect(container).toMatchSnapshot()

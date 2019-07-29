@@ -92,12 +92,14 @@ DropdownMenu.defaultProps = {
   position: 'bottom',
   shiftLeft: 0,
   shiftTop: 0,
-  content: {
-    name: 'Добавьте пункты',
-    HandleClick: () => {
-      console.log('click')
+  content: [
+    {
+      name: 'Добавьте пункты',
+      HandleClick: () => {
+        console.log('click')
+      }
     }
-  },
+  ],
   width: 208,
   height: 32,
   pt: 2
