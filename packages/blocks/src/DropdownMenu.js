@@ -14,20 +14,23 @@ import theme from '@design-system/theme'
 /** В компонент нужно обернуть кнопку/иконку, при клике на которую должно появиться меню  */
 
 const PopoverMenuItem = styled(Box)`
-  width: 208px;
-  height: 32px;
-  padding-top: 8px;
   cursor: pointer;
   &:hover {
     background-color: ${theme.colors.lightGrey};
   }
+  font-size: 12px;
+  font-family: ${theme.font.main};
 `
 
 function PopoverItemSmart({item, ...props}) {
   const handleClick = e => {
     item.HandleClick('smart')
   }
-  return <PopoverMenuItem onClick={handleClick}>{item.name}</PopoverMenuItem>
+  return (
+    <PopoverMenuItem onClick={handleClick} {...props}>
+      {item.name}
+    </PopoverMenuItem>
+  )
 }
 
 function DropdownMenu({
@@ -53,11 +56,11 @@ function DropdownMenu({
           arrowSize={10}
           arrowStyle={{opacity: 1.0, zIndex: 6}}
         >
-          <Card bg={'white'} pl={2} pr={2} boxShadowSize={'md'}>
+          <Card bg={'white'} p={2} boxShadowSize={'md'}>
             {content.map((item, key) => {
               return (
                 <FlexContainerBottomDivider key={key}>
-                  <PopoverItemSmart item={item} />
+                  <PopoverItemSmart item={item} {...props} />
                 </FlexContainerBottomDivider>
               )
             })}
@@ -94,7 +97,10 @@ DropdownMenu.defaultProps = {
     HandleClick: () => {
       console.log('click')
     }
-  }
+  },
+  width: 208,
+  height: 32,
+  pt: 2
 }
 
 export default DropdownMenu

@@ -10,19 +10,19 @@ const Content = ['item1', 'item2', 'item3']
 
 const FunctionalContent = [
   {
-    name: 'MenuItem1',
+    name: 'Управление модулями',
     HandleClick: something => {
       console.log('clicked ' + something)
     }
   },
   {
-    name: 'MenuItem2',
+    name: 'Добавить политику',
     HandleClick: function(something) {
       console.log('clicked ' + something)
     }
   },
   {
-    name: 'MenuItem2',
+    name: 'Редактировать',
     HandleClick: function(something) {
       console.log('clicked ' + something)
     }
@@ -78,6 +78,31 @@ storiesOf(`DropdownMenu`, module)
       info: {
         text: `
           Можно управлять позиционированием выпадающего элемента. 
+        `
+      }
+    }
+  )
+  .add(
+    'Controlled sizing of items',
+    () => (
+      <Flex>
+        <DropdownMenu
+          theme={theme}
+          content={FunctionalContent}
+          shiftTop={-10}
+          shiftLeft={20}
+          width={300}
+          height={40}
+          pt={'10px'}
+        >
+          Click Me
+        </DropdownMenu>
+      </Flex>
+    ),
+    {
+      info: {
+        text: `
+          В компонент можно передавать обычные для Box параметры - они будут применены к каждому элементу выпадающего меню. Задать зармеры самого выпадающего меню нельзя - они подстраиваются под размер пунктов. 
         `
       }
     }
