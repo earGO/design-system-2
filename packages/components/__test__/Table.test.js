@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import Select from '../src/Select'
+import Table from '../src/Table'
 import theme, {ThemeProvider} from '@design-system/theme'
 import {mount} from 'enzyme'
 
@@ -11,7 +11,7 @@ describe('Select', () => {
     const json = renderer
       .create(
         <ThemeProvider theme={theme}>
-          <Select id={id} />
+          <Table id={id} />
         </ThemeProvider>
       )
       .toJSON()
@@ -20,7 +20,7 @@ describe('Select', () => {
   test('it mounts', () => {
     const wrapper = mount(
       <ThemeProvider theme={theme}>
-        <Select id={id} />
+        <Table id={id} />
       </ThemeProvider>
     )
     expect(wrapper.exists()).toBe(true)

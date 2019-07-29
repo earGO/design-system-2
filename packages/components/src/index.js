@@ -26,3 +26,5 @@ export {default as ContentBox} from './ContentBox'
 export {
   default as FlexContainerBottomDivider
 } from './FlexContainerBottomDivider'
+
+export {default as Table} from './Table'
