@@ -29,5 +29,48 @@ module.exports = async ({config}) => {
     rule.exclude = /node_modules/
   })
 
+  if (!config.module.rules) {
+    config.module.rules = []
+  }
+
+  config.module.rules.push({
+    test: /\.less$/,
+    use: [
+      {
+        loader: 'style-loader' // creates style nodes from JS strings
+      },
+      {
+        loader: 'css-loader',
+        options: {
+          importLoaders: 2
+        } // translates CSS into CommonJS
+      },
+      {
+        loader: 'postcss-loader' // add vendor prefixes
+      },
+      {
+        loader: 'less-loader' // compiles Less to CSS
+      }
+    ],
+    include: [
+      path.resolve('./src'),
+      path.resolve('./node_modules/@brand/styles')
+    ]
+  })
+
+  config.resolve.extensions.push('.less')
+
+  if (!config.resolve.modules) {
+    config.resolve.modules = []
+  }
+
+  config.resolve.modules = config.resolve.modules.concat([
+    path.resolve('./'),
+    path.resolve('./src'),
+    'node_modules',
+    'shared',
+    'src'
+  ])
+
   return config
 }
