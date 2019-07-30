@@ -12,12 +12,15 @@
     "@design-system/theme": ">=1.2.0",
     "@react-workspaces/react-scripts": "3.0.0-alpha-04",
     "cross-env": "5.0.5",
+    "css-loader": "^3.1.0",
+    "less-loader": "^5.0.0",
     "material-icons-react": "^1.0.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "rsuite-table": "^3.5.4",
+    "style-loader": "^0.23.1",
     "styled-components": "^4.3.2",
-    "styled-system": "^5.0.15",
-    "rsuite-table": "^3.5.4"
+    "styled-system": "^5.0.15"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",

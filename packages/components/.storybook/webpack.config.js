@@ -1,3 +1,5 @@
+var path = require('path')
+
 module.exports = async ({config}) => {
   // Find Babel Loader
   const babelRules = config.module.rules.filter(rule => {
@@ -46,15 +48,12 @@ module.exports = async ({config}) => {
         } // translates CSS into CommonJS
       },
       {
-        loader: 'postcss-loader' // add vendor prefixes
-      },
-      {
         loader: 'less-loader' // compiles Less to CSS
       }
     ],
     include: [
       path.resolve('./src'),
-      path.resolve('./node_modules/@brand/styles')
+      path.resolve(__dirname, '../../../node_modules/')
     ]
   })
 
