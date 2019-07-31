@@ -20,8 +20,8 @@ const Wrapper = styled(Box)`
 
 moment.locale('ru')
 
-function SingleDatePicker({onChange, id, value, ...rest}) {
-  const [localValue, setLocalValue] = useState(moment('2015/01/01'))
+function SingleDatePicker({onChange, id, value, dateFormat, ...rest}) {
+  const [localValue, setLocalValue] = useState(moment('2015/01/01', dateFormat))
 
   const handleChange = newDate => {
     setLocalValue(newDate)
@@ -37,6 +37,7 @@ function SingleDatePicker({onChange, id, value, ...rest}) {
           id={id}
           value={localValue} // momentPropTypes.momentObj or null
           onChange={handleChange} // PropTypes.func.isRequired
+          format={dateFormat}
           {...rest}
         />
       </LocaleProvider>
@@ -46,13 +47,15 @@ function SingleDatePicker({onChange, id, value, ...rest}) {
 SingleDatePicker.propTypes = {
   id: PropTypes.string,
   value: PropTypes.array,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  dateFormat: PropTypes.string
 }
 
 SingleDatePicker.defaultProps = {
   id: 'useSomeId',
   value: [],
-  onChange: () => {}
+  onChange: () => {},
+  dateFormat: 'DD/MM/YYYY'
 }
 
 SingleDatePicker.displayName = 'SingleDatePicker'
