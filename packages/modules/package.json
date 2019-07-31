@@ -4,8 +4,56 @@
   "main": "src/index.js",
   "main:src": "src/index.js",
   "license": "MIT",
+  "scripts": {
+    "storybook": "start-storybook -p 9009",
+    "build-storybook": "cd storybook && build-storybook"
+  },
   "dependencies": {
+    "@design-system/theme": ">=1.2.0",
+    "@react-workspaces/react-scripts": "3.0.0-alpha-04",
+    "antd": "^3.20.7",
+    "cross-env": "5.0.5",
+    "css-loader": "^3.1.0",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0",
+    "material-icons-react": "^1.0.4",
+    "moment": "^2.24.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "rsuite-table": "^3.5.4",
+    "style-loader": "^0.23.1",
+    "styled-components": "^4.3.2",
+    "styled-system": "^5.0.15"
   },
   "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@storybook/addon-actions": "^5.0.10",
+    "@storybook/addon-info": "^5.1.9",
+    "@storybook/addon-links": "^5.0.10",
+    "@storybook/addon-notes": "^5.1.9",
+    "@storybook/addons": "^5.0.10",
+    "@storybook/react": "^5.0.10",
+    "@storybook/theming": "^5.0.10",
+    "@testing-library/react": "^8.0.5",
+    "babel-loader": "^8.0.6",
+    "core-js": "3",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-to-json": "^3.3.5",
+    "jest-styled-components": "^6.3.3",
+    "postcss-loader": "^3.0.0",
+    "react-docgen": "^4.1.1",
+    "react-redux": "^7.1.0",
+    "react-test-renderer": "^16.8.6",
+    "redux-mock-store": "^1.5.3",
+    "sinon": "^7.3.2",
+    "storybook-styled-components": "^1.1.4",
+    "svg-inline-loader": "^0.8.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
   }
 }
