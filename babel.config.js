@@ -6,15 +6,16 @@ module.exports = {
     '@babel/plugin-transform-runtime',
     'babel-plugin-styled-components',
     'inline-react-svg',
+    ['import', {libraryName: 'antd', libraryDirectory: 'es', style: 'css'}]
   ],
   presets: [
     [
       '@babel/preset-env',
       {
         useBuiltIns: 'entry',
-        corejs: 3,
-      },
+        corejs: 3
+      }
     ],
-    '@babel/preset-react',
-  ],
+    '@babel/preset-react'
+  ]
 }
