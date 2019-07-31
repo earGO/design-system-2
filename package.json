@@ -22,6 +22,7 @@
     "styleguide:build": "styleguidist build --config documentation/config.js",
     "components-storybook": "cd packages/components && start-storybook -p 9019",
     "blocks-storybook": "cd packages/blocks && start-storybook -p 9029",
+    "modules-storybook": "cd packages/modules && start-storybook -p 9039",
     "unit": "jest --watchAll --updateSnapshot",
     "make-version": "lerna version && yarn",
     "make-release": "lerna version --conventional-commits --create-release github --changelog-preset react && yarn",
