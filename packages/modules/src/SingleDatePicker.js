@@ -61,7 +61,7 @@ function SingleDatePicker({
 SingleDatePicker.propTypes = {
   id: PropTypes.string,
   value: PropTypes.array,
-  onChange: PropTypes.func,
+  onChange: PropTypes.func.isRequired,
   dateFormat: PropTypes.string,
   width: PropTypes.number,
   height: PropTypes.number,
@@ -71,7 +71,6 @@ SingleDatePicker.propTypes = {
 SingleDatePicker.defaultProps = {
   id: 'useSomeId',
   value: [],
-  onChange: () => {},
   dateFormat: 'DD/MM/YYYY',
   width: 192,
   height: 40,
