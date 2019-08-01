@@ -9,8 +9,12 @@ import {DatePicker, LocaleProvider} from 'antd'
 import styled from 'styled-components'
 
 const Wrapper = styled(Box)`
+  input {
+    width: ${props => props.width + 'px'};
+    height: ${props => props.height + 'px'};
+  }
   input:hover:not(:focus) {
-    border: 1px solid #3a3a3a !important;
+    border: 1px solid #0091ea !important;
     background: #ffffff !important;
   }
   input:not(:focus) {
@@ -20,8 +24,17 @@ const Wrapper = styled(Box)`
 
 moment.locale('ru')
 
-function SingleDatePicker({onChange, id, value, dateFormat, ...rest}) {
-  const [localValue, setLocalValue] = useState(moment('2015/01/01', dateFormat))
+function SingleDatePicker({
+  onChange,
+  id,
+  value,
+  dateFormat,
+  width,
+  height,
+  placeholder,
+  ...rest
+}) {
+  const [localValue, setLocalValue] = useState(moment(new Date(), dateFormat))
 
   const handleChange = newDate => {
     setLocalValue(newDate)
@@ -29,7 +42,7 @@ function SingleDatePicker({onChange, id, value, dateFormat, ...rest}) {
   }
 
   return (
-    <Wrapper>
+    <Wrapper width={width} height={height}>
       <LocaleProvider locale={ru_RU}>
         <DatePicker
           block // 100% ширины
@@ -38,6 +51,7 @@ function SingleDatePicker({onChange, id, value, dateFormat, ...rest}) {
           value={localValue} // momentPropTypes.momentObj or null
           onChange={handleChange} // PropTypes.func.isRequired
           format={dateFormat}
+          placeholder={placeholder}
           {...rest}
         />
       </LocaleProvider>
@@ -48,14 +62,20 @@ SingleDatePicker.propTypes = {
   id: PropTypes.string,
   value: PropTypes.array,
   onChange: PropTypes.func,
-  dateFormat: PropTypes.string
+  dateFormat: PropTypes.string,
+  width: PropTypes.number,
+  height: PropTypes.number,
+  placeholder: PropTypes.string
 }
 
 SingleDatePicker.defaultProps = {
   id: 'useSomeId',
   value: [],
   onChange: () => {},
-  dateFormat: 'DD/MM/YYYY'
+  dateFormat: 'DD/MM/YYYY',
+  width: 192,
+  height: 40,
+  placeholder: 'дд/мм/гггг'
 }
 
 SingleDatePicker.displayName = 'SingleDatePicker'

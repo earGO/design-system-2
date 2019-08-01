@@ -6,15 +6,16 @@ import {formatDate} from '@design-system/utils'
 
 import SingleDatePicker from '../src/SingleDatePicker'
 
-const RenderedDatePicker = () => {
+const RenderedDatePicker = ({props}) => {
   const [date, setDate] = useState([])
+
   const handlePick = value => {
     setDate(value)
     console.log(formatDate(value))
   }
   return (
     <Box>
-      <SingleDatePicker onChange={handlePick} />
+      <SingleDatePicker onChange={handlePick} {...props} />
     </Box>
   )
 }
