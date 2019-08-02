@@ -5,6 +5,7 @@ import theme from '@design-system/theme'
 
 import Collapse from '../src/Collapse'
 import Text from '../src/Text'
+import Flex from '../src/Flex'
 
 storiesOf(`Collapse`, module)
   .addParameters({
@@ -53,21 +54,54 @@ storiesOf(`Collapse`, module)
   .add(
     'One Child',
     () => (
-      <Collapse theme={theme}>
-        <Collapse.Panel key="key1" title="Title number 1" theme={theme}>
-          <Text p={4}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </Text>
-        </Collapse.Panel>
-      </Collapse>
+      <Flex width={1500}>
+        <Collapse theme={theme}>
+          <Collapse.Panel key="key1" title="Title number 1" theme={theme}>
+            <Text p={4}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </Text>
+          </Collapse.Panel>
+        </Collapse>
+      </Flex>
     ),
     {
       info: {
         text: `
           Можно с одним child. 
+        `
+      }
+    }
+  )
+  .add(
+    'Title positioning',
+    () => (
+      <Flex width={1500}>
+        <Collapse theme={theme}>
+          <Collapse.Panel
+            key="key1"
+            title="single title"
+            theme={theme}
+            titleAlignment={'flex-end'}
+          >
+            <Text p={4}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </Text>
+          </Collapse.Panel>
+        </Collapse>
+      </Flex>
+    ),
+    {
+      info: {
+        text: `
+          Можно управлять положением заголовка, разворачивающего панель. 
+          
+          Это делается в каждой панели компонента через параметр titleAlignment, принимающего на вход синтаксис justify-content от flex   
         `
       }
     }

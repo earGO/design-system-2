@@ -32,6 +32,7 @@ const AnimatedScaledIcon = styled(Box)`
 `
 
 const PanelHeaderWrapper = styled(Flex)`
+  justify-content: ${props => props.titleAlignment};
   height: 32px;
   align-items: center;
   border-bottom: 1px solid ${themeGet('colors.border', '#ecebeb')};
@@ -45,9 +46,17 @@ const PanelWrapper = styled(Flex)`
   ${disabled}
 `
 
-const PanelHeader = ({title, togglePanel, isOpen, panelKey, disabled}) => (
+const PanelHeader = ({
+  title,
+  togglePanel,
+  isOpen,
+  panelKey,
+  disabled,
+  titleAlignment
+}) => (
   <PanelHeaderWrapper
     disabled={disabled}
+    titleAlignment={titleAlignment}
     onClick={disabled ? noop : () => togglePanel(panelKey)}
   >
     <Flex justifyContent="center" alignItems="center" width={16} height={16}>
@@ -98,7 +107,10 @@ class CollapsePanel extends React.Component {
     }
     return (
       <PanelWrapper flexDirection="column" disabled={this.props.disabled}>
-        <PanelHeader {...this.props} />
+        <PanelHeader
+          titleAlignment={this.props.titleAlignment}
+          {...this.props}
+        />
         <PanelContent {...this.props} style={mergedStyle}>
           <Box ref={measure => (this.measure = measure)}>
             {this.props.children}
@@ -118,7 +130,8 @@ CollapsePanel.propTypes = {
 
 CollapsePanel.defaultProps = {
   disabled: false,
-  title: ''
+  title: '',
+  titleAlignment: 'flex-start'
 }
 
 CollapsePanel.displayName = 'Collapse.Panel'
