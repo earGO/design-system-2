@@ -34,10 +34,24 @@ class Collapse extends React.Component {
 
   getChildren = () => {
     const {children} = this.props
-    return children.map((child, i) => {
-      let key = child.key || String(i)
+    if (children.length > 1) {
+      return children.map((child, i) => {
+        let key = child.key || String(i)
+        let props = {
+          key: child.key || String(i),
+          panelKey: key,
+          togglePanel: this.onPanelClick,
+          // If controlled, props should be the source of truth.
+          isOpen: this.props.activeKeys
+            ? this.props.activeKeys.includes(key)
+            : this.state.activeKeys.includes(key)
+        }
+        return React.cloneElement(child, props)
+      })
+    } else {
+      let key = children.key || String('singleKey')
       let props = {
-        key: child.key || String(i),
+        key: children.key || String('singleKey'),
         panelKey: key,
         togglePanel: this.onPanelClick,
         // If controlled, props should be the source of truth.
@@ -45,8 +59,8 @@ class Collapse extends React.Component {
           ? this.props.activeKeys.includes(key)
           : this.state.activeKeys.includes(key)
       }
-      return React.cloneElement(child, props)
-    })
+      return React.cloneElement(children, props)
+    }
   }
 
   render() {

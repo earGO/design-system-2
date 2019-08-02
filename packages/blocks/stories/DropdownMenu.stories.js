@@ -6,8 +6,6 @@ import {Flex, Text, Card, Box, Popover} from '@design-system/components'
 import styled from 'styled-components'
 import theme from '@design-system/theme'
 
-const Content = ['item1', 'item2', 'item3']
-
 const FunctionalContent = [
   {
     name: 'Управление модулями',

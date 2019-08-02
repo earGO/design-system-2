@@ -14,6 +14,13 @@ const Wrapper = styled(Flex)`
 .ant-input{
   padding: 0;
    background: #f5f5f5 !important;
+       height: ${props => props.height + 'px'};!important;
+       border-radius: 4px;
+       border:0px solid black;
+}
+.ant-input:hover{
+  padding: 0;
+   border:1px solid black;
 }
   .ant-calendar-picker {
     width: ${props => props.width + 'px'};!important;
@@ -21,28 +28,31 @@ const Wrapper = styled(Flex)`
   }
     .ant-calendar-picker-icon {
     position: absolute;
-    top:15px;
-    left:${props => props.width - 20 + 'px'};!important;    
+    top:${props => props.height / 2 + 1 + 'px'};!important;
+    left:${props => props.width - 20 + 'px'};!important; 
+    color:black;   
   }
   .ant-calendar-range-picker-separator{
-    margin-top: 3px;
+    margin-top: 8px;
     margin-left: 3px;
   }
   .ant-calendar-picker-clear{
-    position: relative;
-    top:0px;
-    left:3px;
+    position: absolute;
+    top:${props => props.height / 2 + 1 + 'px'};!important;
+    left:${props => props.width - 20 + 'px'};!important;    
     transform: scale(1.05);
   }
    input {
    padding-left:5px ;
     width: ${props => props.width / 2.48 + 'px'};!important;
+    color:black;!important
   }
   input:hover:not(:focus) {
     cursor: pointer;
   }
   input:not(:focus) {
     background: #f5f5f5 !important;
+    color:black;
   }
 `
 

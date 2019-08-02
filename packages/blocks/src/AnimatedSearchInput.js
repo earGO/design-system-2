@@ -3,15 +3,12 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {Input, Icon, Box, ResizableInput} from '@design-system/components'
 
-const ClearButton = styled(Icon)`
+const IconButton = styled(Box)`
   cursor: pointer;
   opacity: 0.7;
   &:hover {
     opacity: 1;
   }
-`
-const SearchIcon = styled(Icon)`
-  opacity: 0.7;
 `
 
 function AnimatedSearchInput({
@@ -35,8 +32,16 @@ function AnimatedSearchInput({
     onSearch && typeof onSearch === 'function' && onSearch('')
   }
 
-  const prefix = <SearchIcon name="search" />
-  const suffix = <ClearButton name="times" fontSize={0} onClick={handleClear} />
+  const prefix = (
+    <IconButton onClick={handleChange} pt={1}>
+      <Icon name="search" />
+    </IconButton>
+  )
+  const suffix = (
+    <IconButton onClick={handleClear} pt={1}>
+      <Icon name="close" />
+    </IconButton>
+  )
 
   return (
     <Box {...props}>
@@ -66,8 +71,8 @@ AnimatedSearchInput.defaultProps = {
   placeholder: 'Поиск',
   value: '',
   onChange: () => {},
-  shrinkWidth: 40,
-  growWidth: 120
+  shrinkWidth: 80,
+  growWidth: 160
 }
 
 export default AnimatedSearchInput

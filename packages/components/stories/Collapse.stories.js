@@ -45,7 +45,29 @@ storiesOf(`Collapse`, module)
     {
       info: {
         text: `
-          По умолчанию без выводится простым списком. 
+          По умолчанию без параметров выводится простым списком. 
+        `
+      }
+    }
+  )
+  .add(
+    'One Child',
+    () => (
+      <Collapse theme={theme}>
+        <Collapse.Panel key="key1" title="Title number 1" theme={theme}>
+          <Text p={4}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+          </Text>
+        </Collapse.Panel>
+      </Collapse>
+    ),
+    {
+      info: {
+        text: `
+          Можно с одним child. 
         `
       }
     }
