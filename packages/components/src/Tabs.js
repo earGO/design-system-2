@@ -4,7 +4,7 @@ import propTypes from 'prop-types'
 import Flex from './Flex'
 import Box from './Box'
 import TabPane from './TabPane'
-import {themeGet} from 'styled-system'
+import themeGet from '@styled-system/theme-get'
 
 const noop = () => {}
 
@@ -49,18 +49,33 @@ const Tab = styled(Flex)`
 class Tabs extends React.Component {
   constructor(props) {
     super(props)
-    props.children.forEach(child => {
-      if (typeof child.props.tabKey === 'undefined') {
+    if (props.children.length > 1) {
+      props.children.forEach(child => {
+        if (typeof child.props.tabKey === 'undefined') {
+          console.error(
+            '<TabPane /> components must have an unique "tabKey" prop. Check <Tabs/> component children.'
+          )
+        }
+      })
+      const {children = []} = props
+      const firstChildKey = children[0].props && children[0].props.tabKey
+      this.state = {
+        activeKey:
+          this.props.activeKey || this.props.defaultActiveKey || firstChildKey
+      }
+    } else {
+      if (typeof props.children.props.tabKey === 'undefined') {
         console.error(
           '<TabPane /> components must have an unique "tabKey" prop. Check <Tabs/> component children.'
         )
       }
-    })
-    const {children = []} = props
-    const firstChildKey = children[0].props && children[0].props.tabKey
-    this.state = {
-      activeKey:
-        this.props.activeKey || this.props.defaultActiveKey || firstChildKey
+
+      const {children = []} = props
+      const firstChildKey = children.props && children.props.tabKey
+      this.state = {
+        activeKey:
+          this.props.activeKey || this.props.defaultActiveKey || firstChildKey
+      }
     }
   }
 
@@ -90,8 +105,21 @@ class Tabs extends React.Component {
   getTabsItems = () => {
     const {children} = this.props
     const {activeKey} = this.state
-    return children.map(child => {
-      const {tabKey, tab, disabled} = child.props
+    if (children.length > 1) {
+      return children.map(child => {
+        const {tabKey, tab, disabled} = child.props
+        return (
+          <Tab
+            isActive={activeKey === tabKey}
+            onClick={disabled ? noop : () => this.onTabClick(tabKey)}
+            disabled={disabled}
+          >
+            {tab}
+          </Tab>
+        )
+      })
+    } else {
+      const {tabKey, tab, disabled} = children.props
       return (
         <Tab
           isActive={activeKey === tabKey}
@@ -101,19 +129,27 @@ class Tabs extends React.Component {
           {tab}
         </Tab>
       )
-    })
+    }
   }
 
   getChildren = () => {
     const {children} = this.props
     const {activeKey} = this.state
-    return children.map(child => {
-      const tabKey = child.props.tabKey
+    if (children.length > 1) {
+      return children.map(child => {
+        const tabKey = child.props.tabKey
+        const props = {
+          isActive: activeKey === tabKey
+        }
+        return React.cloneElement(child, props)
+      })
+    } else {
+      const tabKey = children.props.tabKey
       const props = {
         isActive: activeKey === tabKey
       }
-      return React.cloneElement(child, props)
-    })
+      return React.cloneElement(children, props)
+    }
   }
 
   render() {

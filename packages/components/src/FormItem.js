@@ -194,7 +194,6 @@ class FormItem extends React.Component {
   getHelpMessage() {
     const {help} = this.props
     if (help === undefined && this.getOnlyControl()) {
-      let field = this.getField()
       const errors = this.getField().errors
       if (errors) {
         return intersperseSpace(

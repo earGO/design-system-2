@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {space} from 'styled-system'
 import Box from './Box'
-import theme from '../theme'
+import theme from '@design-system/theme'
 
 const TabPane = styled(Box)`
   ${props => !props.isActive && 'display: none;'}

@@ -27,15 +27,6 @@ const size = ({size = 'medium'}) => {
   return css(sizes[size])
 }
 
-const iconSize = ({size = 'medium'}) => {
-  const scales = {
-    small: 0.6,
-    medium: 0.7,
-    large: 0.8
-  }
-  return `transform: scale(${scales[size]});`
-}
-
 const background = ({checked, disabled, ...rest}) => {
   const {checkbox} = rest.theme.colors
   const getColor = (checked, disabled) => {
