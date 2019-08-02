@@ -6,12 +6,24 @@ import {
   Text,
   Popover,
   Card,
-  Button
+  Button,
+  Box
 } from '@design-system/components'
 import styled from 'styled-components'
 
 /* Styling component with grow animation for clickable Icon of hint */
-const ClickableIcon = styled(Button)`
+const ClickableIcon = styled.div`
+cursor: pointer;
+transition: all;
+transition-duration: {$props=>props.theme.duration.fast};
+transition-timing-function: {$props=>props.theme.timingFunction.easeInOut};
+&:hover{
+  transform: scale(1.0015);
+  color:  {$props=>props.theme.colors.primary};
+}
+`
+
+const ClickableParent = styled.div`
 cursor: pointer;
 transition: all;
 transition-duration: {$props=>props.theme.duration.fast};
@@ -27,18 +39,18 @@ const HintCard = styled(Card)`
   border-width: 0;
 `
 
-function Hint({
-  size,
-  arrowColor,
-  bgColor,
-  shiftLeft,
-  shiftTop,
-  hintText,
-  color,
-  position,
-  ...props
-}) {
+const Hint = React.forwardRef((props, ref) => {
   const [isPopoverOpen, setPopoverOpen] = useState(false)
+  const {
+    size,
+    arrowColor,
+    bgColor,
+    shiftLeft,
+    shiftTop,
+    hintText,
+    color,
+    position
+  } = props
   return (
     <Flex
       width={400}
@@ -51,6 +63,7 @@ function Hint({
         isOpen={isPopoverOpen}
         onClickOutside={() => setPopoverOpen(false)}
         position={position} // popover position from ['top','left','right','bottom']
+        contentDestination={ref.current}
         /* Content of a hint */
         content={({position, targetRect, popoverRect}) => (
           <Popover.ArrowContainer
@@ -74,35 +87,51 @@ function Hint({
       >
         <ClickableIcon
           type={'flat'}
-          onClick={() => setPopoverOpen(!isPopoverOpen)}
+          onClick={() => {
+            setPopoverOpen(!isPopoverOpen)
+          }}
         >
           <Icon name={'help_outline'} size={size} color={color} />
         </ClickableIcon>
       </Popover>
+      <ClickableParent
+        type={'flat'}
+        onClick={() => {
+          console.log(ref)
+          setPopoverOpen(!isPopoverOpen)
+        }}
+        ref={ref}
+      >
+        <Icon name={'help_outline'} size={size} color={color} />
+      </ClickableParent>
+    </Flex>
+  )
+})
+
+const HintParent = React.forwardRef((props, ref) => {
+  return (
+    <div id="popoverFather" ref={ref}>
+      {props.children}
+    </div>
+  )
+})
+
+const HintWrapper = ({...props}) => {
+  let PopupParent = React.createRef()
+
+  return (
+    <Flex>
+      <Hint ref={PopupParent} />
     </Flex>
   )
 }
 
-Hint.propTypes = {
-  arrowColor: PropTypes.string,
-  bgColor: PropTypes.string,
-  hintText: PropTypes.string,
-  position: PropTypes.string,
-  color: PropTypes.string,
-  size: PropTypes.number,
-  shiftTop: PropTypes.number,
-  shiftLeft: PropTypes.number
+HintWrapper.propTypes = {
+  arrowColor: PropTypes.string
 }
 
-Hint.defaultProps = {
-  arrowColor: 'white',
-  bgColor: 'white',
-  hintText: 'Enter hint text',
-  position: 'top',
-  color: 'black',
-  size: 18,
-  shiftTop: 5,
-  shiftLeft: -10
+HintWrapper.defaultProps = {
+  arrowColor: 'white'
 }
 
-export default Hint
+export default HintWrapper
