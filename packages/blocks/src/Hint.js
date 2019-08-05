@@ -23,8 +23,8 @@ transition-timing-function: {$props=>props.theme.timingFunction.easeInOut};
 `
 /* Z-index adjustment for hint card */
 const HintCard = styled(Card)`
-  z-index: 3;
-  border-width: 0;
+z-index: 2147483649;!important;
+	border-width: 0;
 `
 
 function Hint({
@@ -40,46 +40,39 @@ function Hint({
 }) {
   const [isPopoverOpen, setPopoverOpen] = useState(false)
   return (
-    <Flex
-      width={400}
-      height={420}
-      flexDirection={'column'}
-      justifyContent={'center'}
-      alignItems={'center'}
-    >
-      <Popover
-        isOpen={isPopoverOpen}
-        onClickOutside={() => setPopoverOpen(false)}
-        position={position} // popover position from ['top','left','right','bottom']
-        /* Content of a hint */
-        content={({position, targetRect, popoverRect}) => (
-          <Popover.ArrowContainer
-            position={position}
-            targetRect={targetRect}
-            popoverRect={popoverRect}
-            arrowColor={arrowColor}
-            arrowSize={10}
-            arrowStyle={{opacity: 1.0, zIndex: 6}}
-          >
-            <HintCard p={3} bg={bgColor} boxShadowSize={'md'}>
-              <Text color={color}>{hintText}</Text>
-            </HintCard>
-          </Popover.ArrowContainer>
-        )}
-        /* Hint card adjustment related to Hint icon */
-        contentLocation={({nudgedLeft, nudgedTop}) => ({
-          top: nudgedTop + shiftTop,
-          left: nudgedLeft + shiftLeft
-        })}
-      >
-        <ClickableIcon
-          type={'flat'}
-          onClick={() => setPopoverOpen(!isPopoverOpen)}
+    <Popover
+      isOpen={isPopoverOpen}
+      onClickOutside={() => setPopoverOpen(false)}
+      position={position} // popover position from ['top','left','right','bottom']
+      /* Content of a hint */
+      content={({position, targetRect, popoverRect}) => (
+        <Popover.ArrowContainer
+          position={position}
+          targetRect={targetRect}
+          popoverRect={popoverRect}
+          arrowColor={arrowColor}
+          arrowSize={10}
+          arrowStyle={{opacity: 1.0, zIndex: 2147483649}}
         >
-          <Icon name={'help_outline'} size={size} color={color} />
-        </ClickableIcon>
-      </Popover>
-    </Flex>
+          <HintCard p={3} bg={bgColor} boxShadowSize={'md'}>
+            <Text color={color}>{hintText}</Text>
+          </HintCard>
+        </Popover.ArrowContainer>
+      )}
+      /* Hint card adjustment related to Hint icon */
+      contentLocation={({nudgedLeft, nudgedTop}) => ({
+        top: nudgedTop + shiftTop,
+        left: nudgedLeft + shiftLeft
+      })}
+      {...props}
+    >
+      <ClickableIcon
+        type={'flat'}
+        onClick={() => setPopoverOpen(!isPopoverOpen)}
+      >
+        <Icon name={'help_outline'} size={size} color={color} />
+      </ClickableIcon>
+    </Popover>
   )
 }
 
