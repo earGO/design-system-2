@@ -3,9 +3,12 @@ import theme from '@design-system/theme'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import {Icon, Text, Flex} from '@design-system/components'
+import {Icon, Text, Flex, Box, Relative} from '@design-system/components'
 
 const Container = styled(Flex)`
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
   cursor: pointer;
   transition: all;
   transition-timing-function: ${theme.timingFunctions.easeInOut};
@@ -14,6 +17,20 @@ const Container = styled(Flex)`
     transform: scale(1.0005);
     opacity: 0.75;
   }
+`
+
+const TextBordered = styled(Flex)`
+  flex-direction: column;
+  justify-content: center;
+  height: ${props => props.size + 'px'};
+  padding-left: ${props => props.size / 4 + 'px'};
+`
+
+const IconBordered = styled(Flex)`
+  flex-direction: column;
+  justify-content: center;
+  height: ${props => props.size + 'px'};
+  width: ${props => props.size + 'px'};
 `
 
 const LabeledIconButton = ({
@@ -27,12 +44,14 @@ const LabeledIconButton = ({
 }) => {
   return (
     <Container onClick={onClick}>
-      <Icon name={iconName} color={color} size={size} />
-      <Flex flexDirection={'column'} justifyContent={'center'} {...props}>
+      <IconBordered size={size}>
+        <Icon name={iconName} color={color} size={size} />
+      </IconBordered>
+      <TextBordered size={size} {...props}>
         <Text color={color} fontSize={fontSize}>
           {caption}
         </Text>
-      </Flex>
+      </TextBordered>
     </Container>
   )
 }

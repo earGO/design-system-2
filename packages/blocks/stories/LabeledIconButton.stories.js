@@ -33,7 +33,7 @@ storiesOf(`LabeledIconButton`, module)
         theme={theme}
         size={18}
         fontSize={1}
-        ml={1}
+        mt={'2px'}
       />
     ),
     {
@@ -53,8 +53,8 @@ storiesOf(`LabeledIconButton`, module)
         theme={theme}
         size={18}
         fontSize={1}
-        ml={1}
         caption={'Добавить секцию'}
+        mt={'2px'}
       />
     ),
     {

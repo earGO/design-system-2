@@ -13,7 +13,10 @@ import theme from '@design-system/theme'
 
 /** В компонент нужно обернуть кнопку/иконку, при клике на которую должно появиться меню  */
 
-const PopoverMenuItem = styled(Box)`
+const PopoverMenuItem = styled(Flex)`
+  padding: 0;
+  flex-direction: column;
+  justify-content: center;
   cursor: pointer;
   &:hover {
     background-color: ${theme.colors.lightGrey};
@@ -22,13 +25,16 @@ const PopoverMenuItem = styled(Box)`
   font-family: ${theme.font.main};
 `
 
-function PopoverItemSmart({item, ...props}) {
-  const handleClick = e => {
-    item.HandleClick('smart' + item.name)
+function PopoverItemSmart({item, handleCloseOnItemClick, ...props}) {
+  const handleClick = () => {
+    handleCloseOnItemClick()
+    item.HandleClick &&
+      typeof item.HandleClick === 'function' &&
+      item.HandleClick()
   }
   return (
-    <PopoverMenuItem onClick={handleClick} {...props}>
-      {item.name}
+    <PopoverMenuItem onClick={() => handleClick()} {...props}>
+      {item.content}
     </PopoverMenuItem>
   )
 }
@@ -39,9 +45,17 @@ function DropdownMenu({
   children,
   shiftLeft,
   shiftTop,
+  closeOnItemClick,
   ...props
 }) {
   const [open, setOpen] = useState(false)
+
+  const handleCloseOnItemClick = () => {
+    if (closeOnItemClick) {
+      setOpen(false)
+    }
+  }
+
   return (
     <Popover
       isOpen={open}
@@ -53,14 +67,18 @@ function DropdownMenu({
           targetRect={targetRect}
           popoverRect={popoverRect}
           arrowColor={'white'}
-          arrowSize={10}
+          arrowSize={0}
           arrowStyle={{opacity: 1.0, zIndex: 6}}
         >
-          <Card bg={'white'} p={2} boxShadowSize={'md'}>
+          <Card bg={'white'} pl={2} pr={2} borderRadius={'4px'}>
             {content.map((item, key) => {
               return (
                 <FlexContainerBottomDivider key={key}>
-                  <PopoverItemSmart item={item} {...props} />
+                  <PopoverItemSmart
+                    item={item}
+                    handleCloseOnItemClick={handleCloseOnItemClick}
+                    {...props}
+                  />
                 </FlexContainerBottomDivider>
               )
             })}
@@ -73,7 +91,7 @@ function DropdownMenu({
       })}
       {...props}
     >
-      <Box onClick={() => setOpen(true)}>{children}</Box>
+      <Box onClick={() => setOpen(!open)}>{children}</Box>
     </Popover>
   )
 }
@@ -85,7 +103,8 @@ DropdownMenu.propTypes = {
    * HandleClick - содержит функцию со всеми параметрами, которую вызывает пункт меню по клику на него*/
   content: PropTypes.array,
   shiftLeft: PropTypes.number,
-  shiftTop: PropTypes.number
+  shiftTop: PropTypes.number,
+  closeOnItemClick: PropTypes.bool
 }
 
 DropdownMenu.defaultProps = {
@@ -95,14 +114,13 @@ DropdownMenu.defaultProps = {
   content: [
     {
       name: 'Добавьте пункты',
-      HandleClick: () => {
-        console.log('click')
-      }
+      HandleClick: () => {}
     }
   ],
   width: 208,
   height: 32,
-  pt: 2
+  pt: 2,
+  closeOnItemClick: true
 }
 
 export default DropdownMenu
