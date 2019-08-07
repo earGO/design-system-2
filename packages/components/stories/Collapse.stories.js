@@ -106,3 +106,18 @@ storiesOf(`Collapse`, module)
       }
     }
   )
+  .add(
+    'No children',
+    () => (
+      <Flex width={1500}>
+        <Collapse theme={theme}></Collapse>
+      </Flex>
+    ),
+    {
+      info: {
+        text: `
+          Если нет ни одного children - компонент будет пустым.    
+        `
+      }
+    }
+  )

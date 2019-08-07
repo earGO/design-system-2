@@ -49,7 +49,9 @@ const Tab = styled(Flex)`
 class Tabs extends React.Component {
   constructor(props) {
     super(props)
-    if (props.children.length > 1) {
+    if (!props.children) {
+      return null
+    } else if (props.children.length > 1) {
       props.children.forEach(child => {
         if (typeof child.props.tabKey === 'undefined') {
           console.error(
