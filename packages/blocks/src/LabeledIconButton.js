@@ -44,9 +44,7 @@ const LabeledIconButton = ({
 }) => {
   return (
     <Container onClick={onClick}>
-      <IconBordered size={size}>
-        <Icon name={iconName} color={color} size={size} />
-      </IconBordered>
+      <Icon name={iconName} color={color} size={size} />
       <TextBordered size={size} {...props}>
         <Text color={color} fontSize={fontSize}>
           {caption}

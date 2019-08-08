@@ -153,7 +153,7 @@ HintBlock.propTypes = {
   /** Содержимое подсказки */
   caption: PropTypes.string,
   /** Дополнительные стили для подсказки в виде  */
-  popupStyle: PropTypes.obj
+  popupStyle: PropTypes.object
 }
 
 HintBlock.defaultProps = {
