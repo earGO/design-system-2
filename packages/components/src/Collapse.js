@@ -36,7 +36,7 @@ class Collapse extends React.Component {
     const {children} = this.props
     if (!children) {
       return null
-    } else if (children.length > 1) {
+    } else if (children.length) {
       return children.map((child, i) => {
         let key = child.key || String(i)
         let props = {

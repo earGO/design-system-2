@@ -1,101 +1,199 @@
-import React, {useState, useRef, createRef} from 'react'
-import PropTypes from 'prop-types'
-import {
-  Icon,
-  Flex,
-  Text,
-  Popover,
-  Card,
-  Button
-} from '@design-system/components'
+import React, {Component} from 'react'
+import PropTypes, {string} from 'prop-types'
+import Trigger from 'rc-trigger'
+import 'rc-trigger/assets/index.css'
 import styled from 'styled-components'
+import {Card, Text} from '@design-system/components'
 
-/* Styling component with grow animation for clickable Icon of hint */
-const ClickableIcon = styled(Button)`
-cursor: pointer;
-transition: all;
-transition-duration: {$props=>props.theme.duration.fast};
-transition-timing-function: {$props=>props.theme.timingFunction.easeInOut};
-&:hover{
-  transform: scale(1.0015);
-  color:  {$props=>props.theme.colors.primary};
+/** Preset for fast hint popover alignment when passed in builtinPlacement prop*/
+const builtinPlacements = {
+  left: {
+    points: ['cr', 'cl']
+  },
+  right: {
+    points: ['cl', 'cr']
+  },
+  top: {
+    points: ['bc', 'tc']
+  },
+  bottom: {
+    points: ['tc', 'bc']
+  },
+  topLeft: {
+    points: ['bl', 'tl']
+  },
+  topRight: {
+    points: ['br', 'tr']
+  },
+  bottomRight: {
+    points: ['tr', 'br']
+  },
+  bottomLeft: {
+    points: ['tl', 'bl']
+  }
 }
-`
-/* Z-index adjustment for hint card */
+
+/** saves ref to component that'll be popover parent */
+function saveRef(name, component) {
+  this[name] = component
+}
+
+/** Extracts popup align correctives from align-prop */
+function getPopupAlign(align) {
+  return {
+    offset: [align.offsetX, align.offsetY],
+    overflow: {
+      adjustX: 1,
+      adjustY: 1
+    }
+  }
+}
+/** Обертка для карточки-подсказки*/
+
 const HintCard = styled(Card)`
-z-index: 2147483649;!important;
-	border-width: 0;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: ${props => props.theme.colors.white};
 `
 
-function Hint({
-  size,
-  arrowColor,
-  bgColor,
-  shiftLeft,
-  shiftTop,
-  hintText,
-  color,
-  position,
-  ...props
-}) {
-  const [isPopoverOpen, setPopoverOpen] = useState(false)
+const PopupComponent = caption => {
   return (
-    <Popover
-      isOpen={isPopoverOpen}
-      onClickOutside={() => setPopoverOpen(false)}
-      position={position} // popover position from ['top','left','right','bottom']
-      /* Content of a hint */
-      content={({position, targetRect, popoverRect}) => (
-        <Popover.ArrowContainer
-          position={position}
-          targetRect={targetRect}
-          popoverRect={popoverRect}
-          arrowColor={arrowColor}
-          arrowSize={10}
-          arrowStyle={{opacity: 1.0, zIndex: 2147483649}}
-        >
-          <HintCard p={3} bg={bgColor} boxShadowSize={'md'}>
-            <Text color={color}>{hintText}</Text>
-          </HintCard>
-        </Popover.ArrowContainer>
-      )}
-      /* Hint card adjustment related to Hint icon */
-      contentLocation={({nudgedLeft, nudgedTop}) => ({
-        top: nudgedTop + shiftTop,
-        left: nudgedLeft + shiftLeft
-      })}
-      {...props}
-    >
-      <ClickableIcon
-        type={'flat'}
-        onClick={() => setPopoverOpen(!isPopoverOpen)}
-      >
-        <Icon name={'help_outline'} size={size} color={color} />
-      </ClickableIcon>
-    </Popover>
+    <HintCard key={'hintCard'}>
+      <Text key={'hintCaption'}>{caption.caption}</Text>
+    </HintCard>
   )
 }
 
-Hint.propTypes = {
-  arrowColor: PropTypes.string,
-  bgColor: PropTypes.string,
-  hintText: PropTypes.string,
-  position: PropTypes.string,
-  color: PropTypes.string,
-  size: PropTypes.number,
-  shiftTop: PropTypes.number,
-  shiftLeft: PropTypes.number
+class HintBlock extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      mask: false,
+      maskClosable: false,
+      trigger: {
+        hover: 1
+      },
+      offsetX: undefined,
+      offsetY: undefined,
+      stretch: ''
+    }
+
+    this.saveContainerRef = saveRef.bind(this, 'containerInstance')
+  }
+
+  render() {
+    const {
+      align,
+      children,
+      destroyPopupOnHide,
+      events,
+      placement,
+      animated,
+      caption,
+      popupStyle
+    } = this.props
+
+    return (
+      <div>
+        <div ref={this.saveContainerRef} />
+        <Trigger
+          popupPlacement={placement}
+          popupAlign={getPopupAlign(align)}
+          action={events}
+          destroyPopupOnHide={destroyPopupOnHide}
+          builtinPlacements={builtinPlacements}
+          getPopupContainer={() => this.containerInstance}
+          popup={<PopupComponent caption={caption} />}
+          popupTransitionName={animated ? 'rc-trigger-popup-zoom' : ''}
+          popupStyle={popupStyle}
+        >
+          <div href="#">{children}</div>
+        </Trigger>
+      </div>
+    )
+  }
 }
 
-Hint.defaultProps = {
-  arrowColor: 'white',
-  bgColor: 'white',
-  hintText: 'Enter hint text',
-  position: 'top',
-  color: 'black',
-  size: 18,
-  shiftTop: 5,
-  shiftLeft: -10
+HintBlock.propTypes = {
+  /** Отступы от родительского контейнера в пикселях */
+  align: PropTypes.shape({
+    offsetX: PropTypes.number,
+    offsetY: PropTypes.number
+  }),
+  /** Настройки позиционирования компонента относительно родительского контейнера */
+  builtinPlacements: PropTypes.object,
+  /** Элемент, относительно которого будет позиционироваться наш компонент */
+  children: PropTypes.element,
+  /** Уничтожать ли попап когда он скрыт */
+  destroyPopupOnHide: PropTypes.bool,
+  /** Ивенты, вызывающие появляение компонента. Возможные ивенты - click, contextMenu(реагирует на right click), focus, hover */
+  events: PropTypes.arrayOf(PropTypes.string),
+  /** Задержка перед появлением компонента (в секундах) */
+  mouseEnterDelay: PropTypes.number,
+  /** Задержка перед исчезанием компонента (в секундах) */
+  mouseLeaveDelay: PropTypes.number,
+  /** Позиционирование компонента относительно родительского компонента. Аргументы формируются исходя из параметра builtinPlacements */
+  placement: PropTypes.oneOf([
+    'left',
+    'right',
+    'top',
+    'bottom',
+    'topLeft',
+    'topRight',
+    'bottomLeft',
+    'bottomRight'
+  ]),
+  /** Компонент для отображения */
+  popupComponent: PropTypes.element,
+  /** Дает возможность попап элементу растягиваться относительно родительского контейнера. Варианты - 'width', 'minWidth', 'height', 'minHeight' и их вариации, напр. 'height minWidth' */
+  stretch: PropTypes.string,
+  /** Триггер анимации при возникновении поповера, по умолчанию false */
+  animated: PropTypes.bool,
+  /** Содержимое подсказки */
+  caption: PropTypes.string,
+  /** Дополнительные стили для подсказки в виде  */
+  popupStyle: PropTypes.obj
 }
 
-export default Hint
+HintBlock.defaultProps = {
+  align: {
+    offsetX: 0,
+    offsetY: 0
+  },
+  builtinPlacements: {
+    left: {
+      points: ['cr', 'cl']
+    },
+    right: {
+      points: ['cl', 'cr']
+    },
+    top: {
+      points: ['bc', 'tc']
+    },
+    bottom: {
+      points: ['tc', 'bc']
+    },
+    topLeft: {
+      points: ['bl', 'tl']
+    },
+    topRight: {
+      points: ['br', 'tr']
+    },
+    bottomRight: {
+      points: ['tr', 'br']
+    },
+    bottomLeft: {
+      points: ['tl', 'bl']
+    }
+  },
+  destroyPopupOnHide: false,
+  events: ['click'],
+  mouseEnterDelay: 0,
+  mouseLeaveDelay: 0.1,
+  placement: 'bottom',
+  stretch: null,
+  animated: false,
+  caption: 'Ima popover'
+}
+
+export default HintBlock
