@@ -140,7 +140,7 @@ storiesOf(`Hint`, module)
         >
           <Hint
             placement={'top'}
-            caption={'Подсказка на русском'}
+            caption={'Подсказка при фокусе на поиске'}
             events={['focus']}
           >
             <SearchInput />

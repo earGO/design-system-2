@@ -54,6 +54,7 @@ const HintCard = styled(Card)`
   padding: 8px;
   border-radius: 4px;
   background-color: ${props => props.theme.colors.white};
+  max-width: 136px;
 `
 
 const PopupComponent = caption => {
