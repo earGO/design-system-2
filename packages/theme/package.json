@@ -4,6 +4,9 @@
   "main": "src/index.js",
   "main:src": "src/index.js",
   "license": "MIT",
+  "scripts": {
+    "prepare": "rollup --config"
+  },
   "dependencies": {
   },
   "devDependencies": {

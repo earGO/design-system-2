@@ -1,6 +1,7 @@
 {
   "name": "@design-system/utils",
   "version": "1.0.4",
+  "private": true,
   "description": "Utils for other modules",
   "main": "index.js",
   "main:src": "index.js",

@@ -5,9 +5,9 @@ function makeAbsolutePath(directory, component) {
   return path.resolve(__dirname, directory, component)
 }
 
-function getComponents(names = []) {
+function getComponents(names = [],relativePath) {
   return names.map(name =>
-    makeAbsolutePath('../packages/components/src', name + '.js')
+    makeAbsolutePath(relativePath, name + '.js')
   )
 }
 
@@ -162,7 +162,7 @@ module.exports = {
           'Absolute',
           'Card',
           'Overlay'
-        ])
+        ],'../packages/atoms/src')
     },
     {
       name: 'Элементы',
@@ -176,7 +176,7 @@ module.exports = {
           'Scrollbars',
           'Modal',
           'Popover'
-        ])
+        ],'../packages/atoms/src')
     },
     {
       name: 'Ввод данных',
@@ -191,14 +191,22 @@ module.exports = {
           'Toggle',
           'Radio',
           'RadioGroup',
+          'ResizableInput',
           'Select'
-        ])
+        ],'../packages/atoms/src')
     },
     {
       name: 'Отображение данных',
       description: 'Компоненты для отображения данных',
       components: () =>
-        getComponents(['Collapse', 'CollapsePanel', 'Tabs', 'TabPane', 'Table'])
+        getComponents(['Collapse', 'CollapsePanel', 'Tabs', 'TabPane', 'Table'],'../packages/atoms/src')
+    },
+    {
+      name: 'Составные компоненты',
+      description: 'Компоненты, составленные из нескольких других',
+      components: () =>
+          getComponents(['Hint'],'../packages/molecules/src')
     }
+
   ]
 }

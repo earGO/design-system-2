@@ -5,6 +5,8 @@
   "main:src": "src/index.js",
   "license": "MIT",
   "scripts": {
+
+    "prepare": "rollup --config",
     "storybook": "start-storybook -p 9029",
     "build-storybook": "cd storybook && build-storybook"
   },

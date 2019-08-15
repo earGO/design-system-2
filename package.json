@@ -16,8 +16,7 @@
   },
   "scripts": {
     "start": "rollup -c -w",
-    "build": "rollup -c",
-    "prepare-icons": "cd packages/icons && yarn prepare",
+    "build": "lerna exec prepare",
     "styleguide": "styleguidist server --config documentation/config.js",
     "styleguide:build": "styleguidist build --config documentation/config.js",
     "components-storybook": "cd packages/components && start-storybook -p 9019",

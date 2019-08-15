@@ -67,6 +67,7 @@ const IconBordered = styled(Flex)`
   height: ${props => props.size + 'px'};
   width: ${props => props.size + 'px'};
   ${props => props.spin && spinanimation};
+  user-select: none;
 `
 
 const Icon = ({name, size, color, ...props}) => {

@@ -37,5 +37,5 @@ describe('LabeledIconButton', () => {
     wrapper.unmount()
   })
 
-  //react-tiny-popover-container
+
 })

@@ -1,16 +1,18 @@
-import babel from 'rollup-plugin-babel'
-import commonjs from 'rollup-plugin-commonjs'
-import external from 'rollup-plugin-peer-deps-external'
-import resolve from 'rollup-plugin-node-resolve'
-import url from 'rollup-plugin-url'
-import json from 'rollup-plugin-json'
+const resolve = require('rollup-plugin-node-resolve')
+const babel = require('rollup-plugin-babel')
+const commonjs = require('rollup-plugin-commonjs')
+const json = require('rollup-plugin-json')
+const external = require('rollup-plugin-peer-deps-external')
+const url = require('rollup-plugin-url')
+const peerDepsExternal = require('rollup-plugin-peer-deps-external')
+
 // import { terser } from 'rollup-plugin-terser'
-import postcss from 'rollup-plugin-postcss'
+const postcss = require( 'rollup-plugin-postcss')
 
-import pkg from './package.json'
+const pkg =require( './package.json')
 
-export default {
-  input: 'packages/library/src/index.js',
+module.exports = {
+  input: 'src/index.js',
   output: [
     {
       file: pkg.main,
@@ -27,6 +29,7 @@ export default {
   // https://github.com/WebReflection/hyperHTML/issues/304#issuecomment-443950244
   context: 'null',
   plugins: [
+    peerDepsExternal(),
     external(),
     url({
       // by default, rollup-plugin-url will not handle font files
@@ -55,7 +58,7 @@ export default {
       browser: true
     }),
     commonjs({
-      include: ['node_modules/**'],
+      include: ['node_modules/**','../../node_modules/**','../../../node_modules/**'],
       exclude: ['node_modules/process-es6/**']
     }),
     json(),
