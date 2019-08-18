@@ -1,8 +1,9 @@
 {
-  "name": "@design-system/components",
+  "name": "@design-system/atoms",
   "version": "1.2.0",
   "main": "src/index.js",
   "main:src": "src/index.js",
+  "module": "dist/index.es.js",
   "license": "MIT",
   "scripts": {
     "prepare": "rollup --config",

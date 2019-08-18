@@ -1,5 +1,5 @@
 {
-  "name": "@design-system/modules",
+  "name": "@design-system/cells",
   "version": "1.0.0",
   "main": "src/index.js",
   "main:src": "src/index.js",
@@ -11,7 +11,7 @@
     "build-storybook": "cd storybook && build-storybook"
   },
   "dependencies": {
-    "@design-system/components": ">=1.2.0",
+    "@design-system/atoms": ">=1.2.0",
     "@design-system/theme": ">=1.2.0",
     "@design-system/utils": ">=1.0.4",
     "@react-workspaces/react-scripts": "3.0.0-alpha-04",
