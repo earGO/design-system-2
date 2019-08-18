@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "rollup -c -w",
-    "build": "lerna exec clean && lerna exec prepare",
+    "build": "lerna exec -- rm -rf dist && lerna exec -- rollup -c",
     "styleguide": "styleguidist server --config documentation/config.js",
     "styleguide:build": "styleguidist build --config documentation/config.js",
     "components-storybook": "cd packages/components && start-storybook -p 9019",
@@ -25,7 +25,7 @@
     "unit": "jest --watchAll --updateSnapshot",
     "make-version": "lerna version && yarn",
     "make-release": "lerna version --conventional-commits --create-release github --changelog-preset react && yarn",
-    "clean": "oao clean",
+    "clear": "oao clean",
     "status": "oao status",
     "remove-all": "oao remove-all"
   },

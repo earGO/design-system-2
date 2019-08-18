@@ -39,10 +39,13 @@ module.exports = {
     'stylus-rule-sheet',
     'add-dom-event-listener',
     'rc-animate',
+    'react-select',
+    'react-select/lib/Async',
     'classnames',
     'moment',
     'shallowequal',
-    'color'
+    'color',
+    'ramda'
   ],
   // https://github.com/WebReflection/hyperHTML/issues/304#issuecomment-443950244
   context: 'null',
