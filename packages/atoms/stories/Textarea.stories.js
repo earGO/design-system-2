@@ -1,7 +1,6 @@
 import React from 'react'
 import {storiesOf} from '@storybook/react'
-
-import Textarea from '../src/Textarea'
+import {Textarea} from '../src'
 import theme from '@design-system/theme'
 
 storiesOf(`Textarea`, module)

@@ -2,8 +2,7 @@ import React from 'react'
 import {storiesOf} from '@storybook/react'
 import theme from '@design-system/theme'
 
-import Input from '../src/Input'
-import Icon from '../src/Icon'
+import {Input, Icon} from '../src'
 
 const prefix = <Icon name="search" />
 const suffix = <Icon name="clear" />

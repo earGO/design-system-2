@@ -1,7 +1,7 @@
 import React from 'react'
 import {storiesOf} from '@storybook/react'
 
-import Icon from '../src/Icon'
+import {Icon} from '../src'
 
 storiesOf(`Single Icons`, module)
   .addParameters({

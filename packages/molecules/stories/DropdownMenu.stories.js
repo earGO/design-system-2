@@ -1,11 +1,9 @@
 import React from 'react'
 import {storiesOf} from '@storybook/react'
 
-import DropdownMenu from '../src/DropdownMenu'
-import {Flex, Text, Card, Box, Popover} from '@design-system/components'
-import styled from 'styled-components'
+import {Flex, Text} from '@design-system/atoms'
 import theme from '@design-system/theme'
-import LabeledIconButton from '../src/LabeledIconButton'
+import {LabeledIconButton, DropdownMenu} from '../src'
 
 const FunctionalContent = [
   {

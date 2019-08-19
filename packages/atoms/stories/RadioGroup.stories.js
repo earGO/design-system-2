@@ -1,8 +1,7 @@
 import React from 'react'
 import {storiesOf} from '@storybook/react'
 
-import RadioGroup from '../src/RadioGroup'
-import Radio from '../src/Radio'
+import {RadioGroup, Radio} from '../src'
 
 class TestComponent extends React.Component {
   constructor(props) {

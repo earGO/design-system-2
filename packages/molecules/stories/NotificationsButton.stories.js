@@ -2,7 +2,7 @@ import React from 'react'
 import {storiesOf} from '@storybook/react'
 import theme, {ThemeProvider} from '@design-system/theme'
 
-import NotificationsButton from '../src/NotificationsButton'
+import {NotificationsButton} from '../src'
 
 storiesOf(`NotificationsButton`, module)
   .addParameters({

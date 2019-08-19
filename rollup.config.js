@@ -15,12 +15,12 @@ module.exports = {
   input: 'src/index.js',
   output: [
     {
-      file: 'dist/index.cjs.js',
+      file: 'build/index.cjs.js',
       format: 'cjs',
       sourcemap: true
     },
     {
-      file: 'dist/index.es.js',
+      file: 'build/index.es.js',
       format: 'es',
       sourcemap: true
     }
@@ -45,7 +45,12 @@ module.exports = {
     'moment',
     'shallowequal',
     'color',
-    'ramda'
+    'ramda',
+    '@design-system/theme',
+    '@design-system/atoms',
+    '@design-system/cells',
+    '@design-system/molecules',
+    '@design-system/utils'
   ],
   // https://github.com/WebReflection/hyperHTML/issues/304#issuecomment-443950244
   context: 'null',

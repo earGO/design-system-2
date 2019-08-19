@@ -3,7 +3,9 @@
   "version": "1.0.4",
   "private": true,
   "description": "Utils for other modules",
-  "main": "src/index.js",
+  "main": "build/index.es.js",
+  "module": "build/index.es.js",
+  "module:src": "src/index.js",
   "main:src": "src/index.js",
   "scripts": {
     "clean": "rm -rf node_modules dist"

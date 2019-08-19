@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import {Input, Icon, Box} from '@design-system/components'
+import {Input, Icon, Box} from '@design-system/atoms'
 
 const IconButton = styled(Box)`
   cursor: pointer;
