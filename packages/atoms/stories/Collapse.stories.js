@@ -3,9 +3,7 @@ import {storiesOf} from '@storybook/react'
 
 import theme from '@design-system/theme'
 
-import Collapse from '../src/Collapse'
-import Text from '../src/Text'
-import Flex from '../src/Flex'
+import {Flex, Text, Collapse} from '../src'
 
 storiesOf(`Collapse`, module)
   .addParameters({

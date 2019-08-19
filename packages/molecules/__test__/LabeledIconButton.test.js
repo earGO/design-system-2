@@ -36,6 +36,4 @@ describe('LabeledIconButton', () => {
     expect(wrapper.props().fontSize).toBe(5)
     wrapper.unmount()
   })
-
-
 })

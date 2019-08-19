@@ -7,7 +7,7 @@ import {
   Text,
   NotificationsCounter,
   Box
-} from '@design-system/components'
+} from '@design-system/atoms'
 
 const Hoverer = styled(Flex)`
   width: 120px;

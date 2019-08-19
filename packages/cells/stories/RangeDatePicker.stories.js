@@ -1,10 +1,7 @@
 import React, {useState} from 'react'
 import {storiesOf} from '@storybook/react'
-import theme, {ThemeProvider} from '@design-system/theme'
-
-import RangeDatePicker from '../src/RangeDatePicker'
-import {formatDate} from '@design-system/utils'
-import {Box} from '@design-system/components'
+import {RangeDatePicker} from '../src'
+import {Box} from '@design-system/atoms'
 
 const RenderedDatePicker = ({props}) => {
   const [date, setDate] = useState([])

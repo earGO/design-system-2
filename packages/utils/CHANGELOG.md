@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.0.0 (2019-08-29)
+
+* added some utils, completed singledatepicker that has it's value put to console log #37 ([b44e1d5](https://gitlab.ursip.ru/ursip/design-system/commit/b44e1d5)), closes [#37](https://gitlab.ursip.ru/ursip/design-system/issues/37)
+* done building from root with single script #28 ([0972d94](https://gitlab.ursip.ru/ursip/design-system/commit/0972d94)), closes [#28](https://gitlab.ursip.ru/ursip/design-system/issues/28)
+* done rollup build #28 ([b3f59b0](https://gitlab.ursip.ru/ursip/design-system/commit/b3f59b0)), closes [#28](https://gitlab.ursip.ru/ursip/design-system/issues/28)
+* rollup throws and documents are not building #28 ([66262fd](https://gitlab.ursip.ru/ursip/design-system/commit/66262fd)), closes [#28](https://gitlab.ursip.ru/ursip/design-system/issues/28)
+* rollup working, storybook on atoms working, storybook on cells and molecules trying to babelyfi roll ([0d42982](https://gitlab.ursip.ru/ursip/design-system/commit/0d42982)), closes [#28](https://gitlab.ursip.ru/ursip/design-system/issues/28)
+
+
+
+
+
+
 ## <small>1.0.4 (2019-07-30)</small>
 
 * #2 WIP ([499b995](https://gitlab.ursip.ru/BOX/frontend/commit/499b995)), closes [#2](https://gitlab.ursip.ru/BOX/frontend/issues/2)

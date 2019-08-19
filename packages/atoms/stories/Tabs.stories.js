@@ -1,10 +1,7 @@
 import React from 'react'
 import {storiesOf} from '@storybook/react'
 import theme, {ThemeProvider} from '@design-system/theme'
-import Icon from '../src/Icon'
-import Text from '../src/Text'
-
-import Tabs from '../src/Tabs'
+import {Icon, Text, Tabs} from '../src'
 
 storiesOf(`Tabs`, module)
   .addParameters({

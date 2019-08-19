@@ -2,9 +2,8 @@ import React from 'react'
 import {storiesOf} from '@storybook/react'
 import theme, {ThemeProvider} from '@design-system/theme'
 import styled from 'styled-components'
-import Hint from '../src/Hint'
-import {Box, ContentBox} from '@design-system/components'
-import SearchInput from '../src/SearchInput'
+import {Box, ContentBox} from '@design-system/atoms'
+import {SearchInput, Hint} from '../src'
 
 const HintTrigger = styled(Box)`
   display: inline-block;

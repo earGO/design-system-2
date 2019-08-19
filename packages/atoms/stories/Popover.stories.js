@@ -1,13 +1,8 @@
 import React from 'react'
 import {storiesOf} from '@storybook/react'
-import Card from '../src/Card'
-import Text from '../src/Text'
-import Flex from '../src/Flex'
-import Button from '../src/Button'
-import Popover from '../src/Popover'
+import {Flex, Card, Text, Button, Popover, Box} from '../src'
 import theme from '@design-system/theme'
 import styled from 'styled-components'
-import Box from '../src/Box'
 
 const PopoverMenuItem = styled(Box)`
   width: 120px;

@@ -2,7 +2,7 @@ import React from 'react'
 import {storiesOf} from '@storybook/react'
 import theme, {ThemeProvider} from '@design-system/theme'
 
-import Loading from '../src/Loading'
+import {Loading} from '../src'
 
 storiesOf(`Loading`, module)
   .addParameters({

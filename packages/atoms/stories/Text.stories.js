@@ -1,7 +1,7 @@
 import React from 'react'
 import {storiesOf} from '@storybook/react'
 import theme from '@design-system/theme'
-import Text from '../src/Text'
+import {Text} from '../src'
 
 storiesOf(`Text`, module)
   .addParameters({

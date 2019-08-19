@@ -1,7 +1,7 @@
 import React from 'react'
 import {storiesOf} from '@storybook/react'
 import theme from '@design-system/theme'
-import LabeledIconButton from '../src/LabeledIconButton'
+import {LabeledIconButton} from '../src'
 
 storiesOf(`LabeledIconButton`, module)
   .addParameters({

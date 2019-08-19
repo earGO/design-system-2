@@ -2,7 +2,7 @@ import React from 'react'
 import {storiesOf} from '@storybook/react'
 import theme, {ThemeProvider} from '@design-system/theme'
 
-import AnimatedSearchInput from '../src/AnimatedSearchInput'
+import {AnimatedSearchInput} from '../src'
 
 storiesOf(`AnimatedSearchInput`, module)
   .addParameters({

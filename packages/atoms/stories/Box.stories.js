@@ -1,7 +1,7 @@
 import React from 'react'
 import {storiesOf} from '@storybook/react'
 import theme, {ThemeProvider} from '@design-system/theme'
-import Box from '../src/Box'
+import {Box} from '../src'
 
 storiesOf(`Box`, module)
   .addParameters({

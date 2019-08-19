@@ -1,9 +1,8 @@
 import React from 'react'
-import theme from '@design-system/theme'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import {Icon, Text, Flex, Box, Relative} from '@design-system/components'
+import {Icon, Text, Flex, Box, Relative} from '@design-system/atoms'
 
 const Container = styled(Flex)`
   flex-flow: row nowrap;
@@ -11,8 +10,8 @@ const Container = styled(Flex)`
   align-items: center;
   cursor: pointer;
   transition: all;
-  transition-timing-function: ${theme.timingFunctions.easeInOut};
-  transition-duration: ${theme.duration.fast};
+  transition-timing-function: ${props.theme.timingFunctions.easeInOut};
+  transition-duration: ${props.theme.duration.fast};
   &:hover {
     transform: scale(1.0005);
     opacity: 0.75;
@@ -26,13 +25,6 @@ const TextBordered = styled(Flex)`
   padding-left: ${props => props.size / 4 + 'px'};
 `
 
-const IconBordered = styled(Flex)`
-  flex-direction: column;
-  justify-content: center;
-  height: ${props => props.size + 'px'};
-  width: ${props => props.size + 'px'};
-`
-
 const LabeledIconButton = ({
   iconName,
   caption,
@@ -43,8 +35,8 @@ const LabeledIconButton = ({
   ...props
 }) => {
   return (
-    <Container onClick={onClick}>
-      <Icon name={iconName} color={color} size={size} />
+    <Container onClick={onClick} {...props.theme}>
+      <Icon name={iconName} color={color} size={size} {...props.theme} />
       <TextBordered size={size} {...props}>
         <Text color={color} fontSize={fontSize}>
           {caption}

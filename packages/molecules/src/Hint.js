@@ -3,7 +3,7 @@ import PropTypes, {string} from 'prop-types'
 import Trigger from 'rc-trigger'
 import 'rc-trigger/assets/index.css'
 import styled from 'styled-components'
-import {Card, Text} from '@design-system/components'
+import {Card, Text} from '@design-system/atoms'
 
 /** Preset for fast hint popover alignment when passed in builtinPlacement prop*/
 const builtinPlacements = {

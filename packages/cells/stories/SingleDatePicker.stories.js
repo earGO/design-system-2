@@ -1,10 +1,8 @@
 import React, {useState} from 'react'
 import {storiesOf} from '@storybook/react'
-import theme, {ThemeProvider} from '@design-system/theme'
-import {Box, Text} from '@design-system/components'
+import {Box} from '@design-system/atoms'
 import {formatDate} from '@design-system/utils'
-
-import SingleDatePicker from '../src/SingleDatePicker'
+import {SingleDatePicker} from '../src'
 
 const RenderedDatePicker = ({props}) => {
   const [date, setDate] = useState([])

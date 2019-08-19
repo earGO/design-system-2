@@ -2,7 +2,7 @@ import React from 'react'
 import {storiesOf} from '@storybook/react'
 import theme, {ThemeProvider} from '@design-system/theme'
 
-import NotificationsCounter from '../src/NotificationsCounter'
+import {NotificationsCounter} from '../src'
 
 storiesOf(`NotificationsCounter`, module)
   .addParameters({

@@ -2,12 +2,16 @@
   "name": "@ursip/design-system",
   "version": "1.2.0",
   "private": true,
-  "main": "build/index.js",
+  "main": "build/index.es.js",
   "module": "build/index.es.js",
   "jsnext:main": "build/index.es.js",
   "workspaces": {
     "packages": [
-      "packages/*"
+      "packages/utils",
+      "packages/theme",
+      "packages/atoms",
+      "packages/molecules",
+      "packages/cells"
     ],
     "nohoist": [
       "**/webpack-dev-server",
@@ -15,8 +19,14 @@
     ]
   },
   "scripts": {
-    "start": "rollup -c -w",
-    "build": "lerna exec -- rm -rf dist && lerna exec -- rollup -c",
+    "start": "lerna parallel -- rollup -c -w",
+    "build-utils": "cd packages/utils && rollup -c",
+    "build-theme": "cd packages/theme && rollup -c",
+    "build-atoms": "cd packages/atoms && rollup -c",
+    "build-molecules": "cd packages/molecules && rollup -c",
+    "build-cells": "cd packages/cells && rollup -c",
+    "build": "lerna exec -- rm -rf build && yarn clear && yarn && yarn build-utils && yarn build-theme && yarn build-atoms && yarn build-molecules && yarn build-cells && yarn",
+    "lerna-publish": "lerna publish from-package --yes --conventional-commits --changelog-preset react --registry registry https://gitlab.ursip.ru/nexus/repository/npm --force-publish $(ls packages/)",
     "styleguide": "styleguidist server --config documentation/config.js",
     "styleguide:build": "styleguidist build --config documentation/config.js",
     "atoms-storybook": "cd packages/atoms && start-storybook -p 9019",
@@ -25,7 +35,8 @@
     "unit": "jest --watchAll --updateSnapshot",
     "make-version": "lerna version && yarn",
     "make-release": "lerna version --conventional-commits --create-release github --changelog-preset react && yarn",
-    "clear": "oao clean",
+    "clean-builds": "lerna exec -- rm -rf build",
+    "clean": "oao clean",
     "status": "oao status",
     "remove-all": "oao remove-all"
   },

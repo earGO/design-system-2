@@ -1,7 +1,7 @@
 import React from 'react'
 import {storiesOf} from '@storybook/react'
 import theme, {ThemeProvider} from '@design-system/theme'
-import SearchInput from '../src/SearchInput'
+import {SearchInput} from '../src'
 
 storiesOf(`SearchInput`, module)
   .addParameters({

@@ -1,8 +1,7 @@
 import React from 'react'
 import {storiesOf} from '@storybook/react'
 import theme, {ThemeProvider} from '@design-system/theme'
-
-import Select from '../src/Select'
+import {Select} from '../src'
 
 const options = [
   {value: 'template1', label: `Шаблон ИМ многоквартирного дома`},
@@ -26,10 +25,18 @@ storiesOf(`Select`, module)
       }
     }
   })
-  .add('Default', () => <Select options={options} theme={theme} />, {
-    info: {
-      text: `
+  .add(
+    'Default',
+    () => (
+      <ThemeProvider theme={theme}>
+        <Select options={options} />
+      </ThemeProvider>
+    ),
+    {
+      info: {
+        text: `
           По умолчанию без параметров иконка выводится в виде знака вопроса. 
         `
+      }
     }
-  })
+  )

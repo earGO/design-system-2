@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Icon, Overlay, Flex, Text, Box} from '@design-system/components'
+import {Icon, Overlay, Flex, Text, Box} from '@design-system/atoms'
 
 function Spinner(props) {
   return <Icon spin name="cached" {...props} />
