@@ -1,7 +1,8 @@
 {
   "name": "@design-system/modules",
   "version": "1.0.0",
-  "main": "src/index.js",
+  "main": "build/index.js",
+  "module": "build/index.es.js",
   "main:src": "src/index.js",
   "license": "MIT",
   "scripts": {
