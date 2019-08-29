@@ -1,6 +1,5 @@
 import React from 'react'
-import ThemeProvider from '../src/theme/ThemeProvider'
-import theme from '../src/theme'
+import theme, {ThemeProvider} from '@design-system/theme'
 
 function Wrapper(props) {
   return <ThemeProvider {...props} theme={theme} />

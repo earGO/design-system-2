@@ -389,3 +389,59 @@ const CenteredCell = ({rowData, dataKey, ...props}) => (
 );
 ```
 Этот пример центрирует данные (параметр rowData[dataKey]) в ячейке шириной 160px. Внутри этого компонента с данными можно производить манипуляции, создавать кнопки - всё, что угодно. Обёртка в виде отдельного компонента нужна как раз чтобы получить доступ к данным ячейки (через её dataKey и массив данных всей строки таблицы rowData).
+
+
+В целом кастомизация таблицы осуществляется созданием компонента, производного от <Table.Cell/>, работающего с доступными ему данными, предоставляемыми таблицей. Например, если нужно в одном из столбцов поместить кнопку с действиями, относящимися к данным из ряда, где находится ячейка, можно создать такой класс:
+
+```js
+/*  Компонент для отображения кнопки-действия */
+const ActionButton = styled(Button)`
+	position: relative;
+	top: 3px;
+	transition: all 0.15s ease-in-out;
+	&:hover {
+		transform: scale(1.15);
+	}
+`
+
+/* контейнер для отображения кнопки в обычном состоянии */
+const UnActionIcon = styled(Box)`
+	display: block;
+	${ActionButton}:hover & {
+		display: none;
+	}
+`
+/* кмопонент для отображения кнопки при наведении мышки */
+const ActionIcon = styled(Box)`
+	display: none;
+	${ActionButton}:hover & {
+		display: block;
+	}
+`
+
+const ActionCell = ({rowData, dataKey, ...props}) => {
+	function handleAction() {
+		console.log(rowData[dataKey])
+		console.log(theme.colors.blue)
+	}
+	return (
+		<Table.Cell {...props} style={{padding: 0}}>
+			<Flex justifyContent={'center'} width={96}> /* выравнивание контента */
+				<ActionButton type={`flat`}> /* контейнер для кнопки, отображаемый по умолчанию */
+					<UnActionIcon>
+						<Icon name={'more_horiz'} onClick={handleAction} />
+					</UnActionIcon>
+					<ActionIcon> /* контейнер для кнопки, отображаемый при наведении мышки */
+						<Icon
+							name={'more_horiz'}
+							onClick={handleAction}
+							color={'primary'}
+						/>
+					</ActionIcon>
+				</ActionButton>
+			</Flex>
+		</Table.Cell>
+	)
+}
+
+``` 

@@ -1,62 +1,91 @@
-import babel from 'rollup-plugin-babel'
-import commonjs from 'rollup-plugin-commonjs'
-import external from 'rollup-plugin-peer-deps-external'
-import resolve from 'rollup-plugin-node-resolve'
-import url from 'rollup-plugin-url'
-import json from 'rollup-plugin-json'
+const resolve = require('rollup-plugin-node-resolve')
+const babel = require('rollup-plugin-babel')
+const commonjs = require('rollup-plugin-commonjs')
+const json = require('rollup-plugin-json')
+const external = require('rollup-plugin-peer-deps-external')
+const url = require('rollup-plugin-url')
+// const peerDepsExternal = require('rollup-plugin-peer-deps-external')
+
 // import { terser } from 'rollup-plugin-terser'
-import postcss from 'rollup-plugin-postcss'
+const postcss = require('rollup-plugin-postcss')
 
-import pkg from './package.json'
+const pkg = require('./package.json')
 
-export default {
+module.exports = {
   input: 'src/index.js',
   output: [
     {
-      file: pkg.main,
+      file: 'build/index.cjs.js',
       format: 'cjs',
-      sourcemap: true,
+      sourcemap: true
     },
     {
-      file: pkg.module,
+      file: 'build/index.es.js',
       format: 'es',
-      sourcemap: true,
-    },
+      sourcemap: true
+    }
   ],
-  external: ['styled-components','styled-normalize','styled-system'],
+  external: [
+    'styled-components',
+    'styled-normalize',
+    'react-input-autosize',
+    'stylis-rule-sheet',
+    'styled-system',
+    'prop-types',
+    'react',
+    'react-dom',
+    '@design-system/theme',
+    'react-tiny-popover',
+    'stylus-rule-sheet',
+    'add-dom-event-listener',
+    'rc-animate',
+    'react-select',
+    'react-select/lib/Async',
+    'classnames',
+    'moment',
+    'shallowequal',
+    'color',
+    'ramda',
+    '@design-system/theme',
+    '@design-system/atoms',
+    '@design-system/cells',
+    '@design-system/molecules',
+    '@design-system/utils'
+  ],
   // https://github.com/WebReflection/hyperHTML/issues/304#issuecomment-443950244
   context: 'null',
   plugins: [
+    // peerDepsExternal(),
     external(),
     url({
       // by default, rollup-plugin-url will not handle font files
       include: ['**/components/**/*.woff', '**/components/**/*.woff2'],
       // setting infinite limit will ensure that the files
       // are always bundled with the code, not copied to /dist
-      limit: Infinity,
+      limit: Infinity
     }),
     babel({
       babelrc: false,
       runtimeHelpers: true,
-      presets: [['@babel/env', { modules: false }], '@babel/react'],
+      presets: [['@babel/env', {modules: false}], '@babel/react'],
       exclude: ['node_modules/**', '**/*.json'],
       plugins: [
         '@babel/external-helpers',
         [
           '@babel/transform-runtime',
           {
-            regenerator: true,
-          },
+            regenerator: true
+          }
         ],
-        '@babel/plugin-proposal-class-properties',
-      ],
+        '@babel/plugin-proposal-class-properties'
+      ]
     }),
     resolve({
-      browser: true,
+      browser: true
     }),
     commonjs({
-      include: ['node_modules/**'],
-      exclude: ['node_modules/process-es6/**'],
+      include: /node_modules/,
+      exclude: ['node_modules/process-es6/**']
     }),
     json(),
     // terser(),
@@ -64,7 +93,7 @@ export default {
       extensions: ['.css', '.less'],
       inject: false,
       extract: true,
-      minimize: true,
-    }),
-  ],
+      minimize: true
+    })
+  ]
 }
