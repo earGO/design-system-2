@@ -8,7 +8,7 @@ import {
   FlexContainerBottomDivider
 } from '@design-system/atoms'
 import styled from 'styled-components'
-import theme from '@design-system/theme'
+import {theme} from '@design-system/theme'
 
 /** В компонент нужно обернуть кнопку/иконку, при клике на которую должно появиться меню  */
 

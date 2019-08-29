@@ -11840,27 +11840,26 @@ Modal$2.defaultProps = {
 };
 Modal$2.displayName = 'Modal';
 
-function _templateObject$k() {
-  var data = _taggedTemplateLiteral(["\n  font-family: ", ";\n  border-width: 1px;\n  border-style: solid;\n  border-color: transparent;\n  border-radius: ", ";\n  transition: all ", ";\n  width:", ";\n  :hover {\n    border-color: ", "\n  }\n  :focus {\n    outline: none;\n    background: ", ";\n    border-color: ", ";\n    width:", ";\n  }\n  background: ", ";\n\n  ", "\n  ", "\n  ", "\n  ", ";\n"]);
+/*
 
-  _templateObject$k = function _templateObject() {
-    return data;
-  };
+const propsToOmit = [
+  'suffix',
+  'prefix',
+  'width',
+  'value',
+  'wrapperStyle',
+  'onChange'
+]
 
-  return data;
-}
+const disabled = props =>
+  props.disabled &&
+  css`
+    background: ${themeGet('colors.input.disabled', '#b5b5b5')};
+    cursor: not-allowed;
+  `
 
-var propsToOmit$1 = ['suffix', 'prefix', 'width', 'value', 'wrapperStyle', 'onChange'];
-
-var disabled$3 = function disabled(props) {
-  return props.disabled && styled.css(["background:", ";cursor:not-allowed;"], themeGet('colors.input.disabled', '#b5b5b5'));
-};
-
-var size$4 = function size(_ref) {
-  var _ref$size = _ref.size,
-      size = _ref$size === void 0 ? 'medium' : _ref$size,
-      theme = _ref.theme;
-  var sizes = {
+const size = ({size = 'medium', theme}) => {
+  const sizes = {
     // Same as button heights, but with height, instead of paddings.
     small: {
       fontSize: theme.fontSizes[0],
@@ -11874,149 +11873,171 @@ var size$4 = function size(_ref) {
       fontSize: theme.fontSizes[2],
       height: 48
     }
-  };
-  return sizes[size];
-};
+  }
+  return sizes[size]
+}
 
-var inline$2 = function inline(_ref2) {
-  var inline = _ref2.inline;
-  return Boolean(inline) && {
-    display: 'inline-block'
-  };
-};
+const inline = ({inline}) => Boolean(inline) && {display: 'inline-block'}
 
-var HTMLInput$1 = styled__default.input(_templateObject$k(), themeGet('font.main', "'PT Sans'"), function (props) {
-  return props.theme.radii[1] + 'px';
-}, function (props) {
-  return props.theme.duration.fast;
-}, function (props) {
-  return props.shrinkWidth + 'px';
-}, themeGet('colors.black', '#3a3a3a'), themeGet('colors.white', '#ffffff'), themeGet('colors.lightBlue', '#0091ea'), function (props) {
-  return props.growWidth + 'px';
-}, function (props) {
-  return props.theme.colors.lightGrey;
-}, styledSystem.space, size$4, disabled$3, inline$2);
-var InputWrapper$2 = styled__default(Relative)({
+const HTMLInput = styled.input`
+  font-family: ${themeGet('font.main', "'PT Sans'")};
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: ${props => props.theme.radii[1] + 'px'};
+  transition: all ${props => props.theme.duration.fast};
+  width:${props => props.shrinkWidth + 'px'};
+  :hover {
+    border-color: ${themeGet('colors.black', '#3a3a3a')}
+  }
+  :focus {
+    outline: none;
+    background: ${themeGet('colors.white', '#ffffff')};
+    border-color: ${themeGet('colors.lightBlue', '#0091ea')};
+    width:${props => props.growWidth + 'px'};
+  }
+  background: ${props => props.theme.colors.lightGrey};
+
+  ${space}
+  ${size}
+  ${disabled}
+  ${inline};
+`
+
+export const InputWrapper = styled(Relative)({
   display: 'flex',
   flexGrow: 1,
   alignItems: 'center'
-});
-var Adornment$1 = styled__default(Absolute)({
+})
+
+const Adornment = styled(Absolute)({
   display: 'flex'
-});
-/** Получение данных от пользователя.*/
+})
+
+/!** Получение данных от пользователя.*!/
+class ResizableInput extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      value:
+        typeof props.value !== 'undefined' ? props.defaultValue : props.value
+    }
+  }
+
+  static getDerivedStateFromProps(nextProps) {
+    if ('value' in nextProps) {
+      return {
+        value: nextProps.value
+      }
+    }
+    return null
+  }
+
+  handleChange = event => {
+    const newValue = event.target.value
+    this.setState({
+      value: newValue
+    })
+    this.props.onChange && this.props.onChange(newValue, event)
+  }
+
+  saveInput = node => {
+    this.input = node
+  }
+
+  focus = () => {
+    this.input.focus()
+  }
+
+  blur = () => {
+    this.input.blur()
+  }
+
+  render() {
+    const {
+      prefix,
+      suffix,
+      width,
+      wrapperStyle,
+      shrinkWidth,
+      growWidth
+    } = this.props
+    return (
+      <InputWrapper width={width} style={wrapperStyle}>
+        {prefix && (
+          <Adornment left={0} pl={2}>
+            {prefix}
+          </Adornment>
+        )}
+        <HTMLInput
+          {...omit(this.props, propsToOmit)}
+          pl={prefix ? 4 : 3}
+          pr={suffix ? 4 : 2}
+          width="100%"
+          ref={this.saveRef}
+          value={this.state.value}
+          onChange={this.handleChange}
+          shrinkWidth={shrinkWidth}
+          growWidth={growWidth}
+        />
+        {suffix && (
+          <Adornment right={0} pr={2}>
+            {suffix}
+          </Adornment>
+        )}
+      </InputWrapper>
+    )
+  }
+}
+
+ResizableInput.propTypes = {
+  /!** Ширина враппера для инпута.*!/
+  width: propTypes.oneOfType([
+    propTypes.number,
+    propTypes.string,
+    propTypes.array
+  ]),
+  /!** Иконка в начале инпута. *!/
+  prefix: propTypes.element,
+  /!** Иконка в конце инпута. *!/
+  suffix: propTypes.element,
+  /!** Размер инпута: *!/
+  size: propTypes.oneOf(['small', 'medium', 'large']),
+  /!** Стили враппера *!/
+  wrapperStyle: propTypes.object
+}
+*/
 
 var ResizableInput =
 /*#__PURE__*/
 function (_Component) {
   _inherits(ResizableInput, _Component);
 
-  function ResizableInput(props) {
-    var _this;
-
+  function ResizableInput() {
     _classCallCheck(this, ResizableInput);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(ResizableInput).call(this, props));
-
-    _defineProperty(_assertThisInitialized(_this), "handleChange", function (event) {
-      var newValue = event.target.value;
-
-      _this.setState({
-        value: newValue
-      });
-
-      _this.props.onChange && _this.props.onChange(newValue, event);
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "saveInput", function (node) {
-      _this.input = node;
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "focus", function () {
-      _this.input.focus();
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "blur", function () {
-      _this.input.blur();
-    });
-
-    _this.state = {
-      value: typeof props.value !== 'undefined' ? props.defaultValue : props.value
-    };
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(ResizableInput).apply(this, arguments));
   }
 
   _createClass(ResizableInput, [{
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          prefix = _this$props.prefix,
-          suffix = _this$props.suffix,
-          width = _this$props.width,
-          wrapperStyle = _this$props.wrapperStyle,
-          shrinkWidth = _this$props.shrinkWidth,
-          growWidth = _this$props.growWidth;
-      return React$3__default.createElement(InputWrapper$2, {
-        width: width,
-        style: wrapperStyle
-      }, prefix && React$3__default.createElement(Adornment$1, {
-        left: 0,
-        pl: 2
-      }, prefix), React$3__default.createElement(HTMLInput$1, _extends({}, omit_1(this.props, propsToOmit$1), {
-        pl: prefix ? 4 : 3,
-        pr: suffix ? 4 : 2,
-        width: "100%",
-        ref: this.saveRef,
-        value: this.state.value,
-        onChange: this.handleChange,
-        shrinkWidth: shrinkWidth,
-        growWidth: growWidth
-      })), suffix && React$3__default.createElement(Adornment$1, {
-        right: 0,
-        pr: 2
-      }, suffix));
-    }
-  }], [{
-    key: "getDerivedStateFromProps",
-    value: function getDerivedStateFromProps(nextProps) {
-      if ('value' in nextProps) {
-        return {
-          value: nextProps.value
-        };
-      }
-
-      return null;
+      return React$3__default.createElement("div", null, "ResizableInput Component");
     }
   }]);
 
   return ResizableInput;
 }(React$3.Component);
 
-ResizableInput.propTypes = {
-  /** Ширина враппера для инпута.*/
-  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
-
-  /** Иконка в начале инпута. */
-  prefix: PropTypes.element,
-
-  /** Иконка в конце инпута. */
-  suffix: PropTypes.element,
-
-  /** Размер инпута: */
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
-
-  /** Стили враппера */
-  wrapperStyle: PropTypes.object
-};
 ResizableInput.defaultProps = {
   size: 'medium'
 };
 ResizableInput.displayName = 'ResizableInput';
 
-function _templateObject$l() {
+function _templateObject$k() {
   var data = _taggedTemplateLiteral(["\n  padding-top: ", ";\n  padding-bottom: ", ";\n  align-self: ", ";\n  justify-content: ", ";\n  align-items: ", ";\n  margin: 0 auto;\n  width: ", ";\n"]);
 
-  _templateObject$l = function _templateObject() {
+  _templateObject$k = function _templateObject() {
     return data;
   };
 
@@ -12027,7 +12048,7 @@ function _templateObject$l() {
  * и ограничения их ширины. Применяется ещё и для ограничения ширины блоков внутри сетки
  * Обладает шириной по умолчанию, равной базовой ширине контента на странице проекта*/
 
-var ContentBoxStyle = styled__default(Flex)(_templateObject$l(), function (props) {
+var ContentBoxStyle = styled__default(Flex)(_templateObject$k(), function (props) {
   return props.padding + 'px';
 }, function (props) {
   return props.padding + 'px';
@@ -12074,10 +12095,10 @@ ContentBox.defaultProps = {
   alignItems: 'flex-start'
 };
 
-function _templateObject$m() {
+function _templateObject$l() {
   var data = _taggedTemplateLiteral(["\n  margin: 0;\n  align-self: center;\n  width: 100%;\n  border-bottom-style: solid;\n  border-bottom-width: 1px;\n  border-color: ", ";\n"]);
 
-  _templateObject$m = function _templateObject() {
+  _templateObject$l = function _templateObject() {
     return data;
   };
 
@@ -12086,7 +12107,7 @@ function _templateObject$m() {
 /** Стандартный Flex, дополненный нижним разделителем для более точной верстки
  * Используется в модулях навигации и просто между крупными блоками*/
 
-var FlexContainer = styled__default(Flex)(_templateObject$m(), function (props) {
+var FlexContainer = styled__default(Flex)(_templateObject$l(), function (props) {
   return props.theme.colors[props.dividercolor];
 });
 
@@ -14368,16 +14389,16 @@ function _templateObject2$6() {
   return data;
 }
 
-function _templateObject$n() {
+function _templateObject$m() {
   var data = _taggedTemplateLiteral(["\n  & .rs-table-cell-content {\n    display: flex;\n    align-items: center;\n    font-size: ", ";\n    padding-left: ", ";\n    /* Expand-collapse icon */\n    & > span {\n      padding: 0 4px;\n    }\n  }\n  &.rs-table {\n    border: none;\n  }\n  & .rs-table-cell-wrap {\n    flex: 1;\n  }\n  &.rs-table-hover .rs-table-body-row-wrapper {\n    .rs-table-row:hover {\n      background: ", ";\n    }\n\n    .rs-table-row:hover .rs-table-cell-group {\n      background: ", ";\n    }\n\n    .rs-table-row:hover .rs-table-cell {\n      background: ", ";\n    }\n  }\n"]);
 
-  _templateObject$n = function _templateObject() {
+  _templateObject$m = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var StyledTable = styled__default(lib_4)(_templateObject$n(), function (props) {
+var StyledTable = styled__default(lib_4)(_templateObject$m(), function (props) {
   return props.theme.fontSizes[1] + 'px';
 }, function (props) {
   return props.theme.space[3] + 'px';
@@ -14440,16 +14461,16 @@ Table$2.defaultProps = {
   }
 };
 
-function _templateObject$o() {
+function _templateObject$n() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  width: ", ";\n  height: ", ";\n  background-color: ", ";\n  border-radius: ", ";\n  margin: auto;\n  justify-content: center;\n  align-items: center;\n"]);
 
-  _templateObject$o = function _templateObject() {
+  _templateObject$n = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var Counter = styled__default.div(_templateObject$o(), function (props) {
+var Counter = styled__default.div(_templateObject$n(), function (props) {
   return props.size * 3 + 'px';
 }, function (props) {
   return props.size * 2 + 'px';
