@@ -11,10 +11,11 @@
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {
+  "peerDependencies": {
     "ramda": "0.26.1"
   },
   "devDependencies": {
+    "ramda": "0.26.1",
     "@babel/core": "^7.5.5",
     "babel-loader": "^8.0.6",
     "babel-plugin-import": "^1.12.0",

@@ -11,22 +11,36 @@
     "build": "yarn clean && webpack -p"
   },
   "dependencies": {
-    "@design-system/theme": "^2.0.0",
-    "@react-workspaces/react-scripts": "3.0.0-alpha-04",
-    "cross-env": "5.0.5",
-    "css-loader": "^3.1.0",
-    "material-icons-react": "^1.0.4",
+  },
+  "peerDependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "material-icons-react": "^1.0.4",
     "react-input-autosize": "2.2.1",
     "react-select": "3.0.4",
     "rsuite-table": "^3.5.4",
     "style-loader": "^0.23.1",
     "styled-components": "^4.3.2",
     "styled-system": "^5.0.15",
-    "stylis-rule-sheet": "0.0.10"
+    "stylis-rule-sheet": "0.0.10",
+    "@design-system/theme": "^2.0.0",
+    "@react-workspaces/react-scripts": "3.0.0-alpha-04",
+    "cross-env": "5.0.5"
   },
   "devDependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "material-icons-react": "^1.0.4",
+    "react-input-autosize": "2.2.1",
+    "react-select": "3.0.4",
+    "rsuite-table": "^3.5.4",
+    "style-loader": "^0.23.1",
+    "styled-components": "^4.3.2",
+    "styled-system": "^5.0.15",
+    "stylis-rule-sheet": "0.0.10",
+    "@design-system/theme": "^2.0.0",
+    "@react-workspaces/react-scripts": "3.0.0-alpha-04",
+    "cross-env": "5.0.5",
     "@babel/core": "^7.5.5",
     "@storybook/addon-actions": "^5.0.10",
     "@storybook/addon-info": "^5.1.9",
@@ -37,6 +51,7 @@
     "@storybook/theming": "^5.0.10",
     "@testing-library/react": "^8.0.5",
     "babel-loader": "^8.0.6",
+    "css-loader": "^3.1.0",
     "core-js": "3",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
@@ -51,7 +66,6 @@
     "redux-mock-store": "^1.5.3",
     "sinon": "^7.3.2",
     "storybook-styled-components": "^1.1.4",
-    "style-loader": "^0.23.1",
     "styled-normalize": "^8.0.6",
     "svg-inline-loader": "^0.8.0",
     "url-loader": "^2.0.1"
@@ -71,5 +85,8 @@
         }
       ]
     ]
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

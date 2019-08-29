@@ -8,14 +8,15 @@ module.exports = {
   output: {
     path: path.resolve(__dirname) + '/build',
     filename: `index.js`,
-    chunkFilename: `${pkg.buildname}.js`
+    chunkFilename: `${pkg.buildname}.js`,
+    libraryTarget: 'commonjs2'
   },
   devtool: 'source-map',
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
+        exclude: /(node_modules|build)/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -65,6 +66,9 @@ module.exports = {
         ]
       }
     ]
+  },
+  externals: {
+    react: 'commonjs react'
   },
   resolve: {
     modules: ['node_modules'],

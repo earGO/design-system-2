@@ -1,0 +1,8 @@
+*documentation
+*docs
+*src
+*dist
+*stories
+*__test__
+*.storybook
+*node_modules

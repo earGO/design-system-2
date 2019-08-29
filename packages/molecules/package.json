@@ -10,7 +10,7 @@
     "clean": "rm -rf node_modules dist build",
     "build": "yarn clean && webpack -p"
   },
-  "dependencies": {
+  "peerDependencies": {
     "@design-system/atoms": "^2.0.0",
     "@design-system/theme": "^2.0.0",
     "@react-workspaces/react-scripts": "3.0.0-alpha-04",
@@ -26,6 +26,19 @@
     "styled-system": "^5.0.15"
   },
   "devDependencies": {
+    "@design-system/atoms": "^2.0.0",
+    "@design-system/theme": "^2.0.0",
+    "@react-workspaces/react-scripts": "3.0.0-alpha-04",
+    "add-dom-event-listener": "1.1.0",
+    "classnames": "2.2.6",
+    "cross-env": "5.0.5",
+    "css-loader": "^3.1.0",
+    "rc-trigger": "^2.6.5",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-select": "3.0.4",
+    "styled-components": "^4.3.2",
+    "styled-system": "^5.0.15",
     "@babel/core": "^7.5.5",
     "@storybook/addon-actions": "^5.0.10",
     "@storybook/addon-info": "^5.1.9",
@@ -71,5 +84,8 @@
         }
       ]
     ]
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
