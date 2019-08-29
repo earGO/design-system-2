@@ -1,7 +1,7 @@
 import * as React from 'react'
 import propTypes from 'prop-types'
 import RSelect, {components} from 'react-select'
-import AsyncRSelect from 'react-select/lib/Async'
+import AsyncRSelect from 'react-select/async'
 import {FixedSizeList as List} from 'react-window'
 import styled, {ThemeConsumer, css} from 'styled-components'
 import Icon from './Icon'
