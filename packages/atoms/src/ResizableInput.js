@@ -8,7 +8,6 @@ import Relative from './Relative'
 import omit from 'lodash/omit'
 
 // #TBD: Input.TextArea + allowClear prop. Как будет работать c suffix?
-/*
 
 const propsToOmit = [
   'suffix',
@@ -82,7 +81,7 @@ const Adornment = styled(Absolute)({
   display: 'flex'
 })
 
-/!** Получение данных от пользователя.*!/
+/** Получение данных от пользователя.*/
 class ResizableInput extends Component {
   constructor(props) {
     super(props)
@@ -159,32 +158,21 @@ class ResizableInput extends Component {
 }
 
 ResizableInput.propTypes = {
-  /!** Ширина враппера для инпута.*!/
+  /** Ширина враппера для инпута.*/
   width: propTypes.oneOfType([
     propTypes.number,
     propTypes.string,
     propTypes.array
   ]),
-  /!** Иконка в начале инпута. *!/
+  /** Иконка в начале инпута. */
   prefix: propTypes.element,
-  /!** Иконка в конце инпута. *!/
+  /** Иконка в конце инпута. */
   suffix: propTypes.element,
-  /!** Размер инпута: *!/
+  /** Размер инпута: */
   size: propTypes.oneOf(['small', 'medium', 'large']),
-  /!** Стили враппера *!/
+  /** Стили враппера */
   wrapperStyle: propTypes.object
 }
-*/
-class ResizableInput extends Component {
-  render(){
-    return(
-        <div>
-          ResizableInput Component
-        </div>
-    )
-  }
-}
-
 
 ResizableInput.defaultProps = {
   size: 'medium'

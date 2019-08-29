@@ -13,9 +13,9 @@ __snapshots__
 .jest-cache
 
 # production
-*build/
-*dist/
-*docs/
+/build
+/dist
+/docs
 
 # misc
 *.idea

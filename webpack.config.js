@@ -52,8 +52,8 @@ module.exports = async ({config}) => {
       }
     ],
     include: [
-      path.resolve('./build'),
-      path.resolve(__dirname, '../../../node_modules/')
+      path.resolve(__dirname, '../../../node_modules/*')
+      // path.resolve(__dirname, '../')
     ]
   })
 
@@ -68,9 +68,9 @@ module.exports = async ({config}) => {
     path.resolve('./src'),
     'node_modules',
     'shared',
-    'src'
+    'src',
+    'build'
   ])
-  config.entry = './src/index.js'
 
   return config
 }

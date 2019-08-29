@@ -2,9 +2,6 @@
   "name": "@ursip/design-system",
   "version": "1.2.0",
   "private": true,
-  "main": "build/index.es.js",
-  "module": "build/index.es.js",
-  "jsnext:main": "build/index.es.js",
   "workspaces": {
     "packages": [
       "packages/utils",
@@ -25,8 +22,11 @@
     "build-atoms": "cd packages/atoms && rollup -c",
     "build-molecules": "cd packages/molecules && rollup -c",
     "build-cells": "cd packages/cells && rollup -c",
-    "build": "lerna exec -- rm -rf build && yarn clear && yarn && yarn build-utils && yarn build-theme && yarn build-atoms && yarn build-molecules && yarn build-cells && yarn",
-    "lerna-publish": "lerna publish from-package --yes --conventional-commits --changelog-preset react --registry registry https://gitlab.ursip.ru/nexus/repository/npm --force-publish $(ls packages/)",
+    "build": "lerna exec -- rm -rf build && yarn clean && yarn && yarn build-utils && yarn build-theme && yarn build-atoms && yarn build-molecules && yarn build-cells && yarn",
+    "make-patch": "lerna version patch --amend --conventional-commits --create-release gitlab --no-push --changelog-preset react && yarn",
+    "make-minor": "lerna version minor --amend --conventional-commits --create-release gitlab --no-push --changelog-preset react && yarn",
+    "make-major": "lerna version major --amend --conventional-commits --create-release gitlab --no-push --changelog-preset react && yarn",
+    "make-oao-nexus": "oao publish --no-checks --no-confirm --no-git-commit --increment-version-by minor ",
     "styleguide": "styleguidist server --config documentation/config.js",
     "styleguide:build": "styleguidist build --config documentation/config.js",
     "atoms-storybook": "cd packages/atoms && start-storybook -p 9019",
@@ -38,7 +38,8 @@
     "clean-builds": "lerna exec -- rm -rf build",
     "clean": "oao clean",
     "status": "oao status",
-    "remove-all": "oao remove-all"
+    "remove-all": "oao remove-all",
+    "reinstall": "oao clean && yarn"
   },
   "dependencies": {
     "@styled-system/theme-get": "^5.0.12",
@@ -47,8 +48,6 @@
     "css-color-names": "^1.0.1",
     "file-loader": "^4.0.0",
     "hex-rgb": "^4.1.0",
-    "less": "^3.9.0",
-    "less-loader": "^5.0.0",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import {Icon, Text, Flex, Box, Relative} from '@design-system/atoms'
+import {Icon, Text, Flex} from '@design-system/atoms'
 
 const Container = styled(Flex)`
   flex-flow: row nowrap;
