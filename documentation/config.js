@@ -5,10 +5,8 @@ function makeAbsolutePath(directory, component) {
   return path.resolve(__dirname, directory, component)
 }
 
-function getComponents(names = [],relativePath) {
-  return names.map(name =>
-    makeAbsolutePath(relativePath, name + '.js')
-  )
+function getComponents(names = [], relativePath) {
+  return names.map(name => makeAbsolutePath(relativePath, name + '.js'))
 }
 
 /**
@@ -155,58 +153,61 @@ module.exports = {
       description:
         'Компоненты-примитивы используются для управления расположением элементов интерфейса на экране.',
       components: () =>
-        getComponents([
-          'Box',
-          'Flex',
-          'Relative',
-          'Absolute',
-          'Card',
-          'Overlay'
-        ],'../packages/atoms/src')
+        getComponents(
+          ['Box', 'Flex', 'Relative', 'Absolute', 'Card', 'Overlay'],
+          '../packages/atoms/src'
+        )
     },
     {
       name: 'Элементы',
       components: () =>
-        getComponents([
-          'Text',
-          'Heading',
-          'Icon',
-          'Button',
-          'Divider',
-          'Scrollbars',
-          'Modal',
-          'Popover'
-        ],'../packages/atoms/src')
+        getComponents(
+          [
+            'Text',
+            'Heading',
+            'Icon',
+            'Button',
+            'Divider',
+            'Scrollbars',
+            'Modal',
+            'Popover'
+          ],
+          '../packages/atoms/src'
+        )
     },
     {
       name: 'Ввод данных',
       description: 'Компоненты для получения данных, введенных пользователем.',
       components: () =>
-        getComponents([
-          'Form',
-          'FormItem',
-          'Input',
-          'Textarea',
-          'Checkbox',
-          'Toggle',
-          'Radio',
-          'RadioGroup',
-          'ResizableInput',
-          'Select'
-        ],'../packages/atoms/src')
+        getComponents(
+          [
+            'Form',
+            'FormItem',
+            'Input',
+            'Textarea',
+            'Checkbox',
+            'Toggle',
+            'Radio',
+            'RadioGroup',
+            'ResizableInput',
+            'Select'
+          ],
+          '../packages/atoms/src'
+        )
     },
     {
       name: 'Отображение данных',
       description: 'Компоненты для отображения данных',
       components: () =>
-        getComponents(['Collapse', 'CollapsePanel', 'Tabs', 'TabPane', 'Table'],'../packages/atoms/src')
+        getComponents(
+          ['Collapse', 'CollapsePanel', 'Tabs', 'TabPane', 'Table'],
+          '../packages/atoms/src'
+        )
     },
     {
       name: 'Составные компоненты',
       description: 'Компоненты, составленные из нескольких других',
-      components: () =>
-          getComponents(['Hint'],'../packages/molecules/src')
+      components: () => getComponents(['Hint'], '../packages/molecules/src')
     }
-
   ]
 }
