@@ -51,3 +51,26 @@ const popoverContent = ({ position, targetRect, popoverRect }) => (
 </Card>
 ```
 
+Можно управлять позиционированием Popover'а, передавая в компонент дополнительные параметры вот так 
+
+```js
+  <Popover 
+    isOpen={state.isPopoverOpen} 
+    position={state.position}
+    content={popoverContent}
+    onClickOutside={closePopover}
+/* Параметр contentLocation позволяет управлять положением Popover'a */
+    contentLocation={({nudgedLeft, nudgedTop}) => ({
+        top: nudgedTop + 10,
+        left: nudgedLeft + 20
+      })}
+  >
+    <Button type="dashed" onClick={togglePopover}>
+      Popover
+    </Button>
+  </Popover>
+```
+nudgedTop - исходное положение Popover'a по координате Top
+nudgedLeft - исходное положение Popover'a по координате Left
+
+Желательно делать параметры смещения Popover'a зависимыми от его положения на странице и размера пунктов его меню. 

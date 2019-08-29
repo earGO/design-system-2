@@ -2,16 +2,20 @@
 
 # dependencies
 /node_modules
+/packages/**/node_modules
 /.pnp
 .pnp.js
 
 # testing
-/coverage
+coverage
+__snapshots__
+/packages/**/__test__/__snapshots__
+.jest-cache
 
 # production
-/build
-/dist
-/docs
+*build/
+*dist/
+*docs/
 
 # misc
 *.idea

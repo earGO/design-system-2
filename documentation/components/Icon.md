@@ -1,6 +1,6 @@
 Доступные для использования иконки:
 ```js noeditor
-const icons = require('../../src/theme/icons')
+const icons = require('@design-system/theme').icons
 
 function IconCard({ name }) {
     return (
@@ -17,7 +17,7 @@ function IconCard({ name }) {
 function Icons() {
     return (
         <Flex flexWrap="wrap">
-            {icons.icons.map(name => <IconCard key={name} name={name} />)}
+            {icons.map(name => <IconCard key={name} name={name} />)}
         </Flex>
     )
 }
@@ -59,3 +59,8 @@ function Icons() {
 
 Если иконке не переданы никакие параметры, кроме имени, у неё будут размеры и цвет по умолчанию (24px и чёрный). 
 Если передан неправильный цвет и/или размер - используется значение по умолчанию. 
+
+Доступные для использования иконки:
+```js noeditor
+<SVGIcon name='flame' color='orange' size={48}/>
+```
