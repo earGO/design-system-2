@@ -1,5 +1,4 @@
 before_script:
-  - export DATE_ENV=$(date +'%d-%m-%Y')
   - yarn
 
 stages:
@@ -10,14 +9,11 @@ cache:
   untracked: true
   paths:
     - node_modules/
-    - bower_components/
 
 Build:
   stage: build
   only:
     - master
-  before_script:
-    - npm install
   script:
     - CI="" yarn build
   artifacts:
