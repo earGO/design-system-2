@@ -4,10 +4,8 @@
   "description": "Utils for other modules",
   "main": "src/index.js",
   "scripts": {
-    "build": "rm -rf build && webpack -p"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "clean": "rm -rf node_modules dist build",
+    "build": "yarn clean && webpack -p"
   },
   "license": "MIT",
   "publishConfig": {
