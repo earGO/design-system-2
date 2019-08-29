@@ -34,8 +34,6 @@
     "shallowequal": "1.1.0"
   },
   "devDependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
     "material-icons-react": "^1.0.4",
     "react-input-autosize": "2.2.1",
     "react-select": "3.0.4",
