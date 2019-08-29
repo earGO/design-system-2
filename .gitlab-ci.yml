@@ -1,10 +1,6 @@
-variables:
-  PROJECT: "Ursip"
-  NAMESPACE: "ursip-internal"
-  APP: "design"
-
 before_script:
   - export DATE_ENV=$(date +'%d-%m-%Y')
+  - yarn
 
 stages:
   - build
@@ -18,35 +14,30 @@ cache:
 
 Build:
   stage: build
+  only:
+    - master
   before_script:
     - npm install
   script:
-    - CI="" npm run build
-    - npm run styleguide:build
+    - CI="" yarn build
   artifacts:
     paths:
     - build/
-    - docs/
 
 Deploy:
   stage: deploy
   only:
     - master
   before_script:
-    - TMPDIR=$(ssh suadm@192.168.13.46 "mktemp -d")
+    - "sed -i \"s|\\\"main\\\": \\\"src|\\\"main\\\": \\\"build|g\" packages/atoms/package.json"
+    - "sed -i \"s|\\\"module\\\": \\\"src|\\\"module\\\": \\\"build|g\" packages/atoms/package.json"
+    - "sed -i \"s|\\\"main\\\": \\\"src|\\\"main\\\": \\\"build|g\" packages/cells/package.json"
+    - "sed -i \"s|\\\"module\\\": \\\"src|\\\"module\\\": \\\"build|g\" packages/cells/package.json"
+    - "sed -i \"s|\\\"main\\\": \\\"src|\\\"main\\\": \\\"build|g\" packages/molecules/package.json"
+    - "sed -i \"s|\\\"module\\\": \\\"src|\\\"module\\\": \\\"build|g\" packages/molecules/package.json"
+    - "sed -i \"s|\\\"main\\\": \\\"src|\\\"main\\\": \\\"build|g\" packages/theme/package.json"
+    - "sed -i \"s|\\\"module\\\": \\\"src|\\\"module\\\": \\\"build|g\" packages/theme/package.json"
+    - "sed -i \"s|\\\"main\\\": \\\"src|\\\"main\\\": \\\"build|g\" packages/utils/package.json"
+    - "sed -i \"s|\\\"module\\\": \\\"src|\\\"module\\\": \\\"build|g\" packages/utils/package.json"
   script:
-    - npm publish
-    - scp -r docs/* suadm@192.168.13.46:$TMPDIR
-    - ssh suadm@192.168.13.46 "sudo /opt/deploy front $PROJECT $NAMESPACE $APP $TMPDIR"
-    
-pages:
-  stage: deploy
-  script:
-    - rm -rf public/
-    - cp -r docs public
-  artifacts:
-    paths:
-    - public
-  only:
-    - master
-
+    - yarn make-oao-nexus
