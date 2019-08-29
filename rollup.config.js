@@ -15,12 +15,7 @@ module.exports = {
   input: 'src/index.js',
   output: [
     {
-      file: 'build/index.cjs.js',
-      format: 'cjs',
-      sourcemap: true
-    },
-    {
-      file: 'build/index.es.js',
+      file: 'build/index.js',
       format: 'es',
       sourcemap: true
     }
