@@ -8,14 +8,17 @@
     "clean": "rm -rf node_modules dist build",
     "build": "yarn clean && webpack -p"
   },
-  "dependencies": {
+  "peerDependencies": {
     "color": "3.1.2"
   },
   "devDependencies": {
+    "color": "3.1.2",
     "@babel/core": "^7.5.5",
     "babel-loader": "^8.0.6",
     "babel-plugin-import": "^1.12.0",
     "core-js": "3"
-
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

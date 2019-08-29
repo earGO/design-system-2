@@ -37,7 +37,8 @@
     "clean": "oao clean",
     "status": "oao status",
     "remove-all": "oao remove-all",
-    "reinstall": "oao clean && yarn"
+    "reinstall": "oao clean && yarn",
+    "hard-reinstall": "rm -rf yarn.lock && yarn clean && yarn"
   },
   "dependencies": {
     "@styled-system/theme-get": "^5.0.12",
@@ -87,6 +88,8 @@
     "babel-plugin-react-docgen": "^3.1.0",
     "babel-plugin-styled-components": "^1.10.6",
     "babel-plugin-transform-decorators-legacy": "^1.3.5",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
     "core-js": "^3.1.4",
