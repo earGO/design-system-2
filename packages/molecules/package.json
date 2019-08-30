@@ -1,14 +1,18 @@
 {
   "name": "@design-system/molecules",
   "version": "2.1.0",
-  "main": "src/index.js",
-  "module": "src/index.js",
+  "main": "build/index.js",
+  "module": "build/index.js",
   "license": "MIT",
   "scripts": {
     "storybook": "start-storybook -p 9029",
     "build-storybook": "cd storybook && build-storybook",
-    "clean": "rm -rf node_modules dist build",
-    "build": "yarn clean && webpack -p"
+    "clean": "rm -rf dist build",
+    "build": "yarn clean && webpack -p",
+    "babelify": "yarn clean && babel src --out-dir build"
+  },
+  "dependencies": {
+    "rc-trigger": "^2.6.5"
   },
   "peerDependencies": {
     "@design-system/atoms": "^2.0.0",
@@ -18,7 +22,6 @@
     "classnames": "2.2.6",
     "cross-env": "5.0.5",
     "css-loader": "^3.1.0",
-    "rc-trigger": "^2.6.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-select": "3.0.4",
@@ -31,8 +34,6 @@
     "@react-workspaces/react-scripts": "3.0.0-alpha-04",
     "add-dom-event-listener": "1.1.0",
     "classnames": "2.2.6",
-    "cross-env": "5.0.5",
-    "css-loader": "^3.1.0",
     "rc-trigger": "^2.6.5",
     "react-select": "3.0.4",
     "styled-components": "^4.3.2",
@@ -47,7 +48,6 @@
     "@storybook/theming": "^5.0.10",
     "@testing-library/react": "^8.0.5",
     "babel-loader": "^8.0.6",
-    "core-js": "3",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.3.5",
