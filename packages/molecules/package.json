@@ -1,14 +1,14 @@
 {
   "name": "@design-system/molecules",
   "version": "2.1.0",
-  "main": "build/index.js",
-  "module": "build/index.js",
+  "main": "src/index.js",
+  "module": "src/index.js",
   "license": "MIT",
   "scripts": {
     "storybook": "start-storybook -p 9029",
     "build-storybook": "cd storybook && build-storybook",
-    "clean": "rm -rf dist build",
-    "build": "yarn clean && webpack -p",
+    "clean": "rm -rf node_modules dist build lib",
+    "build": "yarn babelify",
     "babelify": "yarn clean && babel src --out-dir build"
   },
   "dependencies": {
