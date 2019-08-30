@@ -17,6 +17,7 @@
     "lodash": "^4.17.15",
     "material-icons-react": "^1.0.4",
     "rc-form": "^2.4.8",
+    "re-resizable": "^6.0.0",
     "react-custom-scrollbars": "^4.2.1",
     "react-modal": "^3.10.1",
     "react-select": "3.0.4",
@@ -84,5 +85,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "files": ["build"]
+  "files": [
+    "build"
+  ]
 }
