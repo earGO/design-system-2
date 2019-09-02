@@ -23,11 +23,7 @@
     "react-select": "3.0.4",
     "react-tiny-popover": "^3.4.5",
     "react-window": "^1.8.5",
-    "rsuite-table": "^3.5.6"
-  },
-  "peerDependencies": {
-    "@design-system/theme": "^2.0.0",
-    "@react-workspaces/react-scripts": "3.0.0-alpha-04",
+    "rsuite-table": "^3.5.6",
     "cross-env": "5.0.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
