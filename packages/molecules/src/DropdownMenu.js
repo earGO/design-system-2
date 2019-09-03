@@ -17,10 +17,10 @@ const PopoverMenuItem = styled(Flex)`
   justify-content: center;
   cursor: pointer;
   &:hover {
-    background-color: ${props=>props.theme.colors.lightGrey};
+    background-color: ${props => props.theme.colors.lightGrey};
   }
   font-size: 12px;
-  font-family: ${props=>props.theme.font.main};
+  font-family: ${props => props.theme.font.main};
 `
 
 function PopoverItemSmart({item, handleCloseOnItemClick, ...props}) {
@@ -68,10 +68,10 @@ function DropdownMenu({
           arrowSize={0}
           arrowStyle={{opacity: 1.0, zIndex: 6}}
         >
-          <Card bg={'white'} pl={2} pr={2} borderRadius={'4px'}    {...props}>
+          <Card bg={'white'} pl={2} pr={2} borderRadius={'4px'} {...props}>
             {content.map((item, key) => {
               return (
-                <FlexContainerBottomDivider key={key}    {...props}>
+                <FlexContainerBottomDivider key={key} {...props}>
                   <PopoverItemSmart
                     item={item}
                     handleCloseOnItemClick={handleCloseOnItemClick}
@@ -89,7 +89,9 @@ function DropdownMenu({
       })}
       {...props}
     >
-      <Box onClick={() => setOpen(!open)}    {...props}>{children}</Box>
+      <Box onClick={() => setOpen(!open)} {...props}>
+        {children}
+      </Box>
     </Popover>
   )
 }

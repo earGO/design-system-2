@@ -5,7 +5,7 @@ import ReactModal from 'react-modal'
 /**
  * Модальное окно
  */
-function Modal({isOpen, nodeId, ...props}) {
+function Modal({nodeId, ...props}) {
   const customModalStyles = {
     overlay: {
       position: 'fixed',
