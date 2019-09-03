@@ -1,9 +1,9 @@
-const nodeExternals = require('webpack-node-externals');
+const nodeExternals = require('webpack-node-externals')
 
 module.exports = {
   mode: 'production',
   entry: './lib/index.js',
-  target: "web",
+  target: 'web',
   devtool: 'source-map',
   module: {
     rules: [
@@ -14,27 +14,27 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             plugins: [
-              // '@babel/plugin-proposal-class-properties',
-              // '@babel/plugin-proposal-export-default-from',
-              // '@babel/plugin-transform-async-to-generator',
-              // '@babel/plugin-transform-runtime',
-              // 'babel-plugin-styled-components',
-              // 'inline-react-svg',
+              '@babel/plugin-proposal-class-properties',
+              '@babel/plugin-proposal-export-default-from',
+              '@babel/plugin-transform-async-to-generator',
+              '@babel/plugin-transform-runtime',
+              'babel-plugin-styled-components',
+              'inline-react-svg',
               [
                 'import',
                 {libraryName: 'antd', libraryDirectory: 'es', style: 'css'}
               ]
-            ],
-            // presets: [
-            //   [
-            //     '@babel/preset-env',
-            //     {
-            //       useBuiltIns: 'entry',
-            //       corejs: 3
-            //     }
-            //   ],
-            //   '@babel/preset-react'
-            // ]
+            ]
+            presets: [
+              [
+                '@babel/preset-env',
+                {
+                  useBuiltIns: 'entry',
+                  corejs: 3
+                }
+              ],
+              '@babel/preset-react'
+            ]
           }
         }
       },

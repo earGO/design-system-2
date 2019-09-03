@@ -10,8 +10,8 @@ const Container = styled(Flex)`
   align-items: center;
   cursor: pointer;
   transition: all;
-  transition-timing-function: ${props=>props.theme.timingFunctions.easeInOut};
-  transition-duration: ${props=>props.theme.duration.fast};
+  transition-timing-function: ${props => props.theme.timingFunctions.easeInOut};
+  transition-duration: ${props => props.theme.duration.fast};
   &:hover {
     transform: scale(1.0005);
     opacity: 0.75;
