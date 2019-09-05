@@ -26,8 +26,7 @@ const PanelContent = styled(Box)`
 
 // To fix warning because of passing isOpen prop to <svg />
 const AnimatedScaledIcon = styled(Relative)`
-  top: 3px;
-  transform-origin: 8px 8px;
+  top: 2px;
   color: ${themeGet('color.black', '#080808')};
   transition: transform ${themeGet('duration.normal', '300ms')};
   ${props => props.isOpen && `transform: rotate(180deg);`}
@@ -54,27 +53,68 @@ const PanelHeader = ({
   isOpen,
   panelKey,
   disabled,
-  titleAlignment
+  titleAlignment,
+  flex,
+  titleFirst
 }) => (
   <PanelHeaderWrapper
     disabled={disabled}
     titleAlignment={titleAlignment}
     onClick={disabled ? noop : () => togglePanel(panelKey)}
   >
-    <Flex justifyContent="center" alignItems="center" width={16} height={16}>
-      {isOpen ? (
-        <AnimatedScaledIcon isOpen={isOpen}>
-          <Icon name={'keyboard_arrow_up'} size={16} />
-        </AnimatedScaledIcon>
-      ) : (
-        <AnimatedScaledIcon isOpen={isOpen}>
-          <Icon name={'keyboard_arrow_down'} size={16} />
-        </AnimatedScaledIcon>
-      )}
-    </Flex>
-    <Box id={title + '-id'} pr={3}>
-      {title}
-    </Box>
+    {titleFirst ? (
+      <>
+        <Box
+          style={{
+            cursor: typeof title === 'object' ? 'default' : 'pointer'
+          }}
+          flex={flex}
+          id={title + '-id'}
+          px={3}
+          onClick={
+            typeof title === 'object' ? e => e.stopPropagation() : e => e
+          }
+        >
+          {title}
+        </Box>
+        <Flex
+          justifyContent="center"
+          alignItems="center"
+          width={16}
+          height={16}
+        >
+          <AnimatedScaledIcon isOpen={isOpen}>
+            <Icon name={'keyboard_arrow_up'} size={16} />
+          </AnimatedScaledIcon>
+        </Flex>{' '}
+      </>
+    ) : (
+      <>
+        <Flex
+          justifyContent="center"
+          alignItems="center"
+          width={16}
+          height={16}
+        >
+          <AnimatedScaledIcon isOpen={isOpen}>
+            <Icon name={'keyboard_arrow_up'} size={16} />
+          </AnimatedScaledIcon>
+        </Flex>
+        <Box
+          style={{
+            cursor: typeof title === 'object' ? 'default' : 'pointer'
+          }}
+          flex={flex}
+          id={title + '-id'}
+          px={3}
+          onClick={
+            typeof title === 'object' ? e => e.stopPropagation() : e => e
+          }
+        >
+          {title}
+        </Box>
+      </>
+    )}
   </PanelHeaderWrapper>
 )
 
