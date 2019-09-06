@@ -6,7 +6,6 @@ import {
   Button,
   Icon,
   Popover,
-  Relative,
   Box,
   Flex
 } from '@design-system/atoms'
@@ -23,10 +22,6 @@ const Item = styled(Text)`
   &:last-child {
     border: 0;
   }
-`
-
-const IconPositioner = styled(Relative)`
-  top: 4px;
 `
 
 function DropdownMenuButton({children, items, iconName, tableIcon, ...props}) {

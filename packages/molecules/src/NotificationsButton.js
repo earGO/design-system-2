@@ -1,13 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import {
-  Button,
-  Flex,
-  Text,
-  NotificationsCounter,
-  Box
-} from '@design-system/atoms'
+import {Button, Flex, Text, NotificationsCounter} from '@design-system/atoms'
 
 const Hoverer = styled(Flex)`
   width: 120px;
