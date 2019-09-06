@@ -50,11 +50,11 @@ const HTMLInput = styled.input`
   font-family: ${themeGet('font.main', "'PT Sans'")};
   border-width: 1px;
   border-style: solid;
-  border-color: transparent;
+  border-color: ${props => props.border || 'transparent'};
   border-radius: ${props => props.theme.radii[1] + 'px'};
   transition: all ${props => props.theme.duration.fast};
   :hover {
-    border-color: ${themeGet('colors.black', '#3a3a3a')}
+    border-color: ${themeGet('colors.primary', '#3a3a3a')}
   } 
   :focus {
     outline: none;
@@ -136,6 +136,7 @@ class Input extends Component {
           ref={this.saveRef}
           value={this.state.value}
           onChange={this.handleChange}
+          type={this.props.type || 'text'}
         />
         {suffix && (
           <Adornment right={0} pr={2}>

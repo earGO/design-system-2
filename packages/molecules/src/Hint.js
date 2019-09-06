@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import PropTypes, {string} from 'prop-types'
+import PropTypes from 'prop-types'
 import Trigger from 'rc-trigger'
 import 'rc-trigger/assets/index.css'
 import styled from 'styled-components'

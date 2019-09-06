@@ -15,12 +15,14 @@ const PopoverMenuItem = styled(Flex)`
   padding: 0;
   flex-direction: column;
   justify-content: center;
+  z-index: 10000000000;
   cursor: pointer;
   &:hover {
     background-color: ${props => props.theme.colors.lightGrey};
   }
   font-size: 12px;
   font-family: ${props => props.theme.font.main};
+  background-color: white;
 `
 
 function PopoverItemSmart({item, handleCloseOnItemClick, ...props}) {
@@ -32,7 +34,7 @@ function PopoverItemSmart({item, handleCloseOnItemClick, ...props}) {
   }
   return (
     <PopoverMenuItem onClick={() => handleClick()} {...props}>
-      {item.content}
+      {item.name}
     </PopoverMenuItem>
   )
 }
@@ -66,12 +68,12 @@ function DropdownMenu({
           popoverRect={popoverRect}
           arrowColor={'white'}
           arrowSize={0}
-          arrowStyle={{opacity: 1.0, zIndex: 6}}
+          arrowStyle={{opacity: 1.0, zIndex: 100}}
         >
-          <Card bg={'white'} pl={2} pr={2} borderRadius={'4px'} {...props}>
+          <Card bg={'white'}>
             {content.map((item, key) => {
               return (
-                <FlexContainerBottomDivider key={key} {...props}>
+                <FlexContainerBottomDivider key={key}>
                   <PopoverItemSmart
                     item={item}
                     handleCloseOnItemClick={handleCloseOnItemClick}
@@ -89,9 +91,7 @@ function DropdownMenu({
       })}
       {...props}
     >
-      <Box onClick={() => setOpen(!open)} {...props}>
-        {children}
-      </Box>
+      <Box onClick={() => setOpen(!open)}>{children}</Box>
     </Popover>
   )
 }
