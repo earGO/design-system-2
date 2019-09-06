@@ -2,8 +2,8 @@ import React, {Component} from 'react'
 import styled, {css} from 'styled-components'
 import propTypes from 'prop-types'
 import Relative from './Relative'
-import {space, width, fontSize} from 'styled-system'
 import themeGet from '@styled-system/theme-get'
+import {space, width, fontSize} from 'styled-system'
 
 const disabled = props =>
   props.disabled &&
@@ -17,7 +17,8 @@ const HTMLTextarea = styled.textarea`
   font-size:  ${props => props.theme.fontSizes[1]};
   border-width: 1px;
   border-style: solid;
-  border-color: transparent;
+  border-color: ${props => props.border || 'transparent'};
+  resize: ${props => props.resize};
   border-radius: ${props => props.theme.radii[1] + 'px'};
   transition: all ${props => props.theme.duration.fast};
   :hover {
