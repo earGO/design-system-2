@@ -16,7 +16,11 @@ const FlexContainer = styled(Flex)`
 `
 
 function FlexContainerBottomDivider({children, dividercolor, ...props}) {
-  return <FlexContainer dividercolor={dividercolor}>{children}</FlexContainer>
+  return (
+    <FlexContainer dividercolor={dividercolor} {...props}>
+      {children}
+    </FlexContainer>
+  )
 }
 
 FlexContainerBottomDivider.propTypes = {

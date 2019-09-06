@@ -1,9 +1,9 @@
 import React from 'react'
 import {storiesOf} from '@storybook/react'
 import theme, {ThemeProvider} from '@design-system/theme'
-import {Box} from '../src'
+import {Checkbox} from '../src'
 
-storiesOf(`Box`, module)
+storiesOf(`Checkbox`, module)
   .addParameters({
     info: {
       inline: true,
@@ -20,31 +20,14 @@ storiesOf(`Box`, module)
   .add(
     'Default',
     () => (
-      <Box color={'blue'} bg={'yellow'}>
-        Hello Box
-      </Box>
-    ),
-    {
-      info: {
-        text: `
-          Простой контейнер для контента. 
-        `
-      }
-    }
-  )
-  .add(
-    'Theme coloring',
-    () => (
       <ThemeProvider theme={theme}>
-        <Box width={1 / 2} bg="primary" color="white">
-          Hello Box
-        </Box>
+        <Checkbox />
       </ThemeProvider>
     ),
     {
       info: {
         text: `
-          С цветами из темы. 
+          По умолчанию без параметров иконка выводится в виде знака вопроса. 
         `
       }
     }

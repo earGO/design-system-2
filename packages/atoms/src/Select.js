@@ -238,7 +238,7 @@ class Select extends React.Component {
   }
 
   render() {
-    const {optionHeight, size, async, virtualized} = this.props
+    const {optionHeight, size, async, virtualized, onChange} = this.props
     const selectProps = {
       styles: customStyles,
       components: {
@@ -255,12 +255,14 @@ class Select extends React.Component {
           async ? (
             <AsyncRSelect
               {...selectProps}
+              onChange={onChange}
               systemTheme={systemTheme}
               theme={this.withSystemTheme(size, systemTheme)}
             />
           ) : (
             <RSelect
               {...selectProps}
+              onChange={onChange}
               systemTheme={systemTheme}
               theme={this.withSystemTheme(size, systemTheme)}
             />

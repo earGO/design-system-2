@@ -127,9 +127,9 @@ class Checkbox extends Component {
             disabled={this.props.disabled}
           >
             {this.state.checked ? (
-              <Icon name="Check" color="white" size={0} />
+              <Icon name="check" color="white" size={0} />
             ) : (
-              <Icon name="Check" color="white" hidden size={0} />
+              <Icon name="check" color="white" hidden size={0} />
             )}
           </StyledCheckbox>
         </CheckboxContainer>
