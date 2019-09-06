@@ -1,6 +1,6 @@
 {
   "name": "@design-system/atoms",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "main": "src/index.js",
   "module": "src/index.js",
   "license": "MIT",
@@ -34,7 +34,7 @@
     "stylis-rule-sheet": "0.0.10"
   },
   "devDependencies": {
-    "@design-system/theme": "^2.0.0",
+    "@design-system/theme": "^2.1.1",
     "@react-workspaces/react-scripts": "3.0.0-alpha-04",
     "@storybook/addon-actions": "^5.0.10",
     "@storybook/addon-info": "^5.1.9",
@@ -46,12 +46,12 @@
     "@testing-library/react": "^8.0.5",
     "cross-env": "5.0.5",
     "css-loader": "^3.1.0",
-    "less": "^3.10.3",
-    "less-loader": "^5.0.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.3.5",
     "jest-styled-components": "^6.3.3",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
     "react-docgen": "^4.1.1",
     "react-input-autosize": "2.2.1",
     "react-redux": "^7.1.0",

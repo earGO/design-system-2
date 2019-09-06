@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>2.1.1 (2019-09-06)</small>
+
+* experimenting with npmignore #28 ([10bb361](https://gitlab.ursip.ru/ursip/design-system/commit/10bb361)), closes [#28](https://gitlab.ursip.ru/ursip/design-system/issues/28)
+* leaving babel build for now, experiment with webpack or rollup later #28 ([7ae6210](https://gitlab.ursip.ru/ursip/design-system/commit/7ae6210)), closes [#28](https://gitlab.ursip.ru/ursip/design-system/issues/28)
+* prepublish #28 ([71d3308](https://gitlab.ursip.ru/ursip/design-system/commit/71d3308)), closes [#28](https://gitlab.ursip.ru/ursip/design-system/issues/28)
+* prepublish commit #28 ([3d8dc06](https://gitlab.ursip.ru/ursip/design-system/commit/3d8dc06)), closes [#28](https://gitlab.ursip.ru/ursip/design-system/issues/28)
+* retweaked scripts and configs #28 ([e255d13](https://gitlab.ursip.ru/ursip/design-system/commit/e255d13)), closes [#28](https://gitlab.ursip.ru/ursip/design-system/issues/28)
+* solving versioning #28 ([d18d8ad](https://gitlab.ursip.ru/ursip/design-system/commit/d18d8ad)), closes [#28](https://gitlab.ursip.ru/ursip/design-system/issues/28)
+* tweaked build config and scripts #28 ([1824272](https://gitlab.ursip.ru/ursip/design-system/commit/1824272)), closes [#28](https://gitlab.ursip.ru/ursip/design-system/issues/28)
+* tweaking build #28 ([1b0617e](https://gitlab.ursip.ru/ursip/design-system/commit/1b0617e)), closes [#28](https://gitlab.ursip.ru/ursip/design-system/issues/28)
+* tweaking build and publish #28 [ci skip] ([a19610e](https://gitlab.ursip.ru/ursip/design-system/commit/a19610e)), closes [#28](https://gitlab.ursip.ru/ursip/design-system/issues/28)
+* tweaking build numba tumba jumba #28 ([e34700f](https://gitlab.ursip.ru/ursip/design-system/commit/e34700f)), closes [#28](https://gitlab.ursip.ru/ursip/design-system/issues/28)
+
+
+
+
+
+
 ## 2.0.0 (2019-08-29)
 
 * build successfull #49 ([22545b2](https://gitlab.ursip.ru/ursip/design-system/commit/22545b2)), closes [#49](https://gitlab.ursip.ru/ursip/design-system/issues/49)
