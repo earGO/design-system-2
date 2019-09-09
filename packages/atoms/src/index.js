@@ -33,3 +33,4 @@ export {
 
 export {default as Table} from './Table'
 export {default as NotificationsCounter} from './NotificationsCounter'
+export {default as ErrorBoundary} from './ErrorBoundary'
