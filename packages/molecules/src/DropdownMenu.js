@@ -5,7 +5,9 @@ import {
   Card,
   Box,
   Popover,
-  FlexContainerBottomDivider
+  FlexContainerBottomDivider,
+  Icon,
+  Relative
 } from '@design-system/atoms'
 import styled from 'styled-components'
 
@@ -26,17 +28,34 @@ const PopoverMenuItem = styled(Flex)`
 `
 
 function PopoverItemSmart({item, handleCloseOnItemClick, ...props}) {
+  console.log(typeof item.component)
   const handleClick = () => {
     handleCloseOnItemClick()
     item.HandleClick &&
       typeof item.HandleClick === 'function' &&
       item.HandleClick()
   }
-  return (
-    <PopoverMenuItem onClick={() => handleClick()} {...props}>
-      {item.name}
-    </PopoverMenuItem>
-  )
+  if (item.nested === undefined) {
+    return (
+      <PopoverMenuItem onClick={() => handleClick()} {...props}>
+        {item.name}
+      </PopoverMenuItem>
+    )
+  } else if (item.nested.length > 0) {
+    const nestedProps = item.nestedProps
+    return (
+      <PopoverMenuItem onClick={() => handleClick()} {...props}>
+        <DropdownMenu content={item.nested} {...nestedProps}>
+          <Flex>
+            {item.name}
+            <Relative pl={1} top={-2}>
+              <Icon name={'keyboard_arrow_right'} size={1} />
+            </Relative>
+          </Flex>
+        </DropdownMenu>
+      </PopoverMenuItem>
+    )
+  }
 }
 
 function DropdownMenu({

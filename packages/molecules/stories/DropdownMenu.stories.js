@@ -7,19 +7,20 @@ import {LabeledIconButton, DropdownMenu} from '../src'
 
 const FunctionalContent = [
   {
-    content: <Text>Simple Component</Text>,
+    name: 'String name and component',
+    component: <Text>Simple Component</Text>,
     HandleClick: () => {
       console.log('clicked ' + 'something')
     }
   },
   {
-    content: <LabeledIconButton iconName={'check'} caption={'OneWord'} />,
+    name: 'String name,no component',
     HandleClick: function() {
       console.log('clicked ' + 'something else')
     }
   },
   {
-    content: 'Simple text',
+    component: <Text>Simple Component</Text>,
     HandleClick: function() {
       console.log('clicked ' + 'something special')
     }
@@ -43,6 +44,48 @@ const FunctionalContentPartial = [
   },
   {
     content: 'Simple text'
+  }
+]
+
+const FunctionalContentWDropdown = [
+  {
+    name: 'String name and component',
+    component: <Text>Simple Component</Text>,
+    HandleClick: () => {
+      console.log('clicked ' + 'something')
+    }
+  },
+  {
+    name: 'String name,no component',
+    HandleClick: function() {
+      console.log('clicked ' + 'something else')
+    }
+  },
+  {
+    name: 'Dropdown in a dropdown',
+    nested: [
+      {
+        name: 'String name and component',
+        component: <Text>Simple Component</Text>,
+        HandleClick: () => {
+          console.log('clicked ' + 'something')
+        }
+      },
+      {
+        name: 'String name,no component',
+        HandleClick: function() {
+          console.log('clicked ' + 'something else')
+        }
+      }
+    ],
+    nestedProps: {
+      position: 'right',
+      shiftTop: 20,
+      shiftLeft: 5,
+      width: 300,
+      height: 40,
+      pt: '10px'
+    }
   }
 ]
 
@@ -156,6 +199,32 @@ storiesOf(`DropdownMenu`, module)
         <DropdownMenu
           theme={theme}
           content={FunctionalContentPartial}
+          shiftTop={-10}
+          shiftLeft={20}
+          width={300}
+          height={40}
+          pt={'10px'}
+          closeOnItemClick={false}
+        >
+          Click Me
+        </DropdownMenu>
+      </Flex>
+    ),
+    {
+      info: {
+        text: `
+          По умолчанию компонент закрывается при клике на любую опцию. Передав параметр  closeOnItemClick=false меню останется открытым после клика на опцию
+        `
+      }
+    }
+  )
+  .add(
+    'Dropdown inside Dropdown',
+    () => (
+      <Flex>
+        <DropdownMenu
+          theme={theme}
+          content={FunctionalContentWDropdown}
           shiftTop={-10}
           shiftLeft={20}
           width={300}
