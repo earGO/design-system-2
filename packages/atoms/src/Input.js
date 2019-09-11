@@ -52,6 +52,7 @@ const HTMLInput = styled.input`
   border-style: solid;
   border-color: ${props => props.border || 'transparent'};
   border-radius: ${props => props.theme.radii[1] + 'px'};
+  padding-top: ${props => props.paddingTop + 'px'};
   transition: all ${props => props.theme.duration.fast};
   :hover {
     border-color: ${themeGet('colors.primary', '#3a3a3a')}
@@ -62,7 +63,7 @@ const HTMLInput = styled.input`
     border-color: ${themeGet('colors.lightBlue', '#0091ea')};
   }
   background: ${props => props.theme.colors.lightGrey};
-
+	
   ${width}
   ${space}
   ${size}
