@@ -35,7 +35,7 @@ const background = ({checked, disabled, ...rest}) => {
     }
     return checked ? checkbox.checked : checkbox.unchecked
   }
-  return `background: ${getColor(checked, disabled)}`
+  return `background-color: ${getColor(checked, disabled)}`
 }
 
 const border = ({checked, disabled, ...rest}) => {
@@ -71,14 +71,14 @@ export const StyledCheckbox = styled(Flex)`
 `
 
 const Label = styled.label`
-  display: inline-flex;
+  //display: inline-flex;
   align-items: center;
   cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
   ${space}
 `
 
 const CheckboxContainer = styled(Flex)`
-  display: inline-flex;
+  //display: inline-flex;
   align-content: center;
 `
 
