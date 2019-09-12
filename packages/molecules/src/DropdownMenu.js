@@ -28,7 +28,6 @@ const PopoverMenuItem = styled(Flex)`
 `
 
 function PopoverItemSmart({item, handleCloseOnItemClick, ...props}) {
-  console.log(typeof item.component)
   const handleClick = () => {
     handleCloseOnItemClick()
     item.HandleClick &&
@@ -43,12 +42,13 @@ function PopoverItemSmart({item, handleCloseOnItemClick, ...props}) {
     )
   } else if (item.nested.length > 0) {
     const nestedProps = item.nestedProps
+    const iconPositionProps = item.iconPositionProps
     return (
       <PopoverMenuItem onClick={() => handleClick()} {...props}>
         <DropdownMenu content={item.nested} {...nestedProps}>
-          <Flex>
+          <Flex justifyContent={'space-between'}>
             {item.name}
-            <Relative pl={1} top={-2}>
+            <Relative {...iconPositionProps}>
               <Icon name={'keyboard_arrow_right'} size={1} />
             </Relative>
           </Flex>

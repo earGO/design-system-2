@@ -32,19 +32,20 @@ const AnimatedScaledIcon = styled(Relative)`
   ${props => props.isOpen && `transform: rotate(180deg);`}
 `
 
-const PanelHeaderWrapper = styled(Flex)`
-  justify-content: ${props => props.titleAlignment};
-  height: 63px;
-  align-items: center;
-  border-bottom: 1px solid ${themeGet('colors.border', '#ecebeb')};
-  ${props => (props.disabled ? 'cursor: not-allowed;' : 'cursor: pointer;')};
-`
-
 const PanelWrapper = styled(Flex)`
   font-size: ${props => props.theme.fontSizes[1] + 'px'};
   color: ${props => props.theme.colors.black};
   ${props => !props.isOpen && `overflow: hidden;`}
   ${disabled}
+`
+
+const PanelHeaderWrapper = styled(Flex)`
+  justify-content: ${props => props.titleAlignment};
+  height: 63px;
+  align-items: center;
+  border-bottom: 1px solid ${themeGet('colors.border', '#ecebeb')};
+  border-width: ${props => (props.divided ? '1px' : '0px')};
+  ${props => (props.disabled ? 'cursor: not-allowed;' : 'cursor: pointer;')};
 `
 
 const PanelHeader = ({
@@ -55,12 +56,15 @@ const PanelHeader = ({
   disabled,
   titleAlignment,
   flex,
-  titleFirst
+  titleFirst,
+  divided,
+  iconPositionProps
 }) => (
   <PanelHeaderWrapper
     disabled={disabled}
     titleAlignment={titleAlignment}
     onClick={disabled ? noop : () => togglePanel(panelKey)}
+    divided={divided}
   >
     {titleFirst ? (
       <>
@@ -83,8 +87,8 @@ const PanelHeader = ({
           width={16}
           height={16}
         >
-          <AnimatedScaledIcon isOpen={isOpen}>
-            <Icon name={'keyboard_arrow_up'} size={16} />
+          <AnimatedScaledIcon isOpen={isOpen} {...iconPositionProps}>
+            <Icon name={'keyboard_arrow_down'} size={16} />
           </AnimatedScaledIcon>
         </Flex>{' '}
       </>
@@ -171,13 +175,19 @@ CollapsePanel.propTypes = {
   /** Возможность скрыть-раскрыть панель */
   disabled: propTypes.bool,
   /** Заголовок панели. */
-  title: propTypes.oneOfType([propTypes.string, propTypes.element])
+  title: propTypes.oneOfType([propTypes.string, propTypes.element]),
+  /** Есть ли разделитель между заголовком и контентом панели */
+  divided: propTypes.bool,
+  /** Тонкое позиционирование иконки-стрелочки */
+  iconPositionProps: propTypes.object
 }
 
 CollapsePanel.defaultProps = {
   disabled: false,
   title: '',
   titleAlignment: 'flex-start',
+  divided: true,
+  iconPositionProps: {},
   theme
 }
 

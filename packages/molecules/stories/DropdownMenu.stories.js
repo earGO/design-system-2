@@ -66,7 +66,6 @@ const FunctionalContentWDropdown = [
     nested: [
       {
         name: 'String name and component',
-        component: <Text>Simple Component</Text>,
         HandleClick: () => {
           console.log('clicked ' + 'something')
         }
@@ -85,6 +84,10 @@ const FunctionalContentWDropdown = [
       width: 300,
       height: 40,
       pt: '10px'
+    },
+    iconPositionProps: {
+      pr: 2,
+      top: 0
     }
   }
 ]
@@ -239,7 +242,15 @@ storiesOf(`DropdownMenu`, module)
     {
       info: {
         text: `
-          По умолчанию компонент закрывается при клике на любую опцию. Передав параметр  closeOnItemClick=false меню останется открытым после клика на опцию
+          В любой пункт можно передать параметр nested в таком же формате, как массив пунктов в Dropdown, и closeOnItemClick={false}
+          
+          В таком случае вместо обычного клика по пункту будет вызван вложенный Dropdown с опциями из массива nested.
+          
+          Вместе с массивом nested можно передать параметр nestedProps - объект, пропы из которого будут применены ко вложенному Dropdown.
+          
+          Такую "вложенность" можно делать по всех пунктах, всех пунктах вложенных Dropdown, и так до бесконечности.
+          
+          По клику на любую опцию вложенного Dropdown закроется и он, и родительский Dropdown.
         `
       }
     }
