@@ -66,7 +66,6 @@ const FunctionalContentWDropdown = [
     nested: [
       {
         name: 'String name and component',
-        component: <Text>Simple Component</Text>,
         HandleClick: () => {
           console.log('clicked ' + 'something')
         }

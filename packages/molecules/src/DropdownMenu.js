@@ -28,7 +28,6 @@ const PopoverMenuItem = styled(Flex)`
 `
 
 function PopoverItemSmart({item, handleCloseOnItemClick, ...props}) {
-  console.log(typeof item.component)
   const handleClick = () => {
     handleCloseOnItemClick()
     item.HandleClick &&
