@@ -85,6 +85,10 @@ const FunctionalContentWDropdown = [
       width: 300,
       height: 40,
       pt: '10px'
+    },
+    iconPositionProps: {
+      pr: 2,
+      top: 0
     }
   }
 ]
