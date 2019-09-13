@@ -41,7 +41,6 @@ const PanelWrapper = styled(Flex)`
 
 const PanelHeaderWrapper = styled(Flex)`
   justify-content: ${props => props.titleAlignment};
-  height: 63px;
   align-items: center;
   border-bottom: 1px solid ${themeGet('colors.border', '#ecebeb')};
   border-width: ${props => (props.divided ? '1px' : '0px')};
@@ -58,13 +57,15 @@ const PanelHeader = ({
   flex,
   titleFirst,
   divided,
-  iconPositionProps
+  iconPositionProps,
+  headerProps
 }) => (
   <PanelHeaderWrapper
     disabled={disabled}
     titleAlignment={titleAlignment}
     onClick={disabled ? noop : () => togglePanel(panelKey)}
     divided={divided}
+    {...headerProps}
   >
     {titleFirst ? (
       <>
@@ -88,7 +89,7 @@ const PanelHeader = ({
           height={16}
         >
           <AnimatedScaledIcon isOpen={isOpen} {...iconPositionProps}>
-            <Icon name={'keyboard_arrow_down'} size={16} />
+            <Icon name={'keyboard_arrow_down'} size={18} />
           </AnimatedScaledIcon>
         </Flex>{' '}
       </>
@@ -97,11 +98,11 @@ const PanelHeader = ({
         <Flex
           justifyContent="center"
           alignItems="center"
-          width={16}
-          height={16}
+          width={18}
+          height={18}
         >
-          <AnimatedScaledIcon isOpen={isOpen}>
-            <Icon name={'keyboard_arrow_up'} size={16} />
+          <AnimatedScaledIcon isOpen={isOpen} {...iconPositionProps}>
+            <Icon name={'keyboard_arrow_down'} size={18} />
           </AnimatedScaledIcon>
         </Flex>
         <Box
@@ -161,7 +162,7 @@ class CollapsePanel extends React.Component {
           titleAlignment={this.props.titleAlignment}
           {...this.props}
         />
-        <PanelContent {...this.props} style={mergedStyle}>
+        <PanelContent {...this.props.contentProps} style={mergedStyle}>
           <Box ref={measure => (this.measure = measure)}>
             {this.props.children}
           </Box>
@@ -178,8 +179,13 @@ CollapsePanel.propTypes = {
   title: propTypes.oneOfType([propTypes.string, propTypes.element]),
   /** Есть ли разделитель между заголовком и контентом панели */
   divided: propTypes.bool,
-  /** Тонкое позиционирование иконки-стрелочки */
-  iconPositionProps: propTypes.object
+  /** Тонкое позиционирование иконки-стрелочки (сигнатура как у компонента Relative */
+  iconPositionProps: propTypes.object,
+  /** Props для настройки заголовка выпадающей панели, доступные props такие же
+   * как для компонента Flex*/
+  headerProps: propTypes.object,
+  /** Props для настройки свойств блока контента, интерфейс как у Box */
+  contentProps: propTypes.object
 }
 
 CollapsePanel.defaultProps = {
@@ -188,6 +194,8 @@ CollapsePanel.defaultProps = {
   titleAlignment: 'flex-start',
   divided: true,
   iconPositionProps: {},
+  headerProps: {height: '63px'},
+  contentProps: {},
   theme
 }
 
