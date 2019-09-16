@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.2.0 (2019-09-16)
+
+* added DropDownMenu arrow option #84 ([6b3875f](https://gitlab.ursip.ru/ursip/design-system/commit/6b3875f)), closes [#84](https://gitlab.ursip.ru/ursip/design-system/issues/84)
+* added nested dropdown and couple other components and tweaks #57 ([9698cb0](https://gitlab.ursip.ru/ursip/design-system/commit/9698cb0)), closes [#57](https://gitlab.ursip.ru/ursip/design-system/issues/57)
+* added props to position icon when there is nested Dropdown #57 ([57f5c6a](https://gitlab.ursip.ru/ursip/design-system/commit/57f5c6a)), closes [#57](https://gitlab.ursip.ru/ursip/design-system/issues/57)
+* edited storybook comment on nested dropdown #57 ([a512ab6](https://gitlab.ursip.ru/ursip/design-system/commit/a512ab6)), closes [#57](https://gitlab.ursip.ru/ursip/design-system/issues/57)
+* made fileLoadInput with controls #84 ([b0999bc](https://gitlab.ursip.ru/ursip/design-system/commit/b0999bc)), closes [#84](https://gitlab.ursip.ru/ursip/design-system/issues/84)
+* solved Collapse component issues #82 ([c2e0214](https://gitlab.ursip.ru/ursip/design-system/commit/c2e0214)), closes [#82](https://gitlab.ursip.ru/ursip/design-system/issues/82)
+
+
+
+
+
+
 ## <small>2.1.1 (2019-09-06)</small>
 
 * added ActionCell #71 ([40ffa91](https://gitlab.ursip.ru/ursip/design-system/commit/40ffa91)), closes [#71](https://gitlab.ursip.ru/ursip/design-system/issues/71)
