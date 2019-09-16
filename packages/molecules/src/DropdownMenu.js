@@ -27,6 +27,13 @@ const PopoverMenuItem = styled(Flex)`
   background-color: white;
 `
 
+const RotateWrapper = styled(Box)`
+  transition: all 0.15s;
+
+  transform: ${({open}) =>
+    open ? 'rotate(180deg) translate(0px, 6px)' : 'rotate(0deg)'};
+`
+
 function PopoverItemSmart({item, handleCloseOnItemClick, ...props}) {
   const handleClick = () => {
     handleCloseOnItemClick()
@@ -35,11 +42,19 @@ function PopoverItemSmart({item, handleCloseOnItemClick, ...props}) {
       item.HandleClick()
   }
   if (item.nested === undefined) {
-    return (
-      <PopoverMenuItem onClick={() => handleClick()} {...props}>
-        {item.name}
-      </PopoverMenuItem>
-    )
+    if (typeof item.component === 'object') {
+      return (
+        <PopoverMenuItem onClick={() => handleClick()} {...props}>
+          {item.component}
+        </PopoverMenuItem>
+      )
+    } else {
+      return (
+        <PopoverMenuItem onClick={() => handleClick()} {...props}>
+          {item.name}
+        </PopoverMenuItem>
+      )
+    }
   } else if (item.nested.length > 0) {
     const nestedProps = item.nestedProps
     const iconPositionProps = item.iconPositionProps
@@ -65,6 +80,7 @@ function DropdownMenu({
   shiftLeft,
   shiftTop,
   closeOnItemClick,
+  withArrow,
   ...props
 }) {
   const [open, setOpen] = useState(false)
@@ -110,7 +126,20 @@ function DropdownMenu({
       })}
       {...props}
     >
-      <Box onClick={() => setOpen(!open)}>{children}</Box>
+      {withArrow ? (
+        <Flex
+          onClick={() => setOpen(!open)}
+          justifyContent={'space-evenly'}
+          alignItems={'center'}
+        >
+          {children}
+          <RotateWrapper open={open}>
+            <Icon name={'arrow_drop_down'} color={'black'} size={1} />
+          </RotateWrapper>
+        </Flex>
+      ) : (
+        <Box onClick={() => setOpen(!open)}>{children}</Box>
+      )}
     </Popover>
   )
 }
@@ -123,7 +152,8 @@ DropdownMenu.propTypes = {
   content: PropTypes.array,
   shiftLeft: PropTypes.number,
   shiftTop: PropTypes.number,
-  closeOnItemClick: PropTypes.bool
+  closeOnItemClick: PropTypes.bool,
+  withArrow: PropTypes.bool
 }
 
 DropdownMenu.defaultProps = {
@@ -139,7 +169,8 @@ DropdownMenu.defaultProps = {
   width: 208,
   height: 32,
   pt: 2,
-  closeOnItemClick: true
+  closeOnItemClick: true,
+  withArrow: false
 }
 
 export default DropdownMenu

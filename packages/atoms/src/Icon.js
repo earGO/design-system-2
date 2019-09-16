@@ -49,6 +49,20 @@ const colors = {
 // Create the keyframes
 const rotate = keyframes`
   from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`
+const spinanimation = css`
+  animation: ${rotate} 2s linear infinite;
+`
+
+// Create the keyframes
+const rotateCCW = keyframes`
+  from {
     transform: rotate(360deg);
   }
 
@@ -56,8 +70,8 @@ const rotate = keyframes`
     transform: rotate(0deg);
   }
 `
-const spinanimation = css`
-  animation: ${rotate} 2s linear infinite;
+const spinanimationCCW = css`
+  animation: ${rotateCCW} 2s linear infinite;
 `
 
 const IconBordered = styled(Flex)`
@@ -67,6 +81,7 @@ const IconBordered = styled(Flex)`
   height: ${props => props.size + 'px'};
   width: ${props => props.size + 'px'};
   ${props => props.spin && spinanimation};
+  ${props => props.spinCCW && spinanimationCCW};
   user-select: none;
 `
 
