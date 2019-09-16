@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.2.0 (2019-09-16)
+
+* added ErrorBoundary component to atoms #57 ([0e49d15](https://gitlab.ursip.ru/ursip/design-system/commit/0e49d15)), closes [#57](https://gitlab.ursip.ru/ursip/design-system/issues/57)
+* added nested dropdown and couple other components and tweaks #57 ([9698cb0](https://gitlab.ursip.ru/ursip/design-system/commit/9698cb0)), closes [#57](https://gitlab.ursip.ru/ursip/design-system/issues/57)
+* additionaly resolved minor issues with CollapsePanel, added contentProps #70 ([8883f60](https://gitlab.ursip.ru/ursip/design-system/commit/8883f60)), closes [#70](https://gitlab.ursip.ru/ursip/design-system/issues/70)
+* made fileLoadInput with controls #84 ([b0999bc](https://gitlab.ursip.ru/ursip/design-system/commit/b0999bc)), closes [#84](https://gitlab.ursip.ru/ursip/design-system/issues/84)
+* solved Collapse component issues #82 ([c2e0214](https://gitlab.ursip.ru/ursip/design-system/commit/c2e0214)), closes [#82](https://gitlab.ursip.ru/ursip/design-system/issues/82)
+
+
+
+
+
+
 ## <small>2.1.1 (2019-09-06)</small>
 
 * added some components #71 ([2f9789a](https://gitlab.ursip.ru/ursip/design-system/commit/2f9789a)), closes [#71](https://gitlab.ursip.ru/ursip/design-system/issues/71)

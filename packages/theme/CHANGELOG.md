@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.2.0 (2019-09-16)
+
+* added ErrorBoundary component to atoms #57 ([0e49d15](https://gitlab.ursip.ru/ursip/design-system/commit/0e49d15)), closes [#57](https://gitlab.ursip.ru/ursip/design-system/issues/57)
+
+
+
+
+
+
 ## <small>2.1.1 (2019-09-06)</small>
 
 * experimenting with npmignore #28 ([10bb361](https://gitlab.ursip.ru/ursip/design-system/commit/10bb361)), closes [#28](https://gitlab.ursip.ru/ursip/design-system/issues/28)
