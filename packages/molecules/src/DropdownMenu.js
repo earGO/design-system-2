@@ -42,11 +42,19 @@ function PopoverItemSmart({item, handleCloseOnItemClick, ...props}) {
       item.HandleClick()
   }
   if (item.nested === undefined) {
-    return (
-      <PopoverMenuItem onClick={() => handleClick()} {...props}>
-        {item.name}
-      </PopoverMenuItem>
-    )
+    if (typeof item.component === 'object') {
+      return (
+        <PopoverMenuItem onClick={() => handleClick()} {...props}>
+          {item.component}
+        </PopoverMenuItem>
+      )
+    } else {
+      return (
+        <PopoverMenuItem onClick={() => handleClick()} {...props}>
+          {item.name}
+        </PopoverMenuItem>
+      )
+    }
   } else if (item.nested.length > 0) {
     const nestedProps = item.nestedProps
     const iconPositionProps = item.iconPositionProps

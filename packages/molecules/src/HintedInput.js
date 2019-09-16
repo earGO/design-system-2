@@ -7,7 +7,7 @@ const InputHint = styled(Text)`
   position: absolute;
   top: 3px;
   left: 16px;
-  font-size: 10px;
+  font-size: 8px;
   text-transform: capitalize;
   color: ${props => (props.theme ? props.theme.colors.darkGrey : '#949394')};
 `
@@ -20,6 +20,7 @@ function HintedInput({hint, placeholder, value, onChange, ...props}) {
         value={value}
         onChange={onChange}
         paddingTop={12}
+        {...props}
       />
       <InputHint>{hint}</InputHint>
     </Flex>
