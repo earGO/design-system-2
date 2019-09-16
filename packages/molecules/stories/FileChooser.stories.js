@@ -1,11 +1,10 @@
 import React from 'react'
 import {storiesOf} from '@storybook/react'
 import theme, {ThemeProvider} from '@design-system/theme'
-import {Icon} from '@design-system/atoms'
 
-import DropdownMenuButton from '../src/DropdownMenuButton'
+import FileChooser from '../src/FileChooser'
 
-storiesOf(`DropdownMenuButton`, module)
+storiesOf(`FileChooser`, module)
   .addParameters({
     info: {
       inline: true,
@@ -24,7 +23,7 @@ storiesOf(`DropdownMenuButton`, module)
     () => (
       <ThemeProvider theme={theme}>
         {' '}
-        <DropdownMenuButton iconName={'assignment'}></DropdownMenuButton>
+        <FileChooser />
       </ThemeProvider>
     ),
     {
