@@ -1,6 +1,7 @@
 import React from 'react'
 import {storiesOf} from '@storybook/react'
 import theme, {ThemeProvider} from '@design-system/theme'
+import {Icon} from '@design-system/atoms'
 
 import DropdownMenuButton from '../src/DropdownMenuButton'
 
@@ -23,7 +24,7 @@ storiesOf(`DropdownMenuButton`, module)
     () => (
       <ThemeProvider theme={theme}>
         {' '}
-        <DropdownMenuButton />
+        <DropdownMenuButton iconName={'assignment'}></DropdownMenuButton>
       </ThemeProvider>
     ),
     {

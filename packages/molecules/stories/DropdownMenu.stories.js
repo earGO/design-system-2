@@ -1,7 +1,7 @@
 import React from 'react'
 import {storiesOf} from '@storybook/react'
 
-import {Flex, Text} from '@design-system/atoms'
+import {Flex, Icon, Text} from '@design-system/atoms'
 import theme from '@design-system/theme'
 import {LabeledIconButton, DropdownMenu} from '../src'
 
@@ -251,6 +251,33 @@ storiesOf(`DropdownMenu`, module)
           Такую "вложенность" можно делать по всех пунктах, всех пунктах вложенных Dropdown, и так до бесконечности.
           
           По клику на любую опцию вложенного Dropdown закроется и он, и родительский Dropdown.
+        `
+      }
+    }
+  )
+  .add(
+    'with arrow',
+    () => (
+      <Flex>
+        <DropdownMenu
+          theme={theme}
+          content={FunctionalContentPartial}
+          shiftTop={-10}
+          shiftLeft={20}
+          width={300}
+          height={40}
+          pt={'10px'}
+          closeOnItemClick={false}
+          withArrow={true}
+        >
+          <Icon name={'assignment'} />
+        </DropdownMenu>
+      </Flex>
+    ),
+    {
+      info: {
+        text: `
+          Компонент может дополняться иконкой стрелки, отражающей статус выпадающег меню "открыто-закрыто"
         `
       }
     }
