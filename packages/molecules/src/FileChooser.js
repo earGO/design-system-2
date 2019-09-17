@@ -4,6 +4,7 @@ import {Box, Flex, Icon, Text} from '@design-system/atoms'
 import DropdownMenu from './DropdownMenu'
 import styled from 'styled-components'
 import HintedInput from './HintedInput'
+import ActionCell from './ActionCell'
 
 /** A signle file chooser component with file-type verification, icon for file-choosing,
  * loader-icon-while-requesting-backend, no submit button, and file size verification */
@@ -99,4 +100,7 @@ FileChooser.defaultProps = {
   isLoading: false
 }
 
+FileChooser.displayName = `FileChooser`
+
+/** @component */
 export default FileChooser

@@ -6,12 +6,13 @@
   "license": "MIT",
   "scripts": {
     "storybook": "start-storybook -p 9009",
-    "build-storybook": "cd storybook && build-storybook",
+    "build-storybook": "build-storybook",
     "clean": "rm -rf node_modules dist build lib",
     "build": "yarn babelify",
     "babelify": "yarn clean && babel src --out-dir build && cp -a ./src/iconfonts ./build/iconfonts"
   },
   "dependencies": {
+    "@storybook/addon-docs": "^5.2.0",
     "@styled-system/theme-get": "^5.1.1",
     "cross-env": "5.0.5",
     "hex-rgb": "^4.1.0",

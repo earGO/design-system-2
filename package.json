@@ -27,8 +27,8 @@
     "make-minor": "lerna version minor --amend --conventional-commits --create-release gitlab --no-push --changelog-preset react && yarn",
     "make-major": "lerna version major --amend --conventional-commits --create-release gitlab --no-push --changelog-preset react && yarn",
     "make-oao-nexus": "oao publish --no-checks --no-confirm --no-git-commit --increment-version-by minor ",
-    "styleguide": "styleguidist server --config documentation/config.js",
-    "styleguide:build": "styleguidist build --config documentation/config.js",
+    "styleguide": "styleguidist server --config packages/documentation/config.js",
+    "styleguide:build": "styleguidist build --config packages/documentation/config.js",
     "atoms-storybook": "cd packages/atoms && start-storybook -p 9019",
     "cells-storybook": "cd packages/cells && start-storybook -p 9029",
     "molecules-storybook": "cd packages/molecules && start-storybook -p 9039",
@@ -38,7 +38,9 @@
     "status": "oao status",
     "remove-all": "oao remove-all",
     "reinstall": "oao clean && yarn",
-    "hard-reinstall": "rm -rf yarn.lock && yarn clean && yarn"
+    "hard-reinstall": "rm -rf yarn.lock && yarn clean && yarn",
+    "deploy-storybook": "storybook-to-ghpages",
+    "build-storybook": "build-storybook -s public"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
@@ -52,6 +54,7 @@
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "7.5.5",
+    "@storybook/storybook-deployer": "^2.8.1",
     "@svgr/rollup": "^4.1.0",
     "babel-loader": "^8.0.5",
     "babel-plugin-import": "^1.12.0",

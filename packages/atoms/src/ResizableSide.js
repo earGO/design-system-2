@@ -51,4 +51,5 @@ ResizableSide.propTypes = {}
 
 ResizableSide.defaultProps = {}
 
+/** @component */
 export default ResizableSide

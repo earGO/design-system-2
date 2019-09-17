@@ -4,6 +4,7 @@ import Trigger from 'rc-trigger'
 import 'rc-trigger/assets/index.css'
 import styled from 'styled-components'
 import {Card, Text} from '@design-system/atoms'
+import ActionCell from './ActionCell'
 
 /** Preset for fast hint popover alignment when passed in builtinPlacement prop*/
 const builtinPlacements = {
@@ -197,4 +198,7 @@ HintBlock.defaultProps = {
   caption: 'Ima popover'
 }
 
+HintBlock.displayName = `HintBlock`
+
+/** @component */
 export default HintBlock

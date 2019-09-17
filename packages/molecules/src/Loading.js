@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {Icon, Overlay, Flex, Text, Box} from '@design-system/atoms'
+import ActionCell from './ActionCell'
 
 function Spinner(props) {
   return <Icon spin name="cached" {...props} />
@@ -53,4 +54,7 @@ Loading.defaultProps = {
   size: 2
 }
 
+Loading.displayName = 'Loading'
+
+/** @component */
 export default Loading

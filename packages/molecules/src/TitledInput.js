@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {Box, Text, Input} from '@design-system/atoms'
+import ActionCell from './ActionCell'
 
 function TitledInput({width, title, placeholder, global, onChange, ...props}) {
   return (
@@ -35,4 +36,7 @@ TitledInput.defaultProps = {
   onChange: () => {}
 }
 
+TitledInput.displayName = 'TitledInput'
+
+/** @component */
 export default TitledInput

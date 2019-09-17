@@ -2,6 +2,7 @@ import React from 'react'
 import NumericInput from './NumericInput'
 import {Box, Text} from '@design-system/atoms'
 import PropTypes from 'prop-types'
+import ActionCell from './ActionCell'
 
 function TitledNumericInput({width, title, onChange, globalValue, ...props}) {
   console.log(globalValue)
@@ -32,4 +33,7 @@ TitledNumericInput.defaultProps = {
   onChange: () => {}
 }
 
+TitledNumericInput.displayName = 'TitledNumericInput'
+
+/** @component */
 export default TitledNumericInput

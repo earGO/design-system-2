@@ -10,6 +10,7 @@ import {
   Relative
 } from '@design-system/atoms'
 import styled from 'styled-components'
+import ActionCell from './ActionCell'
 
 /** В компонент нужно обернуть кнопку/иконку, при клике на которую должно появиться меню  */
 
@@ -172,5 +173,9 @@ DropdownMenu.defaultProps = {
   closeOnItemClick: true,
   withArrow: false
 }
+
+DropdownMenu.displayName = `DropdownMenu`
+
+/** @component */
 
 export default DropdownMenu
