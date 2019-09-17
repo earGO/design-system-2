@@ -16,7 +16,7 @@ import {
 /**
  * Используйте этот компонент для управления css-параметрами width, margin, padding, and color.
  */
-const Box = styled('div')(
+export const Box = styled('div')(
   {
     boxSizing: 'border-box',
     position: 'relative'
