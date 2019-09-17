@@ -1,6 +1,7 @@
 import React from 'react'
 import {Box, Select, Text} from '@design-system/atoms'
 import PropTypes from 'prop-types'
+import ActionCell from './ActionCell'
 
 function TitledSelect({
   width,
@@ -47,4 +48,7 @@ TitledSelect.defaultProps = {
   onChange: () => {}
 }
 
+TitledSelect.displayName = 'TitledSelect'
+
+/** @component */
 export default TitledSelect

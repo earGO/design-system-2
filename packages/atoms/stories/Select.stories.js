@@ -1,6 +1,5 @@
 import React from 'react'
 import {storiesOf} from '@storybook/react'
-import theme, {ThemeProvider} from '@design-system/theme'
 import {Select} from '../src'
 
 const options = [
@@ -11,32 +10,10 @@ const options = [
   {value: 'template5', label: `Шаблон ИМ торгового центра`}
 ]
 
-storiesOf(`Select`, module)
-  .addParameters({
-    info: {
-      inline: true,
-      header: false,
-      styles: {
-        header: {
-          h1: {
-            color: 'red'
-          }
-        }
-      }
-    }
-  })
-  .add(
-    'Default',
-    () => (
-      <ThemeProvider theme={theme}>
-        <Select options={options} />
-      </ThemeProvider>
-    ),
-    {
-      info: {
-        text: `
+storiesOf(`Select`, module).add('Default', () => <Select options={options} />, {
+  info: {
+    text: `
           По умолчанию без параметров иконка выводится в виде знака вопроса. 
         `
-      }
-    }
-  )
+  }
+})

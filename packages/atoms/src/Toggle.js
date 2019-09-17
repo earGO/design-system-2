@@ -79,9 +79,7 @@ const ToggleHandle = styled(Absolute)`
   transition: left ${themeGet('durations.normal', '300ms')};
 `
 
-const ToggleTrack = styled.button.attrs({
-  role: 'switch'
-})`
+const ToggleTrack = styled.button`
   position: relative;
   outline: none;
   width: 24px;

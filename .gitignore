@@ -17,10 +17,14 @@ __snapshots__
 *dist/
 *docs/
 *lib/
+.out
+**/.out
 
 # misc
 *.idea
+*storybook-static
 
+#environment
 .DS_Store
 .env.local
 .env.development.local

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import {Icon, Text, Flex} from '@design-system/atoms'
+import ActionCell from './ActionCell'
 
 const Container = styled(Flex)`
   flex-flow: row nowrap;
@@ -62,4 +63,7 @@ LabeledIconButton.defaultProps = {
   fontSize: 2
 }
 
+LabeledIconButton.displayName = `LabeledIconButton`
+
+/** @component */
 export default LabeledIconButton

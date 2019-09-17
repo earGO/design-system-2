@@ -4,10 +4,7 @@ import Positional from './Positional'
 import PropTypes from 'prop-types'
 import theme from '@design-system/theme'
 
-const Body = styled.div.attrs(props => ({
-  font: props.font,
-  placement: props.placement
-}))`
+const Body = styled.div.attrs`
   position: relative;
   font-family: ${props => props.font};
   font-size: ${props => props.theme.fontSizes[0] + 'px'};

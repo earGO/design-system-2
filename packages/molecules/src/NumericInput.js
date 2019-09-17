@@ -1,6 +1,7 @@
 import React from 'react'
 import {Absolute, Flex, Icon, Input} from '@design-system/atoms'
 import styled from 'styled-components'
+import ActionCell from './ActionCell'
 
 const ArrowsContainer = styled(Absolute)`
   display: ${props => (props.disabled ? 'none' : 'flex')};
@@ -80,5 +81,7 @@ function NumericInput({globalValue, onChange, disabled, ...props}) {
     </NoArrowsWrapper>
   )
 }
+NumericInput.displayName = 'NumericInput'
 
+/** @component */
 export default NumericInput

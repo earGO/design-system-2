@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import {storiesOf} from '@storybook/react'
-import theme, {ThemeProvider} from '@design-system/theme'
 import Table from '../src/Table'
 import Flex from '../src/Flex'
 import Button from '../src/Button'

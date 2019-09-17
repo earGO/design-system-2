@@ -85,7 +85,7 @@ const IconBordered = styled(Flex)`
   user-select: none;
 `
 
-const Icon = ({name, size, color, ...props}) => {
+function Icon({name, size, color, ...props}) {
   let nameForClass = 'material-icons '
   let iconWrapperSize = 24
   if (sizes[size] !== undefined) {

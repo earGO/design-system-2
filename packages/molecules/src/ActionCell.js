@@ -32,4 +32,7 @@ const ActionCell = ({rowData, dataKey, content, ...props}) => {
   )
 }
 
+ActionCell.displayName = 'ActionCell'
+
+/** @component */
 export default ActionCell
