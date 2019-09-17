@@ -20,7 +20,7 @@ module.exports = {
   version: pkg.version,
   skipComponentsWithoutExample: true,
   pagePerSection: false,
-  editorConfig: {theme: 'material'},
+  theme: 'material',
   exampleMode: 'collapse',
   usageMode: 'collapse',
   ignore: ['/index.js', '/*.test.js', '**/*.spec.js'],
@@ -155,7 +155,7 @@ module.exports = {
       components: () =>
         getComponents(
           ['Box', 'Flex', 'Relative', 'Absolute', 'Card', 'Overlay'],
-          '../packages/atoms/src'
+          '../packages/atoms/build'
         )
     },
     {

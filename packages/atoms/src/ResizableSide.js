@@ -45,6 +45,8 @@ function ResizableSide({children, ...props}) {
   )
 }
 
+ResizableSide.displayName = 'ResizableSide'
+
 ResizableSide.propTypes = {}
 
 ResizableSide.defaultProps = {}
