@@ -1,4 +1,4 @@
-const pkg = require('../package.json')
+const pkg = require('../../package.json')
 const path = require('path')
 
 function makeAbsolutePath(directory, component) {
@@ -6,7 +6,7 @@ function makeAbsolutePath(directory, component) {
 }
 
 function getComponents(names = []) {
-  return names.map(name => makeAbsolutePath('../src/components', name + '.js'))
+  return names.map(name => makeAbsolutePath('../build/', name + '.js'))
 }
 
 /**
@@ -20,7 +20,7 @@ module.exports = {
   version: pkg.version,
   skipComponentsWithoutExample: true,
   pagePerSection: false,
-  editorConfig: {theme: 'material'},
+  theme: 'material',
   exampleMode: 'collapse',
   usageMode: 'collapse',
   ignore: ['/index.js', '/*.test.js', '**/*.spec.js'],

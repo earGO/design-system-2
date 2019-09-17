@@ -40,6 +40,8 @@
     "@storybook/addons": "^5.0.10",
     "@storybook/react": "^5.0.10",
     "@storybook/theming": "^5.0.10",
+
+    "storybook-addon-styled-component-theme": "^1.2.4",
     "@testing-library/react": "^8.0.5",
     "add-dom-event-listener": "1.1.0",
     "babel-loader": "^8.0.6",

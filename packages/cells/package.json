@@ -34,6 +34,16 @@
     "styled-system": "^5.0.15",
     "stylis-rule-sheet": "0.0.10"
   },
+  "devDependencies": {
+    "@storybook/addon-actions": "^5.0.10",
+    "@storybook/addon-info": "^5.1.9",
+    "@storybook/addon-links": "^5.0.10",
+    "@storybook/addon-notes": "^5.1.9",
+    "@storybook/addons": "^5.0.10",
+    "@storybook/react": "^5.0.10",
+    "@storybook/theming": "^5.0.10",
+    "storybook-addon-styled-component-theme": "^1.2.4"
+  },
   "babel": {
     "presets": [
       "@babel/preset-env",
