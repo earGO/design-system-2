@@ -9,6 +9,7 @@ import {
   Box,
   Flex
 } from '@design-system/atoms'
+import ActionCell from './ActionCell'
 
 const Item = styled(Text)`
   border-bottom: 1px solid ${props => props.theme.colors.border};
@@ -93,4 +94,7 @@ DropdownMenuButton.defaultProps = {
   items: []
 }
 
+DropdownMenuButton.displayName = `DropdownMenuButton`
+
+/** @component */
 export default DropdownMenuButton

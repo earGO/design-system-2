@@ -1,5 +1,11 @@
+variables:
+  PROJECT: "Ursip"
+  DEV_NAMESPACE: "ursip-develop"
+  STAGE_NAMESPACE: "ursip-internal"
+  APP: "design-new"
+
 before_script:
-  - yarn
+  - export DATE_ENV=$(date +'%d-%m-%Y')
 
 stages:
   - build
@@ -12,6 +18,8 @@ cache:
 
 Build:
   stage: build
+  before_script:
+    - yarn
   only:
     - master
   script:
@@ -35,5 +43,8 @@ Deploy:
     - "sed -i \"s|\\\"module\\\": \\\"src|\\\"module\\\": \\\"build|g\" packages/theme/package.json"
     - "sed -i \"s|\\\"main\\\": \\\"src|\\\"main\\\": \\\"build|g\" packages/utils/package.json"
     - "sed -i \"s|\\\"module\\\": \\\"src|\\\"module\\\": \\\"build|g\" packages/utils/package.json"
+    - TMPDIR=$(ssh suadm@192.168.13.46 "mktemp -d")
   script:
     - yarn make-oao-nexus
+    - scp -r .out/* suadm@192.168.13.46:$TMPDIR
+    - ssh suadm@192.168.13.46 "sudo /opt/deploy front $PROJECT $STAGE_NAMESPACE $APP $TMPDIR"

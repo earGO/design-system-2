@@ -1,6 +1,5 @@
 import React from 'react'
 import {storiesOf} from '@storybook/react'
-import theme from '@design-system/theme'
 
 import {Input, Icon} from '../src'
 
@@ -8,27 +7,14 @@ const prefix = <Icon name="search" />
 const suffix = <Icon name="clear" />
 
 storiesOf(`Input`, module)
-  .addParameters({
-    info: {
-      inline: true,
-      header: false,
-      styles: {
-        header: {
-          h1: {
-            color: 'red'
-          }
-        }
-      }
-    }
-  })
-  .add('With prefix', () => <Input prefix={prefix} theme={theme} />, {
+  .add('With prefix', () => <Input prefix={prefix} />, {
     info: {
       text: `
           С иконкой "поиск" в начале. 
         `
     }
   })
-  .add('With suffix', () => <Input suffix={suffix} theme={theme} />, {
+  .add('With suffix', () => <Input suffix={suffix} />, {
     info: {
       text: `
           С иконкой "закрыть" в конце. 
@@ -37,7 +23,7 @@ storiesOf(`Input`, module)
   })
   .add(
     'With both',
-    () => <Input prefix={prefix} suffix={suffix} theme={theme} width={300} />,
+    () => <Input prefix={prefix} suffix={suffix} width={300} />,
     {
       info: {
         text: `

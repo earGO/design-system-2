@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {Icon, Box, ResizableInput} from '@design-system/atoms'
+import Scrollbars from '@design-system/atoms/src/Scrollbars'
 
 const IconButton = styled(Box)`
   cursor: pointer;
@@ -76,4 +77,7 @@ AnimatedSearchInput.defaultProps = {
   growWidth: 160
 }
 
+AnimatedSearchInput.displayName = `AnimatedSearchInput`
+
+/** @component */
 export default AnimatedSearchInput

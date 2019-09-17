@@ -4,19 +4,6 @@ import {storiesOf} from '@storybook/react'
 import {Icon} from '../src'
 
 storiesOf(`Single Icons`, module)
-  .addParameters({
-    info: {
-      inline: true,
-      header: false,
-      styles: {
-        header: {
-          h1: {
-            color: 'red'
-          }
-        }
-      }
-    }
-  })
   .add('Default', () => <Icon />, {
     info: {
       text: `

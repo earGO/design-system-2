@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "storybook": "start-storybook -p 9029",
-    "build-storybook": "cd storybook && build-storybook",
+    "build-storybook": "build-storybook",
     "clean": "rm -rf node_modules dist build lib",
     "build": "yarn babelify",
     "babelify": "yarn clean && babel src --out-dir build"
@@ -40,6 +40,8 @@
     "@storybook/addons": "^5.0.10",
     "@storybook/react": "^5.0.10",
     "@storybook/theming": "^5.0.10",
+
+    "storybook-addon-styled-component-theme": "^1.2.4",
     "@testing-library/react": "^8.0.5",
     "add-dom-event-listener": "1.1.0",
     "babel-loader": "^8.0.6",

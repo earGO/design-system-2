@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import {borderRadius} from 'styled-system'
@@ -29,7 +30,7 @@ const boxBorder = props => ({
 /** Наследует компонент `<Box />` и расширяет его параметрами **boxShadowSize, borderColor, borderRadius, borderWidth**.
  * Используется для создания блока с тенью и границами.
  * */
-const Card = styled(Box)`
+const CardBox = styled(Box)`
   overflow: hidden;
   position: relative;
 
@@ -37,6 +38,10 @@ const Card = styled(Box)`
   ${boxBorder} 
   ${borderRadius};
 `
+
+function Card({children, ...props}) {
+  return <CardBox {...props}>{children}</CardBox>
+}
 
 Card.propTypes = {
   /** Размер тени */

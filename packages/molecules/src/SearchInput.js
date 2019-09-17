@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {Input, Icon, Box} from '@design-system/atoms'
+import ActionCell from './ActionCell'
 
 const IconButton = styled(Box)`
   cursor: pointer;
@@ -73,4 +74,7 @@ SearchInput.defaultProps = {
   onChange: () => {}
 }
 
+SearchInput.displayName = 'SearchInput'
+
+/** @component */
 export default SearchInput

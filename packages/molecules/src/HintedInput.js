@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {Text, Flex, Input} from '@design-system/atoms'
+import ActionCell from './ActionCell'
 
 const InputHint = styled(Text)`
   position: absolute;
@@ -40,4 +41,7 @@ HintedInput.defaultProps = {
   onChange: () => {}
 }
 
+HintedInput.displayName = `HintedInput`
+
+/** @component */
 export default HintedInput

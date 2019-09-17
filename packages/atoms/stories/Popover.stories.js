@@ -1,7 +1,6 @@
 import React from 'react'
 import {storiesOf} from '@storybook/react'
 import {Flex, Card, Text, Button, Popover, Box} from '../src'
-import theme from '@design-system/theme'
 import styled from 'styled-components'
 
 const PopoverMenuItem = styled(Box)`
@@ -123,60 +122,31 @@ class SingleComponent extends React.Component {
 }
 
 storiesOf(`Popover`, module)
-  .addParameters({
+  .add('Default', () => <SingleComponent content={simpleContent} />, {
     info: {
-      inline: true,
-      header: false,
-      styles: {
-        header: {
-          h1: {
-            color: 'red'
-          }
-        }
-      }
-    }
-  })
-  .add(
-    'Default',
-    () => <SingleComponent theme={theme} content={simpleContent} />,
-    {
-      info: {
-        text: `
+      text: `
           Всплывающий блок с контентом возле элемента. Используется для всплывающих подсказок, выпадающих меню и т.д.. 
         `
-      }
     }
-  )
-  .add(
-    'Arrowed',
-    () => <SingleComponent theme={theme} content={arrowedContent} />,
-    {
-      info: {
-        text: `
+  })
+  .add('Arrowed', () => <SingleComponent content={arrowedContent} />, {
+    info: {
+      text: `
           Блок может быть со стрелкой. 
         `
-      }
     }
-  )
-  .add(
-    'Interactive',
-    () => <SingleComponent theme={theme} content={arrowedMenu} />,
-    {
-      info: {
-        text: `
+  })
+  .add('Interactive', () => <SingleComponent content={arrowedMenu} />, {
+    info: {
+      text: `
           Блок может содержать меню. 
         `
-      }
     }
-  )
-  .add(
-    'Various position',
-    () => <SingleComponent theme={theme} content={arrowedMenu} />,
-    {
-      info: {
-        text: `
+  })
+  .add('Various position', () => <SingleComponent content={arrowedMenu} />, {
+    info: {
+      text: `
           Блок может содержать меню. 
         `
-      }
     }
-  )
+  })
