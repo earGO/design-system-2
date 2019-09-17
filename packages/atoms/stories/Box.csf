@@ -1,5 +1,0 @@
-import Box from "../src/Box";
-
-export default { title: 'atoms/Button' };
-export const text = () => <Box>Hello</Box>;
-export const emoji = () => <Box>😀😎👍💯</Box>;
