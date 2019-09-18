@@ -2,7 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Text from './Text'
 
-function Heading({tag, ...props}) {
+/** Компонент обёртка для Заголовков. Позволяет выбрать один из HTML-тэгов заголовка.
+ *
+ * Принимает все пропсы компонента `<Text/>`, по сути являясь его обёрткой.
+ * */
+export function Heading({tag, ...props}) {
   const headings = {
     h1: {
       fontSize: 6,
