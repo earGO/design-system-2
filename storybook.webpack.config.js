@@ -57,37 +57,22 @@ module.exports = async ({config}) => {
     ]
   })
 
-  const renderer = `
-import { h } from 'generic-implementation'
- 
-const mdx = (function (createElement) {
-  return function (name, props, ...children) {
-    if (typeof name === 'string') {
-      if (name === 'wrapper') return children.map(createElement)
-      if (name === 'inlineCode') return createElement('code', props, ...children)
-    }
- 
-    return createElement(name, props, ...children)
-  }
-}(h))
-`
 
   config.module.rules.push(
       {
         test: /\.mdx?$/,
         use: [
-          'babel-loader',
-          {
-            loader: '@mdx-js/loader',
-            options: {
-              renderer,
-            }
-          }
-        ]
+          'babel-loader','@mdx-js/loader'
+        ],
+          include: [
+              path.resolve(__dirname, '../../../node_modules/*'),
+              path.resolve(__dirname, '../')
+          ]
       }
   )
 
   config.resolve.extensions.push('.less')
+    config.resolve.extensions.push('.mdx')
 
   if (!config.resolve.modules) {
     config.resolve.modules = []
