@@ -24,6 +24,7 @@ Build:
     - master
   script:
     - CI="" yarn build
+    - CI="" yarn deploy-storybook -- --dry-run --out=.out --packages packages
   artifacts:
     paths:
     - build/
@@ -43,7 +44,6 @@ Deploy:
     - "sed -i \"s|\\\"module\\\": \\\"src|\\\"module\\\": \\\"build|g\" packages/theme/package.json"
     - "sed -i \"s|\\\"main\\\": \\\"src|\\\"main\\\": \\\"build|g\" packages/utils/package.json"
     - "sed -i \"s|\\\"module\\\": \\\"src|\\\"module\\\": \\\"build|g\" packages/utils/package.json"
-    - CI="" yarn deploy-storybook -- --dry-run --out=.out --packages packages
     - TMPDIR=$(ssh suadm@192.168.13.46 "mktemp -d")
   script:
     - yarn make-oao-nexus
