@@ -1,19 +1,18 @@
-import React from 'react'
-import {storiesOf} from '@storybook/react'
-import theme, {ThemeProvider} from '@design-system/theme'
+import React from 'react';
 
-import Box from '../src/Box'
+import { Box } from '../src/Box';
 
-storiesOf(`Box`, module)
-  .addParameters({
-    component: Box,
-    parameters:{}
-  })
-  .add('Default', () => <Box bg={'primary'}>Test</Box>, {
-    info: {
-      text: `
-          По умолчанию без параметров иконка выводится в виде знака вопроса. 
-        `
-    }
+export default {
+    title: 'Design System|Box',
 
-  })
+    parameters: {
+        component: Box,
+    },
+};
+
+export const large = () => (
+    <div>
+        <Box bg={'primary'} color={'white'}>Text in the box</Box>
+    </div>
+);
+

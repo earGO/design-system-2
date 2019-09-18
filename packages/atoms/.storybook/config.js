@@ -1,27 +1,21 @@
-import {addParameters, configure, addDecorator} from '@storybook/react'
-import {create} from '@storybook/theming'
-import {withInfo} from '@storybook/addon-info'
+import React from 'react';
+import { configure, addDecorator } from '@storybook/react';
+import { withA11y } from '@storybook/addon-a11y';
 import {withThemesProvider} from 'storybook-addon-styled-component-theme'
 import theme from '@design-system/theme'
-import { DocsPage, DocsContainer } from '@storybook/addon-docs/blocks';
 
-addDecorator(withInfo)
+
+addDecorator(withA11y);
 addDecorator(withThemesProvider([theme]))
 
-const sb_theme = create({
-  base: 'light',
-  colorPrimary: '#0e0e0e',
-  colorSecondary: '#1EA7FD'
-})
-addParameters({
-  options: {sb_theme},
-  docs: ({ context }) => (
-      <DocsPage context={context} descriptionSlot={({ parameters }) => parameters.notes} />
-  ),
-})
+// automatically import all files ending in *.stories.js
+configure(
+  [
+    require.context('../src', true, /\.stories\.mdx$/),
+    require.context('../src', true, /\.stories\.js$/),
+      require.context('../stories', true, /\.stories\.js$/),
+      require.context('../intros', true, /\.stories\.mdx$/),
+  ],
+  module
+);
 
-const comps = require.context('../stories', true, /.stories.js$/)
-
-configure(() => {
-  comps.keys().forEach(filename => comps(filename))
-}, module)

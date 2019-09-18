@@ -38,7 +38,7 @@
     "status": "oao status",
     "remove-all": "oao remove-all",
     "reinstall": "oao clean && yarn",
-    "hard-reinstall": "rm -rf yarn.lock && yarn clean && yarn",
+    "reinstall-hard": "rm -rf yarn.lock && yarn clean && yarn",
     "deploy-storybook": "storybook-to-ghpages",
     "build-storybook": "build-storybook -s public",
     "build-styleguide": "yarn deploy-storybook -- --dry-run --out=.out --packages packages"
@@ -55,6 +55,7 @@
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "7.5.5",
+    "@mdx-js/loader": "^1.4.5",
     "@storybook/storybook-deployer": "^2.8.1",
     "@svgr/rollup": "^4.1.0",
     "babel-loader": "^8.0.5",

@@ -1,131 +1,40 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import './iconfonts/icon.css'
-import styled, {keyframes, css} from 'styled-components'
-import {Flex} from './index'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { icons } from './shared/icons';
 
-const sizes = {
-  0: ' md-14',
-  1: ' md-18',
-  2: ' md-24',
-  3: ' md-36',
-  4: ' md-48',
-  14: ' md-14',
-  18: ' md-18',
-  24: ' md-24',
-  36: ' md-36',
-  48: ' md-48'
-}
+const Svg = styled.svg`
+  display: ${props => (props.block ? 'block' : 'inline-block')};
+  vertical-align: middle;
 
-const wrapperSizes = {
-  0: 14,
-  1: 18,
-  2: 24,
-  3: 36,
-  4: 48,
-  14: 14,
-  18: 18,
-  24: 24,
-  36: 36,
-  48: 48
-}
+  shape-rendering: inherit;
+  transform: translate3d(0, 0, 0);
+`;
 
-const colors = {
-  primary: ' blue',
-  hover: ' lightBlue',
-  success: ' green',
-  warning: ' orange',
-  error: ' red',
-  border: ' semiLightGrey',
-  disabled: ' grey',
-  highlight: ' lightGrey',
-  onclick: ' darkBlue',
-  scrollbar: ' grey',
-  black: ' black',
-  white: ' white',
-  text: ' black'
-}
+const Path = styled.path`
+  fill: currentColor;
+`;
 
-// Create the keyframes
-const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-`
-const spinanimation = css`
-  animation: ${rotate} 2s linear infinite;
-`
-
-// Create the keyframes
-const rotateCCW = keyframes`
-  from {
-    transform: rotate(360deg);
-  }
-
-  to {
-    transform: rotate(0deg);
-  }
-`
-const spinanimationCCW = css`
-  animation: ${rotateCCW} 2s linear infinite;
-`
-
-const IconBordered = styled(Flex)`
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: ${props => props.size + 'px'};
-  width: ${props => props.size + 'px'};
-  ${props => props.spin && spinanimation};
-  ${props => props.spinCCW && spinanimationCCW};
-  user-select: none;
-`
-
-function Icon({name, size, color, ...props}) {
-  let nameForClass = 'material-icons '
-  let iconWrapperSize = 24
-  if (sizes[size] !== undefined) {
-    nameForClass = nameForClass + sizes[size]
-  } else {
-    nameForClass = nameForClass + 'md-18 '
-  }
-  if (colors[color] !== undefined) {
-    nameForClass = nameForClass + colors[color]
-  } else {
-    nameForClass = nameForClass + 'black '
-  }
-  if (props.hasOwnProperty('hidden')) {
-    nameForClass = nameForClass + ' hidden'
-  }
-  if (wrapperSizes[size] !== undefined) {
-    iconWrapperSize = wrapperSizes[size]
-  }
+/**
+ * An Icon is a piece of visual element, but we must ensure its accessibility while using it.
+ * It can have 2 purposes:
+ *
+ * - *decorative only*: for example, it illustrates a label next to it. We must ensure that it is ignored by screen readers, by setting `aria-hidden` attribute (ex: `<Icon icon="check" aria-hidden />`)
+ * - *non-decorative*: it means that it delivers information. For example, an icon as only child in a button. The meaning can be obvious visually, but it must have a proper text alternative via `aria-label` for screen readers. (ex: `<Icon icon="print" aria-label="Print this document" />`)
+ */
+export function Icon({ icon, block, ...props }) {
   return (
-    <IconBordered size={iconWrapperSize} {...props}>
-      <i className={`${nameForClass}`}>{name}</i>
-    </IconBordered>
-  )
+    <Svg viewBox="0 0 1024 1024" width="20px" height="20px" block={block} {...props}>
+      <Path d={icons[icon]} />
+    </Svg>
+  );
 }
-
-Icon.displayName = 'Icon'
 
 Icon.propTypes = {
-  name: PropTypes.string,
-  color: PropTypes.string,
-  size: PropTypes.number,
-  spin: PropTypes.bool
-}
+  icon: PropTypes.string.isRequired,
+  block: PropTypes.bool,
+};
 
 Icon.defaultProps = {
-  name: 'live_help',
-  size: 2,
-  color: 'text',
-  spin: false
-}
-
-/** @component */
-export default Icon
+  block: false,
+};
