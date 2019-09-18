@@ -13,7 +13,7 @@ const vertical = ({vertical}) =>
     top: '0.1em'
   }
 
-/** Используется для разделения информации линиями. */
+
 const DividerComponent = styled.div`
   position: relative;
   border: 0;
@@ -45,8 +45,9 @@ VerticalDivider.defaultProps = {
   mr: 3
 }
 
-/** @component */
-const Divider = ({vertical, ...rest}) => {
+/** Используется для разделения информации линиями. Цвет разделителя определён в дизайн-макете */
+
+export function Divider({vertical, ...rest}){
   if (vertical) return <VerticalDivider vertical={true} {...rest} />
   return <HorizontalDivider vertical={false} {...rest} />
 }

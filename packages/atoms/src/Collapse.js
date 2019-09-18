@@ -44,8 +44,8 @@ class Collapse extends React.Component {
             togglePanel: this.onPanelClick,
             // If controlled, props should be the source of truth.
             isOpen: this.props.activeKeys
-              ? this.props.activeKeys.includes(key)
-              : this.state.activeKeys.includes(key)
+                ? this.props.activeKeys.includes(key)
+                : this.state.activeKeys.includes(key)
           }
           return React.cloneElement(child, props)
         })
@@ -57,8 +57,8 @@ class Collapse extends React.Component {
           togglePanel: this.onPanelClick,
           // If controlled, props should be the source of truth.
           isOpen: this.props.activeKeys
-            ? this.props.activeKeys.includes(key)
-            : this.state.activeKeys.includes(key)
+              ? this.props.activeKeys.includes(key)
+              : this.state.activeKeys.includes(key)
         }
         return React.cloneElement(children, props)
       }

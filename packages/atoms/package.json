@@ -18,6 +18,7 @@
     "hex-rgb": "^4.1.0",
     "lodash": "^4.17.15",
     "material-icons-react": "^1.0.4",
+    "prop-types": "^15.7.2",
     "rc-form": "^2.4.8",
     "rc-trigger": "^2.6.5",
     "re-resizable": "^6.0.0",
