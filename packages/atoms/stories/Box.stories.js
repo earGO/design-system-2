@@ -6,17 +6,8 @@ import Box from '../src/Box'
 
 storiesOf(`Box`, module)
   .addParameters({
-    info: {
-      inline: true,
-      header: false,
-      styles: {
-        header: {
-          h1: {
-            color: 'red'
-          }
-        }
-      }
-    }
+    component: Box,
+    parameters:{}
   })
   .add('Default', () => <Box bg={'primary'}>Test</Box>, {
     info: {
@@ -24,4 +15,5 @@ storiesOf(`Box`, module)
           По умолчанию без параметров иконка выводится в виде знака вопроса. 
         `
     }
+
   })

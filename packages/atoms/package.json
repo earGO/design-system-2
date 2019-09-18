@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "storybook": "start-storybook -p 9009",
-    "build-storybook": "build-storybook",
+    "build-storybook": "build-storybook -c .storybook",
     "clean": "rm -rf node_modules dist build lib",
     "build": "yarn babelify",
     "babelify": "yarn clean && babel src --out-dir build && cp -a ./src/iconfonts ./build/iconfonts"
@@ -44,6 +44,11 @@
     "@storybook/addons": "^5.0.10",
     "@storybook/react": "^5.0.10",
     "@storybook/theming": "^5.0.10",
+    "@storybook/addon-a11y": "^5.2.0-beta.32",
+    "@storybook/addon-docs": "^5.2.0-beta.32",
+    "@storybook/addon-knobs": "^5.2.0-beta.32",
+    "@storybook/addon-storysource": "^5.2.0-beta.32",
+    "@storybook/source-loader": "^5.2.0-beta.32",
     "@testing-library/react": "^8.0.5",
     "cross-env": "5.0.5",
     "css-loader": "^3.1.0",

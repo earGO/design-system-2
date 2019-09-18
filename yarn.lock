@@ -1401,6 +1401,11 @@
   dependencies:
     "@hapi/hoek" "8.x.x"
 
+"@icons/material@^0.2.4":
+  version "0.2.4"
+  resolved "https://gitlab.ursip.ru/nexus/repository/npm/@icons/material/-/material-0.2.4.tgz#e90c9f71768b3736e76d7dd6783fc6c2afa88bc8"
+  integrity sha512-QPcGmICAPbGLGb6F/yNf/KzKqvFx8z5qx3D1yFqVAjoFmXK35EgyW+cJ57Te3CNsmzblwtzakLGFqHPqrfb4Tw==
+
 "@jest/console@^24.7.1", "@jest/console@^24.9.0":
   version "24.9.0"
   resolved "https://gitlab.ursip.ru/nexus/repository/npm/@jest/console/-/console-24.9.0.tgz#79b1bc06fb74a8cfb01cbdedf945584b1b9707f0"
@@ -2475,6 +2480,29 @@
   resolved "https://gitlab.ursip.ru/nexus/repository/npm/@sinonjs/text-encoding/-/text-encoding-0.7.1.tgz#8da5c6530915653f3a1f38fd5f101d8c3f8079c5"
   integrity sha512-+iTbntw2IZPb/anVDbypzfQa+ay64MW0Zo8aJ8gZPWMMK6/OubMVb6lUPMagqjOPnmtauXnFCACVl3O7ogjeqQ==
 
+"@storybook/addon-a11y@^5.2.0-beta.32":
+  version "5.2.0"
+  resolved "https://gitlab.ursip.ru/nexus/repository/npm/@storybook/addon-a11y/-/addon-a11y-5.2.0.tgz#76d625758f6a5c89e6ef36d2c86f96851cc90253"
+  integrity sha512-DdiH1N+yXFR+BHarMUK8lDtEnPla6ZPrthMnjYeYgaNVk44jaTHGdi6pf637mJjvvQKxKfSzMCPj98NU5mOi9Q==
+  dependencies:
+    "@storybook/addons" "5.2.0"
+    "@storybook/api" "5.2.0"
+    "@storybook/client-logger" "5.2.0"
+    "@storybook/components" "5.2.0"
+    "@storybook/core-events" "5.2.0"
+    "@storybook/theming" "5.2.0"
+    axe-core "^3.3.2"
+    common-tags "^1.8.0"
+    core-js "^3.0.1"
+    global "^4.3.2"
+    hoist-non-react-statics "^3.3.0"
+    memoizerific "^1.11.3"
+    react "^16.8.3"
+    react-redux "^7.0.2"
+    react-sizeme "^2.5.2"
+    redux "^4.0.1"
+    util-deprecate "^1.0.2"
+
 "@storybook/addon-actions@^5.0.10":
   version "5.1.11"
   resolved "https://gitlab.ursip.ru/nexus/repository/npm/@storybook/addon-actions/-/addon-actions-5.1.11.tgz#ebc299b9dfe476b5c65eb5d148c4b064f682ca08"
@@ -2539,6 +2567,29 @@
     react-lifecycles-compat "^3.0.4"
     util-deprecate "^1.0.2"
 
+"@storybook/addon-knobs@^5.2.0-beta.32":
+  version "5.2.0"
+  resolved "https://gitlab.ursip.ru/nexus/repository/npm/@storybook/addon-knobs/-/addon-knobs-5.2.0.tgz#976d3ede32b81548444aa3cc0adc7265ebefae94"
+  integrity sha512-FYU7geG9xZptW4qWRO9Tzzl8OZIh6/m+TZSy6FpFQCJDKY/bKA6Lww5FH1rFE9nyZwFpIO+cBs2kZTqVC/XxRA==
+  dependencies:
+    "@storybook/addons" "5.2.0"
+    "@storybook/api" "5.2.0"
+    "@storybook/client-api" "5.2.0"
+    "@storybook/components" "5.2.0"
+    "@storybook/core-events" "5.2.0"
+    "@storybook/theming" "5.2.0"
+    copy-to-clipboard "^3.0.8"
+    core-js "^3.0.1"
+    escape-html "^1.0.3"
+    fast-deep-equal "^2.0.1"
+    global "^4.3.2"
+    lodash "^4.17.11"
+    prop-types "^15.7.2"
+    qs "^6.6.0"
+    react-color "^2.17.0"
+    react-lifecycles-compat "^3.0.4"
+    react-select "^3.0.0"
+
 "@storybook/addon-links@^5.0.10":
   version "5.1.11"
   resolved "https://gitlab.ursip.ru/nexus/repository/npm/@storybook/addon-links/-/addon-links-5.1.11.tgz#3a245f30480d586094bdda8f4658c5d328ac39b9"
@@ -2570,6 +2621,25 @@
     markdown-to-jsx "^6.9.3"
     memoizerific "^1.11.3"
     prop-types "^15.7.2"
+    util-deprecate "^1.0.2"
+
+"@storybook/addon-storysource@^5.2.0-beta.32":
+  version "5.2.0"
+  resolved "https://gitlab.ursip.ru/nexus/repository/npm/@storybook/addon-storysource/-/addon-storysource-5.2.0.tgz#70f71557798c38454ddf56780bd861cece20d548"
+  integrity sha512-+yiPg5iChtWVcu+Chtysu8FTE+vw9vFzv8tp+ZlBjBHmUXPju+fy4CxPhF9vVvfxUht8I4ecPiyMfUNDlZme8w==
+  dependencies:
+    "@storybook/addons" "5.2.0"
+    "@storybook/components" "5.2.0"
+    "@storybook/router" "5.2.0"
+    "@storybook/source-loader" "5.2.0"
+    "@storybook/theming" "5.2.0"
+    core-js "^3.0.1"
+    estraverse "^4.2.0"
+    loader-utils "^1.2.3"
+    prettier "^1.16.4"
+    prop-types "^15.7.2"
+    react-syntax-highlighter "^8.0.1"
+    regenerator-runtime "^0.12.1"
     util-deprecate "^1.0.2"
 
 "@storybook/addons@5.1.11", "@storybook/addons@^5.0.10":
@@ -2654,6 +2724,17 @@
     global "^4.3.2"
     telejson "^2.2.1"
 
+"@storybook/channel-postmessage@5.2.0":
+  version "5.2.0"
+  resolved "https://gitlab.ursip.ru/nexus/repository/npm/@storybook/channel-postmessage/-/channel-postmessage-5.2.0.tgz#5e9e099c0f4f180c5099424a2686258e2c60a086"
+  integrity sha512-2D2ZMKKe4JocYMZgedkZdO5T2+NQLUn+47EEeKhAI1ikjy1lBHFzks1YtQQJ/sRt2ATZu/FO7+3YSUA+xSrTRA==
+  dependencies:
+    "@storybook/channels" "5.2.0"
+    "@storybook/client-logger" "5.2.0"
+    core-js "^3.0.1"
+    global "^4.3.2"
+    telejson "^2.2.2"
+
 "@storybook/channels@5.1.11":
   version "5.1.11"
   resolved "https://gitlab.ursip.ru/nexus/repository/npm/@storybook/channels/-/channels-5.1.11.tgz#77ddf9d777891f975ac10095772c840fed4c4620"
@@ -2685,6 +2766,27 @@
     lodash "^4.17.11"
     memoizerific "^1.11.3"
     qs "^6.6.0"
+
+"@storybook/client-api@5.2.0":
+  version "5.2.0"
+  resolved "https://gitlab.ursip.ru/nexus/repository/npm/@storybook/client-api/-/client-api-5.2.0.tgz#3f21fa5a260e50b11d115745d65ef11d7ff0f7bf"
+  integrity sha512-s9hTV9vHYeF6Fg3R4zTNNYcGEjX4iPSBtFjse/Bk1HaH6WbjsA6bY1NPO1i2CBzRngHzX+4yXFx3hGLVt/X1rg==
+  dependencies:
+    "@storybook/addons" "5.2.0"
+    "@storybook/channel-postmessage" "5.2.0"
+    "@storybook/channels" "5.2.0"
+    "@storybook/client-logger" "5.2.0"
+    "@storybook/core-events" "5.2.0"
+    "@storybook/router" "5.2.0"
+    common-tags "^1.8.0"
+    core-js "^3.0.1"
+    eventemitter3 "^4.0.0"
+    global "^4.3.2"
+    is-plain-object "^3.0.0"
+    lodash "^4.17.11"
+    memoizerific "^1.11.3"
+    qs "^6.6.0"
+    util-deprecate "^1.0.2"
 
 "@storybook/client-logger@5.1.11":
   version "5.1.11"
@@ -2896,7 +2998,7 @@
     memoizerific "^1.11.3"
     qs "^6.6.0"
 
-"@storybook/source-loader@5.2.0":
+"@storybook/source-loader@5.2.0", "@storybook/source-loader@^5.2.0-beta.32":
   version "5.2.0"
   resolved "https://gitlab.ursip.ru/nexus/repository/npm/@storybook/source-loader/-/source-loader-5.2.0.tgz#3ea4daf3154464fd509a3a1bd23dc391b194c2e3"
   integrity sha512-bX9ihc/JgJW6xsSwz780+xcQGZD4WuevMm4TgjBmEjN7HUAbfgALi53qR3kj4gKgaF/siU9DSIYsKuBj0HAn2Q==
@@ -4252,6 +4354,11 @@ aws4@^1.8.0:
   resolved "https://gitlab.ursip.ru/nexus/repository/npm/aws4/-/aws4-1.8.0.tgz#f0e003d9ca9e7f59c7a508945d7b2ef9a04a542f"
   integrity sha512-ReZxvNHIOv88FlT7rxcXIIC0fPt4KZqZbOlivyWtXLt8ESx84zd3kMC6iK5jVeS2qt+g7ftS7ye4fi06X5rtRQ==
 
+axe-core@^3.3.2:
+  version "3.3.2"
+  resolved "https://gitlab.ursip.ru/nexus/repository/npm/axe-core/-/axe-core-3.3.2.tgz#7baf3c55a5cf1621534a2c38735f5a1bf2f7e1a8"
+  integrity sha512-lRdxsRt7yNhqpcXQk1ao1BL73OZDzmFCWOG0mC4tGR/r14ohH2payjHwCMQjHGbBKm924eDlmG7utAGHiX/A6g==
+
 axobject-query@^2.0.2:
   version "2.0.2"
   resolved "https://gitlab.ursip.ru/nexus/repository/npm/axobject-query/-/axobject-query-2.0.2.tgz#ea187abe5b9002b377f925d8bf7d1c561adf38f9"
@@ -4882,6 +4989,11 @@ base@^0.11.1:
     isobject "^3.0.1"
     mixin-deep "^1.2.0"
     pascalcase "^0.1.1"
+
+batch-processor@^1.0.0:
+  version "1.0.0"
+  resolved "https://gitlab.ursip.ru/nexus/repository/npm/batch-processor/-/batch-processor-1.0.0.tgz#75c95c32b748e0850d10c2b168f6bdbe9891ace8"
+  integrity sha1-dclcMrdI4IUNEMKxaPa9vpiRrOg=
 
 batch@0.6.1:
   version "0.6.1"
@@ -7203,6 +7315,13 @@ elegant-spinner@^1.0.1:
   resolved "https://gitlab.ursip.ru/nexus/repository/npm/elegant-spinner/-/elegant-spinner-1.0.1.tgz#db043521c95d7e303fd8f345bedc3349cfb0729e"
   integrity sha1-2wQ1IcldfjA/2PNFvtwzSc+wcp4=
 
+element-resize-detector@^1.1.15:
+  version "1.1.15"
+  resolved "https://gitlab.ursip.ru/nexus/repository/npm/element-resize-detector/-/element-resize-detector-1.1.15.tgz#48eba1a2eaa26969a4c998d972171128c971d8d2"
+  integrity sha512-16/5avDegXlUxytGgaumhjyQoM6hpp5j3+L79sYq5hlXfTNRy5WMMuTVWkZU3egp/CokCmTmvf18P3KeB57Iog==
+  dependencies:
+    batch-processor "^1.0.0"
+
 element-resize-event@^3.0.2:
   version "3.0.3"
   resolved "https://gitlab.ursip.ru/nexus/repository/npm/element-resize-event/-/element-resize-event-3.0.3.tgz#3f59facef6b8f23fbd678a5f364ee5723af98a2a"
@@ -7429,7 +7548,7 @@ es6-shim@^0.35.5:
   resolved "https://gitlab.ursip.ru/nexus/repository/npm/es6-shim/-/es6-shim-0.35.5.tgz#46f59dc0a84a1c5029e8ff1166ca0a902077a9ab"
   integrity sha512-E9kK/bjtCQRpN1K28Xh4BlmP8egvZBGJJ+9GtnzOwt7mdqtrjHFuVGr7QJfdjBIKqrlU5duPf3pCBoDrkjVYFg==
 
-escape-html@~1.0.3:
+escape-html@^1.0.3, escape-html@~1.0.3:
   version "1.0.3"
   resolved "https://gitlab.ursip.ru/nexus/repository/npm/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
   integrity sha1-Aljq5NPQwJdN4cFpGI7wBR0dGYg=
@@ -7672,6 +7791,11 @@ eventemitter3@^3.0.0, eventemitter3@^3.1.0:
   version "3.1.2"
   resolved "https://gitlab.ursip.ru/nexus/repository/npm/eventemitter3/-/eventemitter3-3.1.2.tgz#2d3d48f9c346698fce83a85d7d664e98535df6e7"
   integrity sha512-tvtQIeLVHjDkJYnzf2dgVMxfuSGJeM/7UCG17TT4EumTfNtF+0nebF/4zWOIkCreAbtNqhGEboB6BWrwqNaw4Q==
+
+eventemitter3@^4.0.0:
+  version "4.0.0"
+  resolved "https://gitlab.ursip.ru/nexus/repository/npm/eventemitter3/-/eventemitter3-4.0.0.tgz#d65176163887ee59f386d64c82610b696a4a74eb"
+  integrity sha512-qerSRB0p+UDEssxTtm6EDKcE7W4OaoisfIMl4CngyEhjpYglocpNg6UEqCvemdGhosAsg4sO2dXJOdyBifPGCg==
 
 eventlistener@0.0.1:
   version "0.0.1"
@@ -11286,7 +11410,7 @@ lodash.uniq@4.5.0, lodash.uniq@^4.5.0:
   resolved "https://gitlab.ursip.ru/nexus/repository/npm/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
-"lodash@>=3.5 <5", lodash@^4.15.0, lodash@^4.16.5, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.1:
+"lodash@>=3.5 <5", lodash@^4.0.1, lodash@^4.15.0, lodash@^4.16.5, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.1:
   version "4.17.15"
   resolved "https://gitlab.ursip.ru/nexus/repository/npm/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
@@ -11522,6 +11646,11 @@ marksy@^7.0.0:
     babel-standalone "^6.26.0"
     he "^1.1.1"
     marked "^0.6.2"
+
+material-colors@^1.2.1:
+  version "1.2.6"
+  resolved "https://gitlab.ursip.ru/nexus/repository/npm/material-colors/-/material-colors-1.2.6.tgz#6d1958871126992ceecc72f4bcc4d8f010865f46"
+  integrity sha512-6qE4B9deFBIa9YSpOc9O0Sgc43zTeVYbgDT5veRKSlB2+ZuHNoVVxA1L/ckMUayV9Ay9y7Z/SZCLcGteW9i7bg==
 
 material-icons-react@^1.0.4:
   version "1.0.4"
@@ -14964,6 +15093,18 @@ react-clientside-effect@^1.2.0:
   dependencies:
     "@babel/runtime" "^7.0.0"
 
+react-color@^2.17.0:
+  version "2.17.3"
+  resolved "https://gitlab.ursip.ru/nexus/repository/npm/react-color/-/react-color-2.17.3.tgz#b8556d744f95193468c7061d2aa19180118d4a48"
+  integrity sha512-1dtO8LqAVotPIChlmo6kLtFS1FP89ll8/OiA8EcFRDR+ntcK+0ukJgByuIQHRtzvigf26dV5HklnxDIvhON9VQ==
+  dependencies:
+    "@icons/material" "^0.2.4"
+    lodash "^4.17.11"
+    material-colors "^1.2.1"
+    prop-types "^15.5.10"
+    reactcss "^1.2.0"
+    tinycolor2 "^1.4.1"
+
 react-custom-scrollbars@^4.2.1:
   version "4.2.1"
   resolved "https://gitlab.ursip.ru/nexus/repository/npm/react-custom-scrollbars/-/react-custom-scrollbars-4.2.1.tgz#830fd9502927e97e8a78c2086813899b2a8b66db"
@@ -15183,7 +15324,7 @@ react-popper@^1.3.3:
     typed-styles "^0.0.7"
     warning "^4.0.2"
 
-react-redux@^7.1.0:
+react-redux@^7.0.2, react-redux@^7.1.0:
   version "7.1.1"
   resolved "https://gitlab.ursip.ru/nexus/repository/npm/react-redux/-/react-redux-7.1.1.tgz#ce6eee1b734a7a76e0788b3309bf78ff6b34fa0a"
   integrity sha512-QsW0vcmVVdNQzEkrgzh2W3Ksvr8cqpAv5FhEk7tNEft+5pp7rXxAudTz3VOPawRkLIepItpkEIyLcN/VVXzjTg==
@@ -15206,7 +15347,7 @@ react-resize-detector@^4.0.5:
     raf-schd "^4.0.0"
     resize-observer-polyfill "^1.5.1"
 
-react-select@3.0.4:
+react-select@3.0.4, react-select@^3.0.0:
   version "3.0.4"
   resolved "https://gitlab.ursip.ru/nexus/repository/npm/react-select/-/react-select-3.0.4.tgz#16bde37c24fd4f6444914d4681e78f15ffbc86d3"
   integrity sha512-fbVISKa/lSUlLsltuatfUiKcWCNvdLXxFFyrzVQCBUsjxJZH/m7UMPdw/ywmRixAmwXAP++MdbNNZypOsiDEfA==
@@ -15226,6 +15367,16 @@ react-simple-code-editor@^0.9.7:
   version "0.9.14"
   resolved "https://gitlab.ursip.ru/nexus/repository/npm/react-simple-code-editor/-/react-simple-code-editor-0.9.14.tgz#5b8fdc36a975cbf02fdafa2597398d8e212afebc"
   integrity sha512-doNaIIt4w7QIiB6ysWHMtYL4M3xOGPvZJH8vGq3W/hGk43pn25RDA27IS8GkbfhA1eLX72CWDhuC7KmDKax13g==
+
+react-sizeme@^2.5.2:
+  version "2.6.7"
+  resolved "https://gitlab.ursip.ru/nexus/repository/npm/react-sizeme/-/react-sizeme-2.6.7.tgz#231339ce8821ac2c26424c791e0027f89dae3e90"
+  integrity sha512-xCjPoBP5jmeW58TxIkcviMZqabZis7tTvDFWf0/Wa5XCgVWQTIe74NQBes2N1Kmp64GRLkpm60BaP0kk+v8aCQ==
+  dependencies:
+    element-resize-detector "^1.1.15"
+    invariant "^2.2.4"
+    shallowequal "^1.1.0"
+    throttle-debounce "^2.1.0"
 
 react-slick@~0.25.2:
   version "0.25.2"
@@ -15377,6 +15528,13 @@ react@^16.8.3, react@^16.8.6, react@^16.9.0:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.2"
+
+reactcss@^1.2.0:
+  version "1.2.3"
+  resolved "https://gitlab.ursip.ru/nexus/repository/npm/reactcss/-/reactcss-1.2.3.tgz#c00013875e557b1cf0dfd9a368a1c3dab3b548dd"
+  integrity sha512-KiwVUcFu1RErkI97ywr8nvx8dNOpT03rbnma0SSalTYjkrPYaEajR4a/MRt6DZ46K6arDRbWMNHF+xH7G7n/8A==
+  dependencies:
+    lodash "^4.0.1"
 
 read-cmd-shim@^1.0.1:
   version "1.0.4"
@@ -15600,6 +15758,14 @@ redux-mock-store@^1.5.3:
   integrity sha512-ryhkkb/4D4CUGpAV2ln1GOY/uh51aczjcRz9k2L2bPx/Xja3c5pSGJJPyR25GNVRXtKIExScdAgFdiXp68GmJA==
   dependencies:
     lodash.isplainobject "^4.0.6"
+
+redux@^4.0.1:
+  version "4.0.4"
+  resolved "https://gitlab.ursip.ru/nexus/repository/npm/redux/-/redux-4.0.4.tgz#4ee1aeb164b63d6a1bcc57ae4aa0b6e6fa7a3796"
+  integrity sha512-vKv4WdiJxOWKxK0yRoaK3Y4pxxB0ilzVx6dszU2W8wLxlb2yikRph4iV/ymtdJ6ZxpBLFbyrxklnT5yBbQSl3Q==
+  dependencies:
+    loose-envify "^1.4.0"
+    symbol-observable "^1.2.0"
 
 reflect.ownkeys@^0.2.0:
   version "0.2.0"
@@ -17386,7 +17552,7 @@ svgo@^1.0.0, svgo@^1.2.2:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
-symbol-observable@^1.0.4, symbol-observable@^1.1.0:
+symbol-observable@^1.0.4, symbol-observable@^1.1.0, symbol-observable@^1.2.0:
   version "1.2.0"
   resolved "https://gitlab.ursip.ru/nexus/repository/npm/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
   integrity sha512-e900nM8RRtGhlV36KGEU9k65K3mPb1WV70OdjfxlG2EAuM1noi/E/BaW/uMhL7bPEssK8QV57vN3esixjUvcXQ==
@@ -17563,6 +17729,11 @@ throat@^4.0.0:
   version "4.1.0"
   resolved "https://gitlab.ursip.ru/nexus/repository/npm/throat/-/throat-4.1.0.tgz#89037cbc92c56ab18926e6ba4cbb200e15672a6a"
   integrity sha1-iQN8vJLFarGJJua6TLsgDhVnKmo=
+
+throttle-debounce@^2.1.0:
+  version "2.1.0"
+  resolved "https://gitlab.ursip.ru/nexus/repository/npm/throttle-debounce/-/throttle-debounce-2.1.0.tgz#257e648f0a56bd9e54fe0f132c4ab8611df4e1d5"
+  integrity sha512-AOvyNahXQuU7NN+VVvOOX+uW6FPaWdAOdRP5HfwYxAfCzXTFKRMoIMk+n+po318+ktcChx+F1Dd91G3YHeMKyg==
 
 through2@^2.0.0, through2@^2.0.2:
   version "2.0.5"

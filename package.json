@@ -40,7 +40,8 @@
     "reinstall": "oao clean && yarn",
     "hard-reinstall": "rm -rf yarn.lock && yarn clean && yarn",
     "deploy-storybook": "storybook-to-ghpages",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "build-styleguide": "yarn deploy-storybook -- --dry-run --out=.out --packages packages"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",

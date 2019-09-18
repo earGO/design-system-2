@@ -39,7 +39,7 @@ const CardBox = styled(Box)`
   ${borderRadius};
 `
 
-function Card({children, ...props}) {
+export function Card({children, ...props}) {
   return <CardBox {...props}>{children}</CardBox>
 }
 

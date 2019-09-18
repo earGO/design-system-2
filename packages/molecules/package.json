@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "storybook": "start-storybook -p 9029",
-    "build-storybook": "build-storybook",
+    "build-storybook": "build-storybook -c .storybook",
     "clean": "rm -rf node_modules dist build lib",
     "build": "yarn babelify",
     "babelify": "yarn clean && babel src --out-dir build"
