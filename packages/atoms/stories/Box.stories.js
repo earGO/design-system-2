@@ -18,11 +18,33 @@ export const withWidth = () => (
         <Box bg={'primary'} color={'white'} width={1/2}>Text in the box</Box>
 );
 
+withWidth.story= {
+    parameters: {
+        info: {
+            text: `
+          Компонент принимает на вход параметр width в пикселях (только число), или в долях для установки ширины по сетке
+        `
+        },
+    },
+};
+
 export const paddingAndMarginAndGreen = () => (
     <Box width={1/2} bg="success" color="white" p={3} m={2}>
         Box
     </Box>
 );
+
+paddingAndMarginAndGreen.story= {
+    parameters: {
+        info: {
+            text: `
+          Компонент принимает на вход ряд параметров (см. выше таблицу), например padding и margin.
+          
+          Значения выбираются из массива theme.space
+        `
+        },
+    },
+};
 
 export const responsive = ()=>{
     return (
@@ -42,11 +64,9 @@ responsive.story= {
     parameters: {
         info: {
             text: `
-          description or documentation about my component, supports markdown
+          Для адаптивной верстки параметры в качестве значения могут принимать массивы, в котором каждый индекс соответсвует брейкпойнту из настроек темы.
 
-          ~~~js
-          <Button>Click Here</Button>
-          ~~~
+          Изменяйте ширину экрана для проверки работы брейкпоинтов. 
         `,
         },
     },

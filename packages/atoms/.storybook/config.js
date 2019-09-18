@@ -26,8 +26,6 @@ addDecorator(withInfo( {
 addDecorator(withA11y);
 addDecorator(withThemesProvider([theme]))
 
-
-
 configure(
   [
     require.context('../src', true, /\.stories\.mdx$/),
