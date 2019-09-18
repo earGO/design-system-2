@@ -39,7 +39,7 @@
     "remove-all": "oao remove-all",
     "reinstall": "oao clean && yarn",
     "hard-reinstall": "rm -rf yarn.lock && yarn clean && yarn",
-    "deploy-storybook": "storybook-to-aws-s3",
+    "deploy-storybook": "storybook-to-ghpages",
     "build-storybook": "build-storybook -s public"
   },
   "devDependencies": {
