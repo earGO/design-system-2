@@ -4,11 +4,7 @@ import PropTypes from 'prop-types'
 import Box from './Box'
 import {top, bottom, left, right, zIndex} from 'styled-system'
 
-/**
- * Применяется для абсолютного позиционирования.
- * Обычно используется в качестве потомка для компонента `<Relative />`.
- * Наследует `<Box />`  и расширяет его параметрами **top, right, bottom, left, zIndex**.
- * */
+
 
 const AbsoluteWrapper = styled(Box)`
   position: absolute;
@@ -19,6 +15,13 @@ const AbsoluteWrapper = styled(Box)`
   ${left}
   ${zIndex};
 `
+/**
+ * Применяется для абсолютного позиционирования.
+ *
+ * Обычно используется в качестве потомка для компонента `<Relative />`.
+ *
+ * Наследует `<Box />` , устанавливает position:absolute, и расширяет его параметрами **top, right, bottom, left, zIndex**.
+ * */
 
 export function Absolute({...props}){
   return(

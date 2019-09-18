@@ -19,6 +19,7 @@
     "lodash": "^4.17.15",
     "material-icons-react": "^1.0.4",
     "rc-form": "^2.4.8",
+    "rc-trigger": "^2.6.5",
     "re-resizable": "^6.0.0",
     "react": "^16.8.6",
     "react-custom-scrollbars": "^4.2.1",

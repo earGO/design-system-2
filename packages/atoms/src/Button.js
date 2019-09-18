@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import {space} from 'styled-system'
@@ -129,10 +130,7 @@ const type = props => {
   }
 }
 
-/**
- * Используется для инициации каких-либо действий или процессов.
- */
-const Button = styled.button`
+const ButtonWrapper = styled.button`
   -webkit-font-smoothing: antialiased;
   display: inline-block;
   vertical-align: middle;
@@ -158,6 +156,15 @@ const Button = styled.button`
   ${type}
   ${shapeCircle};
 `
+
+/**
+ * Используется для инициации каких-либо действий или процессов.
+ * Это стилизованный HTML-тэг `<button/>`. Внутри формы компонент будет вести себя
+ * именно как `<button/>`, а не как стилизованный `<div/>`.
+ */
+export function Button ({...props}){
+  return <ButtonWrapper {...props}/>
+}
 
 Button.propTypes = {
   /** Вид кнопки */

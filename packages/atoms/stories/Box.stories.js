@@ -11,7 +11,7 @@ export default {
 };
 
 export const simple = () => (
-        <Box bg={'primary'} color={'white'}>Text in the box</Box>
+    <Box bg={'primary'} color={'white'}>Text in the box</Box>
 );
 
 export const withWidth = () => (
