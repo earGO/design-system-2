@@ -82,7 +82,7 @@ const RadioContainer = styled(Flex)`
   align-content: center;
 `
 
-class Radio extends Component {
+export class Radio extends Component {
   constructor(props) {
     super(props)
     this.state = {

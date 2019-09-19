@@ -1,13 +1,10 @@
+import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import {top, bottom, left, right, zIndex} from 'styled-system'
 import Box from './Box'
 
-/**
- * Применяется для относительного позиционирования.
- * Наследует `<Box />`  и расширяет его параметрами **top, right, bottom, left, zIndex**.
- * */
-const Relative = styled(Box)`
+const RelativeWrapper = styled(Box)`
   position: relative;
 
   ${top} 
@@ -16,6 +13,14 @@ const Relative = styled(Box)`
   ${left} 
   ${zIndex};
 `
+/**
+ * Применяется для относительного позиционирования.
+ * Наследует `<Box />`  и расширяет его параметрами **top, right, bottom, left, zIndex**.
+ * */
+
+export function Relative(props) {
+  return <RelativeWrapper {...props} />
+}
 
 Relative.propTypes = {
   /** Смещение сверху */
