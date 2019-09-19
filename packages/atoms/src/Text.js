@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import {fontSize, space, color} from 'styled-system'
@@ -22,25 +23,26 @@ const truncated = ({truncated}) =>
 /**
  * Используется для вывода любой текстовой информации.
  */
-const Text = styled.div`
+const TextComponent = styled.div`
   color: ${props => props.theme.colors.text};
-
-  ${italic} 
-  ${fontSize} 
-  ${space} 
-  ${truncated}
-  ${color}
-  ${caps}
-  ${regular}
-  ${bold} 
-  ${align}
-  ${inline}
-  ${strike};
+  display: inherit;
+  width: inherit;
+  white-space: ${props => (props.truncated ? 'nowrap' : 'inherit')};
+  overflow: ${props => (props.truncated ? 'hidden' : 'inherit')};
+  text-overflow: ${props => (props.truncated ? 'ellipsis' : 'inherit')}
+    ${italic} ${fontSize} ${space} ${color} ${caps} ${regular} ${bold} ${align}
+    ${inline} ${strike};
 `
 
 // Text.span = Text.withComponent('span')
 // Text.p = Text.withComponent('p')
 // Text.s = Text.withComponent('s')
+/**
+ * Используется для вывода любой текстовой информации.
+ */
+export function Text(props) {
+  return <TextComponent {...props} />
+}
 
 Text.displayName = 'Text'
 

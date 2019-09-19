@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Heading from "./Heading";
+import Heading from './Heading'
 
 /** Стандартный  error boundary из документации к Реакту.
  *
@@ -25,7 +25,9 @@ export class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       // Можно отрендерить запасной UI произвольного вида
-      return <Heading {...this.props.headingProps}>{this.props.message}</Heading>
+      return (
+        <Heading {...this.props.headingProps}>{this.props.message}</Heading>
+      )
     }
 
     return this.props.children
@@ -34,18 +36,18 @@ export class ErrorBoundary extends React.Component {
 
 ErrorBoundary.propTypes = {
   /** Обьект с пропсами для Heading */
-  headingProps:PropTypes.object,
+  headingProps: PropTypes.object,
   /** Содержимое сообщения об ошибке */
-  message:PropTypes.string
+  message: PropTypes.string
 }
 
 ErrorBoundary.defaultProps = {
   /** Обьект с пропсами для Heading */
-  headingProps:{
-    tag:'h2'
+  headingProps: {
+    tag: 'h2'
   },
   /** Содержимое сообщения об ошибке */
-  message:'Что-то пошло не так'
+  message: 'Что-то пошло не так'
 }
 
 export default ErrorBoundary

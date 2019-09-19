@@ -44,7 +44,7 @@ export const InputWrapper = styled(Relative)({
 })
 
 /** Получение данных от пользователя.*/
-class Textarea extends Component {
+export class Textarea extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -106,7 +106,9 @@ Textarea.propTypes = {
     propTypes.array
   ]),
   /** Стили враппера */
-  wrapperStyle: propTypes.object
+  wrapperStyle: propTypes.object,
+  /** Управляет возможностью пользователя изменять размер текстового поля */
+  resize: propTypes.oneOf(['none', 'both', 'horizontal', 'vertical', 'inherit'])
 }
 
 Textarea.defaultProps = {
