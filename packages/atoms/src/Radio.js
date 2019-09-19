@@ -93,7 +93,6 @@ class Radio extends Component {
   handleChange = event => {
     const {checked} = event.target
     this.setState({checked})
-    console.log('Radio handleChange', {'this.props': this.props})
     this.props.onChange && this.props.onChange(checked, this.props.value)
   }
 
