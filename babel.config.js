@@ -17,5 +17,10 @@ module.exports = {
       }
     ],
     '@babel/preset-react'
-  ]
+  ],
+  env: {
+    test: {
+      plugins: ['require-context-hook'],
+    },
+  },
 }

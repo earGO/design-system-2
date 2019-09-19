@@ -57,7 +57,22 @@ module.exports = async ({config}) => {
     ]
   })
 
+
+  config.module.rules.push(
+      {
+        test: /\.mdx?$/,
+        use: [
+          'babel-loader','@mdx-js/loader'
+        ],
+          include: [
+              path.resolve(__dirname, '../../../node_modules/*'),
+              path.resolve(__dirname, '../')
+          ]
+      }
+  )
+
   config.resolve.extensions.push('.less')
+    config.resolve.extensions.push('.mdx')
 
   if (!config.resolve.modules) {
     config.resolve.modules = []

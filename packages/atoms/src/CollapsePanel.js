@@ -124,7 +124,7 @@ const PanelHeader = ({
 )
 
 /** Отвечает за вывод содержимого */
-class CollapsePanel extends React.Component {
+export class CollapsePanel extends React.Component {
   constructor(props) {
     super(props)
     this.state = {

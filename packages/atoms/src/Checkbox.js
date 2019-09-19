@@ -56,7 +56,7 @@ const CheckboxInput = styled.input.attrs({type: 'checkbox'})`
   width: 1px;
 `
 
-export const StyledCheckbox = styled(Flex)`
+const StyledCheckbox = styled(Flex)`
   justify-content: center;
   align-items: center;
   border-radius: ${themeGet('radii[0]', 4)}px;
@@ -71,7 +71,7 @@ export const StyledCheckbox = styled(Flex)`
 `
 
 const Label = styled.label`
-  //display: inline-flex;
+  display: inline-flex;
   align-items: center;
   cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
   ${space}
@@ -83,7 +83,7 @@ const CheckboxContainer = styled(Flex)`
 `
 
 /** Используется для выбора одного или нескольких значений из представленных вариантов */
-class Checkbox extends Component {
+export class Checkbox extends Component {
   constructor(props) {
     super(props)
     this.state = {

@@ -1,38 +1,53 @@
-import React from 'react'
-import {storiesOf} from '@storybook/react'
-import styled from 'styled-components'
-import {Box, Text} from '../src'
-import FlexContainerBottomDivider from '../src/FlexContainerBottomDivider'
+import React from 'react';
 
-const FlexShildWarning = () => {
-  return (
-    <Box bg={'warning'} p={1} m={3}>
-      <Text>Test FlexContainerBottomDivider component</Text>
-    </Box>
-  )
-}
-const FlexShildPrimary = () => {
-  return (
-    <Box bg={'primary'} p={1} m={3}>
-      <Text>Test FlexContainerBottomDivider component</Text>
-    </Box>
-  )
-}
+import {FlexContainerBottomDivider} from '../src/FlexContainerBottomDivider';
 
-storiesOf(`FlexContainerBottomDivider`, module).add(
-  'Default',
-  () => (
-    <FlexContainerBottomDivider justifyContent={'space-between'}>
-      <FlexShildPrimary />
-      <FlexShildWarning />
-      <FlexShildPrimary />
+import Box from "../src/Box";
+import {Flex} from "../src/Flex";
+
+
+
+export default {
+    title: 'Design System|FlexContainerBottomDivider',
+    parameters: {
+        component: FlexContainerBottomDivider,
+    },
+};
+
+export const basic = () => (
+    <FlexContainerBottomDivider>
+        <Box bg="blue" width={1 / 2} p={2} m={4}>
+            Flex
+        </Box>
+        <Box bg="red" width={1 / 2} p={2} m={4}>
+            Box
+        </Box>
     </FlexContainerBottomDivider>
-  ),
-  {
-    info: {
-      text: `
-          Флекс-бокс с границей вдоль нижнего края.
+);
+
+export const flexProps = () => (
+    <FlexContainerBottomDivider justifyContent={'flex-end'} width={800}>
+        <Box bg="blue" width={80} p={2} m={2}>
+            Flex
+        </Box>
+        <Box bg="red" width={80} p={2} m={2}>
+            with
+        </Box>
+        <Box bg="yellow" width={80} p={2} m={2}>
+            bottom
+        </Box>
+        <Box bg="green" width={80} p={2} m={2}>
+            divider
+        </Box>
+    </FlexContainerBottomDivider>
+);
+
+flexProps.story = {
+    parameters: {
+        info: {
+            text: `
+          Компонент принимает все пропсы \`<Flex/>\`, например **justifyContent** и **width**
         `
-    }
-  }
-)
+        },
+    },
+};

@@ -81,8 +81,8 @@ const Adornment = styled(Absolute)({
   display: 'flex'
 })
 
-/** Получение данных от пользователя.*/
-class Input extends Component {
+/** Получение данных от пользователя. */
+export class Input extends Component {
   constructor(props) {
     super(props)
     this.state = {
