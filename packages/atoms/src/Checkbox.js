@@ -56,7 +56,7 @@ const CheckboxInput = styled.input.attrs({type: 'checkbox'})`
   width: 1px;
 `
 
-const StyledCheckbox = styled(Flex)`
+export const StyledCheckbox = styled(Flex)`
   justify-content: center;
   align-items: center;
   border-radius: ${themeGet('radii[0]', 4)}px;

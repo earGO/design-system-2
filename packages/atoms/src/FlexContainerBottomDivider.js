@@ -9,7 +9,7 @@ const FlexContainer = styled(Flex)`
   width: 100%;
   border-bottom-style: solid;
   border-bottom-width: 1px;
-  border-color: ${props => props.theme.colors[props.dividercolor]};
+  border-color: ${props => props.theme.colors.border};
 `
 
 /** Стандартный `<Flex/>`, дополненный нижним разделителем для более точной верстки
@@ -17,20 +17,12 @@ const FlexContainer = styled(Flex)`
  *
  * Введён как отдельный компонент ввиду неточной вёрстки с применением `<Divider/>` */
 
-export function FlexContainerBottomDivider({children, dividercolor, ...props}) {
-  return (
-    <FlexContainer dividercolor={dividercolor} {...props}>
-      {children}
-    </FlexContainer>
-  )
+export function FlexContainerBottomDivider({children, ...props}) {
+  return <FlexContainer {...props}>{children}</FlexContainer>
 }
 
-FlexContainerBottomDivider.propTypes = {
-  dividercolor: PropTypes.string
-}
+FlexContainerBottomDivider.propTypes = {}
 
-FlexContainerBottomDivider.defaultProps = {
-  dividercolor: 'border'
-}
+FlexContainerBottomDivider.defaultProps = {}
 
 export default FlexContainerBottomDivider

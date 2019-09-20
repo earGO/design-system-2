@@ -16,6 +16,7 @@ addAliases(mediaQueries, aliases)
 export {ThemeProvider, icons, colors}
 
 export default {
+  name: 'ursip-theme',
   colors,
   breakpoints,
   mediaQueries,
