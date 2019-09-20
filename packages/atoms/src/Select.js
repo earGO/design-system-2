@@ -79,7 +79,7 @@ const customStyles = {
       '&:hover': {
         borderColor: systemTheme.colors.black
       },
-      borderColor: 'transparent',
+      borderColor: systemTheme.colors.darkGrey,
       backgroundColor: systemTheme.colors.lightGrey
     }
   },

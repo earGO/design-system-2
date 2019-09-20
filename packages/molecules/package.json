@@ -13,6 +13,7 @@
     "babelify": "yarn clean && babel src --out-dir build && cp -a ./src/iconfonts ./build/iconfonts"
   },
   "devDependencies": {
+    "@design-system/atoms": "^2.2.0",
     "@design-system/theme": "^2.2.0",
     "@mdx-js/loader": "^1.4.5",
     "@mdx-js/mdx": "^1.4.5",
@@ -36,5 +37,8 @@
     "storybook-styled-components": "^1.1.4",
     "style-loader": "^0.23.1",
     "styled-normalize": "^8.0.6"
+  },
+  "dependencies": {
+    "prop-types": "15.7.2"
   }
 }

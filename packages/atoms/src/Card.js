@@ -27,10 +27,10 @@ const boxBorder = props => ({
   border: `1px solid ${props.theme.colors.border}`
 })
 
-
 const CardBox = styled(Box)`
   overflow: hidden;
   position: relative;
+  background-color: #1e88e5;
 
   ${boxShadow} 
   ${boxBorder} 

@@ -24,7 +24,7 @@ basic.story = {
 
 export const customizedOnButton = () => (
   <Flex>
-    <Button>Увдомления</Button>
+    <Button>Уведомления</Button>
     <NotificationsCounter left={-15} top={-6} color={'warning'} count={228} />
   </Flex>
 )

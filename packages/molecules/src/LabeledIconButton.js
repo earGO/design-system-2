@@ -24,8 +24,8 @@ const TextBordered = styled(Flex)`
   height: ${props => props.size + 'px'};
   padding-left: ${props => props.size / 4 + 'px'};
 `
-
-const LabeledIconButton = ({
+/** Комбинация иконки и заголовка для кнопки */
+export function LabeledIconButton({
   iconName,
   caption,
   color,
@@ -33,7 +33,7 @@ const LabeledIconButton = ({
   fontSize,
   onClick,
   ...props
-}) => {
+}) {
   return (
     <Container onClick={onClick} {...props}>
       <Icon name={iconName} color={color} size={size} {...props.theme} />
@@ -47,10 +47,15 @@ const LabeledIconButton = ({
 }
 
 LabeledIconButton.propTypes = {
+  /** Имя иконки отсюда https://material.io/resources/icons/?style=baseline */
   iconName: PropTypes.string,
+  /** Размер иконки согласно требованиям компонента Icon */
   size: PropTypes.number,
+  /** Цвет иконки согласно требованиям компонента Icon */
   color: PropTypes.string,
+  /** Текст заголовка */
   caption: PropTypes.string,
+  /** Размер текста заголовка */
   fontSize: PropTypes.number
 }
 
