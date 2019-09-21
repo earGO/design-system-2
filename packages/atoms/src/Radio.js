@@ -82,7 +82,7 @@ const RadioContainer = styled(Flex)`
   align-content: center;
 `
 
-class Radio extends Component {
+export class Radio extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -93,7 +93,6 @@ class Radio extends Component {
   handleChange = event => {
     const {checked} = event.target
     this.setState({checked})
-    console.log('Radio handleChange', {'this.props': this.props})
     this.props.onChange && this.props.onChange(checked, this.props.value)
   }
 

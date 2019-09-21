@@ -44,8 +44,49 @@ const StyledHeader = styled(HeaderCell)`
 
 const CustomHeaderCell = props => <StyledHeader {...props} />
 
-/** Используется для отображения структурированной информации. */
-const Table = props => <StyledTable {...props} />
+/** Используется для отображения структурированной информации.
+ * Полный список пропсов:
+ [https://github.com/rsuite/rsuite-table](https://github.com/rsuite/rsuite-table)
+
+ В целях генерации документов, в сторибук отдельно импортируются компоненты `<Column/>`, `<HeaderCell/>` и `<Cell/>`.
+
+ Однако в приложении-потребителе они будут "включены" в сам компонент `<Table/>`, и должны быть вызваны
+ как `<Table.Column/>`, `<Table.HeaderCell/>` и `<Table.Cell/>`.
+
+ Примеры тонких настроек, в том числе полностью кастомизируемой таблицы, с кодом:
+ ```
+ https://rsuitejs.com/en/components/table#Advanced
+ ```
+
+ Название компонента `<Cell></Cell>` из документации по ссылке нужно заменить на  `<Table.Cell></Table.Cell>` при переносе кода.
+
+ Для центрирования содержимого ячейки можно создать производный от неё компонент, возвращающий данные, обёрнутые во Flex. Верхнему контейнеру Flex нужно вручную задать ширину:
+
+ ```js
+ const CenteredCell = ({rowData, dataKey, ...props}) => (
+     <Table.Cell {...props} style={{padding: 0}}>
+         <Flex justifyContent={'center'} width={160}>
+         <Box>{rowData[dataKey]}</Box>
+         </Flex>
+     </Table.Cell>
+ );
+ ```
+
+ Этот пример центрирует данные (параметр` rowData[dataKey]`) в ячейке шириной 160px.
+ Внутри этого компонента с данными можно производить манипуляции, создавать кнопки -
+ всё, что угодно. Обёртка в виде отдельного компонента нужна как раз чтобы получить
+ доступ к данным ячейки (через её dataKey и массив данных всей строки таблицы `rowData`).
+
+
+ В целом кастомизация таблицы осуществляется созданием компонента,
+ производного от `<Table.Cell/>`, работающего с доступными ему данными,
+ предоставляемыми таблицей.
+
+
+ */
+export function Table(props) {
+  return <StyledTable {...props} />
+}
 
 Table.Column = Column
 Table.HeaderCell = CustomHeaderCell

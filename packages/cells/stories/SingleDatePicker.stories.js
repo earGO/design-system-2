@@ -1,43 +1,50 @@
 import React, {useState} from 'react'
-import {storiesOf} from '@storybook/react'
-import {Box} from '@design-system/atoms'
 import {formatDate} from '@design-system/utils'
-import {SingleDatePicker} from '../src'
+import {SingleDatePicker} from '../src/SingleDatePicker'
+import {Flex, Text, Box} from '@design-system/atoms'
 
-const RenderedDatePicker = ({props}) => {
-  const [date, setDate] = useState([])
-
-  const handlePick = value => {
-    setDate(value)
-    console.log(formatDate(value))
+export default {
+  title: 'Design System|SingleDatePicker',
+  parameters: {
+    component: SingleDatePicker
   }
-  return (
-    <Box>
-      <SingleDatePicker onChange={handlePick} {...props} />
-    </Box>
-  )
 }
 
-storiesOf(`SingleDatePicker`, module)
-  .addParameters({
-    info: {
-      inline: true,
-      header: false,
-      styles: {
-        header: {
-          h1: {
-            color: 'red'
-          }
-        }
-      }
-    }
-  })
-  .add('Default', () => <RenderedDatePicker />, {
+export const basic = () => <SingleDatePicker />
+basic.story = {
+  parameters: {
     info: {
       text: `
-          Дата пикер на одну дату. Принимает на вход функцию onChange, которая на вход принимает выбранную дату в формате moment. 
-          
-          Приведенный выше компонент выводит в консоль выбранную дату, приводя ее к формату дд/мм/гггг 
+          Вид компонента без параметров
         `
     }
-  })
+  }
+}
+
+export const inAConsumer = () => {
+  const [date, setDate] = useState([])
+  const [dateString, setDateString] = useState('')
+  const handlePick = value => {
+    setDate(value)
+    setDateString(formatDate(value))
+    console.log(formatDate(value))
+  }
+
+  return (
+    <Flex flexDirection={'column'}>
+      <SingleDatePicker onChange={handlePick} />
+      <Box>
+        <Text>Вы выбрали дату: {dateString} </Text>
+      </Box>
+    </Flex>
+  )
+}
+inAConsumer.story = {
+  parameters: {
+    info: {
+      text: `
+          Пример применения в компоненте-потребителе. Выводит выбранную дату на страницу.
+        `
+    }
+  }
+}

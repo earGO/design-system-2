@@ -24,7 +24,9 @@ const Wrapper = styled(Box)`
 
 moment.locale('ru')
 
-function SingleDatePicker({
+/**  Дата пикер на одну дату. Принимает на вход функцию onChange, которая на вход принимает выбранную дату в формате moment. */
+
+export function SingleDatePicker({
   onChange,
   id,
   value,
@@ -34,7 +36,7 @@ function SingleDatePicker({
   placeholder,
   ...rest
 }) {
-  const [localValue, setLocalValue] = useState(moment(new Date(), dateFormat))
+  const [localValue, setLocalValue] = useState(null)
 
   const handleChange = newDate => {
     setLocalValue(newDate)

@@ -82,7 +82,8 @@ const Adornment = styled(Absolute)({
 })
 
 /** Получение данных от пользователя.*/
-class ResizableInput extends Component {
+
+export class ResizableInput extends Component {
   constructor(props) {
     super(props)
     this.state = {

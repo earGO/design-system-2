@@ -3,9 +3,12 @@ import PropTypes from 'prop-types'
 import ReactModal from 'react-modal'
 
 /**
- * Модальное окно
+ * Модальное окно.
+ * Компонент маунтится всегда в самый конец `<Body/>`, и обладает z-index 999999999.
+ * За счёт этого и достигается эффект отображения поверх всего остального контента.
  */
-function Modal({nodeId, ...props}) {
+
+export function Modal({nodeId, ...props}) {
   const customModalStyles = {
     overlay: {
       position: 'fixed',

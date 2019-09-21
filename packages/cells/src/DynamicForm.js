@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import {Flex, Box, Button, Icon} from '@design-system/atoms'
 
-function ExampleForm(props) {
+export function DynamicForm(props) {
   const {group, form} = props
   const [keys, setKeys] = useState([0])
   const [id, setId] = useState(0)
@@ -62,10 +62,10 @@ function ExampleForm(props) {
   )
 }
 
-ExampleForm.propTypes = {
+DynamicForm.propTypes = {
   form: PropTypes.object,
   renderTemplate: PropTypes.func,
   group: PropTypes.string
 }
 
-export default ExampleForm
+export default DynamicForm

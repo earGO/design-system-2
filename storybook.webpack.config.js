@@ -1,6 +1,6 @@
 var path = require('path')
 
-module.exports = async ({config}) => {
+module.exports = async ({config, mode}) => {
   // Find Babel Loader
   const babelRules = config.module.rules.filter(rule => {
     let isBabelLoader = false
@@ -34,7 +34,9 @@ module.exports = async ({config}) => {
   if (!config.module.rules) {
     config.module.rules = []
   }
-
+  config.module.rules = config.module.rules.filter(
+    f => f.test.toString() !== '/\\.css$/'
+  )
   config.module.rules.push({
     test: /\.less$/,
     use: [
@@ -57,8 +59,16 @@ module.exports = async ({config}) => {
     ]
   })
 
-  config.resolve.extensions.push('.less')
+  config.module.rules.push({
+    test: /\.css$/,
+    use: ['style-loader', 'css-loader'],
+    include: [
+      path.resolve(__dirname, '../../../node_modules/*'),
+      path.resolve(__dirname, '../')
+    ]
+  })
 
+  config.resolve.extensions.push('.less')
   if (!config.resolve.modules) {
     config.resolve.modules = []
   }

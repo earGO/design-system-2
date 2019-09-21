@@ -62,7 +62,18 @@ const IconCorrector = styled(Box)`
 
 moment.locale('ru')
 
-function RangeDatePicker({
+/** Компонент для выбора диапазона дат.
+ *
+ *  На выход пикер даёт два массива.
+ *
+ *  В первом - dates - содержатся стартовая и конечная даты в формате moment.
+ *
+ *  Во втором - dateStrings -  содержатся стартовая и конечная даты в формате String, отображаемые согласно переданному в параметр format правилу.
+ *
+ *  "Вынуть" эти массивы можно при помощи функции, передаваемой в onChange, принимающей на вход эти массивы. Например handleChange = (dates, dateStrings) =>{}
+ */
+
+export function RangeDatePicker({
   onChange,
   id,
   value,

@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {Icon, Box, ResizableInput} from '@design-system/atoms'
-import Scrollbars from '@design-system/atoms/src/Scrollbars'
 
 const IconButton = styled(Box)`
   cursor: pointer;
@@ -11,8 +10,10 @@ const IconButton = styled(Box)`
     opacity: 1;
   }
 `
+/** Поле ввода для поиска, такое же как `<SearchInput/>`, но расширяющееся, когда пользователь кликает на него,
+ * и сужающееся, когда кликает куда-то ещё */
 
-function AnimatedSearchInput({
+export function AnimatedSearchInput({
   onChange,
   onSearch,
   placeholder,
@@ -62,10 +63,15 @@ function AnimatedSearchInput({
 }
 
 AnimatedSearchInput.propTypes = {
+  /** Placeholder */
   placeholder: PropTypes.string,
+  /** Внешняя функция изменения содержимого */
   onChange: PropTypes.func,
+  /** Внешнее значение */
   value: PropTypes.string,
+  /** Ширина поля в сжатом состоянии */
   shrinkWidth: PropTypes.number,
+  /** Ширина поля в расширенном состоянии */
   growWidth: PropTypes.number
 }
 
