@@ -1,5 +1,4 @@
-const shell = require('shelljs')
-const fs = require('fs')
+const commonmark = require('commonmark')
 const path = require('path')
 
 const colors = ['purple', 'pink', 'orange', 'green', 'blue', 'red']
@@ -13,7 +12,7 @@ const generateRow = (package, index) => `
   </a>
 `
 
-const generateHTML = packages => `
+const generateHTML = (packages, result) => `
   <!DOCTYPE html>
   <html>
   <head>
@@ -38,5 +37,5 @@ module.exports = function buildMonorepoIndex(packages, outputDir) {
 
   console.log('=> Building index.html for monorepo')
 
-  return generateHTML(packages)
+  return generateHTML(packages, result)
 }
