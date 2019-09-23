@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import hexRgb from 'hex-rgb'
-import theme from '@design-system/theme'
 import Flex from './Flex'
 
 const getColor = ({theme, bg, opacity}) => {
@@ -31,7 +30,11 @@ const StyledFlex = styled(Flex)`
   ${getColor};
 `
 
-function Overlay({children, ...props}) {
+/** Обёртка для вывода одного компонента поверх других.
+ * Приеменяется, например, для компонента `<Loading/>`. Создан как расширение над `<Flex/>`,
+ * принимакт все его параметры для настройки расположения содержимого оверлея. */
+
+export function Overlay({children, ...props}) {
   return (
     <StyledFlex {...props}>
       {React.cloneElement(React.Children.only(children), {
@@ -49,16 +52,17 @@ Overlay.propTypes = {
   children: PropTypes.element,
   /** Событие клика на оверлей */
   onClick: PropTypes.func,
-  /** @ignore */
-  theme: PropTypes.any
+  /** Прозрачность фона оверлея от 0 до 1 */
+  opacity: PropTypes.number,
+  /** Цвет фона оверлея */
+  bg: PropTypes.string
 }
 
 Overlay.defaultProps = {
   alignItems: 'center',
   justifyContent: 'center',
   bg: 'black',
-  opacity: 0.85,
-  theme
+  opacity: 0.85
 }
 
 Overlay.displayName = 'Overlay'

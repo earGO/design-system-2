@@ -1,3 +1,4 @@
+import React from "react";
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import {
@@ -9,10 +10,8 @@ import {
 import Box from './Box'
 import theme from '@design-system/theme'
 
-/**
- * Наследует компонент `<Box />`, добавляет ему **display: flex** и расширяет свойствами **alignItems, justifyContent, flexWrap, flexDirection**.
- */
-const Flex = styled(Box)`
+
+const FlexWrapper = styled(Box)`
   display: flex;
 
   ${alignItems} 
@@ -20,6 +19,12 @@ const Flex = styled(Box)`
   ${flexWrap} 
   ${flexDirection};
 `
+/**
+ * Наследует компонент `<Box />`, добавляет ему **display: flex** и расширяет свойствами **alignItems, justifyContent, flexWrap, flexDirection**.
+ */
+export function Flex({...props}){
+  return <FlexWrapper {...props}/>
+}
 
 Flex.propTypes = {
   /** Выравнивание по-вертикали */

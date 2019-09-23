@@ -1,12 +1,14 @@
 {
   "name": "@design-system/cells",
+  "description": "Компоненты со сложной внутренней логикой, использующие атомы и молекулы, такие как DatePicker",
   "version": "2.0.1",
   "main": "src/index.js",
   "module": "src/index.js",
   "license": "MIT",
   "scripts": {
     "storybook": "start-storybook -p 9009",
-    "build-storybook": "build-storybook",
+    "build-storybook": "rm -rf .out && build-storybook --docs -s public -o .out -c .storybook",
+    "build-storybook-app": "build-storybook -c .storybook",
     "clean": "rm -rf node_modules dist build lib",
     "build": "yarn babelify",
     "babelify": "yarn clean && babel src --out-dir build"
@@ -35,14 +37,20 @@
     "stylis-rule-sheet": "0.0.10"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^5.0.10",
-    "@storybook/addon-info": "^5.1.9",
-    "@storybook/addon-links": "^5.0.10",
-    "@storybook/addon-notes": "^5.1.9",
-    "@storybook/addons": "^5.0.10",
-    "@storybook/react": "^5.0.10",
-    "@storybook/theming": "^5.0.10",
-    "storybook-addon-styled-component-theme": "^1.2.4"
+    "@storybook/addon-a11y": "^5.3.0-alpha.0",
+    "@storybook/addon-actions": "^5.3.0-alpha.0",
+    "@storybook/addon-docs": "^5.3.0-alpha.0",
+    "@storybook/addon-info": "^5.3.0-alpha.0",
+    "@storybook/addon-knobs": "^5.3.0-alpha.0",
+    "@storybook/addon-links": "^5.3.0-alpha.0",
+    "@storybook/addon-notes": "^5.3.0-alpha.0",
+    "@storybook/addon-storysource": "^5.3.0-alpha.0",
+    "@storybook/addons": "^5.3.0-alpha.0",
+    "@storybook/react": "^5.3.0-alpha.0",
+    "@storybook/source-loader": "^5.3.0-alpha.0",
+    "@storybook/theming": "^5.3.0-alpha.0",
+    "storybook-addon-styled-component-theme": "^1.2.4",
+    "storybook-styled-components": "^1.1.4"
   },
   "babel": {
     "presets": [

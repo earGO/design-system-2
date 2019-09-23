@@ -1,34 +1,39 @@
-import {addParameters, configure, addDecorator} from '@storybook/react'
-import {create} from '@storybook/theming'
+import React from 'react'
+import {configure, addDecorator, addParameters} from '@storybook/react'
 import {withInfo} from '@storybook/addon-info'
+import {withA11y} from '@storybook/addon-a11y'
 import {withThemesProvider} from 'storybook-addon-styled-component-theme'
 import theme from '@design-system/theme'
+import TableStub from './TableStub'
 
-addDecorator(withInfo)
-addDecorator(withThemesProvider([theme]))
-
-const sb_theme = create({
-  base: 'light',
-  colorPrimary: '#0e0e0e',
-  colorSecondary: '#1EA7FD'
-})
-addParameters({
-  options: {sb_theme},
-  info: {
+addDecorator(
+  withInfo({
     inline: true,
     header: false,
+    source: false,
+    TableComponent: TableStub,
     styles: {
-      header: {
+      source: {
         h1: {
-          color: 'red'
+          display: 'none'
         }
+      },
+      propTableHead: {
+        display: 'none',
+        margin: '20px 0 0 0'
       }
     }
-  }
-})
+  })
+)
 
-const comps = require.context('../stories', true, /.stories.js$/)
+addDecorator(withA11y)
+addDecorator(withThemesProvider([theme]))
 
-configure(() => {
-  comps.keys().forEach(filename => comps(filename))
-}, module)
+configure(
+  [
+    require.context('../src', true, /\.stories\.mdx$/),
+    require.context('../src', true, /\.stories\.js$/),
+    require.context('../stories', true, /\.stories\.js$/)
+  ],
+  module
+)

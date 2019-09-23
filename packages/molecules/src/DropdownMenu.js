@@ -12,8 +12,6 @@ import {
 import styled from 'styled-components'
 import ActionCell from './ActionCell'
 
-/** В компонент нужно обернуть кнопку/иконку, при клике на которую должно появиться меню  */
-
 const PopoverMenuItem = styled(Flex)`
   padding: 0;
   flex-direction: column;
@@ -73,8 +71,8 @@ function PopoverItemSmart({item, handleCloseOnItemClick, ...props}) {
     )
   }
 }
-
-function DropdownMenu({
+/** В компонент нужно обернуть кнопку/иконку, при клике на которую должно появиться меню  */
+export function DropdownMenu({
   content,
   position,
   children,

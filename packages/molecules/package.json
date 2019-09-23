@@ -1,94 +1,45 @@
 {
   "name": "@design-system/molecules",
+  "description": "Компоненты без особой внутренней логики, составленные из нескольких атомов. Например, поле ввода с подсказкой, или иконка со всплывающим комментарием.",
   "version": "2.2.0",
   "main": "src/index.js",
   "module": "src/index.js",
   "license": "MIT",
   "scripts": {
-    "storybook": "start-storybook -p 9029",
-    "build-storybook": "build-storybook",
+    "storybook": "start-storybook -p 9009",
+    "build-storybook": "rm -rf .out && build-storybook --docs -s public -o .out -c .storybook",
+    "build-storybook-app": "build-storybook -c .storybook",
     "clean": "rm -rf node_modules dist build lib",
     "build": "yarn babelify",
-    "babelify": "yarn clean && babel src --out-dir build"
-  },
-  "dependencies": {
-    "rc-trigger": "^2.6.5"
-  },
-  "peerDependencies": {
-    "@design-system/atoms": "^2.0.0",
-    "@design-system/theme": "^2.0.0",
-    "@react-workspaces/react-scripts": "3.0.0-alpha-04",
-    "add-dom-event-listener": "1.1.0",
-    "classnames": "2.2.6",
-    "cross-env": "5.0.5",
-    "css-loader": "^3.1.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-select": "3.0.4",
-    "styled-components": "^4.3.2",
-    "styled-system": "^5.0.15"
+    "babelify": "yarn clean && babel src --out-dir build && cp -a ./src/iconfonts ./build/iconfonts"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
     "@design-system/atoms": "^2.2.0",
     "@design-system/theme": "^2.2.0",
+    "@mdx-js/loader": "^1.4.5",
+    "@mdx-js/mdx": "^1.4.5",
+    "@mdx-js/react": "^1.4.5",
     "@react-workspaces/react-scripts": "3.0.0-alpha-04",
-    "@storybook/addon-actions": "^5.0.10",
-    "@storybook/addon-info": "^5.1.9",
-    "@storybook/addon-links": "^5.0.10",
-    "@storybook/addon-notes": "^5.1.9",
-    "@storybook/addons": "^5.0.10",
-    "@storybook/react": "^5.0.10",
-    "@storybook/theming": "^5.0.10",
-
-    "storybook-addon-styled-component-theme": "^1.2.4",
+    "@storybook/addon-a11y": "^5.3.0-alpha.0",
+    "@storybook/addon-actions": "^5.3.0-alpha.0",
+    "@storybook/addon-docs": "^5.3.0-alpha.0",
+    "@storybook/addon-info": "^5.3.0-alpha.0",
+    "@storybook/addon-knobs": "^5.3.0-alpha.0",
+    "@storybook/addon-links": "^5.3.0-alpha.0",
+    "@storybook/addon-notes": "^5.3.0-alpha.0",
+    "@storybook/addon-storysource": "^5.3.0-alpha.0",
+    "@storybook/addons": "^5.3.0-alpha.0",
+    "@storybook/react": "^5.3.0-alpha.0",
+    "@storybook/source-loader": "^5.3.0-alpha.0",
+    "@storybook/theming": "^5.3.0-alpha.0",
     "@testing-library/react": "^8.0.5",
-    "add-dom-event-listener": "1.1.0",
-    "babel-loader": "^8.0.6",
-    "classnames": "2.2.6",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
-    "enzyme-to-json": "^3.3.5",
-    "jest-styled-components": "^6.3.3",
-    "less": "^3.9.0",
-    "less-loader": "^5.0.0",
-    "postcss-loader": "^3.0.0",
-    "rc-trigger": "^2.6.5",
-    "react-docgen": "^4.1.1",
-    "react-redux": "^7.1.0",
-    "react-select": "3.0.4",
-    "react-test-renderer": "^16.8.6",
-    "redux-mock-store": "^1.5.3",
-    "rsuite-table": "^3.5.4",
-    "sinon": "^7.3.2",
+    "cross-env": "5.0.5",
+    "storybook-addon-styled-component-theme": "^1.2.4",
     "storybook-styled-components": "^1.1.4",
     "style-loader": "^0.23.1",
-    "styled-components": "^4.3.2",
-    "styled-normalize": "^8.0.6",
-    "styled-system": "^5.0.15",
-    "svg-inline-loader": "^0.8.0",
-    "url-loader": "^2.0.1"
+    "styled-normalize": "^8.0.6"
   },
-  "babel": {
-    "presets": [
-      "@babel/preset-env",
-      "@babel/preset-react"
-    ],
-    "plugins": [
-      [
-        "import",
-        {
-          "libraryName": "antd",
-          "libraryDirectory": "es",
-          "style": "css"
-        }
-      ]
-    ]
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "files": [
-    "build"
-  ]
+  "dependencies": {
+    "prop-types": "15.7.2"
+  }
 }

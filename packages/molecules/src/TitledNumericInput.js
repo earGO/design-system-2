@@ -2,10 +2,15 @@ import React from 'react'
 import NumericInput from './NumericInput'
 import {Box, Text} from '@design-system/atoms'
 import PropTypes from 'prop-types'
-import ActionCell from './ActionCell'
 
-function TitledNumericInput({width, title, onChange, globalValue, ...props}) {
-  console.log(globalValue)
+/** Числовой ввод, снабжённый дополнительным заголовком */
+export function TitledNumericInput({
+  width,
+  title,
+  onChange,
+  globalValue,
+  ...props
+}) {
   return (
     <Box width={width} mb={2}>
       <Text fontSize={'12px'} mb={1}>
@@ -24,6 +29,7 @@ function TitledNumericInput({width, title, onChange, globalValue, ...props}) {
 TitledNumericInput.propTypes = {
   width: PropTypes.number,
   title: PropTypes.string,
+  globalValue: PropTypes.number,
   onChange: PropTypes.func
 }
 

@@ -4,7 +4,6 @@ import Trigger from 'rc-trigger'
 import 'rc-trigger/assets/index.css'
 import styled from 'styled-components'
 import {Card, Text} from '@design-system/atoms'
-import ActionCell from './ActionCell'
 
 /** Preset for fast hint popover alignment when passed in builtinPlacement prop*/
 const builtinPlacements = {
@@ -66,7 +65,7 @@ const PopupComponent = caption => {
   )
 }
 
-class HintBlock extends Component {
+export class Hint extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -116,7 +115,7 @@ class HintBlock extends Component {
   }
 }
 
-HintBlock.propTypes = {
+Hint.propTypes = {
   /** Отступы от родительского контейнера в пикселях */
   align: PropTypes.shape({
     offsetX: PropTypes.number,
@@ -157,7 +156,7 @@ HintBlock.propTypes = {
   popupStyle: PropTypes.object
 }
 
-HintBlock.defaultProps = {
+Hint.defaultProps = {
   align: {
     offsetX: 0,
     offsetY: 0
@@ -198,7 +197,7 @@ HintBlock.defaultProps = {
   caption: 'Ima popover'
 }
 
-HintBlock.displayName = `HintBlock`
+Hint.displayName = `Hint`
 
 /** @component */
-export default HintBlock
+export default Hint

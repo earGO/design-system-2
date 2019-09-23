@@ -10,25 +10,34 @@ const EnhancedScrollbars = styled(ReactCustomScrollbars)`
  ${alignSelf};
 `
 
+/** Для корректной работы с ref создадим функциональный компонент-обёртку
+ * над используемой библиотекой */
+
+export function ScrollbarsWrapper(Component) {
+  class ScrollbarsWithRef extends React.Component {
+    render() {
+      const {forwardedRef, ...rest} = this.props
+      return <Component ref={forwardedRef} {...rest} />
+    }
+  }
+
+  return React.forwardRef((props, ref) => {
+    return <ScrollbarsWithRef {...props} forwardedRef={ref} />
+  })
+}
+
 /**
  * Добавляет вертикальный и горизинтальный скроллбар для блока.
  * Обеспечивает единое отоборажение скорллбара во всех баузерах и операционных системах.
+ *
+ * является обёрткой над https://malte-wessel.com/react-custom-scrollbars/
+ *
+ * Главное, зачем нужна обёртка - это передача в компонент внешнего ref, чтобы можно было
+ * вызывать его внутренние методы и читать его внутренние статусы.
  */
-const Scrollbars = React.forwardRef((props, ref) => {
-  return <EnhancedScrollbars ref={ref} {...props} />
-})
+export const Scrollbars = ScrollbarsWrapper(EnhancedScrollbars)
 
 Scrollbars.propTypes = {
-  onScroll: PropTypes.func,
-  onScrollFrame: PropTypes.func,
-  onScrollStart: PropTypes.func,
-  onScrollStop: PropTypes.func,
-  onUpdate: PropTypes.func,
-  renderView: PropTypes.func,
-  renderTrackHorizontal: PropTypes.func,
-  renderTrackVertical: PropTypes.func,
-  renderThumbHorizontal: PropTypes.func,
-  renderThumbVertical: PropTypes.func,
   tagName: PropTypes.string,
   thumbSize: PropTypes.number,
   thumbMinSize: PropTypes.number,

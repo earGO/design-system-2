@@ -1,3 +1,4 @@
+import React from "react";
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import {
@@ -13,28 +14,35 @@ import {
   alignSelf
 } from 'styled-system'
 
-/**
- * Используйте этот компонент для управления css-параметрами width, margin, padding, and color.
- */
-const Box = styled('div')(
+const BoxWrapper = styled.div`
   {
-    boxSizing: 'border-box',
-    position: 'relative'
-  },
-  space,
-  color,
-  width,
-  height,
-  fontSize,
-  flex,
-  order,
-  alignSelf,
-  minWidth,
-  maxWidth,
-  props => props.css
-)
+    boxSizing: border-box;
+    position: relative;
+  }
+  ${space}
+  ${color}
+    ${width}
+    ${height}
+    ${fontSize}
+    ${flex}
+    ${order}
+    ${alignSelf}
+    ${minWidth}
+    ${maxWidth}
+    ${props => props.css};
+  `
+/** Базовый блок разметки. По сути обёртка для `<div/>`.
+ *
+ *  Принимает множество props для настройки отступов, фона, размера шрифтов и т.п.
+ *
+ *  Любой фрагмент должен быть обёрнут в Box, если он не обёрнут во Flex
+ *  или другие "расширители" базового Box.  */
 
-Box.displayName = 'Box'
+  export function Box({...props}){
+  return(
+      <BoxWrapper{...props}/>
+  )
+}
 
 Box.propTypes = {
   /** Обьект с css-правилами */
@@ -151,5 +159,4 @@ Box.propTypes = {
   ])
 }
 
-/** @component */
 export default Box

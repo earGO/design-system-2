@@ -1,7 +1,7 @@
 import React from 'react'
+import propTypes from 'prop-types'
 import {Absolute, Flex, Icon, Input} from '@design-system/atoms'
 import styled from 'styled-components'
-import ActionCell from './ActionCell'
 
 const ArrowsContainer = styled(Absolute)`
   display: ${props => (props.disabled ? 'none' : 'flex')};
@@ -24,6 +24,7 @@ const ArrowsContainer = styled(Absolute)`
 const NoArrowsWrapper = styled(Flex)`
   & input {
     -moz-appearance: textfield;
+    border-color: ${props => props.theme.colors.darkGrey};
   }
   & input::-webkit-inner-spin-button,
   & input::-webkit-outer-spin-button {
@@ -33,13 +34,12 @@ const NoArrowsWrapper = styled(Flex)`
     margin: 0;
   }
 `
+/** Инпут с типом "число" - не позволяет ввести ничего, кроме число, позволяет повышать и понижать число на 1 стрелками.
+ * Принимает все пропсы, применимые для обычного инпута */
 
-function NumericInput({globalValue, onChange, disabled, ...props}) {
-  console.log('NumericInput sees value as: ', globalValue)
+export function NumericInput({globalValue, onChange, disabled, ...props}) {
   const handleChange = newValue => {
-    console.log(typeof parseInt(newValue))
     if (typeof parseInt(newValue) !== 'number') {
-      console.log('not a number')
       onChange && onChange(1)
     } else {
       onChange && onChange(newValue)
@@ -60,14 +60,14 @@ function NumericInput({globalValue, onChange, disabled, ...props}) {
       <ArrowsContainer
         disabled={disabled}
         onClick={handleIncrement}
-        top={'2px'}
+        top={'6px'}
       >
         <Icon name={'keyboard_arrow_up'} size={1} />
       </ArrowsContainer>
       <ArrowsContainer
         disabled={disabled}
         onClick={handleDecrement}
-        top={'18px'}
+        top={'22px'}
       >
         <Icon name={'keyboard_arrow_down'} size={1} />
       </ArrowsContainer>
@@ -81,6 +81,25 @@ function NumericInput({globalValue, onChange, disabled, ...props}) {
     </NoArrowsWrapper>
   )
 }
+
+NumericInput.propTypes = {
+  /** Числовое значение, забираемое из инпута */
+  globalValue: propTypes.number,
+  /** Внешнаяя функция изменения содержимого инпута */
+  onChange: propTypes.func,
+  /** Переменная на "выключение" инпута */
+  disabled: propTypes.bool
+}
+
+NumericInput.defaultProps = {
+  /** Числовое значение, забираемое из инпута */
+  globalValue: 0,
+  /** Внешнаяя функция изменения содержимого инпута */
+  onChange: () => {},
+  /** Переменная на "выключение" инпута */
+  disabled: false
+}
+
 NumericInput.displayName = 'NumericInput'
 
 /** @component */

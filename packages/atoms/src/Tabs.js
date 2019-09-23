@@ -45,8 +45,11 @@ const Tab = styled(Flex)`
   ${isDisabled}
 `
 
-/** Используется, если необходимо сгруппировать или разграничить содержимое страницы. */
-class Tabs extends React.Component {
+/** Используется, если необходимо сгруппировать или разграничить содержимое страницы.
+ * `<Tabs />` используется совместно со своим дочерним компонентом `<Tabs.TabPane />`
+ Для каждого TabPane обязателен уникальный атрибут (ключ) tabKey.
+ * */
+export class Tabs extends React.Component {
   constructor(props) {
     super(props)
     if (!props.children) {

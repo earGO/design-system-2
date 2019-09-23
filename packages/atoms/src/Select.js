@@ -79,7 +79,7 @@ const customStyles = {
       '&:hover': {
         borderColor: systemTheme.colors.black
       },
-      borderColor: 'transparent',
+      borderColor: systemTheme.colors.darkGrey,
       backgroundColor: systemTheme.colors.lightGrey
     }
   },
@@ -208,7 +208,7 @@ const MenuList = optionHeight =>
 /**
  * Используется для выбора значения из списка.
  */
-class Select extends React.Component {
+export class Select extends React.Component {
   withSystemTheme = (size, systemTheme) => theme => {
     let controlHeight = 0
     // #TODO Probably will break in combobox + size===small.

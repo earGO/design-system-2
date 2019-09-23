@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {Input, Icon, Box} from '@design-system/atoms'
-import ActionCell from './ActionCell'
 
 const IconButton = styled(Box)`
   cursor: pointer;
@@ -11,14 +10,13 @@ const IconButton = styled(Box)`
     opacity: 1;
   }
 `
-
-function SearchInput({onChange, onSearch, placeholder, ...props}) {
-  /**
-   * Компонент с иконкой поиска и очистки поля запроса.
-   * Доступ к содержимому поля запроса через проп value
-   * Дополнение функции управления нажатием на иконку поиска - проп onSearch
-   * Дополнение функции управления поиском по мере введения запрсоа - проп onChange
-   * */
+/**
+ * Компонент с иконкой поиска и очистки поля запроса.
+ * Доступ к содержимому поля запроса через проп value
+ * Дополнение функции управления нажатием на иконку поиска - проп onSearch
+ * Дополнение функции управления поиском по мере введения запрсоа - проп onChange
+ * */
+export function SearchInput({onChange, onSearch, placeholder, ...props}) {
   const [value, setValue] = React.useState('')
   const handleChange = value => {
     setValue(value)
@@ -64,8 +62,12 @@ function SearchInput({onChange, onSearch, placeholder, ...props}) {
 
 SearchInput.propTypes = {
   placeholder: PropTypes.string,
+  /** Внешнаяя функция на изменение содержимого инпута */
   onChange: PropTypes.func,
-  value: PropTypes.string
+  /** Внешнее значение инпута */
+  value: PropTypes.string,
+  /** Дополнение функции управления нажатием на иконку поиска */
+  onSearch: PropTypes.func
 }
 
 SearchInput.defaultProps = {

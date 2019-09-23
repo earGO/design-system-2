@@ -1,34 +1,39 @@
-import React from 'react'
-import {storiesOf} from '@storybook/react'
-import theme, {ThemeProvider} from '@design-system/theme'
-import {SearchInput} from '../src'
+import React, {useState} from 'react'
 
-storiesOf(`SearchInput`, module)
-  .addParameters({
+import {SearchInput} from '../src/SearchInput'
+
+export default {
+  title: 'Design System|SearchInput',
+  parameters: {
+    component: SearchInput
+  }
+}
+
+export const basic = () => <SearchInput />
+basic.story = {
+  parameters: {
     info: {
-      inline: true,
-      header: false,
-      styles: {
-        header: {
-          h1: {
-            color: 'red'
-          }
-        }
-      }
-    }
-  })
-  .add(
-    'Default',
-    () => (
-      <ThemeProvider theme={theme}>
-        <SearchInput width={560} />
-      </ThemeProvider>
-    ),
-    {
-      info: {
-        text: `
-          Вывод компонента без параметров. 
+      text: `
+          Компонент без параметров
         `
-      }
     }
-  )
+  }
+}
+
+export const inAConsumer = () => {
+  const [value, setValue] = useState(null)
+  const handleChange = newValue => {
+    setValue(newValue)
+  }
+
+  return <SearchInput value={value} onChange={handleChange} />
+}
+inAConsumer.story = {
+  parameters: {
+    info: {
+      text: `
+          Пример применения в компоненте-потребителе
+        `
+    }
+  }
+}
