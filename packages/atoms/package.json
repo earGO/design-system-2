@@ -1,13 +1,14 @@
 {
   "name": "@design-system/atoms",
+  "description": "Основные примитивы дизайн-системы для разметки и составления более сложных компонентов",
   "version": "2.2.0",
   "main": "src/index.js",
   "module": "src/index.js",
   "license": "MIT",
   "scripts": {
     "storybook": "start-storybook -p 9009",
-    "build-storybook": "build-storybook -c .storybook",
-    "build-docs": "rm -rf storybook-static && build-storybook --docs",
+    "build-storybook": "rm -rf .out && build-storybook --docs -s public -o .out -c .storybook",
+    "build-storybook-app": "build-storybook -c .storybook",
     "clean": "rm -rf node_modules dist build lib",
     "build": "yarn babelify",
     "babelify": "yarn clean && babel src --out-dir build && cp -a ./src/iconfonts ./build/iconfonts"
@@ -32,8 +33,8 @@
     "react-window": "^1.8.5",
     "rsuite-table": "^3.5.6",
     "style-loader": "^0.23.1",
-    "styled-components": "^4.1.3",
-    "styled-system": "^3.2.0",
+    "styled-components": "^4.3.2",
+    "styled-system": "^5.0.15",
     "stylis-rule-sheet": "0.0.10"
   },
   "devDependencies": {
@@ -56,7 +57,7 @@
     "@storybook/theming": "^5.3.0-alpha.0",
     "@testing-library/react": "^8.0.5",
     "cross-env": "5.0.5",
-    "css-loader": "^3.1.0",
+    "css-loader": "^3.2.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.3.5",

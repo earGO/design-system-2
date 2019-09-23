@@ -93,14 +93,14 @@ const Help = ({children}) => {
   )
 }
 
-class FormItem extends React.Component {
-  isRequired = () => {
-    const {required} = this.props
+export function FormItem(props) {
+  const isRequired = () => {
+    const {required} = props
     if (required !== undefined) {
       return required
     }
-    if (this.getOnlyControl()) {
-      const meta = this.getMeta() || {}
+    if (getOnlyControl()) {
+      const meta = getMeta() || {}
       const validate = meta.validate || []
       return validate
         .filter(item => !!item.rules)
@@ -111,7 +111,7 @@ class FormItem extends React.Component {
     return false
   }
 
-  getControls(children, recursively) {
+  const getControls = (children, recursively) => {
     let controls = []
     const childrenArray = React.Children.toArray(children)
     for (let i = 0; i < childrenArray.length; i++) {
@@ -142,59 +142,59 @@ class FormItem extends React.Component {
   }
 
   /** Возвращает ноду элемента, который вводит данные, например - <Input /> */
-  getOnlyControl() {
-    const child = this.getControls(this.props.children, false)[0]
+  const getOnlyControl = () => {
+    const child = getControls(props.children, false)[0]
     return child !== undefined ? child : null
   }
 
-  getChildProp(prop) {
-    const child = this.getOnlyControl()
+  const getChildProp = prop => {
+    const child = getOnlyControl()
     return child && child.props && child.props[prop]
   }
 
-  getId() {
-    return this.getChildProp('id')
+  const getId = () => {
+    return getChildProp('id')
   }
 
   /**
-   * Забирает мета-данные из пропсов контрол элемента, заинженченных rc-form.
-   * returns: {
-   * initialValue,
-      name,
-      originalProps,
-      ref,
-      rules,
-      trigger,
-      validate,
-      valuePropName,
-   * }
-   */
-  getMeta() {
-    return this.getChildProp(FIELD_META_PROP)
+ * Забирает мета-данные из пропсов контрол элемента, заинженченных rc-form.
+ * returns: {
+ * initialValue,
+    name,
+    originalProps,
+    ref,
+    rules,
+    trigger,
+    validate,
+    valuePropName,
+ * }
+ */
+  const getMeta = () => {
+    return getChildProp(FIELD_META_PROP)
   }
 
   /**
-   * Забирает данные из пропсов контрол элемента, заинженченных rc-form.
-   * returns {
-   * dirty: Boolean,
-      errors: Array.of(
-        {
-          message, field
-        }
-      ),
-      name: String,
-      validating: Boolean,
-      value: String|Number|Boolean ?
-   * }
-   */
-  getField() {
-    return this.getChildProp(FIELD_DATA_PROP)
+ * Забирает данные из пропсов контрол элемента, заинженченных rc-form.
+ * returns {
+ * dirty: Boolean,
+    errors: Array.of(
+      {
+        message, field
+      }
+    ),
+    name: String,
+    validating: Boolean,
+    value: String|Number|Boolean ?
+ * }
+ */
+  const getField = () => {
+    return getChildProp(FIELD_DATA_PROP)
   }
 
-  getHelpMessage() {
-    const {help} = this.props
-    if (help === undefined && this.getOnlyControl()) {
-      const errors = this.getField().errors
+  const getHelpMessage = () => {
+    const {help} = props
+    if (help === undefined && getOnlyControl()) {
+      const errors = getField().errors
       if (errors) {
         return intersperseSpace(
           errors.map((e, index) => {
@@ -213,24 +213,23 @@ class FormItem extends React.Component {
     return help
   }
 
-  render() {
-    const {style, children, ...props} = this.props
-    const help = this.getHelpMessage()
-    return (
-      <Flex style={style} help={help} {...props}>
-        <Label
-          {...pick(this.props, ['label', 'labelProps'])}
-          id={this.props.id || this.getId()}
-          required={this.isRequired()}
-          onLabelClick={this.onLabelClick}
-        />
-        <ControlWrapper {...this.props.controlProps} help={help}>
-          {children}
-          {help && <Help>{help}</Help>}
-        </ControlWrapper>
-      </Flex>
-    )
-  }
+  const {style, children, ...restProps} = props
+  const help = getHelpMessage()
+
+  return (
+    <Flex style={style} help={help} {...restProps}>
+      <Label
+        {...pick(props, ['label', 'labelProps'])}
+        id={props.id || getId()}
+        required={isRequired()}
+        onLabelClick={props.onLabelClick}
+      />
+      <ControlWrapper {...restProps.controlProps} help={help}>
+        {children}
+        {help && <Help>{help}</Help>}
+      </ControlWrapper>
+    </Flex>
+  )
 }
 
 FormItem.defaultProps = {}

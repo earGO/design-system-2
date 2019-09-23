@@ -4,3 +4,6 @@ jspm_packages/
 dist/
 build/
 *coverage
+*.out/
+**/.out/
+

@@ -12,17 +12,17 @@ export default {
 }
 
 export const basic = () => {
-  const [value, setValue] = useState(null)
+  const [value, setValue] = useState('')
 
   const prefix = (
-    <Box onClick={() => {}} pt={1}>
-      <Icon name="search" />
-    </Box>
+      <Box onClick={() => {}} pt={1}>
+        <Icon name="search" />
+      </Box>
   )
   const suffix = (
-    <Box onClick={() => {}} pt={1}>
-      <Icon name="close" />
-    </Box>
+      <Box onClick={() => {}} pt={1}>
+        <Icon name="close" />
+      </Box>
   )
 
   const handleChange = value => {
@@ -30,18 +30,18 @@ export const basic = () => {
   }
 
   return (
-    <Box width={300}>
-      <ResizableInput
-        size="small"
-        value={value}
-        placeholder={'Enter text'}
-        prefix={prefix}
-        suffix={Boolean(value) ? suffix : null}
-        onChange={handleChange}
-        shrinkWidth={60}
-        growWidth={260}
-      />
-    </Box>
+      <Box width={300}>
+        <ResizableInput
+            size="small"
+            value={value}
+            placeholder={'Enter text'}
+            prefix={prefix}
+            suffix={suffix}
+            onChange={handleChange}
+            shrinkWidth={60}
+            growWidth={260}
+        />
+      </Box>
   )
 }
 

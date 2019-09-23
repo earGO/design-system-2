@@ -1,0 +1,77 @@
+{
+  "name": "@design-system/cells",
+  "description": "Компоненты со сложной внутренней логикой, использующие атомы и молекулы, такие как DatePicker",
+  "version": "2.0.1",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "license": "MIT",
+  "scripts": {
+    "storybook": "start-storybook -p 9009",
+    "build-storybook": "rm -rf .out && build-storybook --docs -s public -o .out -c .storybook",
+    "build-storybook-app": "build-storybook -c .storybook",
+    "clean": "rm -rf node_modules dist build lib",
+    "build": "yarn babelify",
+    "babelify": "yarn clean && babel src --out-dir build"
+  },
+  "dependencies": {
+    "antd": "^3.22.2",
+    "moment": "^2.24.0"
+  },
+  "peerDependencies": {
+    "@design-system/atoms": "^2.0.0",
+    "@design-system/theme": "^2.0.0",
+    "@design-system/utils": "^2.0.0",
+    "antd": "^3.20.7",
+    "cross-env": "5.0.5",
+    "material-icons-react": "^1.0.4",
+    "moment": "2.24.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-input-autosize": "2.2.1",
+    "react-select": "3.0.4",
+    "rsuite-table": "^3.5.4",
+    "shallowequal": "1.1.0",
+    "styled-components": "^4.3.2",
+    "styled-system": "^5.0.15",
+    "stylis-rule-sheet": "0.0.10"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^5.3.0-alpha.0",
+    "@storybook/addon-actions": "^5.3.0-alpha.0",
+    "@storybook/addon-docs": "^5.3.0-alpha.0",
+    "@storybook/addon-info": "^5.3.0-alpha.0",
+    "@storybook/addon-knobs": "^5.3.0-alpha.0",
+    "@storybook/addon-links": "^5.3.0-alpha.0",
+    "@storybook/addon-notes": "^5.3.0-alpha.0",
+    "@storybook/addon-storysource": "^5.3.0-alpha.0",
+    "@storybook/addons": "^5.3.0-alpha.0",
+    "@storybook/react": "^5.3.0-alpha.0",
+    "@storybook/source-loader": "^5.3.0-alpha.0",
+    "@storybook/theming": "^5.3.0-alpha.0",
+    "storybook-addon-styled-component-theme": "^1.2.4",
+    "storybook-styled-components": "^1.1.4"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      [
+        "import",
+        {
+          "libraryName": "antd",
+          "libraryDirectory": "es",
+          "style": "css"
+        }
+      ]
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "build"
+  ]
+}

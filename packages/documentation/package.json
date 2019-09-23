@@ -1,0 +1,34 @@
+{
+  "name": "documentation",
+  "description": "Документация по установке, кастомизации и применению дизайн-системы",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "storybook": "start-storybook -p 9059",
+    "build-storybook": "rm -rf .out && build-storybook --docs -s public -o .out -c .storybook",
+    "build-storybook-app": "build-storybook -c .storybook"
+  },
+  "devDependencies": {
+    "@design-system/atoms": "^2.2.0",
+    "@design-system/theme": "^2.2.0",
+    "@storybook/addon-a11y": "^5.3.0-alpha.0",
+    "@storybook/addon-actions": "^5.3.0-alpha.0",
+    "@storybook/addon-docs": "^5.3.0-alpha.0",
+    "@storybook/addon-info": "^5.3.0-alpha.0",
+    "@storybook/addon-knobs": "^5.3.0-alpha.0",
+    "@storybook/addon-links": "^5.3.0-alpha.0",
+    "@storybook/addon-notes": "^5.3.0-alpha.0",
+    "@storybook/addon-storysource": "^5.3.0-alpha.0",
+    "@storybook/addons": "^5.3.0-alpha.0",
+    "@storybook/react": "^5.3.0-alpha.0",
+    "@storybook/source-loader": "^5.3.0-alpha.0",
+    "@storybook/theming": "^5.3.0-alpha.0",
+    "react-docgen": "^4.1.1",
+    "storybook-addon-styled-component-theme": "^1.2.4",
+    "storybook-styled-components": "^1.1.4"
+  },
+  "dependencies": {
+    "styled-components": "4.3.2"
+  }
+}

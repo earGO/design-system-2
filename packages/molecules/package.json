@@ -1,0 +1,45 @@
+{
+  "name": "@design-system/molecules",
+  "description": "Компоненты без особой внутренней логики, составленные из нескольких атомов. Например, поле ввода с подсказкой, или иконка со всплывающим комментарием.",
+  "version": "2.2.0",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "license": "MIT",
+  "scripts": {
+    "storybook": "start-storybook -p 9009",
+    "build-storybook": "rm -rf .out && build-storybook --docs -s public -o .out -c .storybook",
+    "build-storybook-app": "build-storybook -c .storybook",
+    "clean": "rm -rf node_modules dist build lib",
+    "build": "yarn babelify",
+    "babelify": "yarn clean && babel src --out-dir build && cp -a ./src/iconfonts ./build/iconfonts"
+  },
+  "devDependencies": {
+    "@design-system/atoms": "^2.2.0",
+    "@design-system/theme": "^2.2.0",
+    "@mdx-js/loader": "^1.4.5",
+    "@mdx-js/mdx": "^1.4.5",
+    "@mdx-js/react": "^1.4.5",
+    "@react-workspaces/react-scripts": "3.0.0-alpha-04",
+    "@storybook/addon-a11y": "^5.3.0-alpha.0",
+    "@storybook/addon-actions": "^5.3.0-alpha.0",
+    "@storybook/addon-docs": "^5.3.0-alpha.0",
+    "@storybook/addon-info": "^5.3.0-alpha.0",
+    "@storybook/addon-knobs": "^5.3.0-alpha.0",
+    "@storybook/addon-links": "^5.3.0-alpha.0",
+    "@storybook/addon-notes": "^5.3.0-alpha.0",
+    "@storybook/addon-storysource": "^5.3.0-alpha.0",
+    "@storybook/addons": "^5.3.0-alpha.0",
+    "@storybook/react": "^5.3.0-alpha.0",
+    "@storybook/source-loader": "^5.3.0-alpha.0",
+    "@storybook/theming": "^5.3.0-alpha.0",
+    "@testing-library/react": "^8.0.5",
+    "cross-env": "5.0.5",
+    "storybook-addon-styled-component-theme": "^1.2.4",
+    "storybook-styled-components": "^1.1.4",
+    "style-loader": "^0.23.1",
+    "styled-normalize": "^8.0.6"
+  },
+  "dependencies": {
+    "prop-types": "15.7.2"
+  }
+}

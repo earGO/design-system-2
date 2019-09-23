@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {useState} from 'react'
 import styled, {css} from 'styled-components'
 import propTypes from 'prop-types'
 import {space} from 'styled-system'
@@ -19,8 +19,8 @@ const propsToOmit = [
 ]
 
 const disabled = props =>
-  props.disabled &&
-  css`
+    props.disabled &&
+    css`
     background: ${themeGet('colors.input.disabled', '#b5b5b5')};
     cursor: not-allowed;
   `
@@ -83,79 +83,90 @@ const Adornment = styled(Absolute)({
 
 /** Получение данных от пользователя.*/
 
-export class ResizableInput extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      value:
-        typeof props.value !== 'undefined' ? props.defaultValue : props.value
-    }
-  }
+export function ResizableInput({
+                                 value,
+                                 defaultValue,
+                                 prefix,
+                                 suffix,
+                                 width,
+                                 wrapperStyle,
+                                 shrinkWidth,
+                                 growWidth,
+                                 onChange,
+                                 ...props
+                               }) {
+  const [inputValue, setInputValue] = useState(value || defaultValue)
+  const [inputOnFocus, setInputOnFocus] = useState(false)
+  const [suffixOnFocus, setSuffixOnFocus] = useState(false)
 
-  static getDerivedStateFromProps(nextProps) {
-    if ('value' in nextProps) {
-      return {
-        value: nextProps.value
-      }
-    }
-    return null
-  }
-
-  handleChange = event => {
+  const handleChange = event => {
     const newValue = event.target.value
-    this.setState({
-      value: newValue
-    })
-    this.props.onChange && this.props.onChange(newValue, event)
+    setInputValue(newValue)
+    onChange && onChange(newValue, event)
   }
 
-  saveInput = node => {
-    this.input = node
+  const suffixOnClick = () => {
+    typeof onChange === 'function' && onChange('')
+    setSuffixOnFocus(false)
+    setInputValue('')
   }
 
-  focus = () => {
-    this.input.focus()
+  const handleInputOnFocus = () => {
+    setInputOnFocus(true)
   }
 
-  blur = () => {
-    this.input.blur()
+  const handleInputOnBlur = () => {
+    if (suffixOnFocus) {
+      suffixOnClick()
+      setInputOnFocus(false)
+    } else {
+      setInputOnFocus(false)
+    }
   }
 
-  render() {
-    const {
-      prefix,
-      suffix,
-      width,
-      wrapperStyle,
-      shrinkWidth,
-      growWidth
-    } = this.props
-    return (
+  const handleSuffixOnFocus = () => {
+    setSuffixOnFocus(true)
+  }
+  const handleSuffixOnBlur = () => {
+    setSuffixOnFocus(false)
+  }
+
+  return (
       <InputWrapper width={width} style={wrapperStyle}>
         {prefix && (
-          <Adornment left={0} pl={2}>
-            {prefix}
-          </Adornment>
+            <Adornment left={0} pl={2}>
+              {prefix}
+            </Adornment>
         )}
         <HTMLInput
-          {...omit(this.props, propsToOmit)}
-          pl={prefix ? 4 : 3}
-          pr={suffix ? 4 : 2}
-          width="100%"
-          ref={this.saveRef}
-          value={this.state.value}
-          onChange={this.handleChange}
-          shrinkWidth={shrinkWidth}
-          growWidth={growWidth}
+            {...omit(props, propsToOmit)}
+            pl={prefix ? 4 : 3}
+            pr={suffix ? 4 : 2}
+            width="100%"
+            /* Строчка снизу - в старой версии где class-based component висел этот проп с рефом,
+            но он там не использовался.
+            Оставил на всякий случай как маркер, что возможно он может понадобиться в будущем */
+            // ref={this.saveRef}
+            value={inputValue}
+            onChange={handleChange}
+            shrinkWidth={shrinkWidth}
+            growWidth={growWidth}
+            onFocus={handleInputOnFocus}
+            onBlur={handleInputOnBlur}
         />
-        {suffix && (
-          <Adornment right={0} pr={2}>
-            {suffix}
-          </Adornment>
+        {suffix && inputValue && inputOnFocus && (
+            <Adornment
+                style={{cursor: 'pointer'}}
+                onMouseEnter={handleSuffixOnFocus}
+                onMouseLeave={handleSuffixOnBlur}
+                right={0}
+                pr={2}
+            >
+              {suffix}
+            </Adornment>
         )}
       </InputWrapper>
-    )
-  }
+  )
 }
 
 ResizableInput.propTypes = {
