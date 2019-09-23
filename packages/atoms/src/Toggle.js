@@ -109,8 +109,7 @@ export function Toggle(props) {
     // If controlled by form
     if (props[FIELD_DATA_PROP]) {
       setStateChecked(props.value)
-    }
-    if ('checked' in props) {
+    } else if ('checked' in props) {
       setStateChecked(props.checked)
     }
   }, [props])
