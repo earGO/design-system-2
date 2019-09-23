@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import {Icon, Box, ResizableInput} from '@design-system/atoms'
+import {Icon, Box, Input} from '@design-system/atoms'
 
 const IconButton = styled(Box)`
   cursor: pointer;
@@ -47,7 +47,8 @@ export function AnimatedSearchInput({
 
   return (
     <Box {...props}>
-      <ResizableInput
+      <Input
+          resizable
         size="small"
         value={value}
         placeholder={placeholder}

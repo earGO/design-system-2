@@ -1,5 +1,6 @@
 {
   "name": "documentation",
+  "description": "Документация по установке, кастомизации и применению дизайн-системы",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",

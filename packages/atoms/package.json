@@ -1,5 +1,6 @@
 {
   "name": "@design-system/atoms",
+  "description": "Основные примитивы дизайн-системы для разметки и составления более сложных компонентов",
   "version": "2.2.0",
   "main": "src/index.js",
   "module": "src/index.js",

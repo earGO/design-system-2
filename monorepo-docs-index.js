@@ -16,11 +16,12 @@ const generateHTML = (packages, result) => `
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>URSiP Design System</title>
+    <title>Storybooks</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="monorepo-index.css">
   </head>
   <body>
+    <img class="banner" src="https://cdn.dribbble.com/users/43720/screenshots/4260415/ds_visual_1x.png" alt="Storybook"/>
     <div class="content">
       ${packages.map(generateRow).join('')}
     </div>

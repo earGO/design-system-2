@@ -161,3 +161,55 @@ actualValueChange.story = {
     }
   }
 }
+
+export const resizableInput = () => {
+  const [value, setValue] = useState('')
+
+  const prefix = (
+      <Box onClick={() => {}} pt={1}>
+        <Icon name="search" />
+      </Box>
+  )
+  const suffix = (
+      <Box onClick={() => {}} pt={1}>
+        <Icon name="close" />
+      </Box>
+  )
+
+  const handleChange = value => {
+    setValue(value)
+  }
+
+  return (
+      <Box width={300}>
+        <Input
+            resizable
+            size="small"
+            value={value}
+            placeholder={'Enter text'}
+            prefix={prefix}
+            suffix={suffix}
+            onChange={handleChange}
+            shrinkWidth={60}
+            growWidth={260}
+        />
+      </Box>
+  )
+}
+
+resizableInput.story = {
+  parameters: {
+    info: {
+      text: `
+      Тот же инпут, но расширяющийся при фокусе.
+      Необходимо передавать пропы:  
+      \n 
+      "resizable" - Boolean
+      \n 
+      "shrinkWidth" - number
+      \n 
+      "growWidth" - number
+      `
+    }
+  }
+}

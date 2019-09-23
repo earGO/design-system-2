@@ -21,7 +21,7 @@ basic.story = {
 }
 
 export const inAConsumer = () => {
-  const [value, setValue] = useState(null)
+  const [value, setValue] = useState(``)
   const handleChange = newValue => {
     setValue(newValue)
   }

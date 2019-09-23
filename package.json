@@ -41,7 +41,7 @@
     "cells-build-docs": "cd packages/cells && build-docs",
     "molecules-build-docs": "cd packages/molecules && build-docs",
     "deploy-storybook": "storybook-to-ghpages",
-    "build-styleguide": "rm -rf .out && yarn deploy-storybook --dry-run --out=.out --packages packages --monorepo-index-generator monorepo-docs-index.js"
+    "build-styleguide": "rm -rf .out && yarn deploy-storybook --dry-run --out=.out --packages packages"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
