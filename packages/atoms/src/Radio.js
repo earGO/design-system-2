@@ -44,7 +44,7 @@ const border = ({checked, disabled, ...rest}) => {
   } else if (checked) {
     return `border: solid 3px ${radio.checked}`
   }
-  return `border: solid 1px ${colors.black}`
+  return `border: solid 3px ${colors.grey}`
 }
 
 const RadioInput = styled.input.attrs({type: 'radio'})`
