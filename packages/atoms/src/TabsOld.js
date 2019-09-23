@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import styled, {css} from 'styled-components'
 import propTypes from 'prop-types'
 import Flex from './Flex'
@@ -49,12 +49,11 @@ const Tab = styled(Flex)`
  * `<Tabs />` используется совместно со своим дочерним компонентом `<Tabs.TabPane />`
  Для каждого TabPane обязателен уникальный атрибут (ключ) tabKey.
  * */
-
-export function Tabs(props) {
-  const [stateActiveKey, setStateActiveKey] = useState(undefined)
-  useEffect(() => {
+export class Tabs extends React.Component {
+  constructor(props) {
+    super(props)
     if (!props.children) {
-      return undefined
+      return null
     } else if (props.children.length > 1) {
       props.children.forEach(child => {
         if (typeof child.props.tabKey === 'undefined') {
@@ -65,51 +64,59 @@ export function Tabs(props) {
       })
       const {children = []} = props
       const firstChildKey = children[0].props && children[0].props.tabKey
-      setStateActiveKey(
-        props.activeKey || props.defaultActiveKey || firstChildKey
-      )
+      this.state = {
+        activeKey:
+          this.props.activeKey || this.props.defaultActiveKey || firstChildKey
+      }
     } else {
       if (typeof props.children.props.tabKey === 'undefined') {
         console.error(
           '<TabPane /> components must have an unique "tabKey" prop. Check <Tabs/> component children.'
         )
       }
+
       const {children = []} = props
       const firstChildKey = children.props && children.props.tabKey
-      setStateActiveKey(
-        props.activeKey || props.defaultActiveKey || firstChildKey
-      )
-    }
-  }, [props])
-
-  useEffect(() => {
-    if ('activeKey' in props) {
-      setStateActiveKey(props.activeKey)
-    }
-    return undefined
-  }, [props])
-
-  const handleChange = newActiveKey => {
-    setStateActiveKey(newActiveKey)
-    typeof props.onChange === 'function' && props.onChange(newActiveKey)
-  }
-
-  const onTabClick = tabKey => {
-    if (tabKey !== stateActiveKey) {
-      handleChange(tabKey)
+      this.state = {
+        activeKey:
+          this.props.activeKey || this.props.defaultActiveKey || firstChildKey
+      }
     }
   }
 
-  const getTabsItems = () => {
-    const {children} = props
+  static getDerivedStateFromProps(nextProps) {
+    if ('activeKey' in nextProps) {
+      return {
+        activeKey: nextProps.activeKey
+      }
+    }
+    return null
+  }
 
+  handleChange = newActiveKey => {
+    this.setState({
+      activeKey: newActiveKey
+    })
+    this.props.onChange && this.props.onChange(newActiveKey)
+  }
+
+  onTabClick = tabKey => {
+    const {activeKey} = this.state
+    if (tabKey !== activeKey) {
+      this.handleChange(tabKey)
+    }
+  }
+
+  getTabsItems = () => {
+    const {children} = this.props
+    const {activeKey} = this.state
     if (children.length > 1) {
       return children.map(child => {
         const {tabKey, tab, disabled} = child.props
         return (
           <Tab
-            isActive={stateActiveKey === tabKey}
-            onClick={disabled ? noop : () => onTabClick(tabKey)}
+            isActive={activeKey === tabKey}
+            onClick={disabled ? noop : () => this.onTabClick(tabKey)}
             disabled={disabled}
           >
             {tab}
@@ -120,8 +127,8 @@ export function Tabs(props) {
       const {tabKey, tab, disabled} = children.props
       return (
         <Tab
-          isActive={stateActiveKey === tabKey}
-          onClick={disabled ? noop : () => onTabClick(tabKey)}
+          isActive={activeKey === tabKey}
+          onClick={disabled ? noop : () => this.onTabClick(tabKey)}
           disabled={disabled}
         >
           {tab}
@@ -130,31 +137,34 @@ export function Tabs(props) {
     }
   }
 
-  const getChildren = () => {
-    const {children} = props
+  getChildren = () => {
+    const {children} = this.props
+    const {activeKey} = this.state
     if (children.length > 1) {
       return children.map(child => {
         const tabKey = child.props.tabKey
         const props = {
-          isActive: stateActiveKey === tabKey
+          isActive: activeKey === tabKey
         }
         return React.cloneElement(child, props)
       })
     } else {
       const tabKey = children.props.tabKey
       const props = {
-        isActive: stateActiveKey === tabKey
+        isActive: activeKey === tabKey
       }
       return React.cloneElement(children, props)
     }
   }
 
-  return (
-    <Box>
-      <TabsList>{getTabsItems()}</TabsList>
-      {getChildren()}
-    </Box>
-  )
+  render() {
+    return (
+      <Box>
+        <TabsList>{this.getTabsItems()}</TabsList>
+        {this.getChildren()}
+      </Box>
+    )
+  }
 }
 
 Tabs.TabPane = TabPane

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {Component} from 'react'
 import Flex from './Flex'
 import Text from './Text'
 
@@ -82,50 +82,61 @@ const RadioContainer = styled(Flex)`
   align-content: center;
 `
 
-export function Radio(props) {
-  const [stateChecked, setStateChecked] = useState(
-    typeof props.checked !== 'undefined' ? props.checked : false
-  )
-
-  useEffect(() => {
-    // If controlled by form
-    if (props[FIELD_DATA_PROP]) {
-      setStateChecked(props.value)
-    } else if ('checked' in props) {
-      setStateChecked(props.checked)
+export class Radio extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      checked: typeof props.checked !== 'undefined' ? props.checked : false
     }
-  }, [props])
-
-  const handleChange = event => {
-    const {checked} = event.target
-    setStateChecked(checked)
-    typeof props.onChange === 'function' && props.onChange(checked, props.value)
   }
 
-  return (
-    <Label {...props}>
-      <RadioContainer onChange={handleChange}>
-        <RadioInput
-          {...omit(props, ['onChange', 'value'])}
-          checked={stateChecked}
-          name={props.name}
-          readOnly
-        />
-        <StyledRadio
-          checked={stateChecked}
-          size={props.size}
-          disabled={props.disabled}
-        >
-          {/* Icon для выстраивания чекбоксов с разными border-width на base line  */}
-          <Icon name="radio_button_unchecked" hidden />
-        </StyledRadio>
-      </RadioContainer>
-      {/* this.props.children instead of text maybe? */}
-      <Text inline regular ml={2} id={`radio-text-${props.label}`}>
-        {props.label}
-      </Text>
-    </Label>
-  )
+  handleChange = event => {
+    const {checked} = event.target
+    this.setState({checked})
+    this.props.onChange && this.props.onChange(checked, this.props.value)
+  }
+
+  static getDerivedStateFromProps(nextProps) {
+    // If controlled by form
+    if (nextProps[FIELD_DATA_PROP]) {
+      return {
+        checked: nextProps.value
+      }
+    }
+    if ('checked' in nextProps) {
+      return {
+        checked: nextProps.checked
+      }
+    }
+    return null
+  }
+
+  render() {
+    return (
+      <Label {...this.props}>
+        <RadioContainer onChange={this.handleChange}>
+          <RadioInput
+            {...omit(this.props, ['onChange', 'value'])}
+            checked={this.state.checked}
+            name={this.props.name}
+            readOnly
+          />
+          <StyledRadio
+            checked={this.state.checked}
+            size={this.props.size}
+            disabled={this.props.disabled}
+          >
+            {/* Icon для выстраивания чекбоксов с разными border-width на base line  */}
+            <Icon name="radio_button_unchecked" hidden />
+          </StyledRadio>
+        </RadioContainer>
+        {/* this.props.children instead of text maybe? */}
+        <Text inline regular ml={2} id={`radio-text-${this.props.label}`}>
+          {this.props.label}
+        </Text>
+      </Label>
+    )
+  }
 }
 
 Radio.propTypes = {
