@@ -6,6 +6,7 @@ import createFormField from 'rc-form/lib/createFormField'
 export const FIELD_META_PROP = 'form-item-meta'
 export const FIELD_DATA_PROP = 'form-item-data'
 
+/** Форма на основе rc-form. */
 export function Form(props) {
   return <form {...props} />
 }
