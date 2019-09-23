@@ -151,8 +151,8 @@ export function CollapsePanel({
     height: isOpen ? contentHeight : 0
   }
   return (
-    <PanelWrapper flexDirection="column" disabled={disabled} isOpen={isOpen}>
-      <PanelHeader titleAlignment={titleAlignment} {...props} />
+    <PanelWrapper flexDirection="column" disabled={disabled}>
+      <PanelHeader titleAlignment={titleAlignment} isOpen={isOpen} {...props} />
       <PanelContent {...contentProps} style={mergedStyle}>
         <Box forwardRef={refBox}>{children}</Box>
       </PanelContent>
