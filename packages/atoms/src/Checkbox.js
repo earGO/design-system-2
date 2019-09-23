@@ -40,7 +40,11 @@ const background = ({checked, disabled, ...rest}) => {
 
 const border = ({checked, disabled, ...rest}) => {
   const {colors} = rest.theme
-  return !(checked || disabled) && `border: 1px solid ${colors.black}`
+  if (!(checked || disabled)) {
+    return `border: 1px solid ${colors.black}`
+  } else {
+    return `border: 1px solid transparent`
+  }
 }
 
 const CheckboxInput = styled.input.attrs({type: 'checkbox'})`

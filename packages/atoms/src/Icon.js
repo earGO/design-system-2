@@ -4,6 +4,7 @@ import './iconfonts/icon.css'
 import styled, {keyframes, css} from 'styled-components'
 import {Flex} from './index'
 import Relative from './Relative'
+import omit from 'lodash/omit'
 
 const sizes = {
   0: ' md-14',
@@ -112,7 +113,7 @@ export function Icon({name, size, color, spin, spinCCW, ...props}) {
     iconWrapperSize = wrapperSizes[size]
   }
   return (
-    <Relative {...props}>
+    <Relative {...omit(props, ['hidden'])}>
       <IconBordered size={iconWrapperSize} {...{spin, spinCCW}}>
         <i className={`${nameForClass}`}>{name}</i>
       </IconBordered>
