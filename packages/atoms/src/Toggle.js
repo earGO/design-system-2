@@ -113,7 +113,6 @@ export function Toggle(props) {
     if ('checked' in props) {
       setStateChecked(props.checked)
     }
-    return undefined
   }, [props])
 
   const handleChange = event => {

@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react'
+import * as React from 'react'
 import propTypes from 'prop-types'
 import RSelect, {components} from 'react-select'
 import AsyncRSelect from 'react-select/async'
@@ -159,57 +159,60 @@ const StyledList = styled(List)`
 `
 
 const MenuList = optionHeight =>
-  function MenuList(props) {
-    const [currentIndex, setCurrentIndex] = useState(null)
+  /** Класс, чтобы ArrowUp/ArrowDown скроллили List */
+  class MenuList extends React.Component {
+    state = {
+      currentIndex: null
+    }
 
-    const listRef = useRef(null)
+    list = React.createRef()
 
-    useEffect(() => {
-      const _children = Array.isArray(props.children)
-        ? props.children
-        : [props.children]
-      const currentIndexNew = Math.max(
+    static getDerivedStateFromProps({children}) {
+      const _children = Array.isArray(children) ? children : [children]
+      const currentIndex = Math.max(
         _children.findIndex(({props: {isFocused}}) => isFocused),
         0
       )
-      setCurrentIndex(currentIndexNew)
-    }, [props.children])
-
-    useEffect(() => {
-      currentIndex && listRef.current.scrollToItem(currentIndex)
-    })
-
-    const {options, children, maxHeight, getValue} = props
-    const [value] = getValue()
-    const initialOffset = options.indexOf(value) * optionHeight
-
-    if (!children.length) {
-      /* No option message */
-      return <Box>{children}</Box>
+      return {
+        currentIndex
+      }
     }
 
-    return (
-      <StyledList
-        ref={listRef}
-        height={maxHeight}
-        itemCount={children.length}
-        itemSize={optionHeight}
-        initialScrollOffset={initialOffset}
-      >
-        {({index, style}) => <div style={style}>{children[index]}</div>}
-      </StyledList>
-    )
+    componentDidUpdate() {
+      const {currentIndex} = this.state
+      currentIndex && this.list.current.scrollToItem(currentIndex)
+    }
+
+    render() {
+      const {options, children, maxHeight, getValue} = this.props
+      const [value] = getValue()
+      const initialOffset = options.indexOf(value) * optionHeight
+      if (!children.length) {
+        /* No option message */
+        return <Box>{children}1</Box>
+      }
+      return (
+        <StyledList
+          ref={this.list}
+          height={maxHeight}
+          itemCount={children.length}
+          itemSize={optionHeight}
+          initialScrollOffset={initialOffset}
+        >
+          {({index, style}) => <div style={style}>{children[index]}</div>}
+        </StyledList>
+      )
+    }
   }
 
 /**
  * Используется для выбора значения из списка.
  */
-export function Select(props) {
-  const withSystemTheme = (size, systemTheme) => theme => {
+export class Select extends React.Component {
+  withSystemTheme = (size, systemTheme) => theme => {
     let controlHeight = 0
     // #TODO Probably will break in combobox + size===small.
     // https://github.com/JedWatson/react-select/issues/1322
-
     switch (size) {
       case 'small':
         controlHeight = 32
@@ -234,39 +237,40 @@ export function Select(props) {
     }
   }
 
-  const {optionHeight, size, async, virtualized, onChange} = props
-  const selectProps = {
-    styles: customStyles,
-    components: {
-      DropdownIndicator,
-      MenuList: virtualized
-        ? MenuList(optionHeight || OPTION_HEIGHT)
-        : components.MenuList
-    },
-    ...props
+  render() {
+    const {optionHeight, size, async, virtualized, onChange} = this.props
+    const selectProps = {
+      styles: customStyles,
+      components: {
+        DropdownIndicator,
+        MenuList: virtualized
+          ? MenuList(optionHeight || OPTION_HEIGHT)
+          : components.MenuList
+      },
+      ...this.props
+    }
+    return (
+      <ThemeConsumer>
+        {systemTheme =>
+          async ? (
+            <AsyncRSelect
+              {...selectProps}
+              onChange={onChange}
+              systemTheme={systemTheme}
+              theme={this.withSystemTheme(size, systemTheme)}
+            />
+          ) : (
+            <RSelect
+              {...selectProps}
+              onChange={onChange}
+              systemTheme={systemTheme}
+              theme={this.withSystemTheme(size, systemTheme)}
+            />
+          )
+        }
+      </ThemeConsumer>
+    )
   }
-
-  return (
-    <ThemeConsumer>
-      {systemTheme =>
-        async ? (
-          <AsyncRSelect
-            {...selectProps}
-            onChange={onChange}
-            systemTheme={systemTheme}
-            theme={withSystemTheme(size, systemTheme)}
-          />
-        ) : (
-          <RSelect
-            {...selectProps}
-            onChange={onChange}
-            systemTheme={systemTheme}
-            theme={withSystemTheme(size, systemTheme)}
-          />
-        )
-      }
-    </ThemeConsumer>
-  )
 }
 
 Select.displayName = 'Select'
