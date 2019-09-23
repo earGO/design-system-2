@@ -3,32 +3,26 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Flex from './Flex'
 
-/** Стандартный Flex, дополненный нижним разделителем для более точной верстки
- * Используется в модулях навигации и просто между крупными блоками*/
-
 const FlexContainer = styled(Flex)`
   margin: 0;
   align-self: center;
   width: 100%;
   border-bottom-style: solid;
   border-bottom-width: 1px;
-  border-color: ${props => props.theme.colors[props.dividercolor]};
+  border-color: ${props => props.theme.colors.border};
 `
 
-function FlexContainerBottomDivider({children, dividercolor, ...props}) {
-  return (
-    <FlexContainer dividercolor={dividercolor} {...props}>
-      {children}
-    </FlexContainer>
-  )
+/** Стандартный `<Flex/>`, дополненный нижним разделителем для более точной верстки
+ * Используется в модулях навигации и просто между крупными блоками
+ *
+ * Введён как отдельный компонент ввиду неточной вёрстки с применением `<Divider/>` */
+
+export function FlexContainerBottomDivider({children, ...props}) {
+  return <FlexContainer {...props}>{children}</FlexContainer>
 }
 
-FlexContainerBottomDivider.propTypes = {
-  dividercolor: PropTypes.string
-}
+FlexContainerBottomDivider.propTypes = {}
 
-FlexContainerBottomDivider.defaultProps = {
-  dividercolor: 'border'
-}
+FlexContainerBottomDivider.defaultProps = {}
 
 export default FlexContainerBottomDivider

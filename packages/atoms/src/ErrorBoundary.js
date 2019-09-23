@@ -1,7 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Heading from './Heading'
 
-class ErrorBoundary extends React.Component {
+/** Стандартный  error boundary из документации к Реакту.
+ *
+ * Принимает на вход сообщение, выдаваемое при ошибке, и пропсы
+ * для настройки внешнего вида текста, по формату компонента `<Heading/>` */
+
+export class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props)
     this.state = {hasError: false}
@@ -19,15 +25,29 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       // Можно отрендерить запасной UI произвольного вида
-      return <h1>Что-то пошло не так.</h1>
+      return (
+        <Heading {...this.props.headingProps}>{this.props.message}</Heading>
+      )
     }
 
     return this.props.children
   }
 }
 
-ErrorBoundary.propTypes = {}
+ErrorBoundary.propTypes = {
+  /** Обьект с пропсами для Heading */
+  headingProps: PropTypes.object,
+  /** Содержимое сообщения об ошибке */
+  message: PropTypes.string
+}
 
-ErrorBoundary.defaultProps = {}
+ErrorBoundary.defaultProps = {
+  /** Обьект с пропсами для Heading */
+  headingProps: {
+    tag: 'h2'
+  },
+  /** Содержимое сообщения об ошибке */
+  message: 'Что-то пошло не так'
+}
 
 export default ErrorBoundary

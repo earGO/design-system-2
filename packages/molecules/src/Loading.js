@@ -1,46 +1,43 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {Icon, Overlay, Flex, Text, Box} from '@design-system/atoms'
-import ActionCell from './ActionCell'
+import Card from '@design-system/atoms/src/Card'
 
 function Spinner(props) {
   return <Icon spin name="cached" {...props} />
 }
 
-function Loading({overlay, color, children, size}) {
+export function Loading({overlay, color, children, size}) {
+  const clickOverlay = () => {
+    alert('content is loading!')
+  }
+
   if (overlay) {
     return (
-      <Overlay bg="white" style={{zIndex: 2}}>
-        <Flex flexDirection={'row'} alignItems={'center'}>
-          <Spinner color={color} size={size} />
-          {children && (
-            <Box>
-              <Text color={color} bold ml={2} fontSize={size}>
-                {children}
-              </Text>
-            </Box>
-          )}
-        </Flex>
-      </Overlay>
+      <Flex
+        flexDirection={'row'}
+        alignItems={'center'}
+        justifyContent={'center'}
+      >
+        {overlay && (
+          <Overlay onClick={clickOverlay}>
+            <Icon spin color="white" name="autorenew" />
+          </Overlay>
+        )}
+        {children}
+      </Flex>
     )
   }
 
   return (
-    <Flex flexDirection={'row'} alignItems={'center'}>
-      <Spinner color={color} size={size} />
-      {children && (
-        <Box>
-          <Text color={color} bold ml={2} fontSize={size}>
-            {children}
-          </Text>
-        </Box>
-      )}
+    <Flex flexDirection={'row'} alignItems={'center'} justifyContent={'center'}>
+      {children}
     </Flex>
   )
 }
 
 Loading.propTypes = {
-  /** Перекрывает ли компонент остальное */
+  /** Загружаются ли данные */
   overlay: PropTypes.bool,
   /** Цвет иконки */
   color: PropTypes.string,

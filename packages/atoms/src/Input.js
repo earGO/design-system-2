@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {useState} from 'react'
 import styled, {css} from 'styled-components'
 import propTypes from 'prop-types'
 import Relative from './Relative'
@@ -19,8 +19,8 @@ const propsToOmit = [
 ]
 
 const disabled = props =>
-  props.disabled &&
-  css`
+    props.disabled &&
+    css`
     background: ${themeGet('colors.input.disabled', '#b5b5b5')};
     cursor: not-allowed;
   `
@@ -50,10 +50,12 @@ const HTMLInput = styled.input`
   font-family: ${themeGet('font.main', "'PT Sans'")};
   border-width: 1px;
   border-style: solid;
-  border-color: ${props => props.border || 'transparent'};
+  border-color: ${props => props.border || props.theme.colors.lightGrey};
   border-radius: ${props => props.theme.radii[1] + 'px'};
   padding-top: ${props => props.paddingTop + 'px'};
   transition: all ${props => props.theme.duration.fast};
+  /* НИЖЕ УКАЗЫВАЕМ ШИРИНУ ЕСЛИ ИНПУТ RESIZABLE */
+  width: ${props => (props.resizable ? props.shrinkWidth + 'px' : props.width)};
   :hover {
     border-color: ${themeGet('colors.primary', '#3a3a3a')}
   } 
@@ -61,10 +63,13 @@ const HTMLInput = styled.input`
     outline: none;
     background: ${themeGet('colors.white', '#ffffff')};
     border-color: ${themeGet('colors.lightBlue', '#0091ea')};
+    /* НИЖЕ УКАЗЫВАЕМ ШИРИНУ ЕСЛИ ИНПУТ RESIZABLE */
+    width: ${props => (props.resizable ? props.growWidth + 'px' : props.width)};
   }
   background: ${props => props.theme.colors.lightGrey};
+
 	
-  ${width}
+  /* ${width} */
   ${space}
   ${size}
   ${disabled}
@@ -81,72 +86,98 @@ const Adornment = styled(Absolute)({
   display: 'flex'
 })
 
-/** Получение данных от пользователя.*/
-class Input extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      value:
-        typeof props.value !== 'undefined' ? props.defaultValue : props.value
-    }
-  }
+/** Получение данных от пользователя. */
 
-  static getDerivedStateFromProps(nextProps) {
-    if ('value' in nextProps) {
-      return {
-        value: nextProps.value
-      }
-    }
-    return null
-  }
+export function Input({
+                        value,
+                        defaultValue,
+                        prefix,
+                        suffix,
+                        width,
+                        wrapperStyle,
+                        resizable,
+                        shrinkWidth,
+                        growWidth,
+                        onChange,
+                        type,
+                        ...props
+                      }) {
+  const [inputValue, setInputValue] = useState(value || defaultValue)
+  const [inputOnFocus, setInputOnFocus] = useState(false)
+  const [suffixOnFocus, setSuffixOnFocus] = useState(false)
 
-  handleChange = event => {
+  const handleChange = event => {
     const newValue = event.target.value
-    this.setState({
-      value: newValue
-    })
-    this.props.onChange && this.props.onChange(newValue, event)
+    setInputValue(newValue)
+    typeof onChange === 'function' && onChange(newValue, event)
   }
 
-  saveInput = node => {
-    this.input = node
+  //#region handlers for Resizable Input
+  const suffixOnClick = () => {
+    typeof onChange === 'function' && onChange('')
+    setSuffixOnFocus(false)
+    setInputValue('')
   }
 
-  focus = () => {
-    this.input.focus()
+  const handleInputOnFocus = () => {
+    setInputOnFocus(true)
   }
 
-  blur = () => {
-    this.input.blur()
+  const handleInputOnBlur = () => {
+    if (suffixOnFocus) {
+      suffixOnClick()
+      setInputOnFocus(false)
+    } else {
+      setInputOnFocus(false)
+    }
   }
 
-  render() {
-    const {prefix, suffix, width, wrapperStyle} = this.props
-    return (
+  const handleSuffixOnFocus = () => {
+    setSuffixOnFocus(true)
+  }
+  const handleSuffixOnBlur = () => {
+    setSuffixOnFocus(false)
+  }
+  //#endregion handlers for Resizable Input
+
+  return (
       <InputWrapper width={width} style={wrapperStyle}>
         {prefix && (
-          <Adornment left={0} pl={2}>
-            {prefix}
-          </Adornment>
+            <Adornment left={0} pl={2}>
+              {prefix}
+            </Adornment>
         )}
         <HTMLInput
-          {...omit(this.props, propsToOmit)}
-          pl={prefix ? 4 : 3}
-          pr={suffix ? 4 : 2}
-          width="100%"
-          ref={this.saveRef}
-          value={this.state.value}
-          onChange={this.handleChange}
-          type={this.props.type || 'text'}
+            {...omit(props, propsToOmit)}
+            pl={prefix ? 4 : 3}
+            pr={suffix ? 4 : 2}
+            // width="100%"
+            value={inputValue}
+            resizable={resizable}
+            onChange={handleChange}
+            type={type || 'text'}
+            //#region attributes for Resizable Input
+            shrinkWidth={shrinkWidth}
+            growWidth={growWidth}
+            //#endregion attributes for Resizable Input
+            onFocus={handleInputOnFocus}
+            onBlur={handleInputOnBlur}
         />
-        {suffix && (
-          <Adornment right={0} pr={2}>
-            {suffix}
-          </Adornment>
+        {suffix && inputValue && inputOnFocus && (
+            <Adornment
+                right={0}
+                pr={2}
+                style={{cursor: 'pointer'}}
+                //#region attributes for Resizable Input
+                onMouseEnter={handleSuffixOnFocus}
+                onMouseLeave={handleSuffixOnBlur}
+                //#endregion attributes for Resizable Input
+            >
+              {suffix}
+            </Adornment>
         )}
       </InputWrapper>
-    )
-  }
+  )
 }
 
 Input.propTypes = {
@@ -167,7 +198,8 @@ Input.propTypes = {
 }
 
 Input.defaultProps = {
-  size: 'medium'
+  size: 'medium',
+  border:'lightGrey'
 }
 
 Input.displayName = 'Input'

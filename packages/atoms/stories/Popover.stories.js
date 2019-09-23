@@ -1,152 +1,136 @@
-import React from 'react'
-import {storiesOf} from '@storybook/react'
-import {Flex, Card, Text, Button, Popover, Box} from '../src'
-import styled from 'styled-components'
+import React, {useState} from 'react'
 
-const PopoverMenuItem = styled(Box)`
-  width: 120px;
-  height: 20px;
-  cursor: pointer;
-  &:hover {
-    background-color: #34c3ff;
-  }
-`
+import {Popover} from '../src/Popover'
+import {Box, Card, Text, Radio, Button, Input, Flex} from '../src/index'
 
-const simpleContent = () => (
-  <Card p={3} bg="#ebebeb">
-    <Text color="info">
-      Hi! I'm popover content. <br />I have no decorations and don't care
-    </Text>
-  </Card>
-)
-
-const arrowedContent = ({position, targetRect, popoverRect}) => (
-  <Popover.ArrowContainer
-    position={position}
-    targetRect={targetRect}
-    popoverRect={popoverRect}
-    arrowColor={'blue'}
-    arrowSize={10}
-    arrowStyle={{opacity: 0.7}}
-  >
-    <Card p={3} bg="#ebebeb">
-      <Text color="info">
-        Hi! I'm popover content. <br />I have an arrow and quite awesome.
-      </Text>
-    </Card>
-  </Popover.ArrowContainer>
-)
-
-const arrowedMenu = ({position, targetRect, popoverRect}) => (
-  <Popover.ArrowContainer
-    position={position}
-    targetRect={targetRect}
-    popoverRect={popoverRect}
-    arrowColor={'blue'}
-    arrowSize={10}
-    arrowStyle={{opacity: 0.7}}
-  >
-    <Card p={3} bg="#ebebeb">
-      <PopoverMenuItem>Item 1</PopoverMenuItem>
-      <PopoverMenuItem>Item 2</PopoverMenuItem>
-      <PopoverMenuItem>Item 3</PopoverMenuItem>
-    </Card>
-  </Popover.ArrowContainer>
-)
-
-class SingleComponent extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      isPopoverOpen: false,
-      popoverPosition: 'top'
-    }
-  }
-
-  render() {
-    const {isPopoverOpen} = this.state
-    return (
-      <Flex
-        width={400}
-        height={420}
-        flexDirection={'column'}
-        justifyContent={'center'}
-        alignItems={'center'}
-      >
-        <Popover
-          isOpen={isPopoverOpen}
-          position={this.state.popoverPosition} // preferred position
-          content={this.props.content}
-          contentLocation={({nudgedLeft, nudgedTop}) => ({
-            top: nudgedTop + 0,
-            left: nudgedLeft + 0
-          })}
-        >
-          <Text
-            align={'center'}
-            onClick={() => this.setState({isPopoverOpen: !isPopoverOpen})}
-          >
-            Click me!
-          </Text>
-        </Popover>
-        <Text mt={120}>Put container to:</Text>
-        <Flex>
-          <Button
-            mr={2}
-            onClick={() => this.setState({popoverPosition: 'top'})}
-          >
-            Top
-          </Button>
-          <Button
-            mr={2}
-            onClick={() => this.setState({popoverPosition: 'left'})}
-          >
-            Left
-          </Button>
-          <Button
-            mr={2}
-            onClick={() => this.setState({popoverPosition: 'bottom'})}
-          >
-            Bottom
-          </Button>
-          <Button
-            mr={2}
-            onClick={() => this.setState({popoverPosition: 'right'})}
-          >
-            Right
-          </Button>
-        </Flex>
-      </Flex>
-    )
+export default {
+  title: 'Design System|Popover',
+  parameters: {
+    component: Popover
   }
 }
 
-storiesOf(`Popover`, module)
-  .add('Default', () => <SingleComponent content={simpleContent} />, {
+export const basic = () => {
+  /** Управление открытием и закрытием Popover'a */
+  const [isPopoverOpen, setPopoverOpen] = useState(false)
+
+  const togglePopover = () => setPopoverOpen(!isPopoverOpen)
+  const closePopover = () => setPopoverOpen(false)
+
+  /** Управление положением Popover'a */
+  const [position, setPopoverPosition] = useState('top')
+
+  const setPosition = position => setPopoverPosition(position)
+
+  /** Управление смещением по оси Y*/
+  const [shiftTop, setShiftTop] = useState(0)
+
+  const handleShiftTopChange = value => {
+    setShiftTop(parseInt(value))
+  }
+
+  /** Управление смещением по оси Х */
+  const [shiftLeft, setShiftLeft] = useState(0)
+
+  const handleShiftLeftChange = value => {
+    setShiftLeft(parseInt(value))
+  }
+
+  /** Вёрстка компонента, отображаемого в качестве Popover'a */
+  const popoverContent = ({position, targetRect, popoverRect}) => (
+    <Popover.ArrowContainer
+      position={position}
+      targetRect={targetRect}
+      popoverRect={popoverRect}
+      arrowColor={'#ebebeb'} /** цвет стрелки прямоугольника Popover'a*/
+      arrowSize={7} /** размер стрелки Popover'a */
+    >
+      <Card p={3} bg="#ebebeb">
+        <Text color="info">
+          Hi! I'm popover content. <br />
+          Here's my position: {position}.
+        </Text>
+      </Card>
+    </Popover.ArrowContainer>
+  )
+  return (
+    <Flex
+      height={200}
+      justifyContent={'center'}
+      alignItems={'center'}
+      contentwidth={550}
+      m={3}
+    >
+      <Card p={3}>
+        <Text mb={2} bold>
+          Popover position
+        </Text>
+        <Box mb={4}>
+          <Radio.Group defaultValue="top" onChange={setPosition}>
+            <Radio label="Top" value="top" />
+            <Radio label="Right" value="right" ml={2} />
+            <Radio label="Bottom" value="bottom" ml={2} />
+            <Radio label="Left" value="left" ml={2} />
+          </Radio.Group>
+        </Box>
+        <Flex
+          mb={4}
+          flexDirection={'row'}
+          justifyContent={'flex-start'}
+          alignItems={'center'}
+        >
+          <Box width={150} m={2}>
+            <Text>Shift popover top</Text>
+            <Input
+              value={shiftTop}
+              type={'number'}
+              onChange={handleShiftTopChange}
+            />
+          </Box>
+          <Box width={150} m={2}>
+            <Text>Shift popover right</Text>
+            <Input
+              value={shiftLeft}
+              type={'number'}
+              onChange={handleShiftLeftChange}
+            />
+          </Box>
+        </Flex>
+        <Popover
+          isOpen={isPopoverOpen}
+          position={position}
+          content={popoverContent}
+          onClickOutside={closePopover}
+          /* Параметр contentLocation позволяет управлять положением Popover'a */
+          contentLocation={({nudgedLeft, nudgedTop}) => ({
+            top: nudgedTop + shiftTop,
+            left: nudgedLeft + shiftLeft
+          })}
+        >
+          <Button type="dashed" onClick={togglePopover}>
+            Popover
+          </Button>
+        </Popover>
+      </Card>
+    </Flex>
+  )
+}
+basic.story = {
+  parameters: {
     info: {
       text: `
-          Всплывающий блок с контентом возле элемента. Используется для всплывающих подсказок, выпадающих меню и т.д.. 
+         Пример применения. 
+         
+          Можно управлять позиционированием Popover'а, передавая в компонент дополнительные параметры. 
+          Обычно же Popover появляется прямо на границе вызывающего его компонента. 
+          Для целей иллюстрации влияния параметра Popover был сильно отнесён вправо. 
+          
+          nudgedTop - исходное положение Popover'a по координате Top
+          
+          nudgedLeft - исходное положение Popover'a по координате Left
+
+          Желательно делать параметры смещения Popover'a зависимыми от его положения на странице и размера пунктов его меню.
         `
     }
-  })
-  .add('Arrowed', () => <SingleComponent content={arrowedContent} />, {
-    info: {
-      text: `
-          Блок может быть со стрелкой. 
-        `
-    }
-  })
-  .add('Interactive', () => <SingleComponent content={arrowedMenu} />, {
-    info: {
-      text: `
-          Блок может содержать меню. 
-        `
-    }
-  })
-  .add('Various position', () => <SingleComponent content={arrowedMenu} />, {
-    info: {
-      text: `
-          Блок может содержать меню. 
-        `
-    }
-  })
+  }
+}

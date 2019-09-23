@@ -1,36 +1,46 @@
-import React from 'react'
-import {storiesOf} from '@storybook/react'
-import theme, {ThemeProvider} from '@design-system/theme'
+import React, {useState} from 'react'
 
-import {AnimatedSearchInput} from '../src'
+import {AnimatedSearchInput} from '../src/AnimatedSearchInput'
 
-storiesOf(`AnimatedSearchInput`, module)
-  .addParameters({
+export default {
+  title: 'Design System|AnimatedSearchInput',
+  parameters: {
+    component: AnimatedSearchInput
+  }
+}
+
+export const basic = () => <AnimatedSearchInput />
+basic.story = {
+  parameters: {
     info: {
-      inline: true,
-      header: false,
-      styles: {
-        header: {
-          h1: {
-            color: 'red'
-          }
-        }
-      }
-    }
-  })
-  .add(
-    'Default',
-    () => (
-      <ThemeProvider theme={theme}>
-        {' '}
-        <AnimatedSearchInput />
-      </ThemeProvider>
-    ),
-    {
-      info: {
-        text: `
-          По умолчанию без параметров иконка выводится в виде знака вопроса. 
+      text: `
+          Вид компонента без параметров
         `
-      }
     }
+  }
+}
+
+export const inAConsumer = () => {
+  const [value, setValue] = useState(``)
+  const handleChange = newValue => {
+    setValue(newValue)
+  }
+
+  return (
+    <AnimatedSearchInput
+      value={value}
+      onChange={handleChange}
+      shrinkWidth={120}
+      growWidth={480}
+    />
   )
+}
+inAConsumer.story = {
+  parameters: {
+    info: {
+      text: `
+          Пример применения в компоненте-потребителе
+        `
+    }
+  }
+}

@@ -27,19 +27,21 @@ const boxBorder = props => ({
   border: `1px solid ${props.theme.colors.border}`
 })
 
-/** Наследует компонент `<Box />` и расширяет его параметрами **boxShadowSize, borderColor, borderRadius, borderWidth**.
- * Используется для создания блока с тенью и границами.
- * */
 const CardBox = styled(Box)`
   overflow: hidden;
   position: relative;
+  background-color: ${props=>props.bg};
 
   ${boxShadow} 
   ${boxBorder} 
   ${borderRadius};
 `
 
-function Card({children, ...props}) {
+/** Наследует компонент `<Box />` и расширяет его параметрами **boxShadowSize, borderColor, borderRadius, borderWidth**.
+ * Используется для создания блока с тенью и границами.
+ * */
+
+export function Card({children, ...props}) {
   return <CardBox {...props}>{children}</CardBox>
 }
 
@@ -50,14 +52,14 @@ Card.propTypes = {
   borderRadius: PropTypes.oneOf([0, 1, 2]),
   /** Ширина бордера */
   borderWidth: PropTypes.oneOf([0, 1, 2]),
-  /** @ignore */
-  theme: PropTypes.any
+  /** Цвет фона */
+  bg:PropTypes.string
 }
 
 Card.defaultProps = {
   borderRadius: 1,
   borderWidth: 0,
-  theme: theme
+  bg:'white'
 }
 
 Card.displayName = 'Card'

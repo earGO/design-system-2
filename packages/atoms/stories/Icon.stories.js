@@ -1,31 +1,92 @@
 import React from 'react'
-import {storiesOf} from '@storybook/react'
 
-import {Icon} from '../src'
+import {Icon} from '../src/Icon'
+import Box from '../src/Box'
 
-storiesOf(`Single Icons`, module)
-  .add('Default', () => <Icon />, {
+export default {
+  title: 'Design System|Icon',
+  parameters: {
+    component: Icon
+  }
+}
+
+export const basic = () => <Icon />
+
+basic.story = {
+  parameters: {
     info: {
       text: `
-          По умолчанию без параметров иконка выводится в виде знака вопроса. 
+          Без параметров выводится чёрная иконка 24х24рх со знаком вопроса. 
         `
     }
-  })
-  .add(
-    'Arrow Down Icon component',
-    () => <Icon name={'keyboard_arrow_down'} color={'#000'} size={48} />,
-    {
-      info: {
-        text: `
-          Вид иконки определяется параметром name, куда нужно передать название иконки из этого каталога https://material.io/resources/icons/?style=baseline. 
-        `
-      }
-    }
-  )
-  .add('Spin', () => <Icon name={'cached'} color={'#000'} size={48} spin />, {
+  }
+}
+
+export const customIcon = () => (
+  <Icon name={'android'} size={3} color={'warning'} />
+)
+
+customIcon.story = {
+  parameters: {
     info: {
       text: `
-          Вид иконки определяется параметром name, куда нужно передать название иконки из этого каталога https://material.io/resources/icons/?style=baseline. 
+          Можно передавать имя и менять цвет и размер иконки
         `
     }
-  })
+  }
+}
+
+export const wrongProps = () => (
+  <Icon name={'android'} size={'10px'} color={'#55ff44'} />
+)
+
+wrongProps.story = {
+  parameters: {
+    info: {
+      text: `
+          Если параметры цвета и/или размера переданы не правильно, будут использованы значения "по умолчанию"
+        `
+    }
+  }
+}
+
+export const wrongName = () => (
+  <Icon name={'some_wrong_name'} size={3} color={'onclick'} />
+)
+
+wrongName.story = {
+  parameters: {
+    info: {
+      text: `
+          Иконка не будет отображаться, если передано неправильное имя.
+        `
+    }
+  }
+}
+
+export const otherUseCases = () => (
+  <Box p={3} bg={'lightGrey'}>
+    <Icon name={'android'} size={3} color={'onclick'} />
+    <Icon
+      name={'assignment_turned_in'}
+      size={4}
+      color={'danger'}
+      top={-20}
+      left={80}
+    />
+    <Icon name={'autorenew'} size={4} color={'danger'} spin />
+    <Icon name={'grade'} size={3} color={'primary'} spinCCW />
+    <Icon name={'grade'} size={3} color={'success'} spinCCW hidden />
+  </Box>
+)
+
+otherUseCases.story = {
+  parameters: {
+    info: {
+      text: `
+          Ещё несколько вариантов иконок. На самом деле тут 5 иконок, но последняя скрыта.
+          Обратите внимание на смещение второй иконки сверху относительно её контейнера. 
+        `
+    }
+  }
+}

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import './iconfonts/icon.css'
 import styled, {keyframes, css} from 'styled-components'
 import {Flex} from './index'
+import Relative from './Relative'
 
 const sizes = {
   0: ' md-14',
@@ -85,13 +86,19 @@ const IconBordered = styled(Flex)`
   user-select: none;
 `
 
-function Icon({name, size, color, ...props}) {
+/** Компонент для иконок. Принимает как параметр имя иконки, взятое отсюда
+ *  https://material.io/resources/icons/?style=baseline.
+ *
+ *  Сама иконка внутри компонента обёрнута во `<Relative/>`, в противном случае разные иконки
+ *  некорректно отображаются в вёрстке. Соответственно можно передавать любые параметры,
+ *  принимаемые `<Relative/>` для выравнивания иконки "по месту" в случае, например, стрелок. */
+export function Icon({name, size, color, spin, spinCCW, ...props}) {
   let nameForClass = 'material-icons '
   let iconWrapperSize = 24
   if (sizes[size] !== undefined) {
     nameForClass = nameForClass + sizes[size]
   } else {
-    nameForClass = nameForClass + 'md-18 '
+    nameForClass = nameForClass + 'md-24 '
   }
   if (colors[color] !== undefined) {
     nameForClass = nameForClass + colors[color]
@@ -105,26 +112,38 @@ function Icon({name, size, color, ...props}) {
     iconWrapperSize = wrapperSizes[size]
   }
   return (
-    <IconBordered size={iconWrapperSize} {...props}>
-      <i className={`${nameForClass}`}>{name}</i>
-    </IconBordered>
+    <Relative {...props}>
+      <IconBordered size={iconWrapperSize} {...{spin, spinCCW}}>
+        <i className={`${nameForClass}`}>{name}</i>
+      </IconBordered>
+    </Relative>
   )
 }
 
 Icon.displayName = 'Icon'
 
 Icon.propTypes = {
+  /** название иконки, взятое из каталога Material icons */
   name: PropTypes.string,
+  /** Один из системных цветов. Если передан цвет,
+   * не включённый в словарь системных цветов, иконка будет чёрной */
   color: PropTypes.string,
+  /** Один из размеров [0,1,2,3,4], или в пикселях [14,18,24,36,48] */
   size: PropTypes.number,
-  spin: PropTypes.bool
+  /** Если передать spin=true, иконка будет вращаться по часовой стрелке */
+  spin: PropTypes.bool,
+  /** Если передать spinCCW=true, иконка будет вращаться против часовой стрелки */
+  spinCCW: PropTypes.bool,
+  /** Параметр позволяет "спрятать" иконку и не отображать её на странице.  */
+  hidden: PropTypes.any
 }
 
 Icon.defaultProps = {
   name: 'live_help',
   size: 2,
   color: 'text',
-  spin: false
+  spin: false,
+  spinCCW: false
 }
 
 /** @component */

@@ -101,7 +101,7 @@ const ToggleTrack = styled.button`
 `
 
 /** Используется так же, как и Checkbox, но для единственного значения. */
-class Toggle extends Component {
+export class Toggle extends Component {
   constructor(props) {
     super(props)
     this.state = {

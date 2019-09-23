@@ -3,10 +3,6 @@ import PropTypes from 'prop-types'
 import Flex from './Flex'
 import styled from 'styled-components'
 
-/**
- * Специализированный компонент для позиционирования крупных блоков по центру страницы
- * и ограничения их ширины. Применяется ещё и для ограничения ширины блоков внутри сетки
- * Обладает шириной по умолчанию, равной базовой ширине контента на странице проекта*/
 
 const ContentBoxStyle = styled(Flex)`
   padding-top: ${props => props.padding + 'px'};
@@ -17,8 +13,13 @@ const ContentBoxStyle = styled(Flex)`
   margin: 0 auto;
   width: ${props => props.contentwidth + 'px'};
 `
+/**
+ * Специализированный компонент на основе `<Flex/>` для позиционирования крупных блоков по центру страницы
+ * и ограничения их ширины. Применяется ещё и для ограничения ширины блоков внутри сетки
+ * Обладает шириной по умолчанию, равной базовой ширине контента на странице проекта
+ * */
 
-function ContentBox({
+export function ContentBox({
   children,
   padding,
   justifyContent,
