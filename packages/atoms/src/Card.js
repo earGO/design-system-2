@@ -30,7 +30,7 @@ const boxBorder = props => ({
 const CardBox = styled(Box)`
   overflow: hidden;
   position: relative;
-  background-color: #1e88e5;
+  background-color: ${props=>props.bg};
 
   ${boxShadow} 
   ${boxBorder} 
@@ -52,14 +52,14 @@ Card.propTypes = {
   borderRadius: PropTypes.oneOf([0, 1, 2]),
   /** Ширина бордера */
   borderWidth: PropTypes.oneOf([0, 1, 2]),
-  /** @ignore */
-  theme: PropTypes.any
+  /** Цвет фона */
+  bg:PropTypes.string
 }
 
 Card.defaultProps = {
   borderRadius: 1,
   borderWidth: 0,
-  theme: theme
+  bg:'white'
 }
 
 Card.displayName = 'Card'
