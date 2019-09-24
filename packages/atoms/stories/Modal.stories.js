@@ -27,7 +27,7 @@ export const basic = () => {
               Сохраните все данные и завершите работу <Text bold>до 19:00</Text>
               . Система будет обновлена.
             </Text>
-            <Button mt={2} type="secondary" size="small" onClick={handleClick}>
+            <Button mt={2} type="primary" size="small" onClick={handleClick}>
               Хорошо
             </Button>
           </Text>
