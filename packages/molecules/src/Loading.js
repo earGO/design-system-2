@@ -1,11 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Icon, Overlay, Flex, Text, Box} from '@design-system/atoms'
-import Card from '@design-system/atoms/src/Card'
-
-function Spinner(props) {
-  return <Icon spin name="cached" {...props} />
-}
+import {Icon, Overlay, Flex} from '@design-system/atoms'
 
 export function Loading({overlay, color, children, size}) {
   const clickOverlay = () => {
