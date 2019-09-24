@@ -10,7 +10,6 @@ import {
   Relative
 } from '@design-system/atoms'
 import styled from 'styled-components'
-import ActionCell from './ActionCell'
 
 const PopoverMenuItem = styled(Flex)`
   padding: 0;
