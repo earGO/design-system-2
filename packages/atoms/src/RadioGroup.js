@@ -1,44 +1,37 @@
-import React, {Component} from 'react'
+import React, {useState} from 'react'
 import Box from './Box'
 
-class RadioGroup extends Component {
-  constructor(props) {
-    super(props)
-    const activeValue = this.props.value
-    const defaultValue = this.props.defaultValue
-    this.state = {
-      activeValue: activeValue || defaultValue || ''
-    }
+export function RadioGroup(props) {
+  const [activeValue, setActiveValue] = useState(
+    props.value || props.defaultValue || ''
+  )
+
+  const handleChange = newActiveValue => {
+    setActiveValue(newActiveValue)
+    typeof props.onChange === 'function' && props.onChange(newActiveValue)
   }
 
-  handleChange = newActiveValue => {
-    this.setState({activeValue: newActiveValue})
-    this.props.onChange && this.props.onChange(newActiveValue)
-  }
-
-  onRadioChange = (checked, value) => {
+  const onRadioChange = (checked, value) => {
     if (checked && value) {
-      this.handleChange(value)
+      handleChange(value)
     }
   }
 
-  getChildren = () => {
-    const {children} = this.props
-    const {activeValue} = this.state
+  const getChildren = () => {
+    const {children} = props
+
     return children.map(child => {
       const value = child.props.value
       const props = {
         key: value,
         checked: activeValue === value,
-        onChange: this.onRadioChange
+        onChange: onRadioChange
       }
       return React.cloneElement(child, props)
     })
   }
 
-  render() {
-    return <Box>{this.getChildren()}</Box>
-  }
+  return <Box>{getChildren()}</Box>
 }
 
 /** @component */

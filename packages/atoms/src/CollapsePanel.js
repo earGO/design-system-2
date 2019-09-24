@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import propTypes from 'prop-types'
 import styled, {css} from 'styled-components'
 import Box from './Box'
@@ -124,52 +124,40 @@ const PanelHeader = ({
 )
 
 /** Отвечает за вывод содержимого */
-export class CollapsePanel extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      contentHeight: 0
-    }
-  }
 
-  componentDidMount() {
-    this.setState({
-      contentHeight: this.measure && this.measure.clientHeight
-    })
-  }
+export function CollapsePanel({
+  style,
+  isOpen,
+  disabled,
+  titleAlignment,
+  contentProps,
+  children,
+  ...props
+}) {
+  const [contentHeight, setContentHeight] = useState(0)
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.measure) {
-      if (prevState.contentHeight !== this.measure.clientHeight)
-        this.setState({
-          contentHeight: this.measure.clientHeight
-        })
-    }
-  }
+  const refBox = useRef(null)
 
-  render() {
-    const mergedStyle = {
-      ...this.props.style,
-      height: this.props.isOpen ? this.state.contentHeight : 0
-    }
-    return (
-      <PanelWrapper
-        flexDirection="column"
-        disabled={this.props.disabled}
-        isOpen={this.props.isOpen}
-      >
-        <PanelHeader
-          titleAlignment={this.props.titleAlignment}
-          {...this.props}
-        />
-        <PanelContent {...this.props.contentProps} style={mergedStyle}>
-          <Box ref={measure => (this.measure = measure)}>
-            {this.props.children}
-          </Box>
-        </PanelContent>
-      </PanelWrapper>
-    )
+  useEffect(
+    () =>
+      setContentHeight(
+        refBox !== null && refBox.current && refBox.current.clientHeight
+      ),
+    [refBox]
+  )
+
+  const mergedStyle = {
+    ...style,
+    height: isOpen ? contentHeight : 0
   }
+  return (
+    <PanelWrapper flexDirection="column" disabled={disabled}>
+      <PanelHeader titleAlignment={titleAlignment} isOpen={isOpen} {...props} />
+      <PanelContent {...contentProps} style={mergedStyle}>
+        <Box forwardRef={refBox}>{children}</Box>
+      </PanelContent>
+    </PanelWrapper>
+  )
 }
 
 CollapsePanel.propTypes = {

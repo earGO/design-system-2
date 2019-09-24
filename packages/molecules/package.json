@@ -11,7 +11,7 @@
     "build-storybook-app": "build-storybook -c .storybook",
     "clean": "rm -rf node_modules dist build lib",
     "build": "yarn babelify",
-    "babelify": "yarn clean && babel src --out-dir build && cp -a ./src/iconfonts ./build/iconfonts"
+    "babelify": "yarn clean && babel src --out-dir build"
   },
   "devDependencies": {
     "@design-system/atoms": "^2.2.0",

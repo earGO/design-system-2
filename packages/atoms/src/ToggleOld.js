@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {Component} from 'react'
 import propTypes from 'prop-types'
 import styled, {css} from 'styled-components'
 import themeGet from '@styled-system/theme-get'
@@ -90,7 +90,7 @@ const ToggleTrack = styled.button`
   ${tracksBorder}
   ${cursor}
   :focus {
-    /* Выглядит не очень конечно - не знаю кто его рисовал, но Иванов-Тельманов ни при чем */
+    /* Выглядит не очень конечно */
     border-color: ${themeGet('color.blue', '#1e88e5')};
     ${ToggleHandle} {
       border-color: ${props =>
@@ -100,35 +100,49 @@ const ToggleTrack = styled.button`
 `
 
 /** Используется так же, как и Checkbox, но для единственного значения. */
-export function Toggle(props) {
-  const [stateChecked, setStateChecked] = useState(
-    typeof props.checked !== 'undefined' ? props.checked : false
-  )
-
-  useEffect(() => {
-    // If controlled by form
-    if (props[FIELD_DATA_PROP]) {
-      setStateChecked(props.value)
-    } else if ('checked' in props) {
-      setStateChecked(props.checked)
+export class Toggle extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      checked: typeof props.checked !== 'undefined' ? props.checked : false
     }
-  }, [props])
-
-  const handleChange = event => {
-    event.preventDefault()
-    const flippedValue = !stateChecked
-    setStateChecked(flippedValue)
-    typeof props.onChange === 'function' && props.onChange(flippedValue)
   }
-  return (
-    <ToggleTrack
-      checked={stateChecked}
-      disabled={props.disabled}
-      onClick={props.disabled ? noop : handleChange}
-    >
-      <ToggleHandle checked={stateChecked} disabled={props.disabled} />
-    </ToggleTrack>
-  )
+
+  static getDerivedStateFromProps(nextProps) {
+    // If controlled by form
+    if (nextProps[FIELD_DATA_PROP]) {
+      return {
+        checked: nextProps.value
+      }
+    }
+    if ('checked' in nextProps) {
+      return {
+        checked: nextProps.checked
+      }
+    }
+    return null
+  }
+
+  handleChange = event => {
+    event.preventDefault()
+    const flippedValue = !this.state.checked
+    this.setState({checked: flippedValue})
+    this.props.onChange && this.props.onChange(flippedValue)
+  }
+
+  render() {
+    const {checked} = this.state
+    const {disabled} = this.props
+    return (
+      <ToggleTrack
+        checked={checked}
+        disabled={disabled}
+        onClick={disabled ? noop : this.handleChange}
+      >
+        <ToggleHandle checked={checked} disabled={disabled} />
+      </ToggleTrack>
+    )
+  }
 }
 
 Toggle.propTypes = {

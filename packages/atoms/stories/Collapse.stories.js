@@ -138,13 +138,13 @@ export const controlled = () => {
 
   return (
     <Collapse activeKeys={activeKeys} onChange={onChange}>
-      <Collapse.Panel key="key1" title="Title number 1">
+      <CollapsePanel key="key1" title="Title number 1">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
         commodo consequat.
-      </Collapse.Panel>
-      <Collapse.Panel key="key2" title="Title number 2">
+      </CollapsePanel>
+      <CollapsePanel key="key2" title="Title number 2">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -152,8 +152,8 @@ export const controlled = () => {
         elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
         ut aliquip ex ea commodo consequat.
-      </Collapse.Panel>
-      <Collapse.Panel key="key3" title="Title number 3">
+      </CollapsePanel>
+      <CollapsePanel key="key3" title="Title number 3">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -164,7 +164,7 @@ export const controlled = () => {
         consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
         et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
         exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      </Collapse.Panel>
+      </CollapsePanel>
     </Collapse>
   )
 }
@@ -187,13 +187,13 @@ export const disabled = () => {
 
   return (
     <Collapse activeKeys={activeKeys} onChange={onChange}>
-      <Collapse.Panel key="key1" title="Title number 1" disabled>
+      <CollapsePanel key="key1" title="Title number 1" disabled>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
         commodo consequat.
-      </Collapse.Panel>
-      <Collapse.Panel key="key2" title="Title number 2">
+      </CollapsePanel>
+      <CollapsePanel key="key2" title="Title number 2">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -201,8 +201,8 @@ export const disabled = () => {
         elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
         ut aliquip ex ea commodo consequat.
-      </Collapse.Panel>
-      <Collapse.Panel key="key3" title="Title number 3" disabled>
+      </CollapsePanel>
+      <CollapsePanel key="key3" title="Title number 3" disabled>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -213,7 +213,7 @@ export const disabled = () => {
         consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
         et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
         exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      </Collapse.Panel>
+      </CollapsePanel>
     </Collapse>
   )
 }
