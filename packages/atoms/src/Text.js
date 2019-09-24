@@ -13,12 +13,12 @@ const italic = ({italic}) => Boolean(italic) && {fontStyle: 'italic'}
 const caps = ({caps}) => Boolean(caps) && {textTransform: 'uppercase'}
 const inline = ({inline}) => Boolean(inline) && {display: 'inline-block'}
 const strike = ({strike}) => Boolean(strike) && {textDecoration: 'line-through'}
-const truncated = ({truncated}) =>
-  Boolean(truncated) && {
-    overflow: 'hidden',
-    whiteSpace: 'nowrap',
-    textOverflow: 'ellipsis'
-  }
+// const truncated = ({truncated}) =>
+//   Boolean(truncated) && {
+//     overflow: 'hidden',
+//     whiteSpace: 'nowrap',
+//     textOverflow: 'ellipsis'
+//   }
 
 /**
  * Используется для вывода любой текстовой информации.

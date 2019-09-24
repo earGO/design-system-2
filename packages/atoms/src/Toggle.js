@@ -10,7 +10,7 @@ const noop = () => {}
 const tracksBackground = ({checked, disabled}) => {
   if (disabled) {
     return css`
-      background: ${themeGet('colors.grey', '#b5b5b5')};
+      background: ${themeGet('colors.white', '#ffffff')};
     `
   }
   if (checked) {
@@ -19,14 +19,14 @@ const tracksBackground = ({checked, disabled}) => {
     `
   }
   return css`
-    background: ${themeGet('colors.white', '#ffffff')};
+    background: ${themeGet('colors.grey', '#b5b5b5')};
   `
 }
 
 const tracksBorder = ({checked, disabled}) => {
-  if (!checked && !disabled) {
+  if (disabled) {
     return css`
-      border-color: ${themeGet('colors.black', '#3a3a3a')};
+      border-color: ${themeGet('colors.grey', '#b5b5b5')};
     `
   }
   return `border-color: transparent`
@@ -35,30 +35,33 @@ const tracksBorder = ({checked, disabled}) => {
 const handleBackground = ({disabled}) => {
   return css`
     background: ${disabled
-      ? themeGet('colors.lightGrey', '#f5f5f5')
+      ? themeGet('colors.grey', '#b5b5b5')
       : themeGet('color.white', '#ffffff')};
   `
 }
 
-const handleBorder = ({checked, disabled}) => {
-  if (!checked && !disabled) {
+const handlePosition = ({checked, disabled, ...rest}) => {
+  if (checked && disabled) {
     return css`
-      border-color: ${themeGet('colors.black', '#3a3a3a')};
+      top: 0px;
+      left: 12px;
     `
   }
-  return 'border-color: transparent'
-}
-
-const handlePosition = ({checked, disabled, ...rest}) => {
   if (checked) {
     return css`
-      top: 2px;
-      left: 10px;
+      top: 0px;
+      left: 12px;
+    `
+  }
+  if (disabled) {
+    return css`
+      top: 0px;
+      left: 0px;
     `
   }
   return css`
-    top: 2px;
-    left: 2px;
+    top: 0px;
+    left: 1px;
   `
 }
 
@@ -67,21 +70,19 @@ const cursor = ({disabled}) => {
 }
 
 const ToggleHandle = styled(Absolute)`
-  width: 10px;
-  height: 10px;
-  border-width: 1px;
-  border-style: solid;
+  width: 12px;
+  height: 12px;
+  border: 1px solid transparent;
   border-radius: 8px;
   ${handleBackground}
   ${handlePosition}
-  ${handleBorder}
   transition: left ${themeGet('durations.normal', '300ms')};
 `
 
 const ToggleTrack = styled.button`
   position: relative;
   outline: none;
-  width: 24px;
+  width: 28px;
   height: 16px;
   border-width: 1px;
   border-style: solid;
@@ -89,14 +90,6 @@ const ToggleTrack = styled.button`
   ${tracksBackground}
   ${tracksBorder}
   ${cursor}
-  :focus {
-    /* Выглядит не очень конечно - не знаю кто его рисовал, но Иванов-Тельманов ни при чем */
-    border-color: ${themeGet('color.blue', '#1e88e5')};
-    ${ToggleHandle} {
-      border-color: ${props =>
-        !props.checked && themeGet('color.blue', '#1e88e5')};
-    }
-  }
 `
 
 /** Используется так же, как и Checkbox, но для единственного значения. */
