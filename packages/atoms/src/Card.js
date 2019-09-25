@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, {withTheme} from 'styled-components'
 import PropTypes from 'prop-types'
 import {borderRadius} from 'styled-system'
 import Box from './Box'
@@ -7,30 +7,46 @@ import Box from './Box'
 const boxShadow = props => {
   const boxShadows = {
     sm: {
-      'box-shadow': props.theme.boxShadows[0]
+      'box-shadow':
+        props &&
+        props.theme &&
+        Object.keys(props.theme).length > 0 &&
+        props.theme.boxShadows[0]
     },
     md: {
-      'box-shadow': props.theme.boxShadows[1]
+      'box-shadow':
+        props &&
+        props.theme &&
+        Object.keys(props.theme).length > 0 &&
+        props.theme.boxShadows[1]
     },
     lg: {
-      'box-shadow': props.theme.boxShadows[2]
+      'box-shadow':
+        props &&
+        props.theme &&
+        Object.keys(props.theme).length > 0 &&
+        props.theme.boxShadows[2]
     },
     xl: {
-      'box-shadow': props.theme.boxShadows[3]
+      'box-shadow':
+        props &&
+        props.theme &&
+        Object.keys(props.theme).length > 0 &&
+        props.theme.boxShadows[3]
     }
   }
   return boxShadows[props.boxShadowSize] || {}
 }
 
 const boxBorder = props => ({
-  border: `1px solid ${props.theme.colors.border}`
+  // border: `1px solid ${props.theme.colors.border}`
+  border: `1px solid #ecebeb`
 })
 
 const CardBox = styled(Box)`
   overflow: hidden;
   position: relative;
   background-color: ${props => props.bg};
-
   ${boxShadow} 
   ${boxBorder} 
   ${borderRadius};
@@ -64,4 +80,5 @@ Card.defaultProps = {
 Card.displayName = 'Card'
 
 /** @component */
+// export default withTheme(Card)
 export default Card

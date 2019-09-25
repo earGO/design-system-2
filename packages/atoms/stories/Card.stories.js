@@ -58,7 +58,7 @@ withShadow.story = {
 }
 
 export const complex = () => (
-  <Card width={360} p={4} boxShadowSize="sm">
+  <Card width={360} p={4} boxShadowSize="xl">
     <Heading tag="h4">Внимание! Важное уведомление</Heading>
     <Text fontSize={1} mt={3}>
       Сохраните все данные и завершите работу <strong>до 19:00</strong>. Система

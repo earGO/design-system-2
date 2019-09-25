@@ -45,7 +45,7 @@ export const basic = () => {
       arrowColor={'#ebebeb'} /** цвет стрелки прямоугольника Popover'a*/
       arrowSize={7} /** размер стрелки Popover'a */
     >
-      <Card p={3} bg="#ebebeb">
+      <Card boxShadowSize="sm" p={2} bg="#ebebeb">
         <Text color="info">
           Hi! I'm popover content. <br />
           Here's my position: {position}.
@@ -53,6 +53,7 @@ export const basic = () => {
       </Card>
     </Popover.ArrowContainer>
   )
+
   return (
     <Flex
       height={200}
