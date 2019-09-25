@@ -39,7 +39,7 @@ export function Modal({nodeId, ...props}) {
 
   React.useEffect(() => {
     ReactModal.setAppElement(document.getElementById(nodeId))
-  }, [])
+  }, [nodeId])
 
   return <ReactModal style={customModalStyles} {...props} />
 }

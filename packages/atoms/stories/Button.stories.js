@@ -131,7 +131,7 @@ export const buttonWithIcon = () => (
       </Flex>
     </Button>
     <Button circle>
-      <Relative mt={1} left={6} top={-2}>
+      <Relative mt={1} left={7} top={-2}>
         <Icon spin name="autorenew" color={'white'} />
       </Relative>
     </Button>

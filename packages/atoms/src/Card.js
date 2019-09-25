@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import {borderRadius} from 'styled-system'
 import Box from './Box'
-import theme from '@design-system/theme'
 
 const boxShadow = props => {
   const boxShadows = {
@@ -30,7 +29,7 @@ const boxBorder = props => ({
 const CardBox = styled(Box)`
   overflow: hidden;
   position: relative;
-  background-color: ${props=>props.bg};
+  background-color: ${props => props.bg};
 
   ${boxShadow} 
   ${boxBorder} 
@@ -53,13 +52,13 @@ Card.propTypes = {
   /** Ширина бордера */
   borderWidth: PropTypes.oneOf([0, 1, 2]),
   /** Цвет фона */
-  bg:PropTypes.string
+  bg: PropTypes.string
 }
 
 Card.defaultProps = {
   borderRadius: 1,
   borderWidth: 0,
-  bg:'white'
+  bg: 'white'
 }
 
 Card.displayName = 'Card'

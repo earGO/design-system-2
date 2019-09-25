@@ -23,7 +23,6 @@ Build:
   only:
     - master
   script:
-    - CI="" yarn reinstall-hard
     - CI="" yarn build
     - CI="" yarn deploy-storybook -- --dry-run --out=.out --packages packages
   artifacts:

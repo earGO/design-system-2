@@ -26,6 +26,7 @@ const StyledFlex = styled(Flex)`
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: 1000;
 
   ${getColor};
 `
