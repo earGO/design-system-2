@@ -20,9 +20,5 @@ I used styled-components, and some external libraries to make production and sup
 - `yarn make-oao-nexus` - publishes all packages to private nexus. 
 - `yarn build-styleguide` - builds static docs from storybooks of atoms, cells, and molecules, to a `.out` folder in root of a repository 
 
-#### Monorepo docs index.html
-One can customize the index.html file in static docs after `build-styleguide` script, by editing HTML-markup in a `monorepo-doc-index.js` file. As of 20.09.2019 I didn't do this, it's planned for a next 2-3 days. 
-
-#### Tests
-I used Jest as a test suite, but as of 20.09.2019 test are broken, I'm fixing them right now.
+Builded static documentation can be viewed here https://eargo.github.io/design-system-2/
   
