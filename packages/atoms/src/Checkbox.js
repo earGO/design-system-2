@@ -3,29 +3,29 @@ import Flex from './Flex'
 import Icon from './Icon'
 import Text from './Text'
 import propTypes from 'prop-types'
-import styled, {css} from 'styled-components'
+import styled from 'styled-components'
 import {space} from 'styled-system'
 import themeGet from '@styled-system/theme-get'
 import {FIELD_DATA_PROP} from './Form'
 import omit from 'lodash/omit'
 
-const size = ({size = 'medium'}) => {
-  const sizes = {
-    small: {
-      width: '14px',
-      height: '14px'
-    },
-    medium: {
-      width: '16px',
-      height: '16px'
-    },
-    large: {
-      width: '20px',
-      height: '20px'
-    }
-  }
-  return css(sizes[size])
-}
+// const size = ({size = 'medium'}) => {
+//   const sizes = {
+//     small: {
+//       width: '14px',
+//       height: '14px'
+//     },
+//     medium: {
+//       width: '16px',
+//       height: '16px'
+//     },
+//     large: {
+//       width: '20px',
+//       height: '20px'
+//     }
+//   }
+//   return css(sizes[size])
+// }
 
 const background = ({checked, disabled, ...rest}) => {
   const {checkbox} = rest.theme.colors
@@ -65,7 +65,9 @@ export const StyledCheckbox = styled(Flex)`
   align-items: center;
   border-radius: ${themeGet('radii[0]', 4)}px;
   transition: all ${themeGet('duration.fast', 300)};
-  ${size}
+  width: 14px,
+      height: 14px,
+  /* ${size} */
   ${background}
   ${border}
 
