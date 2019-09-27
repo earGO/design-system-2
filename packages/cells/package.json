@@ -1,7 +1,7 @@
 {
   "name": "@design-system/cells",
   "description": "Компоненты со сложной внутренней логикой, использующие атомы и молекулы, такие как DatePicker",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "main": "src/index.js",
   "module": "src/index.js",
   "license": "MIT",

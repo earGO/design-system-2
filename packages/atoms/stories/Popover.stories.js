@@ -45,12 +45,13 @@ export const basic = () => {
       arrowColor={'#ebebeb'} /** цвет стрелки прямоугольника Popover'a*/
       arrowSize={7} /** размер стрелки Popover'a */
     >
-      <Card boxShadowSize="sm" p={2} bg="#ebebeb">
-        <Text color="info">
-          Hi! I'm popover content. <br />
-          Here's my position: {position}.
-        </Text>
-      </Card>
+      {/* POPOVER ставится в другом диве, не div="root", куда мы как праивла помещаем наш Реакт Код. Кард использует тему из пропсов, которые передаются через ThemeProvider, оборачивабщий весь наш код. В новом диве этой обертки нет, поэтому там в пропсах нет темы и компонент валится */}
+      {/* <Card boxShadowSize="sm" p={2} bg="#ebebeb"> */}
+      <Text color="info">
+        Hi! I'm popover content. <br />
+        Here's my position: {position}.
+      </Text>
+      {/* </Card> */}
     </Popover.ArrowContainer>
   )
 
