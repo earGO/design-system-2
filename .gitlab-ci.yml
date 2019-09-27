@@ -10,6 +10,7 @@ before_script:
 stages:
   - build
   - deploy
+  - publish
 
 cache:
   untracked: true
@@ -40,8 +41,8 @@ Deploy:
     - scp -r .out/* suadm@192.168.13.46:$TMPDIR
     - ssh suadm@192.168.13.46 "sudo /opt/deploy front $PROJECT $STAGE_NAMESPACE $APP $TMPDIR"
 
-Deploy:
-  stage: deploy
+Publish:
+  stage: publish
   only:
     - master
   before_script:
