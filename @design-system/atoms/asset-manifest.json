@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.js": "/main.0362297bc05240862c94.bundle.js",
+    "main.js.map": "/main.0362297bc05240862c94.bundle.js.map",
+    "runtime~main.js": "/runtime~main.0362297bc05240862c94.bundle.js",
+    "runtime~main.js.map": "/runtime~main.0362297bc05240862c94.bundle.js.map",
+    "vendors~main.js": "/vendors~main.0362297bc05240862c94.bundle.js",
+    "vendors~main.js.map": "/vendors~main.0362297bc05240862c94.bundle.js.map",
+    "iframe.html": "/iframe.html",
+    "precache-manifest.3c359ba3502f9077924b5d9f8d75ba30.js": "/precache-manifest.3c359ba3502f9077924b5d9f8d75ba30.js",
+    "service-worker.js": "/service-worker.js",
+    "static/media/MaterialIcons-Regular.woff": "/static/media/MaterialIcons-Regular.012cf6a1.woff",
+    "static/media/MaterialIcons-Regular.woff2": "/static/media/MaterialIcons-Regular.570eb838.woff2",
+    "static/media/MaterialIcons-Regular.ttf": "/static/media/MaterialIcons-Regular.a37b0c01.ttf"
+  }
+}

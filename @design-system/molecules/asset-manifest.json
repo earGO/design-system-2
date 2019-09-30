@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.js": "/main.cd50aecb4eb52cfdc553.bundle.js",
+    "main.js.map": "/main.cd50aecb4eb52cfdc553.bundle.js.map",
+    "runtime~main.js": "/runtime~main.cd50aecb4eb52cfdc553.bundle.js",
+    "runtime~main.js.map": "/runtime~main.cd50aecb4eb52cfdc553.bundle.js.map",
+    "vendors~main.js": "/vendors~main.cd50aecb4eb52cfdc553.bundle.js",
+    "vendors~main.js.map": "/vendors~main.cd50aecb4eb52cfdc553.bundle.js.map",
+    "iframe.html": "/iframe.html",
+    "precache-manifest.2cd38d0fbd2264906d8b2ad0d23981f5.js": "/precache-manifest.2cd38d0fbd2264906d8b2ad0d23981f5.js",
+    "service-worker.js": "/service-worker.js",
+    "static/media/MaterialIcons-Regular.woff": "/static/media/MaterialIcons-Regular.012cf6a1.woff",
+    "static/media/MaterialIcons-Regular.woff2": "/static/media/MaterialIcons-Regular.570eb838.woff2",
+    "static/media/MaterialIcons-Regular.ttf": "/static/media/MaterialIcons-Regular.a37b0c01.ttf"
+  }
+}
