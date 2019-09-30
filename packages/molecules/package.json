@@ -1,7 +1,7 @@
 {
   "name": "@design-system/molecules",
   "description": "Компоненты без особой внутренней логики, составленные из нескольких атомов. Например, поле ввода с подсказкой, или иконка со всплывающим комментарием.",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "main": "src/index.js",
   "module": "src/index.js",
   "license": "MIT",
@@ -14,8 +14,8 @@
     "babelify": "yarn clean && babel src --out-dir build"
   },
   "devDependencies": {
-    "@design-system/atoms": "^2.3.0",
-    "@design-system/theme": "^2.3.0",
+    "@design-system/atoms": "^2.3.1",
+    "@design-system/theme": "^2.3.1",
     "@mdx-js/loader": "^1.4.5",
     "@mdx-js/mdx": "^1.4.5",
     "@mdx-js/react": "^1.4.5",
