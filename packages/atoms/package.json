@@ -1,7 +1,7 @@
 {
   "name": "@design-system/atoms",
   "description": "Основные примитивы дизайн-системы для разметки и составления более сложных компонентов",
-  "version": "2.2.0",
+  "version": "2.3.1",
   "main": "src/index.js",
   "module": "src/index.js",
   "license": "MIT",
@@ -38,7 +38,7 @@
     "stylis-rule-sheet": "0.0.10"
   },
   "devDependencies": {
-    "@design-system/theme": "^2.2.0",
+    "@design-system/theme": "^2.3.1",
     "@mdx-js/loader": "^1.4.5",
     "@mdx-js/mdx": "^1.4.5",
     "@mdx-js/react": "^1.4.5",

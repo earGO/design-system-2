@@ -10,6 +10,7 @@ before_script:
 stages:
   - build
   - deploy
+  - publish
 
 cache:
   untracked: true
@@ -24,13 +25,24 @@ Build:
     - master
   script:
     - CI="" yarn build
-    - CI="" yarn deploy-storybook -- --dry-run --out=.out --packages packages
   artifacts:
     paths:
     - build/
 
 Deploy:
   stage: deploy
+  only:
+    - develop
+  before_script:
+    - yarn
+    - TMPDIR=$(ssh suadm@192.168.13.46 "mktemp -d")
+  script:
+    - CI="" yarn deploy-storybook -- --dry-run --out=.out --packages packages
+    - scp -r .out/* suadm@192.168.13.46:$TMPDIR
+    - ssh suadm@192.168.13.46 "sudo /opt/deploy front $PROJECT $STAGE_NAMESPACE $APP $TMPDIR"
+
+Publish:
+  stage: publish
   only:
     - master
   before_script:
@@ -44,8 +56,5 @@ Deploy:
     - "sed -i \"s|\\\"module\\\": \\\"src|\\\"module\\\": \\\"build|g\" packages/theme/package.json"
     - "sed -i \"s|\\\"main\\\": \\\"src|\\\"main\\\": \\\"build|g\" packages/utils/package.json"
     - "sed -i \"s|\\\"module\\\": \\\"src|\\\"module\\\": \\\"build|g\" packages/utils/package.json"
-    - TMPDIR=$(ssh suadm@192.168.13.46 "mktemp -d")
   script:
     - yarn make-oao-nexus
-    - scp -r .out/* suadm@192.168.13.46:$TMPDIR
-    - ssh suadm@192.168.13.46 "sudo /opt/deploy front $PROJECT $STAGE_NAMESPACE $APP $TMPDIR"

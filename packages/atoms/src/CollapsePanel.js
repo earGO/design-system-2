@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react'
 import propTypes from 'prop-types'
-import styled, {css} from 'styled-components'
+import styled from 'styled-components'
 import Box from './Box'
 import Flex from './Flex'
 import Relative from './Relative'
@@ -9,16 +9,6 @@ import themeGet from '@styled-system/theme-get'
 import theme from '@design-system/theme'
 
 const noop = () => {}
-
-const disabled = props => {
-  return (
-    props.disabled &&
-    css`
-      opacity: 0.4;
-      cursor: not-allowed;
-    `
-  )
-}
 
 const PanelContent = styled(Box)`
   ${props => `transition: height ${props.theme.duration.normal};`}
@@ -36,7 +26,8 @@ const PanelWrapper = styled(Flex)`
   font-size: ${props => props.theme.fontSizes[1] + 'px'};
   color: ${props => props.theme.colors.black};
   ${props => !props.isOpen && `overflow: hidden;`}
-  ${disabled}
+  ${props => props.disabled && `opacity: 0.4;`}
+  ${props => props.disabled && `cursor: not-allowed;`}
 `
 
 const PanelHeaderWrapper = styled(Flex)`

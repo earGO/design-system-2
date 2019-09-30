@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import ReactTinyPopover, {ArrowContainer} from 'react-tiny-popover'
+import {withTheme} from 'styled-components'
+import {ThemeProvider} from '@design-system/theme'
 import Box from './Box'
 
 const DefaultComponent = () => {
@@ -20,9 +22,16 @@ const DefaultComponent = () => {
  * обернуть компонентом элемент интерфейса, относительно которого должен появиться
  * Popover
  */
-export function Popover(props) {
-  return <ReactTinyPopover {...props} />
+function PopoverComponent({content: Content, theme, ...props}) {
+  const wrapperContent = props => (
+    <ThemeProvider theme={theme}>
+      {React.isValidElement(Content) ? Content : <Content {...props} />}
+    </ThemeProvider>
+  )
+  return <ReactTinyPopover {...props} content={wrapperContent} />
 }
+
+export const Popover = withTheme(PopoverComponent)
 
 Popover.propTypes = {
   /** Показать или скрыть поповер */

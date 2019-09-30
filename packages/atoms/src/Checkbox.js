@@ -9,44 +9,6 @@ import themeGet from '@styled-system/theme-get'
 import {FIELD_DATA_PROP} from './Form'
 import omit from 'lodash/omit'
 
-// const size = ({size = 'medium'}) => {
-//   const sizes = {
-//     small: {
-//       width: '14px',
-//       height: '14px'
-//     },
-//     medium: {
-//       width: '16px',
-//       height: '16px'
-//     },
-//     large: {
-//       width: '20px',
-//       height: '20px'
-//     }
-//   }
-//   return css(sizes[size])
-// }
-
-const background = ({checked, disabled, ...rest}) => {
-  const {checkbox} = rest.theme.colors
-  const getColor = (checked, disabled) => {
-    if (disabled) {
-      return checkbox.disabled
-    }
-    return checked ? checkbox.checked : checkbox.unchecked
-  }
-  return `background-color: ${getColor(checked, disabled)}`
-}
-
-const border = ({checked, disabled, ...rest}) => {
-  const {colors} = rest.theme
-  if (!(checked || disabled)) {
-    return `border: 1px solid ${colors.black}`
-  } else {
-    return `border: 1px solid transparent`
-  }
-}
-
 const CheckboxInput = styled.input.attrs({type: 'checkbox'})`
   border: 0;
   clip: rect(0 0 0 0);
@@ -59,17 +21,42 @@ const CheckboxInput = styled.input.attrs({type: 'checkbox'})`
   white-space: nowrap;
   width: 1px;
 `
-
 export const StyledCheckbox = styled(Flex)`
   justify-content: center;
   align-items: center;
   border-radius: ${themeGet('radii[0]', 4)}px;
   transition: all ${themeGet('duration.fast', 300)};
-  width: 14px,
-      height: 14px,
-  /* ${size} */
-  ${background}
-  ${border}
+  width: ${({size = 'medium'}) => {
+    const sizes = {
+      small: '14px',
+      medium: '16px',
+      large: '20px'
+    }
+    return sizes[size]
+  }};
+  height: ${({size = 'medium'}) => {
+    const sizes = {
+      small: '14px',
+      medium: '16px',
+      large: '20px'
+    }
+    return sizes[size]
+  }};
+  border: ${({checked, disabled, ...rest}) => {
+    const {colors} = rest.theme
+    if (!(checked || disabled)) {
+      return `1px solid ${colors.black}`
+    } else {
+      return `2px solid transparent`
+    }
+  }};
+  background-color: ${({checked, disabled, ...rest}) => {
+    const {checkbox} = rest.theme.colors
+    if (disabled) {
+      return checkbox.disabled
+    }
+    return checked ? checkbox.checked : checkbox.unchecked
+  }};
 
   ${CheckboxInput}:focus + & {
     box-shadow: 0 0 0 1px ${props => props.theme.colors.blue};
@@ -84,7 +71,7 @@ const Label = styled.label`
 `
 
 const CheckboxContainer = styled(Flex)`
-  //display: inline-flex;
+  display: inline-flex;
   align-content: center;
 `
 
@@ -131,6 +118,7 @@ export class Checkbox extends Component {
             checked={this.state.checked}
             size={this.props.size}
             disabled={this.props.disabled}
+            {...this.props}
           >
             {this.state.checked ? (
               <Icon name="check" color="white" size={0} />
@@ -139,7 +127,6 @@ export class Checkbox extends Component {
             )}
           </StyledCheckbox>
         </CheckboxContainer>
-        {/* this.props.children instead of text maybe? */}
         <Text inline regular ml={2}>
           {this.props.label}
         </Text>

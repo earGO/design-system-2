@@ -13,38 +13,20 @@ import omit from 'lodash/omit'
 
 const size = ({size = 'medium'}) => {
   const sizes = {
-    small: {
-      width: '14px',
-      height: '14px'
-    },
-    medium: {
-      width: '16px',
-      height: '16px'
-    },
-    large: {
-      width: '20px',
-      height: '20px'
-    }
+    small: css`
+      width: 14px;
+      height: 14px;
+    `,
+    medium: css`
+      width: 16px;
+      height: 16px;
+    `,
+    large: css`
+      width: 20px;
+      height: 20px;
+    `
   }
   return css(sizes[size])
-}
-
-const background = ({checked, disabled, ...rest}) => {
-  const {colors} = rest.theme
-  const {radio} = colors
-  const bgColor = checked && disabled ? radio.disabled : colors.lightGrey
-  return `background: ${bgColor}`
-}
-
-const border = ({checked, disabled, ...rest}) => {
-  const {colors} = rest.theme
-  const {radio} = colors
-  if (disabled) {
-    return `border: solid 3px ${radio.disabled}`
-  } else if (checked) {
-    return `border: solid 3px ${radio.checked}`
-  }
-  return `border: solid 3px ${colors.grey}`
 }
 
 const RadioInput = styled.input.attrs({type: 'radio'})`
@@ -66,8 +48,22 @@ export const StyledRadio = styled(Flex)`
   transition: all ${themeGet('duration.fast', 300)};
   border-radius: 50%;
   ${size}
-  ${background}
-  ${border}
+  background-color: ${({checked, disabled, ...rest}) => {
+    const {colors} = rest.theme
+    const {radio} = colors
+    const bgColor = checked && disabled ? radio.disabled : colors.lightGrey
+    return bgColor
+  }};
+  border: ${({checked, disabled, ...rest}) => {
+    const {colors} = rest.theme
+    const {radio} = colors
+    if (disabled) {
+      return `solid 3px ${radio.disabled}`
+    } else if (checked) {
+      return `solid 3px ${radio.checked}`
+    }
+    return `solid 3px ${colors.grey}`
+  }};
 `
 
 const Label = styled.label`

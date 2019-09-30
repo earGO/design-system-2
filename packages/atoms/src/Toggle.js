@@ -23,13 +23,13 @@ const tracksBackground = ({checked, disabled}) => {
   `
 }
 
-const tracksBorder = ({checked, disabled}) => {
+const tracksBorder = ({disabled}) => {
   if (disabled) {
     return css`
       border-color: ${themeGet('colors.grey', '#b5b5b5')};
     `
   }
-  return `border-color: transparent`
+  return `border-color: transparent;`
 }
 
 const handleBackground = ({disabled}) => {
@@ -40,7 +40,7 @@ const handleBackground = ({disabled}) => {
   `
 }
 
-const handlePosition = ({checked, disabled, ...rest}) => {
+const handlePosition = ({checked, disabled}) => {
   if (checked && disabled) {
     return css`
       top: 0px;
@@ -65,13 +65,9 @@ const handlePosition = ({checked, disabled, ...rest}) => {
   `
 }
 
-const cursor = ({disabled}) => {
-  return disabled ? 'cursor: not-allowed;' : 'cursor: pointer;'
-}
-
 const ToggleHandle = styled(Absolute)`
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border: 1px solid transparent;
   border-radius: 8px;
   ${handleBackground}
@@ -89,7 +85,7 @@ const ToggleTrack = styled.button`
   border-radius: ${themeGet('radii[2]', '8px')};
   ${tracksBackground}
   ${tracksBorder}
-  ${cursor}
+  cursor: ${({disabled}) => (disabled ? `not-allowed` : `pointer`)};
 `
 
 /** Используется так же, как и Checkbox, но для единственного значения. */
